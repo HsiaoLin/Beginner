@@ -29,7 +29,7 @@
 				id="loginForm">
 				<div class="control-group normal_text">
 					<h3>
-						世界玖玖代理商系统
+						Ran云平台系统
 					</h3>
 				</div>
 				<div class="control-group">
