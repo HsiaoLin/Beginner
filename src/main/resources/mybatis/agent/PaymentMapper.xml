@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PaymentMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into agent_payment_history(
+			payment_date,
+			payment_amount,
+			payment_remark,
+			buyer_id,
+			user_id,
+			admin_id,
+			status,
+			add_time
+		) values (
+			#{payment_date},
+			#{payment_amount},
+			#{payment_remark},
+			#{buyer_id},
+			#{user_id},
+			#{admin_id},
+			#{status},
+			#{add_time}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from agent_payment_history
+		where 
+			payment_id = #{payment_id}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  agent_payment_history
+			set 
+			payment_date = #{payment_date},
+			payment_amount = #{payment_amount},
+			payment_remark = #{payment_remark},
+			buyer_id = #{buyer_id},
+			user_id = #{user_id},
+			admin_id = #{admin_id},
+			status = #{status},
+			add_time = #{add_time}			
+			where 
+				payment_id = #{payment_id}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			payment_id,
+			payment_date,
+			payment_amount,
+			payment_remark,
+			buyer_id,
+			user_id,
+			admin_id,
+			status,
+			add_time
+		from 
+			agent_payment_history
+		where 
+			payment_id = #{payment_id}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.payment_id,
+				a.payment_date,
+				a.payment_amount,
+				a.payment_remark,
+				a.buyer_id,
+				a.user_id,
+				a.admin_id,
+				a.status,
+				a.add_time
+		from 
+				agent_payment_history a
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.payment_id,
+				a.payment_date,
+				a.payment_amount,
+				a.payment_remark,
+				a.buyer_id,
+				a.user_id,
+				a.admin_id,
+				a.status,
+				a.add_time
+		from 
+				agent_payment_history a
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from agent_payment_history
+		where 
+			payment_id in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>

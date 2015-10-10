@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SegmentMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into flight_segment(
+			segment_type,
+			carrier_code,
+			flight_number,
+			dep_airport,
+			arr_airport,
+			dep_time,
+			arr_time,
+			stop_cities,
+			code_share,
+			aircraft_code,
+			flight_time,
+			transit_time,
+			order_id
+		) values (
+			#{segment_type},
+			#{carrier_code},
+			#{flight_number},
+			#{dep_airport},
+			#{arr_airport},
+			#{dep_time},
+			#{arr_time},
+			#{stop_cities},
+			#{code_share},
+			#{aircraft_code},
+			#{flight_time},
+			#{transit_time},
+			#{order_id}
+		)
+	</insert>
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from flight_segment
+		where 
+			segment_id = #{segment_id}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  flight_segment
+			set 
+			segment_id = segment_id
+			where 
+				segment_id = #{segment_id}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			segment_id,
+			segment_type,
+			carrier_code,
+			flight_number,
+			dep_airport,
+			arr_airport,
+			dep_time,
+			arr_time,
+			stop_cities,
+			code_share,
+			aircraft_code,
+			flight_time,
+			transit_time,
+			order_id
+		from 
+			flight_segment
+		where 
+			segment_id = #{segment_id}	
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.segment_id,
+				a.segment_type,
+				a.carrier_code,
+				a.flight_number,
+				a.dep_airport,
+				a.arr_airport,
+				a.dep_time,
+				a.arr_time,
+				a.stop_cities,
+				a.code_share,
+				a.aircraft_code,
+				a.flight_time,
+				a.transit_time,
+				a.order_id		
+		from 
+				flight_segment a
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.segment_id,
+				a.segment_type,
+				a.carrier_code,
+				a.flight_number,
+				a.dep_airport,
+				a.arr_airport,
+				a.dep_time,
+				a.arr_time,
+				a.stop_cities,
+				a.code_share,
+				a.aircraft_code,
+				a.flight_time,
+				a.transit_time,
+				a.order_id
+		from 
+				flight_segment a
+		where
+				1=1
+		<if test="order_id != null">
+				and a.order_id = #{order_id}
+		</if>
+		<if test="segment_type != null">
+				and a.segment_type = #{segment_type}
+		</if>
+	</select>
+	<!-- 列表(全部) -->
+	<select id="listByOrder" parameterType="pd" resultType="pd">
+		select
+				a.segment_id,
+				a.segment_type,
+				a.carrier_code,
+				a.flight_number,
+				a.dep_airport,
+				a.arr_airport,
+				a.dep_time,
+				a.arr_time,
+				a.stop_cities,
+				a.code_share,
+				a.aircraft_code,
+				a.flight_time,
+				a.transit_time,
+				a.order_id
+		from 
+				flight_segment a
+		where
+				1=1
+		<if test="order_id != null">
+				and a.order_id = #{order_id}
+		</if>
+		<if test="segment_type != null">
+				and a.segment_type = #{segment_type}
+		</if>
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from flight_segment
+		where 
+			segment_id in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>

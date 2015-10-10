@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DictionariesMapper">
+	<!--取父的字典 -->
+	<select id="listAll" resultType="pd">
+		select 
+			code_id,
+			code_name,
+			code_description,  
+			parent_id,  
+			code_code 
+		from
+			platform_code
+		where
+			parent_id is null
+	</select>
+	<!--取子的字典 -->
+	<select id="getByParentId" parameterType="pd" resultType="pd">
+		select 
+			code_id,
+			code_name,
+			code_description,  
+			parent_id,  
+			code_code 
+		from
+			platform_code
+		where
+			parent_id=#{parentId}
+	</select>
+	<!--取子的字典 -->
+	<select id="getById" parameterType="pd" resultType="pd">
+		select 
+			code_id,
+			code_name,
+			code_description,  
+			parent_id,  
+			code_code 
+		from
+			platform_code
+		where
+			code_id=#{code_id}
+	</select>
+	<!-- 添加字典数据 -->
+	<insert id="addDic" parameterType="pd">
+		insert into platform_code
+		(
+			code_name ,
+			code_description,
+			parent_id, 
+			code_code    
+		)
+		values
+		(
+			#{code_name},
+			#{code_description},
+			#{parent_id},
+			#{code_code}
+		)
+	</insert>
+	<!-- 删除数据字典 -->
+	<delete id="delDic" parameterType="pd">
+		delete from platform_code where code_id=#{code_id}
+	</delete>
+	<!-- 删除子数据字典 -->
+	<delete id="delChildDic" parameterType="pd">
+		delete from platform_code where parent_id=#{code_id}
+	</delete>
+	<!-- 修改数据字典 -->
+	<update id="updateDic" parameterType="pd">
+		update platform_code
+		set code_id=#{code_id}
+		<if test="code_name != null and code_name != ''">
+			,code_name=#{code_name}
+		</if>
+		<if test="code_description != null and code_description != ''">
+			,code_description=#{code_description}
+		</if>
+		<if test="parent_id != null and parent_id != ''">
+			,parent_id=#{parent_id}
+		</if>
+		<if test="code_code != null and code_code != ''">
+			,code_code=#{code_code}
+		</if>
+		where
+			code_id=#{code_id}
+	</update>
+	
+</mapper>

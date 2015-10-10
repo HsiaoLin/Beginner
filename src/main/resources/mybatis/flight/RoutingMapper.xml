@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RoutingMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into flight_routing(
+			order_id,
+			child_taxtype,
+			adult_taxtype,
+			apply_type,
+			price_type,
+			child_tax,
+			child_price,
+			adult_tax,
+			adult_price,
+			policy_other,
+			policy_baggage,
+			policy_endorse,
+			policy_refund,
+			data
+		) values (
+			#{order_id},
+			#{child_taxtype},
+			#{adult_taxtype},
+			#{apply_type},
+			#{price_type},
+			#{child_tax},
+			#{child_price},
+			#{adult_tax},
+			#{adult_price},
+			#{policy_other},
+			#{policy_baggage},
+			#{policy_endorse},
+			#{policy_refund},
+			#{data}			
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from flight_routing
+		where 
+			order_id = #{order_id}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  flight_routing
+			set 
+			order_id = order_id
+			where 
+				order_id = #{order_id}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			order_id,
+			child_taxtype,
+			adult_taxtype,
+			apply_type,
+			price_type,
+			child_tax,
+			child_price,
+			adult_tax,
+			adult_price,
+			policy_other,
+			policy_baggage,
+			policy_endorse,
+			policy_refund,
+			data
+		from 
+			flight_routing
+		where 
+			order_id = #{order_id}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.order_id,
+				a.child_taxtype,
+				a.adult_taxtype,
+				a.apply_type,
+				a.price_type,
+				a.child_tax,
+				a.child_price,
+				a.adult_tax,
+				a.adult_price,
+				a.policy_other,
+				a.policy_baggage,
+				a.policy_endorse,
+				a.policy_refund,
+				a.data
+		from 
+				flight_routing a
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.order_id,
+				a.child_taxtype,
+				a.adult_taxtype,
+				a.apply_type,
+				a.price_type,
+				a.child_tax,
+				a.child_price,
+				a.adult_tax,
+				a.adult_price,
+				a.policy_other,
+				a.policy_baggage,
+				a.policy_endorse,
+				a.policy_refund,
+				a.data
+		from 
+				flight_routing a
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from flight_routing
+		where 
+			order_id in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>
