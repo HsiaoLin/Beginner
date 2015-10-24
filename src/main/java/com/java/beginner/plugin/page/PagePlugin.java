@@ -38,6 +38,7 @@ import com.java.beginner.utils.Tools;
  * 
 * 类名称：PagePlugin.java
  */
+@SuppressWarnings(value={"unchecked","rawtypes"})
 @Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }) })
 public class PagePlugin implements Interceptor {
 
