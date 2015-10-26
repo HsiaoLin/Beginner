@@ -24,17 +24,16 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
 		if (path.matches(Constant.NO_INTERCEPTOR_PATH)) {
 			return true;
 		} else {
-			// shiro管理的session
 			Subject currentUser = SecurityUtils.getSubject();
 			Session session = currentUser.getSession();
 			User user = (User) session.getAttribute(Constant.SESSION_USER);
 			if (user != null) {
 				path = path.substring(1, path.length());
-				boolean b = Jurisdiction.hasJurisdiction(path);
-				if (!b) {
+				boolean hasJurisdiction = Jurisdiction.hasJurisdiction(path);
+				if (!hasJurisdiction) {
 					response.sendRedirect(request.getContextPath() + Constant.LOGIN);
 				}
-				return b;
+				return hasJurisdiction;
 			} else {
 				// 登陆过滤
 				response.sendRedirect(request.getContextPath() + Constant.LOGIN);

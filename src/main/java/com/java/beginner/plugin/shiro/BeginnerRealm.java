@@ -1,3 +1,11 @@
+/**
+ * <b>项目名：</b>不忘初心方得始终<br/>
+ * <b>包名：</b>com.java.beginner.plugin.shiro<br/>
+ * <b>文件名：</b>BeginnerRealm.java<br/>
+ * <b>版本信息：</b><br/>
+ * <b>日期：</b>2015年10月26日-上午11:04:09<br/>
+ * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+ */
 package com.java.beginner.plugin.shiro;
 
 import org.apache.shiro.authc.AuthenticationException;
@@ -9,7 +17,17 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-public class ShiroRealm extends AuthorizingRealm {
+/**
+ * <b>类名称：</b>BeginnerRealm<br/>
+ * <b>类描述：</b><br/>
+ * <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+ * <b>创建时间：</b>2015年10月26日 上午11:04:09<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b><br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
+public class BeginnerRealm extends AuthorizingRealm {
 
 	// @Resource
 	// private UserService userService;
