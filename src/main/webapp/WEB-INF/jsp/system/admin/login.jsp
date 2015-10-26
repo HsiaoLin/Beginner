@@ -29,7 +29,7 @@
 				id="loginForm">
 				<div class="control-group normal_text">
 					<h3>
-						Ran云平台系统
+						不忘初心方得始终
 					</h3>
 				</div>
 				<div class="control-group">
@@ -104,14 +104,14 @@
 				var code = loginname+",99,"+password+",99,"+$("#code").val();
 				$.ajax({
 					type: "POST",
-					url: 'login_login',
-			    	data: {KEYDATA:code,tm:new Date().getTime()},
+					url: 'login/login_validation',
+					data: {KEYDATA:code,tm:new Date().getTime()},
 					dataType:'json',
 					cache: false,
 					success: function(data){
 						if("success" == data.result){
 							saveCookie();
-							window.location.href="main/index";
+							window.location.href="login/index";
 						}else if("usererror" == data.result){
 							$("#loginname").tips({
 								side : 1,

@@ -26,7 +26,7 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
 		} else {
 			Subject currentUser = SecurityUtils.getSubject();
 			Session session = currentUser.getSession();
-			User user = (User) session.getAttribute(Constant.SESSION_USER);
+			User user = (User) session.getAttribute(Constant.USER);
 			if (user != null) {
 				path = path.substring(1, path.length());
 				boolean hasJurisdiction = Jurisdiction.hasJurisdiction(path);

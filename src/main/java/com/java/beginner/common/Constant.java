@@ -56,13 +56,13 @@ public class Constant {
 	* SESSION_SECURITY_CODE:（变量描述：安全编码）
 	* @since 1.0.0
 	*/
-	public static final String SESSION_SECURITY_CODE = "sessionSecurityCode";
+	public static final String SECURITY_CODE = "securityCode";
 
 	/**
 	* SESSION_ROLE_RIGHTS:（变量描述：权限）
 	* @since 1.0.0
 	*/
-	public static final String SESSION_ROLE_RIGHTS = "sessionRoleRights";
+	public static final String ROLE_JURISDICTIONS = "roleJurisdictions";
 
 	//====================== Shiro =======================
 
@@ -80,32 +80,32 @@ public class Constant {
 
 	//====================== User =======================
 	/**
-	* SESSION_USER:（变量描述：）
+	* USER:（变量描述：）
 	* @since 1.0.0
 	*/
-	public static final String SESSION_USER = "sessionUser";
+	public static final String USER = "USER";
 
 	/**
-	* SESSION_USERNAME:（变量描述：用户名）
+	* USERNAME:（变量描述：用户名）
 	* @since 1.0.0
 	*/
-	public static final String SESSION_USERNAME = "USERNAME";
+	public static final String USERNAME = "USERNAME";
 
 	//====================== User =======================
 
 	//====================== Menu =======================
 
 	/**
-	* SESSION_MENULIST:（变量描述：当前菜单）
+	* MENU_USER:（变量描述：当前登陆用户的菜单列表）
 	* @since 1.0.0
 	*/
-	public static final String SESSION_MENULIST = "menuList";
+	public static final String MENU_USER = "userMenu";
 
 	/**
-	* SESSION_ALL_MENULIST:（变量描述：全部菜单）
+	* MENU_ALL:（变量描述：全部的菜单列表）
 	* @since 1.0.0
 	*/
-	public static final String SESSION_ALL_MENULIST = "allmenuList";
+	public static final String MENU_ALL = "allMenu";
 
 	//====================== Menu =======================
 

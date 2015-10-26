@@ -14,7 +14,10 @@
 	<context:annotation-config />
 
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="com.java.beginner" />
+	<context:component-scan base-package="com.java.beginner">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
 
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
