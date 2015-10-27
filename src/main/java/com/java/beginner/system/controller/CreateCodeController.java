@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.java.beginner.base.BaseController;
+import com.java.beginner.base.controller.BaseController;
 import com.java.beginner.plugin.page.PageData;
 import com.java.beginner.utils.PathUtil;
 import com.java.beginner.utils.generatecode.DelAllFile;

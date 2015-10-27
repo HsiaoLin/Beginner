@@ -6,7 +6,7 @@
  * <b>日期：</b>2015年10月26日-下午3:24:40<br/>
  * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
  */
-package com.java.beginner.base;
+package com.java.beginner.base.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;

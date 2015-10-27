@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java.beginner.base.BaseController;
+import com.java.beginner.base.controller.BaseController;
 import com.java.beginner.common.Constant;
 import com.java.beginner.plugin.page.PageData;
 import com.java.beginner.system.bean.User;

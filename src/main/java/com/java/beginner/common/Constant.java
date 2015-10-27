@@ -1,19 +1,6 @@
 package com.java.beginner.common;
 
 /**
- * 项目名称：
- * 
- */
-/**
-* <b>类名称：</b>Constant<br/>
-* <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b>2015年10月26日 下午4:11:57<br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
-/**
 * <b>类名称：</b>Constant<br/>
 * <b>类描述：</b><br/>
 * <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>

@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 
-import com.java.beginner.base.BaseController;
+import com.java.beginner.base.controller.BaseController;
 
 public class SimpleMailSender extends BaseController {
 
