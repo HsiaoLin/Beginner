@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.java.beginner.base.BaseController;
 import com.java.beginner.common.Constant;
 import com.java.beginner.plugin.page.PageData;
+import com.java.beginner.system.bean.User;
 import com.java.beginner.utils.AppUtil;
 import com.java.beginner.utils.Tools;
 
@@ -48,7 +51,7 @@ public class LoginController extends BaseController {
 	* @since  1.0.0
 	*/
 	@RequestMapping(value = "/to_login")
-	public ModelAndView to_login() {
+	public ModelAndView toLogin() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -69,7 +72,7 @@ public class LoginController extends BaseController {
 	*/
 	@RequestMapping(value = "/login_validation", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public Object login() throws Exception {
+	public Object loginValidation() throws Exception {
 		Map<String, String> map = new HashMap<String, String>();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -89,44 +92,44 @@ public class LoginController extends BaseController {
 				String USERNAME = KEYDATA[0];
 				String PASSWORD = KEYDATA[1];
 				pd.put("USERNAME", USERNAME);
-				/*if (Tools.notEmpty(sessionCode) && sessionCode.equalsIgnoreCase(code)) {
-					String passwd = new SimpleHash("SHA-1", USERNAME, PASSWORD).toString(); //密码加密
-					pd.put("PASSWORD", passwd);
-					pd.put("user_type", 2);
-
-					pd = usererService.getUserByNameAndPwd(pd);
-					if (pd != null) {
-						//判断用户是否审核通过
-						if ("audited".equals(pd.get("userStatus"))) {
-							pd.put("LAST_LOGIN", DateUtil.getTime().toString());
-							usererService.updateLastLogin(pd);
-							User user = new User();
-							user.setUserId(Integer.valueOf(String.valueOf(pd.get("userId"))));
-							user.setUserName(pd.getString("userName"));
-							user.setUserPassword(pd.getString("userPassword"));
-							user.setUserType(String.valueOf(pd.get("userType")));
-							user.setLastLogin(pd.getString("LAST_LOGIN"));
-							user.setIp(pd.getString("IP"));
-							user.setUserStatus(pd.getString("userStatus"));
-							session.setAttribute(Const.SESSION_USER, user);
-							session.removeAttribute(Const.SESSION_SECURITY_CODE);
-							//shiro加入身份验证
-							Subject subject = SecurityUtils.getSubject();
-							UsernamePasswordToken token = new UsernamePasswordToken(USERNAME, PASSWORD);
-							try {
-								subject.login(token);
-							} catch (AuthenticationException e) {
-								errInfo = "身份验证失败！";
-							}
-						} else {
-							errInfo = "accountNotAduit"; //用户未通过审核
-						}
-					} else {
-						errInfo = "usererror"; //用户名或密码有误
-					}
-				} else {
-					errInfo = "codeerror"; //验证码输入有误
-				}*/
+				//				if (Tools.notEmpty(sessionCode) && sessionCode.equalsIgnoreCase(code)) {
+				//					String passwd = new SimpleHash("SHA-1", USERNAME, PASSWORD).toString(); //密码加密
+				//					pd.put("PASSWORD", passwd);
+				//					pd.put("user_type", 2);
+				//
+				//					pd = usererService.getUserByNameAndPwd(pd);
+				//					if (pd != null) {
+				//						//判断用户是否审核通过
+				//						if ("audited".equals(pd.get("userStatus"))) {
+				//							pd.put("LAST_LOGIN", DateUtil.getTime().toString());
+				//							usererService.updateLastLogin(pd);
+				User user = new User();
+				user.setUserId(1);
+				user.setUserName("尹枭凌");
+				user.setUserPassword("123");
+				//							user.setUserType(String.valueOf(pd.get("userType")));
+				//							user.setLastLogin(pd.getString("LAST_LOGIN"));
+				//							user.setIp(pd.getString("IP"));
+				//							user.setUserStatus(pd.getString("userStatus"));
+				session.setAttribute(Constant.USER, user);
+				session.removeAttribute(Constant.SECURITY_CODE);
+				//shiro加入身份验证
+				Subject subject = SecurityUtils.getSubject();
+				UsernamePasswordToken token = new UsernamePasswordToken(USERNAME, PASSWORD);
+				try {
+					subject.login(token);
+				} catch (AuthenticationException e) {
+					errInfo = "身份验证失败！";
+				}
+				//						} else {
+				//							errInfo = "accountNotAduit"; //用户未通过审核
+				//						}
+				//					} else {
+				//						errInfo = "usererror"; //用户名或密码有误
+				//					}
+				//				} else {
+				//					errInfo = "codeerror"; //验证码输入有误
+				//				}
 				if (Tools.isEmpty(errInfo)) {
 					errInfo = "success"; //验证成功
 				}

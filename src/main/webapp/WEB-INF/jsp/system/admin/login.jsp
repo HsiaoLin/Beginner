@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+		+ request.getServerName() + ":" + request.getServerPort()
+		+ path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,24 +97,22 @@
 	</div>
 
 	<script type="text/javascript">
-	
 		//服务器校验
 		function severCheck(){
 			if(check()){
-				
 				var loginname = $("#loginname").val();
 				var password = $("#password").val();
 				var code = loginname+",99,"+password+",99,"+$("#code").val();
 				$.ajax({
 					type: "POST",
-					url: 'login/login_validation',
+					url: '<%=basePath%>login/login_validation',
 					data: {KEYDATA:code,tm:new Date().getTime()},
 					dataType:'json',
 					cache: false,
 					success: function(data){
 						if("success" == data.result){
 							saveCookie();
-							window.location.href="login/index";
+							window.location.href="<%=basePath%>login/index";
 						}else if("usererror" == data.result){
 							$("#loginname").tips({
 								side : 1,

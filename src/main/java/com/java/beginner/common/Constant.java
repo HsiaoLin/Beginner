@@ -74,7 +74,7 @@ public class Constant {
 	* NO_INTERCEPTOR_PATH:（变量描述：不对匹配该值的访问路径拦截（正则））
 	* @since 1.0.0
 	*/
-	public static final String NO_INTERCEPTOR_PATH = ".*/((login)|(logout)|(code)|(app)|(api)|(static)|(main)|(register)).*";
+	public static final String NO_INTERCEPTOR_PATH = ".*/(|(login)|(logout)|(code)|(app)|(api)|(static)|(main)|(register)).*";
 
 	//====================== Interceptor =======================
 
@@ -114,7 +114,7 @@ public class Constant {
 	* LOGIN:（变量描述：登录地址）
 	* @since 1.0.0
 	*/
-	public static final String LOGIN = "/login/to_login";
+	public static final String LOGIN = "/to_login";
 
 	/**
 	* SYSNAME:（变量描述：系统名称路径）
