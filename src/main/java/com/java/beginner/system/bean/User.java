@@ -1,28 +1,47 @@
 package com.java.beginner.system.bean;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 
- * 类名称：User.java 类描述： 用户实体类（票代、自身、99）
- */
+* <b>类名称：</b>User<br/>
+* <b>类描述：</b><br/>
+* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月27日 下午2:08:24<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 public class User {
+
 	private int userId; // 用户ID
+
 	private String userType; // 用户类型
+
 	private String userName; // 用户名
+
+	private String name; // 用户名
+
 	private String userPassword; // 用户密码
+
 	private String userPhone; // 个人电话
+
 	private String userMail; // 用户邮箱
+
 	private String userStatus; // 用户状态
+
 	private int buyerId; // 采购商ID
+
 	private int supplierId; // 提供商ID
+
 	private int parentId; // 企业管理员ID
+
 	private String lastLogin; // 上次登录时间
+
 	private String ip; // 用户登录的ip
+
 	private String userSkin = "default"; // 用户皮肤
-	private ArrayList<Role> roleList; // 用户角色列表
+
 	private Set<Role> roleSet = new HashSet<Role>(); // 用户角色列表
 
 	private boolean hasUser = false;
@@ -33,14 +52,6 @@ public class User {
 
 	public void setUserSkin(String userSkin) {
 		this.userSkin = userSkin;
-	}
-
-	public ArrayList<Role> getRoleList() {
-		return roleList;
-	}
-
-	public void setRoleList(ArrayList<Role> roleList) {
-		this.roleList = roleList;
 	}
 
 	public int getUserId() {
@@ -153,5 +164,13 @@ public class User {
 
 	public void setHasUser(boolean hasUser) {
 		this.hasUser = hasUser;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

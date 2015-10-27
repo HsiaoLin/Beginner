@@ -38,7 +38,7 @@
 				<div class="my-center">
 					<div class="my-center" style="padding-top: 80%;display: inline;">
 						<h4 style="display: inline;" class="lighter block red">
-							<img src="static/images/loadingi.gif" style="display: inline;" />
+							<img src="static/images/loading.gif" style="display: inline;" />
 							&nbsp;加载中 ...
 						</h4>
 					</div>
@@ -46,7 +46,7 @@
 			</div>
 
 			<div>
-				<iframe name="mainFrame" id="mainFrame" frameborder="0" src="tab.do" style="margin:0 auto;width:100%;height:100%;"></iframe>
+				<iframe name="mainFrame" id="mainFrame" frameborder="0" src="login/tab.do" style="margin:0 auto;width:100%;height:100%;"></iframe>
 			</div>
 
 			<!-- 换肤 -->

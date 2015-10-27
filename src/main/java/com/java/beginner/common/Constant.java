@@ -80,16 +80,28 @@ public class Constant {
 
 	//====================== User =======================
 	/**
-	* USER:（变量描述：）
+	* USER:（变量描述：User对象）
 	* @since 1.0.0
 	*/
-	public static final String USER = "USER";
+	public static final String USER = "user";
+
+	/**
+	* USERPDS:（变量描述：PageData类型的User对象）
+	* @since 1.0.0
+	*/
+	public static final String USER_PAGEDATA = "userPageData";
+
+	/**
+	* SESSION_USERROL:（变量描述：User对象）
+	* @since 1.0.0
+	*/
+	public static final String USER_OBJ = "userObj";
 
 	/**
 	* USERNAME:（变量描述：用户名）
 	* @since 1.0.0
 	*/
-	public static final String USERNAME = "USERNAME";
+	public static final String USERNAME = "userName";
 
 	//====================== User =======================
 
@@ -200,14 +212,6 @@ public class Constant {
 
 	//====================== Other =======================
 	public static final String SESSION_QX = "QX";
-
-	public static final String SESSION_userpds = "userpds";
-
-	/**
-	* SESSION_USERROL:（变量描述：用户对象）
-	* @since 1.0.0
-	*/
-	public static final String SESSION_USERROL = "USERROL";
 
 	/**
 	* TRUE:（变量描述：“T”）

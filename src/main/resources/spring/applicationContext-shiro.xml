@@ -25,17 +25,17 @@
 		<property name="unauthorizedUrl" value="/login/to_login" />
 		<property name="filterChainDefinitions">
 			<value>
-				/static/login/** = anon
-				/static/js/myjs/** = authc
-				/static/js/** = anon
-				/uploadFiles/uploadImgs/** = anon
-				/code.do = anon
-				/login/** = anon
-				/app**/** = anon
-				/api/** = anon
-				/register/** = anon
-				/do_register/** = anon
-				/** = authc
+				/static/login/** 			= anon
+				/static/js/** 				= anon
+				/uploadFiles/uploadImgs/** 	= anon
+				/code.do 					= anon
+				/login/login_validation 	= anon
+				/app**/** 					= anon
+				/api/** 					= anon
+				/register/** 				= anon
+				/do_register/** 			= anon
+				/static/js/myjs/** 			= authc
+				/** 						= authc
 			</value>
 		</property>
 	</bean>

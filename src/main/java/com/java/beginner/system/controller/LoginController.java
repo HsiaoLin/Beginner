@@ -11,6 +11,7 @@ package com.java.beginner.system.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -106,13 +107,18 @@ public class LoginController extends BaseController {
 				User user = new User();
 				user.setUserId(1);
 				user.setUserName("尹枭凌");
+				user.setName("尹枭凌");
 				user.setUserPassword("123");
+				Map pds = new HashMap();
+				pds = BeanUtils.describe(user);
+
 				//							user.setUserType(String.valueOf(pd.get("userType")));
 				//							user.setLastLogin(pd.getString("LAST_LOGIN"));
 				//							user.setIp(pd.getString("IP"));
 				//							user.setUserStatus(pd.getString("userStatus"));
 				session.setAttribute(Constant.USER, user);
 				session.removeAttribute(Constant.SECURITY_CODE);
+				session.setAttribute(Constant.USER_PAGEDATA, pds);
 				//shiro加入身份验证
 				Subject subject = SecurityUtils.getSubject();
 				UsernamePasswordToken token = new UsernamePasswordToken(USERNAME, PASSWORD);

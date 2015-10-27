@@ -3,8 +3,8 @@ $(function(){if('main'== locat[3]){locat =  locat[0]+'//'+locat[2];}else{locat =
 
 
 //菜单状态切换
-var fmid = "fhindex";
-var mid = "fhindex";
+var fmid = "loginindex";
+var mid = "loginindex";
 function siMenu(id,fid,MENU_NAME,MENU_URL){
 	if(id != mid){
 		$("#"+mid).removeClass();
@@ -23,7 +23,6 @@ function siMenu(id,fid,MENU_NAME,MENU_URL){
 }
 
 $(function(){
-
 	//换肤
 	$("#skin-colorpicker").ace_colorpicker().on("change",function(){
 		var b=$(this).find("option:selected").data("class");
@@ -36,7 +35,8 @@ $(function(){
 
 var USER_ID;
 
-var user = "FH";	//用于即时通讯（ 当前登录用户）
+//用于即时通讯（ 当前登录用户）
+var user = "Beginner";
 
 $(function(){
 	$.ajax({
@@ -48,19 +48,19 @@ $(function(){
 		cache: false,
 		async:false,
 		success: function(data){
-			//alert(data.list.length);
+			debugger;
 			 $.each(data.list, function(i, list){
 				 //登陆者资料
-				 $("#user_info").html('<small>Welcome</small> '+list.userName+'');
+				 $("#user_info").html('<small>欢迎您</small> '+list.userName+'');
 				 user = list.userName;
 				 USER_ID = list.userId;//用户ID
 				 hf(list.userSkin);//皮肤
-				 if(list.userName != 'admin'){
-					 $("#adminmenu").hide();	//隐藏菜单设置
-					 $("#adminzidian").hide();	//隐藏数据字典
-					 $("#systemset").hide();	//隐藏系统设置
-					 $("#productCode").hide();	//隐藏代码生成
-				 }
+//				 if(list.userName != 'admin'){
+//					 $("#adminmenu").hide();	//隐藏菜单设置
+//					 $("#adminzidian").hide();	//隐藏数据字典
+//					 $("#systemset").hide();	//隐藏系统设置
+//					 $("#productCode").hide();	//隐藏代码生成
+//				 }
 //				 online();//连接在线管理
 			 });
 		}
@@ -70,7 +70,6 @@ $(function(){
 
 //换肤
 function hf(b){
-	
 	var a=$(document.body);
 	a.attr("class",a.hasClass("navbar-fixed")?"navbar-fixed":"");
 	if(b!="default"){

@@ -34,8 +34,8 @@
 
 				<ul class="nav nav-list">
 
-					<li class="active" id="fhindex">
-					  <a href="main/index"><i class="icon-dashboard"></i><span>后台首页</span></a>
+					<li class="active" id="loginindex">
+					  <a href="login/index"><i class="icon-dashboard"></i><span>后台首页</span></a>
 					</li>
 
 
