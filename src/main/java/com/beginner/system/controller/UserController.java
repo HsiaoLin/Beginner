@@ -57,10 +57,8 @@ public class UserController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("USER_ID", this.get32UUID()); //主键
-		pd.put("USER_STATUS", "‘0’"); //用户状态
-		pd.put("BUYING_AGENT_ID", ""); //采购代理商ID
-		pd.put("SUPPLIER_ID", ""); //供应商ID
+		pd.put("USER_ID", null); //主键
+		pd.put("USER_STATUS", null); //用户状态
 		userService.save(Mapper.USER_MAPPER + Mapper.METHOD_SAVE, pd);
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");

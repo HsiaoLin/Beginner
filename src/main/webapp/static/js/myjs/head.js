@@ -48,7 +48,7 @@ $(function(){
 		cache: false,
 		async:false,
 		success: function(data){
-			debugger;
+			//debugger;
 			 $.each(data.list, function(i, list){
 				 //登陆者资料
 				 $("#user_info").html('<small>欢迎您</small> '+list.userName+'');

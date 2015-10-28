@@ -37,7 +37,19 @@
 					<li class="active" id="loginindex">
 					  <a href="login/index"><i class="icon-dashboard"></i><span>后台首页</span></a>
 					</li>
-
+					
+					<li id="lmmenuMENU_ID">
+					  <a style="cursor:pointer;" class="dropdown-toggle" >
+						<i class="icon-desktop"></i>
+						<span>用户列表</span>
+						<b class="arrow icon-angle-down"></b>
+					  </a>
+					  <ul class="submenu">
+						  <li id="zsubMENU_ID">
+						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户列表','system/user/list')"><i class="icon-double-angle-right"></i>用户列表</a>
+						</li>
+						</ul>
+					</li>
 
 
 			<c:forEach items="${menuList}" var="menu">

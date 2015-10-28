@@ -150,18 +150,10 @@
 		<table style="width:100%;">
 			<tr>
 				<td style="vertical-align:top;">
-					<c:if test="${QX.add == 1 }">
 					<a class="btn btn-small btn-success" onclick="add();">新增</a>
-					</c:if>
-					<c:if test="${QX.FX_QX == 1 }">
 					<a title="批量发送电子邮件" class="btn btn-small btn-info" onclick="makeAll('确定要给选中的用户发送邮件吗?');"><i class="icon-envelope-alt"></i></a>
-					</c:if>
-					<c:if test="${QX.FW_QX == 1 }">
 					<a title="批量发送短信" class="btn btn-small btn-warning" onclick="makeAll('确定要给选中的用户发送短信吗?');"><i class="icon-envelope"></i></a>
-					</c:if>
-					<c:if test="${QX.del == 1 }">
 					<a title="批量删除" class="btn btn-small btn-danger" onclick="makeAll('确定要删除选中的数据吗?');" ><i class='icon-trash'></i></a>
-					</c:if>
 				</td>
 				<td style="vertical-align:top;"><div class="pagination" style="float: right;padding-top: 0px;margin-top: 0px;">${page.pageStr}</div></td>
 			</tr>
@@ -239,11 +231,11 @@
 		}
 		//新增
 		function add(){
-			 top.jzts();
+			// top.jzts();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增";
-			 diag.URL = '<%=basePath%>user/goAddU.do';
+			 diag.URL = '<%=basePath%>system/user/goAdd';
 			 diag.Width = 225;
 			 diag.Height = 415;
 			 diag.CancelEvent = function(){ //关闭事件
