@@ -15,7 +15,7 @@
 	</bean>
 
 	<!-- 項目自定义的Realm -->
-	<bean id="BeginnerRealm" class="com.java.beginner.plugin.shiro.BeginnerRealm"></bean>
+	<bean id="BeginnerRealm" class="com.beginner.plugin.shiro.BeginnerRealm"></bean>
 
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
