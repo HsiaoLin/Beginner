@@ -25,39 +25,91 @@ import com.beginner.plugin.page.PageData;
 */
 public interface IBaseService {
 
-	/*
-	* 新增
+	/**
+	* save(方法描述：新增) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* @param pd
+	* @throws Exception
+	* void
+	* @exception
+	* @since  1.0.0
 	*/
-	public abstract void save(String str, PageData pd) throws Exception;
+	public void save(String str, PageData pd) throws Exception;
 
-	/*
-	* 删除
+	/**
+	* delete(方法描述：删除) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* @param pd
+	* @throws Exception
+	* void
+	* @exception
+	* @since  1.0.0
 	*/
-	public abstract void delete(String str, PageData pd) throws Exception;
+	public void delete(String str, PageData pd) throws Exception;
 
-	/*
-	* 修改
+	/**
+	* edit(方法描述：修改) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* @param pd
+	* @throws Exception
+	* void
+	* @exception
+	* @since  1.0.0
 	*/
-	public abstract void edit(String str, PageData pd) throws Exception;
+	public void edit(String str, PageData pd) throws Exception;
 
-	/*
-	*列表
+	/**
+	* list(方法描述：列表) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* @param page
+	* @return
+	* @throws Exception
+	* List<PageData>
+	* @exception
+	* @since  1.0.0
 	*/
-	public abstract List<PageData> list(String str, Page page) throws Exception;
+	public List<PageData> list(String str, Page page) throws Exception;
 
-	/*
-	*列表(全部)
+	/**
+	* listAll(方法描述：列表(全部)) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* @param pd
+	* @return
+	* @throws Exception
+	* List<PageData>
+	* @exception
+	* @since  1.0.0
 	*/
-	public abstract List<PageData> listAll(String str, PageData pd) throws Exception;
+	public List<PageData> listAll(String str, PageData pd) throws Exception;
 
-	/*
-	* 通过id获取数据
+	/**
+	* findById(方法描述：通过id获取数据) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* @param pd
+	* @return
+	* @throws Exception
+	* PageData
+	* @exception
+	* @since  1.0.0
 	*/
-	public abstract PageData findById(String str, PageData pd) throws Exception;
+	public PageData findById(String str, PageData pd) throws Exception;
 
-	/*
-	* 批量删除
+	/**
+	* deleteAll(方法描述：批量删除) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* @param ArrayDATA_IDS
+	* @throws Exception
+	* void
+	* @exception
+	* @since  1.0.0
 	*/
-	public abstract void deleteAll(String str, String[] ArrayDATA_IDS) throws Exception;
+	public void deleteAll(String str, String[] ArrayDATA_IDS) throws Exception;
 
 }

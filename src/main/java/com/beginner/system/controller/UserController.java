@@ -1,23 +1,22 @@
+/**
+* <b>项目名：</b>不忘初心方得始终<br/>
+* <b>包名：</b>com.beginner.system.controller<br/>
+* <b>文件名：</b>UserController.java<br/>
+* <b>版本信息：</b><br/>
+* <b>日期：</b>2015年10月27日-下午7:57:07<br/>
+* <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+*/
 package com.beginner.system.controller;
 
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,15 +31,21 @@ import com.beginner.utils.AppUtil;
 import com.beginner.utils.Jurisdiction;
 import com.beginner.utils.ObjectExcelView;
 
-/** 
- * 类名称：UserController
- * 创建时间：2015-10-27
- */
+/**
+* <b>类名称：</b>UserController<br/>
+* <b>类描述：</b><br/>
+* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建时间：</b>2015-10-28<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b><br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 @Controller
 @RequestMapping(value = "/system/user")
 public class UserController extends BaseController {
 
-	String menuUrl = "system/user/list.do"; //菜单地址(权限用)
+	String menuUrl = "system/user/list"; //菜单地址(权限用)
 
 	@Resource(name = "userService")
 	private UserService userService;
@@ -58,10 +63,15 @@ public class UserController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("USER_ID", null); //主键
-		pd.put("USER_STATUS", null); //用户状态
+		pd.put("USER_STATUS", "0"); //用户状态
+		pd.put("LAST_LOGIN", ""); //最后登陆时间
+		pd.put("PARENT_ID", "0"); //父用户ID
+		pd.put("BUYING_AGENT_ID", "0"); //采购代理商ID
+		pd.put("SUPPLIER_ID", "0"); //供应商ID
 		userService.save(Mapper.USER_MAPPER + Mapper.METHOD_SAVE, pd);
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");
+		after(logger);
 		return mv;
 	}
 
@@ -82,8 +92,9 @@ public class UserController extends BaseController {
 			out.close();
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
+		} finally {
+			after(logger);
 		}
-
 	}
 
 	/**
@@ -101,6 +112,7 @@ public class UserController extends BaseController {
 		userService.edit(Mapper.USER_MAPPER + Mapper.METHOD_EDIT, pd);
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");
+		after(logger);
 		return mv;
 	}
 
@@ -123,6 +135,8 @@ public class UserController extends BaseController {
 			mv.addObject(Constant.SESSION_QX, this.getHC()); //按钮权限
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
+		} finally {
+			after(logger);
 		}
 		return mv;
 	}
@@ -142,6 +156,8 @@ public class UserController extends BaseController {
 			mv.addObject("pd", pd);
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
+		} finally {
+			after(logger);
 		}
 		return mv;
 	}
@@ -162,6 +178,8 @@ public class UserController extends BaseController {
 			mv.addObject("pd", pd);
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
+		} finally {
+			after(logger);
 		}
 		return mv;
 	}
@@ -223,8 +241,8 @@ public class UserController extends BaseController {
 			titles.add("固定电话"); //6
 			titles.add("用户邮箱"); //7
 			titles.add("用户状态"); //8
-			titles.add("父用户ID"); //9
-			titles.add("最后登陆时间"); //10
+			titles.add("最后登陆时间"); //9
+			titles.add("父用户ID"); //10
 			titles.add("采购代理商ID"); //11
 			titles.add("供应商ID"); //12
 			dataMap.put("titles", titles);
@@ -240,8 +258,8 @@ public class UserController extends BaseController {
 				vpd.put("var6", varOList.get(i).getString("USER_PHONE")); //6
 				vpd.put("var7", varOList.get(i).getString("USER_MAIL")); //7
 				vpd.put("var8", varOList.get(i).getString("USER_STATUS")); //8
-				vpd.put("var9", varOList.get(i).get("PARENT_ID").toString()); //9
-				vpd.put("var10", varOList.get(i).getString("LAST_LOGIN")); //10
+				vpd.put("var9", varOList.get(i).getString("LAST_LOGIN")); //9
+				vpd.put("var10", varOList.get(i).get("PARENT_ID").toString()); //10
 				vpd.put("var11", varOList.get(i).get("BUYING_AGENT_ID").toString()); //11
 				vpd.put("var12", varOList.get(i).get("SUPPLIER_ID").toString()); //12
 				varList.add(vpd);
@@ -251,22 +269,9 @@ public class UserController extends BaseController {
 			mv = new ModelAndView(erv, dataMap);
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
+		} finally {
+			after(logger);
 		}
 		return mv;
-	}
-
-	/* ===============================权限================================== */
-	public Map<String, String> getHC() {
-		Subject currentUser = SecurityUtils.getSubject(); //shiro管理的session
-		Session session = currentUser.getSession();
-		return (Map<String, String>) session.getAttribute(Constant.SESSION_QX);
-	}
-
-	/* ===============================权限================================== */
-
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(format, true));
 	}
 }

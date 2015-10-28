@@ -1,3 +1,11 @@
+/**
+* <b>项目名：</b>不忘初心方得始终<br/>
+* <b>包名：</b>com.beginner.base.service<br/>
+* <b>文件名：</b>BaseService.java<br/>
+* <b>版本信息：</b><br/>
+* <b>日期：</b>2015年10月27日-下午7:44:12<br/>
+* <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+*/
 package com.beginner.base.service;
 
 import java.util.List;
@@ -10,6 +18,16 @@ import com.beginner.base.dao.BaseDAO;
 import com.beginner.plugin.page.Page;
 import com.beginner.plugin.page.PageData;
 
+/**
+* <b>类名称：</b>BaseService<br/>
+* <b>类描述：</b><br/>
+* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月28日 下午4:33:29<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
+@SuppressWarnings("unchecked")
 @Transactional(readOnly = true)
 public class BaseService implements IBaseService {
 

@@ -104,8 +104,9 @@ public class HeadController extends BaseController {
 			out.close();
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
+		} finally {
+			after(logger);
 		}
-
 	}
 
 	/**

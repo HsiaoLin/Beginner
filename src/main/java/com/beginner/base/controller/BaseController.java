@@ -10,10 +10,20 @@ package com.beginner.base.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -150,4 +160,21 @@ public class BaseController {
 		logger.info(Constant.END_CN);
 		logger.info(StringUtils.EMPTY);
 	}
+
+	/* ===============================权限================================== */
+	public Map<String, String> getHC() {
+		Subject currentUser = SecurityUtils.getSubject(); //shiro管理的session
+		Session session = currentUser.getSession();
+		return (Map<String, String>) session.getAttribute(Constant.SESSION_QX);
+	}
+
+	/* ===============================权限================================== */
+
+	/* ===============================时间的转换绑定================================== */
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(format, true));
+	}
+	/* ===============================时间的转换绑定================================== */
 }
