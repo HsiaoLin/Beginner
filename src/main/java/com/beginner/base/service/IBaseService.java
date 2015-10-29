@@ -31,11 +31,11 @@ public interface IBaseService {
 	* @param str
 	* @param pd
 	* @throws Exception
-	* void
+	* Object
 	* @exception
 	* @since  1.0.0
 	*/
-	public void save(String str, PageData pd) throws Exception;
+	public Object save(String str, PageData pd) throws Exception;
 
 	/**
 	* delete(方法描述：删除) <br />
@@ -43,23 +43,24 @@ public interface IBaseService {
 	* @param str
 	* @param pd
 	* @throws Exception
-	* void
+	* Object
 	* @exception
 	* @since  1.0.0
 	*/
-	public void delete(String str, PageData pd) throws Exception;
+	public Object delete(String str, PageData pd) throws Exception;
 
 	/**
 	* edit(方法描述：修改) <br />
 	* (方法适用条件描述： – 可选)
 	* @param str
 	* @param pd
+	 * @return 
 	* @throws Exception
-	* void
+	* Object
 	* @exception
 	* @since  1.0.0
 	*/
-	public void edit(String str, PageData pd) throws Exception;
+	public Object edit(String str, PageData pd) throws Exception;
 
 	/**
 	* list(方法描述：列表) <br />

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+@SuppressWarnings("rawtypes")
 @Repository("dao")
 public class BaseDAO implements IBaseDAO {
 
@@ -17,7 +18,7 @@ public class BaseDAO implements IBaseDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	/**
-	 * 保存对象
+	 * 新增
 	 * @param str
 	 * @param obj
 	 * @return
@@ -29,14 +30,28 @@ public class BaseDAO implements IBaseDAO {
 	}
 
 	/**
-	 * 批量更新
+	 * 批量新增
 	 * @param str
 	 * @param obj
 	 * @return
 	 * @throws Exception
 	 */
-	public Object batchSave(String str, List objs) throws Exception {
-		return sqlSessionTemplate.insert(str, objs);
+	public void batchSave(String str, List objs) throws Exception {
+		SqlSessionFactory sqlSessionFactory = sqlSessionTemplate.getSqlSessionFactory();
+		//批量执行器
+		SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, false);
+		try {
+			if (objs != null) {
+				for (int i = 0, size = objs.size(); i < size; i++) {
+					sqlSession.insert(str, objs.get(i));
+				}
+				sqlSession.flushStatements();
+				sqlSession.commit();
+				sqlSession.clearCache();
+			}
+		} finally {
+			sqlSession.close();
+		}
 	}
 
 	/**
@@ -77,14 +92,28 @@ public class BaseDAO implements IBaseDAO {
 	}
 
 	/**
-	 * 批量更新
+	 * 批量删除
 	 * @param str
 	 * @param obj
 	 * @return
 	 * @throws Exception
 	 */
-	public Object batchDelete(String str, List objs) throws Exception {
-		return sqlSessionTemplate.delete(str, objs);
+	public void batchDelete(String str, List objs) throws Exception {
+		SqlSessionFactory sqlSessionFactory = sqlSessionTemplate.getSqlSessionFactory();
+		//批量执行器
+		SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, false);
+		try {
+			if (objs != null) {
+				for (int i = 0, size = objs.size(); i < size; i++) {
+					sqlSession.delete(str, objs.get(i));
+				}
+				sqlSession.flushStatements();
+				sqlSession.commit();
+				sqlSession.clearCache();
+			}
+		} finally {
+			sqlSession.close();
+		}
 	}
 
 	/**
@@ -100,7 +129,7 @@ public class BaseDAO implements IBaseDAO {
 	}
 
 	/**
-	 * 查找对象
+	 * 查找对象（1个）
 	 * @param str
 	 * @param obj
 	 * @return
@@ -112,7 +141,7 @@ public class BaseDAO implements IBaseDAO {
 	}
 
 	/**
-	 * 查找对象
+	 * 查找对象（N个）
 	 * @param str
 	 * @param obj
 	 * @return

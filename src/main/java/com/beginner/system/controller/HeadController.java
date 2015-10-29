@@ -31,6 +31,7 @@ import com.beginner.utils.mail.SimpleMailSender;
  * @version
  */
 @Controller
+@SuppressWarnings("rawtypes")
 @RequestMapping(value = "/head")
 public class HeadController extends BaseController {
 

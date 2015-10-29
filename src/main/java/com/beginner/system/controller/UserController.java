@@ -26,7 +26,7 @@ import com.beginner.common.Constant;
 import com.beginner.common.Mapper;
 import com.beginner.plugin.page.Page;
 import com.beginner.plugin.page.PageData;
-import com.beginner.system.service.UserService;
+import com.beginner.system.service.IUserService;
 import com.beginner.utils.AppUtil;
 import com.beginner.utils.Jurisdiction;
 import com.beginner.utils.ObjectExcelView;
@@ -48,7 +48,7 @@ public class UserController extends BaseController {
 	String menuUrl = "system/user/list"; //菜单地址(权限用)
 
 	@Resource(name = "userService")
-	private UserService userService;
+	private IUserService userService;
 
 	/**
 	 * 新增

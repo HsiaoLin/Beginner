@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.beginner.base.dao.BaseDAO;
+import com.beginner.base.dao.IBaseDAO;
 import com.beginner.plugin.page.Page;
 import com.beginner.plugin.page.PageData;
 
@@ -32,15 +32,15 @@ import com.beginner.plugin.page.PageData;
 public class BaseService implements IBaseService {
 
 	@Resource(name = "dao")
-	private BaseDAO dao;
+	private IBaseDAO dao;
 
 	/*
 	* 新增
 	*/
 	@Override
 	@Transactional(readOnly = false)
-	public void save(String str, PageData pd) throws Exception {
-		dao.save(str, pd);
+	public Object save(String str, PageData pd) throws Exception {
+		return dao.save(str, pd);
 	}
 
 	/*
@@ -48,8 +48,8 @@ public class BaseService implements IBaseService {
 	*/
 	@Override
 	@Transactional(readOnly = false)
-	public void delete(String str, PageData pd) throws Exception {
-		dao.delete(str, pd);
+	public Object delete(String str, PageData pd) throws Exception {
+		return dao.delete(str, pd);
 	}
 
 	/*
@@ -66,8 +66,8 @@ public class BaseService implements IBaseService {
 	*/
 	@Override
 	@Transactional(readOnly = false)
-	public void edit(String str, PageData pd) throws Exception {
-		dao.update(str, pd);
+	public Object edit(String str, PageData pd) throws Exception {
+		return dao.update(str, pd);
 	}
 
 	/*
@@ -93,5 +93,4 @@ public class BaseService implements IBaseService {
 	public PageData findById(String str, PageData pd) throws Exception {
 		return (PageData) dao.findForObject(str, pd);
 	}
-
 }

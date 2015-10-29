@@ -3,7 +3,7 @@ package com.beginner.base.dao;
 public interface IBaseDAO {
 
 	/**
-	 * 保存对象
+	 * 新增
 	 * @param str
 	 * @param obj
 	 * @return
@@ -12,7 +12,7 @@ public interface IBaseDAO {
 	public Object save(String str, Object obj) throws Exception;
 
 	/**
-	 * 修改对象
+	 * 更新
 	 * @param str
 	 * @param obj
 	 * @return
@@ -21,7 +21,7 @@ public interface IBaseDAO {
 	public Object update(String str, Object obj) throws Exception;
 
 	/**
-	 * 删除对象 
+	 * 删除 
 	 * @param str
 	 * @param obj
 	 * @return
@@ -30,7 +30,7 @@ public interface IBaseDAO {
 	public Object delete(String str, Object obj) throws Exception;
 
 	/**
-	 * 查找对象
+	 * 查找对象（1个）
 	 * @param str
 	 * @param obj
 	 * @return
@@ -39,7 +39,7 @@ public interface IBaseDAO {
 	public Object findForObject(String str, Object obj) throws Exception;
 
 	/**
-	 * 查找对象
+	 * 查找对象（N个）
 	 * @param str
 	 * @param obj
 	 * @return
