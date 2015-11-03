@@ -11,7 +11,7 @@ package com.beginner.common;
 */
 public class Constant {
 
-	//======================日志=======================
+	//======================Log Start =======================
 	/**
 	* START_CN:（变量描述：汉语“开始”）
 	* @since 1.0.0
@@ -36,36 +36,42 @@ public class Constant {
 	*/
 	public static final String END_EN = "END";
 
-	//======================日志=======================
+	//======================Log End =======================
 
-	//====================== Shiro =======================
+	//====================== Shiro Start =======================
 	/**
-	* SESSION_SECURITY_CODE:（变量描述：安全编码）
+	* SECURITY_CODE:（变量描述：安全编码）
 	* @since 1.0.0
 	*/
 	public static final String SECURITY_CODE = "securityCode";
 
 	/**
-	* SESSION_ROLE_RIGHTS:（变量描述：权限）
+	* ROLE_JURISDICTIONS:（变量描述：权限）
 	* @since 1.0.0
 	*/
 	public static final String ROLE_JURISDICTIONS = "roleJurisdictions";
 
-	//====================== Shiro =======================
+	/**
+	 * ROLE_JURISDICTIONS:（变量描述：权限）
+	 * @since 1.0.0
+	 */
+	public static final String ROLE_RIGHTS = "roleRights";
 
-	//====================== Session =======================
-	//====================== Session =======================
+	//====================== Shiro End =======================
 
-	//====================== Interceptor =======================
+	//====================== Session Start =======================
+	//====================== Session End =======================
+
+	//====================== Interceptor Start =======================
 	/**
 	* NO_INTERCEPTOR_PATH:（变量描述：不对匹配该值的访问路径拦截（正则））
 	* @since 1.0.0
 	*/
 	public static final String NO_INTERCEPTOR_PATH = ".*/(|(login)|(logout)|(code)|(app)|(api)|(static)|(main)|(register)).*";
 
-	//====================== Interceptor =======================
+	//====================== Interceptor End =======================
 
-	//====================== User =======================
+	//====================== User Start =======================
 	/**
 	* USER:（变量描述：User对象）
 	* @since 1.0.0
@@ -90,9 +96,9 @@ public class Constant {
 	*/
 	public static final String USERNAME = "userName";
 
-	//====================== User =======================
+	//====================== User End =======================
 
-	//====================== Menu =======================
+	//====================== Menu Start =======================
 
 	/**
 	* MENU_USER:（变量描述：当前登陆用户的菜单列表）
@@ -106,9 +112,9 @@ public class Constant {
 	*/
 	public static final String MENU_ALL = "allMenu";
 
-	//====================== Menu =======================
+	//====================== Menu End =======================
 
-	//====================== System =======================
+	//====================== System Start =======================
 	/**
 	* LOGIN:（变量描述：登录地址）
 	* @since 1.0.0
@@ -195,11 +201,9 @@ public class Constant {
 
 	public static final String[] APP_GETAPPUSER_VALUE_ARRAY = new String[] { "用户名" };
 
-	//====================== System =======================
+	//====================== System End =======================
 
-	//====================== Other =======================
-	public static final String SESSION_QX = "QX";
-
+	//====================== Other Start =======================
 	/**
 	* TRUE:（变量描述：“T”）
 	* @since 1.0.0
@@ -211,6 +215,6 @@ public class Constant {
 	* @since 1.0.0
 	*/
 	public static final String FALSE = "F";
-	//====================== Other =======================
+	//====================== Other End =======================
 
 }

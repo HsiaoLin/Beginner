@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 /**
 * <b>类名称：</b>日期工具类<br/>
 * <b>类描述：</b><br/>
@@ -26,6 +28,9 @@ public class DateUtil {
 	private final static SimpleDateFormat yyyy_MM_dd_HH_mm_ss = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	private final static SimpleDateFormat yyyyMMddHHmmss = new SimpleDateFormat("yyyyMMddHHmmss");
+
+	private static String[] PARSE_PATTERNS = { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", "yyyy/MM/dd",
+			"yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM", "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM" };
 
 	/**
 	* getYear(方法描述：获取YYYY格式) <br />
@@ -326,6 +331,30 @@ public class DateUtil {
 	public static String getFormatDateString(Date date) {
 		SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd");
 		return sdfd.format(date);
+	}
+
+	/**
+	* parseDate(方法描述：日期型字符串转化为日期格式) <br />
+	* (方法适用条件描述： – 可选)
+	* @param str
+	* 适用格式:
+	* { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
+	*   "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm",
+	*   "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm" }
+	* @return
+	* Date
+	* @exception
+	* @since  1.0.0
+	*/
+	public static Date parseDate(Object str) {
+		if (str == null) {
+			return null;
+		}
+		try {
+			return DateUtils.parseDate(str.toString(), PARSE_PATTERNS);
+		} catch (ParseException e) {
+			return null;
+		}
 	}
 
 	public static void main(String[] args) {

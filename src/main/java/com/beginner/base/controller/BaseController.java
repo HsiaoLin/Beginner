@@ -8,10 +8,9 @@
  */
 package com.beginner.base.controller;
 
+import java.beans.PropertyEditorSupport;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -21,16 +20,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.HtmlUtils;
 
 import com.beginner.common.Constant;
 import com.beginner.plugin.page.Page;
 import com.beginner.plugin.page.PageData;
+import com.beginner.utils.DateUtil;
 import com.beginner.utils.Logger;
 import com.beginner.utils.UUIDUtils;
 
@@ -161,20 +161,75 @@ public class BaseController {
 		logger.info(StringUtils.EMPTY);
 	}
 
-	/* ===============================权限================================== */
-	public Map<String, String> getHC() {
+	/**
+	* getRights(方法描述：权限验证) <br />
+	* (方法适用条件描述： – 可选)
+	* @return
+	* Map<String,String>
+	* @exception
+	* @since  1.0.0
+	*/
+	@SuppressWarnings("unchecked")
+	public Map<String, String> getRights() {
 		Subject currentUser = SecurityUtils.getSubject(); //shiro管理的session
 		Session session = currentUser.getSession();
-		return (Map<String, String>) session.getAttribute(Constant.SESSION_QX);
+		return (Map<String, String>) session.getAttribute(Constant.ROLE_RIGHTS);
 	}
 
-	/* ===============================权限================================== */
+	/**
+	* htmlEscape(方法描述：HTML转义-不会转义中文) <br />
+	* (方法适用条件描述： – 可选)
+	* @param text
+	* @return
+	* String
+	* @exception
+	* @since  1.0.0
+	*/
+	public String htmlEscape(String text) {
+		return HtmlUtils.htmlEscape(text);
+	}
 
-	/* ===============================时间的转换绑定================================== */
+	/**
+	 * htmlUnescape(方法描述：HTML转义复原) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @param text
+	 * @return
+	 * String
+	 * @exception
+	 * @since  1.0.0
+	 */
+	public String htmlUnescape(String text) {
+		return HtmlUtils.htmlUnescape(text);
+	}
+
+	/**
+	* initBinder(方法描述：日期、字符串和Javabean中的日期类型的属性自动转换) <br />
+	* (方法适用条件描述：支持的日期格式详见com.beginner.utils.DateUtil)
+	* @param binder
+	* void
+	* @exception
+	* @since  1.0.0
+	*/
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(format, true));
+		binder.registerCustomEditor(Date.class, new PropertyEditorSupport() {
+
+			@Override
+			public void setAsText(String text) {
+				setValue(DateUtil.parseDate(text));
+			}
+		});
+		//下面一段代码将对所有传入的String类型进行HTML编码用来防止XSS攻击-按需放入需要防止攻击的Controller
+		/*binder.registerCustomEditor(String.class, new PropertyEditorSupport() {
+			@Override
+			public void setAsText(String text) {
+				setValue(text == null ? null : StringEscapeUtils.escapeHtml4(text.trim()));
+			}
+			@Override
+			public String getAsText() {
+				Object value = getValue();
+				return value != null ? value.toString() : "";
+			}
+		});*/
 	}
-	/* ===============================时间的转换绑定================================== */
 }

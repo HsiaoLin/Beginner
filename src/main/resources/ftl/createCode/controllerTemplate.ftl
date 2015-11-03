@@ -140,7 +140,8 @@ public class ${objectName}Controller extends BaseController {
 			mv.setViewName("${packageName}/${objectNameLower}/${objectNameLower}_list");
 			mv.addObject("varList", varList);
 			mv.addObject("pd", pd);
-			mv.addObject(Constant.SESSION_QX,this.getHC());	//按钮权限
+			//权限
+			mv.addObject(Constant.ROLE_RIGHTS, this.getRights());
 		} catch(Exception e){
 			logger.error(e.toString(), e);
 		} finally {

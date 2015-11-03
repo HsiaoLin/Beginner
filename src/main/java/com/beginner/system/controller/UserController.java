@@ -132,7 +132,7 @@ public class UserController extends BaseController {
 			mv.setViewName("system/user/user_list");
 			mv.addObject("varList", varList);
 			mv.addObject("pd", pd);
-			mv.addObject(Constant.SESSION_QX, this.getHC()); //按钮权限
+			mv.addObject(Constant.ROLE_RIGHTS, this.getRights()); //按钮权限
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
 		} finally {
