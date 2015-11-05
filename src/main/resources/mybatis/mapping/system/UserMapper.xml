@@ -35,7 +35,7 @@
 	</sql>
 
 	<!-- 新增-->
-	<insert id="save" parameterType="pd">
+	<insert id="save" parameterType="pd" keyProperty="USER_ID">
 		INSERT INTO PUB_USER(
 			USER_TYPE,
 			CHINESE_NAME,

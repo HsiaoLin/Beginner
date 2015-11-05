@@ -17,7 +17,7 @@
 	</sql>
 
 	<!-- 新增-->
-	<insert id="save" parameterType="pd">
+	<insert id="save" parameterType="pd" keyProperty="${objectNameUpper}_ID">
 		INSERT INTO ${tabletop}${objectNameUpper}(
 	<#list fieldList as var>
 			${var[0]},
