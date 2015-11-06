@@ -21,6 +21,8 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<bean id="springUtil" name="springUtil" class="com.beginner.utils.SpringUtil" />
+
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
