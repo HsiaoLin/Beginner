@@ -63,7 +63,7 @@
 			${objectNameUpper}_ID = ${r"#{"}${objectNameUpper}_ID${r"}"}
 	</select>
 
-	<!-- 列表 -->
+	<!-- 分页列表 -->
 	<select id="datalistPage" parameterType="page" resultType="pd">
 		SELECT
 			<include refid="columnsT"></include>
