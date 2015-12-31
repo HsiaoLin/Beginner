@@ -5,12 +5,13 @@
 		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-lazy-init="true">
 
+	<!-- 安全管理 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="BeginnerRealm" />
 	</bean>
 
 	<!-- 項目自定义的Realm -->
-	<bean id="BeginnerRealm" class="com.beginner.plugin.shiro.BeginnerRealm"></bean>
+	<bean id="BeginnerRealm" class="com.beginner.base.plugin.shiro.BeginnerRealm"></bean>
 
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -20,17 +21,17 @@
 		<property name="unauthorizedUrl" value="/login/to_login" />
 		<property name="filterChainDefinitions">
 			<value>
-				/static/login/** 			= anon
-				/static/js/** 				= anon
-				/uploadFiles/uploadImgs/** 	= anon
-				/code.do 					= anon
-				/login/login_validation 	= anon
-				/app**/** 					= anon
-				/api/** 					= anon
-				/register/** 				= anon
-				/do_register/** 			= anon
-				/static/js/myjs/** 			= authc
 				/** 						= authc
+				/code.do 					= anon
+				/api/** 					= anon
+				/app**/** 					= anon
+				/register/** 				= anon
+				/static/js/** 				= anon
+				/do_register/** 			= anon
+				/static/login/** 			= anon
+				/static/js/myjs/** 			= authc
+				/login/login_validation 	= anon
+				/uploadFiles/uploadImgs/** 	= anon
 			</value>
 		</property>
 	</bean>

@@ -27,12 +27,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.HtmlUtils;
 
-import com.beginner.common.Constant;
-import com.beginner.plugin.page.Page;
-import com.beginner.plugin.page.PageData;
-import com.beginner.utils.DateUtil;
-import com.beginner.utils.Logger;
-import com.beginner.utils.UUIDUtils;
+import com.beginner.base.common.Const;
+import com.beginner.base.plugin.page.Page;
+import com.beginner.base.plugin.page.PageData;
+import com.beginner.base.utils.DateUtil;
+import com.beginner.base.utils.Logger;
+import com.beginner.base.utils.UUIDUtils;
 
 /**
  * <b>类名称：</b>BaseController<br/>
@@ -56,6 +56,7 @@ public class BaseController {
 	* @exception
 	* @since  1.0.0
 	*/
+	@Deprecated
 	public PageData getPageData() {
 		return new PageData(this.getRequest());
 	}
@@ -85,7 +86,8 @@ public class BaseController {
 	}
 
 	public String getRequestBody() throws IOException {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
 		if (request == null)
 			return "";
 		BufferedReader reader = request.getReader();
@@ -144,7 +146,7 @@ public class BaseController {
 	*/
 	public static void before(Logger logger, String interfaceName) {
 		logger.info("");
-		logger.info(Constant.START_CN);
+		logger.info(Const.START_CN);
 		logger.info(interfaceName);
 	}
 
@@ -157,7 +159,7 @@ public class BaseController {
 	* @since  1.0.0
 	*/
 	public static void after(Logger logger) {
-		logger.info(Constant.END_CN);
+		logger.info(Const.END_CN);
 		logger.info(StringUtils.EMPTY);
 	}
 
@@ -173,7 +175,7 @@ public class BaseController {
 	public Map<String, String> getRights() {
 		Subject currentUser = SecurityUtils.getSubject(); //shiro管理的session
 		Session session = currentUser.getSession();
-		return (Map<String, String>) session.getAttribute(Constant.ROLE_RIGHTS);
+		return (Map<String, String>) session.getAttribute(Const.ROLE_RIGHTS);
 	}
 
 	/**

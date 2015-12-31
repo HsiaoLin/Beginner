@@ -11,9 +11,8 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd" default-lazy-init="true">
 
 	<mvc:annotation-driven/>
-	<mvc:default-servlet-handler/>
 
-	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+	<!-- 自动扫描-->
 	<context:component-scan base-package="com.beginner.*.controller" />
 	<context:component-scan base-package="com.beginner.*.json" />
 
@@ -27,7 +26,7 @@
 		</property>
 	</bean>
 
-	<!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
+	<!-- 启动SpringMVC注解功能，完成请求和注解POJO的映射 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
@@ -65,10 +64,10 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/**" />
-			<bean class="com.beginner.plugin.interceptor.LoginHandlerInterceptor" />
+			<bean class="com.beginner.base.plugin.interceptor.LoginHandlerInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<!-- 自定义异常处理器 -->
-	<bean id="exceptionResolver" class="com.beginner.plugin.handler.BeginnerExceptionHandler"></bean>
+	<bean id="exceptionResolver" class="com.beginner.base.plugin.handler.BeginnerExceptionHandler"></bean>
 </beans>

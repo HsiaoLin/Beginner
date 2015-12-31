@@ -14,14 +14,14 @@
 			type="com.java.entity.system.Role" alias="Role" /> <typeAlias type="com.java.entity.system.Permissions" 
 			alias="Permissions" /> <typeAlias type="com.java.entity.system.Menu" alias="Menu" 
 			/> <typeAlias type="com.java.entity.system.Function" alias="Function" /> -->
-		<typeAlias type="com.beginner.plugin.page.PageData"
+		<typeAlias type="com.beginner.base.plugin.page.PageData"
 			alias="pd" />
 		<!-- 分页 -->
-		<typeAlias type="com.beginner.plugin.page.Page" alias="Page" />
+		<typeAlias type="com.beginner.base.plugin.page.Page" alias="Page" />
 	</typeAliases>
 
 	<plugins>
-		<plugin interceptor="com.beginner.plugin.page.PagePlugin">
+		<plugin interceptor="com.beginner.base.plugin.page.PagePlugin">
 			<property name="dialect" value="mysql" />
 			<property name="pageSqlId" value=".*listPage.*" />
 		</plugin>
