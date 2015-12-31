@@ -111,11 +111,30 @@
 	<!-- 列表(全部) -->
 	<select id="listAll" parameterType="pd" resultType="pd">
 		SELECT
-			<include refid="columnsT"></include>
+			*
 		FROM 
 			PUB_USER T
+		WHERE 
+			<if test="USER_ID != null and USER_ID != ''">
+				and T.USER_ID = #{USER_ID}
+			</if>
+			<if test="USER_ID != null and USER_ID != ''">
+				and T.USER_ID LIKE #{USER_ID}
+			</if>
+			<if test="USER_ID != null and USER_ID != ''">
+				and T.USER_ID = #{USER_ID}
+			</if>
+			<if test="USER_ID != null and USER_ID != ''">
+				and T.USER_ID = #{USER_ID}
+			</if>
+			<if test="USER_ID != null and USER_ID != ''">
+				and T.USER_ID = #{USER_ID}
+			</if>
+			<if test="USER_ID != null and USER_ID != ''">
+				and T.USER_ID = #{USER_ID}
+			</if>
 	</select>
-
+	
 	<!-- 批量删除 -->
 	<delete id="deleteAll" parameterType="String">
 		DELETE FROM PUB_USER

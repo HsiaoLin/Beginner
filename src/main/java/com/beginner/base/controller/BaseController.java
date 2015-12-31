@@ -56,6 +56,7 @@ public class BaseController {
 	* @exception
 	* @since  1.0.0
 	*/
+	@Deprecated
 	public PageData getPageData() {
 		return new PageData(this.getRequest());
 	}
@@ -85,7 +86,8 @@ public class BaseController {
 	}
 
 	public String getRequestBody() throws IOException {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
 		if (request == null)
 			return "";
 		BufferedReader reader = request.getReader();

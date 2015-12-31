@@ -110,7 +110,11 @@ public class LoginController extends BaseController {
 				user.setName("尹枭凌");
 				user.setUserPassword("123");
 				Map pds = new HashMap();
-				pds = BeanUtils.describe(user);
+				try {
+					pds = BeanUtils.describe(user);
+				} catch (Exception e1) {
+					throw new Exception();
+				}
 
 				//							user.setUserType(String.valueOf(pd.get("userType")));
 				//							user.setLastLogin(pd.getString("LAST_LOGIN"));

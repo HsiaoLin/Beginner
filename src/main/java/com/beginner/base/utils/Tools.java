@@ -24,6 +24,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import com.beginner.system.bean.Menu;
+
 /**
 * <b>类名称：</b>Tools<br/>
 * <b>类描述：</b><br/>
@@ -260,7 +262,8 @@ public class Tools {
 	public static boolean checkMobileNumber(String mobileNumber) {
 		boolean flag = false;
 		try {
-			Pattern regex = Pattern.compile("^(((13[0-9])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8})|(0\\d{2}-\\d{8})|(0\\d{3}-\\d{7})$");
+			Pattern regex = Pattern
+					.compile("^(((13[0-9])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8})|(0\\d{2}-\\d{8})|(0\\d{3}-\\d{7})$");
 			Matcher matcher = regex.matcher(mobileNumber);
 			flag = matcher.matches();
 		} catch (Exception e) {
@@ -333,7 +336,8 @@ public class Tools {
 	* @exception
 	* @since  1.0.0
 	*/
-	public static String getResponseBody(CloseableHttpClient httpclient, HttpPost httppost, JSONObject json) throws Exception {
+	public static String getResponseBody(CloseableHttpClient httpclient, HttpPost httppost, JSONObject json)
+			throws Exception {
 		CloseableHttpResponse response = null;
 		httppost.setHeader("Content-Type", "text/plain");
 		httppost.setEntity(new StringEntity(json.toString(), "UTF-8"));
@@ -348,6 +352,7 @@ public class Tools {
 
 	public static void main(String[] args) {
 		System.out.println(getRandomNum());
+		Menu m = new Menu();
 	}
 
 }
