@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+	<sql id="columns">
+		USER_TYPE,
+		USER_NAME,
+		USER_PASSWORD,
+		USER_PHONE,
+		USER_MAIL,
+		USER_STATUS,
+		LAST_LOGIN,
+		FIRST_NAME,
+		LAST_NAME,
+		USER_ID
+	</sql>
+
+	<sql id="columnsT">
+		T.USER_TYPE,
+		T.USER_NAME,
+		T.USER_PASSWORD,
+		T.USER_PHONE,
+		T.USER_MAIL,
+		T.USER_STATUS,
+		T.LAST_LOGIN,
+		T.FIRST_NAME,
+		T.LAST_NAME,
+		T.USER_ID
+	</sql>
+
+	<!-- 新增-->
+	<insert id="save" parameterType="pd" keyProperty="USER_ID">
+		INSERT INTO SYS_USER(
+			USER_TYPE,
+			USER_NAME,
+			USER_PASSWORD,
+			USER_PHONE,
+			USER_MAIL,
+			USER_STATUS,
+			LAST_LOGIN,
+			FIRST_NAME,
+			LAST_NAME,
+			USER_ID
+		) VALUES (
+			#{USER_TYPE},
+			#{USER_NAME},
+			#{USER_PASSWORD},
+			#{USER_PHONE},
+			#{USER_MAIL},
+			#{USER_STATUS},
+			#{LAST_LOGIN},
+			#{FIRST_NAME},
+			#{LAST_NAME},
+			#{USER_ID}
+		)
+	</insert>
+
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		DELETE FROM SYS_USER
+		WHERE
+			USER_ID = #{USER_ID}
+	</delete>
+
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		UPDATE SYS_USER
+			SET
+			<if test="USER_TYPE != null and USER_TYPE != ''">
+				USER_TYPE = #{USER_TYPE},
+			</if>
+			<if test="USER_NAME != null and USER_NAME != ''">
+				USER_NAME = #{USER_NAME},
+			</if>
+			<if test="USER_PASSWORD != null and USER_PASSWORD != ''">
+				USER_PASSWORD = #{USER_PASSWORD},
+			</if>
+			<if test="USER_PHONE != null and USER_PHONE != ''">
+				USER_PHONE = #{USER_PHONE},
+			</if>
+			<if test="USER_MAIL != null and USER_MAIL != ''">
+				USER_MAIL = #{USER_MAIL},
+			</if>
+			<if test="USER_STATUS != null and USER_STATUS != ''">
+				USER_STATUS = #{USER_STATUS},
+			</if>
+			<if test="LAST_LOGIN != null and LAST_LOGIN != ''">
+				LAST_LOGIN = #{LAST_LOGIN},
+			</if>
+			<if test="FIRST_NAME != null and FIRST_NAME != ''">
+				FIRST_NAME = #{FIRST_NAME},
+			</if>
+			<if test="LAST_NAME != null and LAST_NAME != ''">
+				LAST_NAME = #{LAST_NAME},
+			</if>
+			WHERE
+				USER_ID = #{USER_ID}
+	</update>
+
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		SELECT
+			<include refid="columns"></include>
+		FROM 
+			SYS_USER
+		WHERE 
+			USER_ID = #{USER_ID}
+	</select>
+
+	<!-- 分页列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		SELECT
+			<include refid="columnsT"></include>
+		FROM 
+			SYS_USER T
+	</select>
+
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		SELECT
+			<include refid="columnsT"></include>
+		FROM 
+			SYS_USER T
+	</select>
+
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		DELETE FROM SYS_USER
+		WHERE 
+			USER_ID IN
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+</mapper>
