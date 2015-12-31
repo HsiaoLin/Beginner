@@ -46,7 +46,8 @@
 					  </a>
 					  <ul class="submenu">
 						  <li id="zsubMENU_ID">
-						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户列表','system/user/list')"><i class="icon-double-angle-right"></i>用户列表</a>
+						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户列表','system/user/list')"><i class="icon-double-angle-right"></i>用户列表0</a>
+						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID2','lmmenuMENU_ID2','用户列表1','business/user/list')"><i class="icon-double-angle-right"></i>用户列表1</a>
 						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID1','lmmenuMENU_ID1','地图','<%=basePathl %>static/map.html')"><i class="icon-double-angle-right"></i>地图</a>
 						</li>
 						</ul>

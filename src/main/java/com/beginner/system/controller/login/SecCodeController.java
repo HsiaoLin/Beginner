@@ -1,4 +1,4 @@
-package com.beginner.system.controller;
+package com.beginner.system.controller.login;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +20,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.beginner.common.Constant;
+import com.beginner.base.common.Const;
 
 /**
 * <b>类名称：</b>SecCodeController<br/>
@@ -42,7 +42,7 @@ public class SecCodeController {
 
 		Subject currentUser = SecurityUtils.getSubject();
 		Session session = currentUser.getSession();
-		session.setAttribute(Constant.SECURITY_CODE, code);
+		session.setAttribute(Const.SECURITY_CODE, code);
 
 		try {
 			ServletOutputStream out = response.getOutputStream();

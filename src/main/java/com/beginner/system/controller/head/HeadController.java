@@ -1,4 +1,4 @@
-package com.beginner.system.controller;
+package com.beginner.system.controller.head;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
-import com.beginner.common.Constant;
-import com.beginner.plugin.page.PageData;
-import com.beginner.system.bean.User;
-import com.beginner.utils.AppUtil;
-import com.beginner.utils.SmsUtil;
-import com.beginner.utils.Tools;
-import com.beginner.utils.Watermark;
-import com.beginner.utils.mail.SimpleMailSender;
+import com.beginner.base.plugin.page.PageData;
+import com.beginner.base.utils.AppUtil;
+import com.beginner.base.utils.SmsUtil;
+import com.beginner.base.utils.Tools;
+import com.beginner.base.utils.Watermark;
+import com.beginner.base.utils.mail.SimpleMailSender;
+import com.beginner.system.bean.user.User;
 
 /** 
  * 类名称：HeadController
@@ -58,7 +58,7 @@ public class HeadController extends BaseController {
 			Session session = currentUser.getSession();
 
 			Map pds = new HashMap();
-			pds = (Map) session.getAttribute(Constant.USER_PAGEDATA);
+			pds = (Map) session.getAttribute(Const.USER_PAGEDATA);
 
 			if (MapUtils.isEmpty(pds)) {
 				//获取当前登录者loginname
@@ -71,7 +71,7 @@ public class HeadController extends BaseController {
 				user.setUserPassword("123");
 				pds = BeanUtils.describe(user);
 				//pds = userService.getUserByName(pd);
-				session.setAttribute(Constant.USER_PAGEDATA, pds);
+				session.setAttribute(Const.USER_PAGEDATA, pds);
 			}
 			pdList.add(pds);
 			map.put("list", pdList);
@@ -96,11 +96,11 @@ public class HeadController extends BaseController {
 			Subject currentUser = SecurityUtils.getSubject();
 			Session session = currentUser.getSession();
 
-			String USERNAME = session.getAttribute(Constant.USERNAME).toString();//获取当前登录者loginname
+			String USERNAME = session.getAttribute(Const.USERNAME).toString();//获取当前登录者loginname
 			pd.put("USERNAME", USERNAME);
 			//userService.setSKIN(pd);
-			session.removeAttribute(Constant.USER_OBJ);
-			session.removeAttribute(Constant.USER_PAGEDATA);
+			session.removeAttribute(Const.USER_OBJ);
+			session.removeAttribute(Const.USER_PAGEDATA);
 			out.write("success");
 			out.close();
 		} catch (Exception e) {
@@ -242,7 +242,7 @@ public class HeadController extends BaseController {
 		int count = 0; //统计发送成功条数
 		int zcount = 0; //理论条数
 
-		String strEMAIL = Tools.readTxtFile(Constant.EMAIL); //读取邮件配置
+		String strEMAIL = Tools.readTxtFile(Const.EMAIL); //读取邮件配置
 
 		List<PageData> pdList = new ArrayList<PageData>();
 
@@ -323,14 +323,14 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("YSYNAME", Tools.readTxtFile(Constant.SYSNAME)); //读取系统名称
-		pd.put("COUNTPAGE", Tools.readTxtFile(Constant.PAGE)); //读取每页条数
-		String strEMAIL = Tools.readTxtFile(Constant.EMAIL); //读取邮件配置
-		String strSMS1 = Tools.readTxtFile(Constant.SMS1); //读取短信1配置
-		String strSMS2 = Tools.readTxtFile(Constant.SMS2); //读取短信2配置
-		String strFWATERM = Tools.readTxtFile(Constant.FWATERM); //读取文字水印配置
-		String strIWATERM = Tools.readTxtFile(Constant.IWATERM); //读取图片水印配置
-		pd.put("Token", Tools.readTxtFile(Constant.WEIXIN)); //读取微信配置
+		pd.put("YSYNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		pd.put("COUNTPAGE", Tools.readTxtFile(Const.PAGE)); //读取每页条数
+		String strEMAIL = Tools.readTxtFile(Const.EMAIL); //读取邮件配置
+		String strSMS1 = Tools.readTxtFile(Const.SMS1); //读取短信1配置
+		String strSMS2 = Tools.readTxtFile(Const.SMS2); //读取短信2配置
+		String strFWATERM = Tools.readTxtFile(Const.FWATERM); //读取文字水印配置
+		String strIWATERM = Tools.readTxtFile(Const.IWATERM); //读取图片水印配置
+		pd.put("Token", Tools.readTxtFile(Const.WEIXIN)); //读取微信配置
 
 		if (null != strEMAIL && !"".equals(strEMAIL)) {
 			String strEM[] = strEMAIL.split(",fh,");
@@ -393,12 +393,12 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		Tools.writeFile(Constant.SYSNAME, pd.getString("YSYNAME")); //写入系统名称
-		Tools.writeFile(Constant.PAGE, pd.getString("COUNTPAGE")); //写入每页条数
-		Tools.writeFile(Constant.EMAIL,
+		Tools.writeFile(Const.SYSNAME, pd.getString("YSYNAME")); //写入系统名称
+		Tools.writeFile(Const.PAGE, pd.getString("COUNTPAGE")); //写入每页条数
+		Tools.writeFile(Const.EMAIL,
 				pd.getString("SMTP") + ",fh," + pd.getString("PORT") + ",fh," + pd.getString("EMAIL") + ",fh," + pd.getString("PAW")); //写入邮件服务器配置
-		Tools.writeFile(Constant.SMS1, pd.getString("SMSU1") + ",fh," + pd.getString("SMSPAW1")); //写入短信1配置
-		Tools.writeFile(Constant.SMS2, pd.getString("SMSU2") + ",fh," + pd.getString("SMSPAW2")); //写入短信2配置
+		Tools.writeFile(Const.SMS1, pd.getString("SMSU1") + ",fh," + pd.getString("SMSPAW1")); //写入短信1配置
+		Tools.writeFile(Const.SMS2, pd.getString("SMSU2") + ",fh," + pd.getString("SMSPAW2")); //写入短信2配置
 		mv.addObject("msg", "OK");
 		mv.setViewName("save_result");
 		return mv;
@@ -412,9 +412,9 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		Tools.writeFile(Constant.FWATERM, pd.getString("isCheck1") + ",fh," + pd.getString("fcontent") + ",fh," + pd.getString("fontSize") + ",fh,"
+		Tools.writeFile(Const.FWATERM, pd.getString("isCheck1") + ",fh," + pd.getString("fcontent") + ",fh," + pd.getString("fontSize") + ",fh,"
 				+ pd.getString("fontX") + ",fh," + pd.getString("fontY")); //文字水印配置
-		Tools.writeFile(Constant.IWATERM,
+		Tools.writeFile(Const.IWATERM,
 				pd.getString("isCheck2") + ",fh," + pd.getString("imgUrl") + ",fh," + pd.getString("imgX") + ",fh," + pd.getString("imgY")); //图片水印配置
 		Watermark.fushValue();
 		mv.addObject("msg", "OK");
@@ -430,7 +430,7 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		Tools.writeFile(Constant.WEIXIN, pd.getString("Token")); //写入微信配置
+		Tools.writeFile(Const.WEIXIN, pd.getString("Token")); //写入微信配置
 		mv.addObject("msg", "OK");
 		mv.setViewName("save_result");
 		return mv;

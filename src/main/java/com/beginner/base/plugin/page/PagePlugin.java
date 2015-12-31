@@ -1,4 +1,4 @@
-package com.beginner.plugin.page;
+package com.beginner.base.plugin.page;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -31,8 +31,8 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
-import com.beginner.utils.ReflectHelper;
-import com.beginner.utils.Tools;
+import com.beginner.base.utils.ReflectHelper;
+import com.beginner.base.utils.Tools;
 
 /**
  * 

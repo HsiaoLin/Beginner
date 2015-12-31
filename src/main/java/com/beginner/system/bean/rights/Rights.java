@@ -1,15 +1,21 @@
-package com.beginner.system.bean;
+package com.beginner.system.bean.rights;
 
 /**
  * 
  * 类名称：Permissions.java 权限的实体类
  */
-public class Permissions {
+public class Rights {
+
 	private int permId;
+
 	private String permCode;
+
 	private String permName;
+
 	private String permType;
+
 	private String permRemark;
+
 	private String isValid;
 
 	public int getPermId() {

@@ -1,4 +1,4 @@
-package com.beginner.system.bean;
+package com.beginner.system.bean.menu;
 
 import java.util.List;
 

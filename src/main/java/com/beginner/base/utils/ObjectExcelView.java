@@ -1,4 +1,4 @@
-package com.beginner.utils;
+package com.beginner.base.utils;
 
 import java.util.Date;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
-import com.beginner.plugin.page.PageData;
+import com.beginner.base.plugin.page.PageData;
 
 /**
 * 导入到EXCEL

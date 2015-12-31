@@ -1,4 +1,4 @@
-package com.beginner.utils.generatecode;
+package com.beginner.base.utils.generatecode;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.io.Writer;
 import java.util.Locale;
 import java.util.Map;
 
-import com.beginner.utils.PathUtil;
+import com.beginner.base.utils.PathUtil;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

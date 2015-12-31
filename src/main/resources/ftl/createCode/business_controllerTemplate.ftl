@@ -1,12 +1,12 @@
 /**
 * <b>项目名：</b>不忘初心方得始终<br/>
-* <b>包名：</b>com.beginner.${packageName}.controller<br/>
+* <b>包名：</b>com.beginner.business.controller.${packageName}<br/>
 * <b>文件名：</b>${objectName}Controller.java<br/>
 * <b>版本信息：</b><br/>
 * <b>日期：</b>2015年10月27日-下午7:57:07<br/>
 * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
 */
-package com.beginner.${packageName}.controller;
+package com.beginner.business.controller.${packageName};
 
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -31,16 +31,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
-import com.beginner.common.Constant;
-import com.beginner.common.Mapper;
-import com.beginner.plugin.page.Page;
-import com.beginner.plugin.page.PageData;
-import com.beginner.utils.AppUtil;
-import com.beginner.utils.Jurisdiction;
-import com.beginner.utils.ObjectExcelView;
-import com.tour.controller.base.BaseController;
-import com.beginner.${packageName}.service.${objectName}Service;
+import com.beginner.base.plugin.page.Page;
+import com.beginner.base.plugin.page.PageData;
+import com.beginner.base.utils.AppUtil;
+import com.beginner.base.utils.Jurisdiction;
+import com.beginner.base.utils.ObjectExcelView;
+import com.beginner.business.service.${objectNameLower}.${objectName}Service;
 
 /**
 * <b>类名称：</b>${objectName}Controller<br/>
@@ -53,10 +51,10 @@ import com.beginner.${packageName}.service.${objectName}Service;
 * @version 1.0.0<br/>
 */
 @Controller
-@RequestMapping(value="/${packageName}/${objectNameLower}")
+@RequestMapping(value="/business/${objectNameLower}")
 public class ${objectName}Controller extends BaseController {
 	
-	String menuUrl = "${packageName}/${objectNameLower}/list"; //菜单地址(权限用)
+	String menuUrl = "business/${objectNameLower}/list"; //菜单地址(权限用)
 	@Resource(name="${objectNameLower}Service")
 	private ${objectName}Service ${objectNameLower}Service;
 
@@ -80,7 +78,7 @@ public class ${objectName}Controller extends BaseController {
 		</#if>
 	</#if>
 </#list>
-		${objectNameLower}Service.save(Mapper.XXXX_MAPPER + Mapper.METHOD_SAVE, pd);
+		${objectNameLower}Service.save(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
 		after(logger);
@@ -97,7 +95,7 @@ public class ${objectName}Controller extends BaseController {
 		PageData pd = new PageData();
 		try{
 			pd = this.getPageData();
-			${objectNameLower}Service.delete(Mapper.XXXX_MAPPER + Mapper.METHOD_DELETE, pd);
+			${objectNameLower}Service.delete(pd);
 			out.write("success");
 			out.close();
 		} catch(Exception e){
@@ -117,7 +115,7 @@ public class ${objectName}Controller extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		${objectNameLower}Service.edit(Mapper.XXXX_MAPPER + Mapper.METHOD_EDIT, pd);
+		${objectNameLower}Service.edit(pd);
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
 		after(logger);
@@ -136,12 +134,12 @@ public class ${objectName}Controller extends BaseController {
 		try{
 			pd = this.getPageData();
 			page.setPd(pd);
-			List<PageData>	varList = ${objectNameLower}Service.list(Mapper.XXXX_MAPPER + Mapper.METHOD_DATA_LIST_PAGE, page);	//列出${objectName}列表
+			List<PageData>	varList = ${objectNameLower}Service.list(page);//列出${objectName}列表
 			mv.setViewName("${packageName}/${objectNameLower}/${objectNameLower}_list");
 			mv.addObject("varList", varList);
 			mv.addObject("pd", pd);
 			//权限
-			mv.addObject(Constant.ROLE_RIGHTS, this.getRights());
+			mv.addObject(Const.ROLE_RIGHTS, this.getRights());
 		} catch(Exception e){
 			logger.error(e.toString(), e);
 		} finally {
@@ -181,7 +179,7 @@ public class ${objectName}Controller extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		try {
-			pd = ${objectNameLower}Service.findById(Mapper.XXXX_MAPPER + Mapper.METHOD_FIND_BY_ID, pd);	//根据ID读取
+			pd = ${objectNameLower}Service.findById(pd);//根据ID读取
 			mv.setViewName("${packageName}/${objectNameLower}/${objectNameLower}_edit");
 			mv.addObject("msg", "edit");
 			mv.addObject("pd", pd);
@@ -209,7 +207,7 @@ public class ${objectName}Controller extends BaseController {
 			String DATA_IDS = pd.getString("DATA_IDS");
 			if(null != DATA_IDS && !"".equals(DATA_IDS)){
 				String ArrayDATA_IDS[] = DATA_IDS.split(",");
-				${objectNameLower}Service.deleteAll(Mapper.XXXX_MAPPER + Mapper.METHOD_DELETE_ALL, ArrayDATA_IDS);
+				${objectNameLower}Service.deleteAll(ArrayDATA_IDS);
 				pd.put("msg", "ok");
 			}else{
 				pd.put("msg", "no");
@@ -242,7 +240,7 @@ public class ${objectName}Controller extends BaseController {
 			titles.add("${var[2]}");	//${var_index+1}
 	</#list>
 			dataMap.put("titles", titles);
-			List<PageData> varOList = ${objectNameLower}Service.listAll(Mapper.XXXX_MAPPER + Mapper.METHOD_LIST_ALL, pd);
+			List<PageData> varOList = ${objectNameLower}Service.listAll(pd);
 			List<PageData> varList = new ArrayList<PageData>();
 			for(int i=0;i<varOList.size();i++){
 				PageData vpd = new PageData();

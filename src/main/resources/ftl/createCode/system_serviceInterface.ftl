@@ -1,6 +1,6 @@
-package com.beginner.${packageName}.service;
+package com.beginner.system.service.${packageName};
 
-import com.beginner.base.service.IBaseService;
+import com.beginner.base.service.Service;
 
 /**
 * <b>类名称：</b>I${objectName}Service<br/>
@@ -12,6 +12,6 @@ import com.beginner.base.service.IBaseService;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public interface I${objectName}Service extends IBaseService {
+public interface I${objectName}Service extends Service {
 
 }

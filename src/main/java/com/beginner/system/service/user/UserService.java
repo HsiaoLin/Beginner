@@ -1,8 +1,15 @@
-package com.beginner.system.service;
+package com.beginner.system.service.user;
+
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.beginner.base.service.BaseService;
+import com.beginner.base.dao.DAO;
+import com.beginner.base.plugin.page.Page;
+import com.beginner.base.plugin.page.PageData;
 
 /**
 * <b>类名称：</b>UserService<br/>
@@ -14,7 +21,70 @@ import com.beginner.base.service.BaseService;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-@Service("userService")
-public class UserService extends BaseService implements IUserService {
+@Service("userService0")
+@Transactional(readOnly = true)
+public class UserService implements IUserService {
 
+	@Resource(name = "dao")
+	private DAO dao;
+
+	/*
+	* 新增
+	*/
+	@Override
+	@Transactional(readOnly = false)
+	public Object save(PageData pd) throws Exception {
+		return dao.save("", pd);
+	}
+
+	/*
+	* 删除
+	*/
+	@Override
+	@Transactional(readOnly = false)
+	public Object delete(PageData pd) throws Exception {
+		return dao.delete("", pd);
+	}
+
+	/*
+	* 批量删除
+	*/
+	@Override
+	@Transactional(readOnly = false)
+	public void deleteAll(String[] ArrayDATA_IDS) throws Exception {
+		dao.delete("", ArrayDATA_IDS);
+	}
+
+	/*
+	* 修改
+	*/
+	@Override
+	@Transactional(readOnly = false)
+	public Object edit(PageData pd) throws Exception {
+		return dao.update("", pd);
+	}
+
+	/*
+	*列表
+	*/
+	@Override
+	public List<PageData> list(Page page) throws Exception {
+		return (List<PageData>) dao.findForList("", page);
+	}
+
+	/*
+	*列表(全部)
+	*/
+	@Override
+	public List<PageData> listAll(PageData pd) throws Exception {
+		return (List<PageData>) dao.findForList("", pd);
+	}
+
+	/*
+	* 通过id获取数据
+	*/
+	@Override
+	public PageData findById(PageData pd) throws Exception {
+		return (PageData) dao.findForObject("", pd);
+	}
 }

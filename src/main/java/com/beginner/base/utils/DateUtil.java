@@ -1,4 +1,4 @@
-package com.beginner.utils;
+package com.beginner.base.utils;
 
 import java.text.DateFormat;
 import java.text.ParseException;

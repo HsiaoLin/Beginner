@@ -1,4 +1,4 @@
-package com.beginner.utils;
+package com.beginner.base.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.codehaus.jackson.map.util.JSONPObject;
 
-import com.beginner.plugin.page.PageData;
+import com.beginner.base.plugin.page.PageData;
 
 public class AppUtil {
 

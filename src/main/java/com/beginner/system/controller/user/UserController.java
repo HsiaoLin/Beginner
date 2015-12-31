@@ -6,7 +6,7 @@
 * <b>日期：</b>2015年10月27日-下午7:57:07<br/>
 * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
 */
-package com.beginner.system.controller;
+package com.beginner.system.controller.user;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -21,15 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
-import com.beginner.common.Constant;
-import com.beginner.common.Mapper;
-import com.beginner.plugin.page.Page;
-import com.beginner.plugin.page.PageData;
-import com.beginner.system.service.IUserService;
-import com.beginner.utils.AppUtil;
-import com.beginner.utils.Jurisdiction;
-import com.beginner.utils.ObjectExcelView;
+import com.beginner.base.plugin.page.Page;
+import com.beginner.base.plugin.page.PageData;
+import com.beginner.base.utils.AppUtil;
+import com.beginner.base.utils.Jurisdiction;
+import com.beginner.base.utils.ObjectExcelView;
+import com.beginner.system.service.user.IUserService;
 
 /**
 * <b>类名称：</b>UserController<br/>
@@ -41,13 +40,13 @@ import com.beginner.utils.ObjectExcelView;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-@Controller
+@Controller(value = "userController0")
 @RequestMapping(value = "/system/user")
 public class UserController extends BaseController {
 
 	String menuUrl = "system/user/list"; //菜单地址(权限用)
 
-	@Resource(name = "userService")
+	@Resource(name = "userService0")
 	private IUserService userService;
 
 	/**
@@ -68,7 +67,7 @@ public class UserController extends BaseController {
 		pd.put("PARENT_ID", "0"); //父用户ID
 		pd.put("BUYING_AGENT_ID", "0"); //采购代理商ID
 		pd.put("SUPPLIER_ID", "0"); //供应商ID
-		userService.save(Mapper.USER_MAPPER + Mapper.METHOD_SAVE, pd);
+		userService.save(pd);
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");
 		after(logger);
@@ -87,7 +86,7 @@ public class UserController extends BaseController {
 		PageData pd = new PageData();
 		try {
 			pd = this.getPageData();
-			userService.delete(Mapper.USER_MAPPER + Mapper.METHOD_DELETE, pd);
+			userService.delete(pd);
 			out.write("success");
 			out.close();
 		} catch (Exception e) {
@@ -109,7 +108,7 @@ public class UserController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		userService.edit(Mapper.USER_MAPPER + Mapper.METHOD_EDIT, pd);
+		userService.edit(pd);
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");
 		after(logger);
@@ -128,11 +127,11 @@ public class UserController extends BaseController {
 		try {
 			pd = this.getPageData();
 			page.setPd(pd);
-			List<PageData> varList = userService.list(Mapper.USER_MAPPER + Mapper.METHOD_DATA_LIST_PAGE, page); //列出User列表
+			List<PageData> varList = userService.list(page); //列出User列表
 			mv.setViewName("system/user/user_list");
 			mv.addObject("varList", varList);
 			mv.addObject("pd", pd);
-			mv.addObject(Constant.ROLE_RIGHTS, this.getRights()); //按钮权限
+			mv.addObject(Const.ROLE_RIGHTS, this.getRights()); //按钮权限
 		} catch (Exception e) {
 			logger.error(e.toString(), e);
 		} finally {
@@ -172,7 +171,7 @@ public class UserController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		try {
-			pd = userService.findById(Mapper.USER_MAPPER + Mapper.METHOD_FIND_BY_ID, pd); //根据ID读取
+			pd = userService.findById(pd); //根据ID读取
 			mv.setViewName("system/user/user_edit");
 			mv.addObject("msg", "edit");
 			mv.addObject("pd", pd);
@@ -202,7 +201,7 @@ public class UserController extends BaseController {
 			String DATA_IDS = pd.getString("DATA_IDS");
 			if (null != DATA_IDS && !"".equals(DATA_IDS)) {
 				String ArrayDATA_IDS[] = DATA_IDS.split(",");
-				userService.deleteAll(Mapper.USER_MAPPER + Mapper.METHOD_DELETE_ALL, ArrayDATA_IDS);
+				userService.deleteAll(ArrayDATA_IDS);
 				pd.put("msg", "ok");
 			} else {
 				pd.put("msg", "no");
@@ -246,7 +245,7 @@ public class UserController extends BaseController {
 			titles.add("采购代理商ID"); //11
 			titles.add("供应商ID"); //12
 			dataMap.put("titles", titles);
-			List<PageData> varOList = userService.listAll(Mapper.USER_MAPPER + Mapper.METHOD_LIST_ALL, pd);
+			List<PageData> varOList = userService.listAll(pd);
 			List<PageData> varList = new ArrayList<PageData>();
 			for (int i = 0; i < varOList.size(); i++) {
 				PageData vpd = new PageData();

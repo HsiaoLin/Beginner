@@ -1,6 +1,6 @@
 package com.beginner.base.dao;
 
-public interface IBaseDAO {
+public interface DAO {
 
 	/**
 	 * 新增

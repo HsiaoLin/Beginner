@@ -1,4 +1,4 @@
-package com.beginner.utils;
+package com.beginner.base.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.beginner.plugin.page.PageData;
+import com.beginner.base.plugin.page.PageData;
 
 /**
  * 通过短信接口发送短信

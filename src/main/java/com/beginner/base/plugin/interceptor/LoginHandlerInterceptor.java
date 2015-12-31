@@ -1,4 +1,4 @@
-package com.beginner.plugin.interceptor;
+package com.beginner.base.plugin.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,9 +8,9 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.beginner.common.Constant;
-import com.beginner.system.bean.User;
-import com.beginner.utils.Jurisdiction;
+import com.beginner.base.common.Const;
+import com.beginner.base.utils.Jurisdiction;
+import com.beginner.system.bean.user.User;
 
 /**
  * 
@@ -21,22 +21,22 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		String path = request.getServletPath();
-		if (path.matches(Constant.NO_INTERCEPTOR_PATH)) {
+		if (path.matches(Const.NO_INTERCEPTOR_PATH)) {
 			return true;
 		} else {
 			Subject currentUser = SecurityUtils.getSubject();
 			Session session = currentUser.getSession();
-			User user = (User) session.getAttribute(Constant.USER);
+			User user = (User) session.getAttribute(Const.USER);
 			if (user != null) {
 				path = path.substring(1, path.length());
 				boolean hasJurisdiction = Jurisdiction.hasJurisdiction(path);
 				if (!hasJurisdiction) {
-					response.sendRedirect(request.getContextPath() + Constant.LOGIN);
+					response.sendRedirect(request.getContextPath() + Const.LOGIN);
 				}
 				return hasJurisdiction;
 			} else {
 				// 登陆过滤
-				response.sendRedirect(request.getContextPath() + Constant.LOGIN);
+				response.sendRedirect(request.getContextPath() + Const.LOGIN);
 				return false;
 			}
 		}

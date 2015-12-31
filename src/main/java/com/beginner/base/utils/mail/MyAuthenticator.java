@@ -1,4 +1,4 @@
-package com.beginner.utils.mail;
+package com.beginner.base.utils.mail;
 
 /**   
  *  

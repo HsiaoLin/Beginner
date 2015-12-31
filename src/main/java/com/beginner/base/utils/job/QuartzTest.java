@@ -1,4 +1,4 @@
-package com.beginner.utils.job;
+package com.beginner.base.utils.job;
 
 public class QuartzTest {
 

@@ -1,4 +1,4 @@
-package com.beginner.plugin.handler;
+package com.beginner.base.plugin.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

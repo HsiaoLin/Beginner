@@ -1,4 +1,4 @@
-package com.beginner.utils.job;
+package com.beginner.base.utils.job;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,9 +7,9 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-import com.beginner.system.service.IUserService;
-import com.beginner.utils.Logger;
-import com.beginner.utils.SpringUtil;
+import com.beginner.base.utils.Logger;
+import com.beginner.base.utils.SpringUtil;
+import com.beginner.system.service.user.IUserService;
 
 public class QuartzJob implements Job {
 

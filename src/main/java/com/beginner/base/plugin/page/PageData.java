@@ -1,4 +1,4 @@
-package com.beginner.plugin.page;
+package com.beginner.base.plugin.page;
 
 import java.util.Collection;
 import java.util.HashMap;

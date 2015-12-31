@@ -10,8 +10,8 @@ package com.beginner.base.service;
 
 import java.util.List;
 
-import com.beginner.plugin.page.Page;
-import com.beginner.plugin.page.PageData;
+import com.beginner.base.plugin.page.Page;
+import com.beginner.base.plugin.page.PageData;
 
 /**
 * <b>类名称：</b>IBaseService<br/>
@@ -23,7 +23,7 @@ import com.beginner.plugin.page.PageData;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public interface IBaseService {
+public interface Service {
 
 	/**
 	* save(方法描述：新增) <br />
@@ -35,7 +35,7 @@ public interface IBaseService {
 	* @exception
 	* @since  1.0.0
 	*/
-	public Object save(String str, PageData pd) throws Exception;
+	public Object save(PageData pd) throws Exception;
 
 	/**
 	* delete(方法描述：删除) <br />
@@ -47,7 +47,7 @@ public interface IBaseService {
 	* @exception
 	* @since  1.0.0
 	*/
-	public Object delete(String str, PageData pd) throws Exception;
+	public Object delete(PageData pd) throws Exception;
 
 	/**
 	* edit(方法描述：修改) <br />
@@ -60,7 +60,7 @@ public interface IBaseService {
 	* @exception
 	* @since  1.0.0
 	*/
-	public Object edit(String str, PageData pd) throws Exception;
+	public Object edit(PageData pd) throws Exception;
 
 	/**
 	* list(方法描述：列表) <br />
@@ -73,7 +73,7 @@ public interface IBaseService {
 	* @exception
 	* @since  1.0.0
 	*/
-	public List<PageData> list(String str, Page page) throws Exception;
+	public List<PageData> list(Page page) throws Exception;
 
 	/**
 	* listAll(方法描述：列表(全部)) <br />
@@ -86,7 +86,7 @@ public interface IBaseService {
 	* @exception
 	* @since  1.0.0
 	*/
-	public List<PageData> listAll(String str, PageData pd) throws Exception;
+	public List<PageData> listAll(PageData pd) throws Exception;
 
 	/**
 	* findById(方法描述：通过id获取数据) <br />
@@ -99,7 +99,7 @@ public interface IBaseService {
 	* @exception
 	* @since  1.0.0
 	*/
-	public PageData findById(String str, PageData pd) throws Exception;
+	public PageData findById(PageData pd) throws Exception;
 
 	/**
 	* deleteAll(方法描述：批量删除) <br />
@@ -111,6 +111,6 @@ public interface IBaseService {
 	* @exception
 	* @since  1.0.0
 	*/
-	public void deleteAll(String str, String[] ArrayDATA_IDS) throws Exception;
+	public void deleteAll(String[] ArrayDATA_IDS) throws Exception;
 
 }

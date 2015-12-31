@@ -1,6 +1,6 @@
-package com.beginner.system.service;
+package com.beginner.system.service.user;
 
-import com.beginner.base.service.IBaseService;
+import com.beginner.base.service.Service;
 
 /**
 * <b>类名称：</b>IUserService<br/>
@@ -12,6 +12,6 @@ import com.beginner.base.service.IBaseService;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public interface IUserService extends IBaseService {
+public interface IUserService extends Service {
 
 }

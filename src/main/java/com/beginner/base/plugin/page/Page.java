@@ -1,4 +1,4 @@
-package com.beginner.plugin.page;
+package com.beginner.base.plugin.page;
 
 public class Page {
 

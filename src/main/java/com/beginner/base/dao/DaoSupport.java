@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @SuppressWarnings("rawtypes")
 @Repository("dao")
-public class BaseDAO implements IBaseDAO {
+public class DaoSupport implements DAO {
 
 	@Resource(name = "sqlSessionTemplate")
 	private SqlSessionTemplate sqlSessionTemplate;

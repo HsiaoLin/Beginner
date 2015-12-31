@@ -6,7 +6,7 @@
 * <b>日期：</b>2015年10月26日-下午3:18:18<br/>
 * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
 */
-package com.beginner.system.controller;
+package com.beginner.system.controller.head;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,12 +20,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.beginner.base.controller.BaseController;
-import com.beginner.plugin.page.PageData;
-import com.beginner.utils.PathUtil;
-import com.beginner.utils.generatecode.DelAllFile;
-import com.beginner.utils.generatecode.FileDownload;
-import com.beginner.utils.generatecode.FileZip;
-import com.beginner.utils.generatecode.Freemarker;
+import com.beginner.base.plugin.page.PageData;
+import com.beginner.base.utils.PathUtil;
+import com.beginner.base.utils.generatecode.DelAllFile;
+import com.beginner.base.utils.generatecode.FileDownload;
+import com.beginner.base.utils.generatecode.FileZip;
+import com.beginner.base.utils.generatecode.Freemarker;
 
 /**
 * <b>类名称：</b>CreateCodeController<br/>
@@ -45,6 +45,7 @@ public class CreateCodeController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
+		String businessOrsystem = pd.getString("businessOrsystem"); //包名
 		String packageName = pd.getString("packageName"); //包名
 		String objectName = pd.getString("objectName"); //类名
 		String tabletop = pd.getString("tabletop"); //表前缀
@@ -73,19 +74,33 @@ public class CreateCodeController extends BaseController {
 		String filePath = "admin/ftl/code/"; //存放路径
 		String ftlPath = "createCode"; //ftl路径
 
-		/*生成controller*/
-		Freemarker.printFile("controllerTemplate.ftl", root, "controller/" + packageName + "/" + objectName.toLowerCase() + "/" + objectName
-				+ "Controller.java", filePath, ftlPath);
+		if ("business".equals(businessOrsystem)) {
+			/*生成controller*/
+			Freemarker.printFile("business_controllerTemplate.ftl", root, businessOrsystem + "/controller/" + objectName.toLowerCase() + "/"
+					+ objectName + "Controller.java", filePath, ftlPath);
 
-		/*生成service接口*/
-		Freemarker.printFile("serviceInterface.ftl", root, "service/" + packageName + "/" + objectName.toLowerCase() + "/I" + objectName
-				+ "Service.java", filePath, ftlPath);
-		/*生成service实现类*/
-		Freemarker.printFile("serviceTemplate.ftl", root, "service/" + packageName + "/" + objectName.toLowerCase() + "/" + objectName
-				+ "Service.java", filePath, ftlPath);
+			/*生成service接口*/
+			Freemarker.printFile("business_serviceInterface.ftl", root, businessOrsystem + "/service/" + objectName.toLowerCase() + "/I" + objectName
+					+ "Service.java", filePath, ftlPath);
+			/*生成service实现类*/
+			Freemarker.printFile("business_serviceTemplate.ftl", root, businessOrsystem + "/service/" + objectName.toLowerCase() + "/" + objectName
+					+ "Service.java", filePath, ftlPath);
+		} else if ("system".equals(businessOrsystem)) {
+			/*生成controller*/
+			Freemarker.printFile("system_controllerTemplate.ftl", root, businessOrsystem + "/controller/" + objectName.toLowerCase() + "/"
+					+ objectName + "Controller.java", filePath, ftlPath);
+
+			/*生成service接口*/
+			Freemarker.printFile("system_serviceInterface.ftl", root, businessOrsystem + "/service/" + objectName.toLowerCase() + "/I" + objectName
+					+ "Service.java", filePath, ftlPath);
+			/*生成service实现类*/
+			Freemarker.printFile("system_serviceTemplate.ftl", root, businessOrsystem + "/service/" + objectName.toLowerCase() + "/" + objectName
+					+ "Service.java", filePath, ftlPath);
+		}
 
 		/*生成mybatis xml*/
-		Freemarker.printFile("mapperMysqlTemplate.ftl", root, "mybatis_mysql/" + packageName + "/" + objectName + "Mapper.xml", filePath, ftlPath);
+		Freemarker.printFile("mapperMysqlTemplate.ftl", root, "mybatis_mysql/" + businessOrsystem + "/" + packageName + "/" + objectName
+				+ "Mapper.xml", filePath, ftlPath);
 		//Freemarker.printFile("mapperOracleTemplate.ftl", root, "mybatis_oracle/" + packageName + "/" + objectName + "Mapper.xml", filePath, ftlPath);
 
 		/*生成SQL脚本*/
@@ -93,10 +108,10 @@ public class CreateCodeController extends BaseController {
 		//Freemarker.printFile("oracle_SQL_Template.ftl", root, "oracle数据库脚本/" + tabletop + objectName.toUpperCase() + ".sql", filePath, ftlPath);
 
 		/*生成jsp页面*/
-		Freemarker.printFile("jsp_list_Template.ftl", root, "jsp/" + packageName + "/" + objectName.toLowerCase() + "/" + objectName.toLowerCase()
-				+ "_list.jsp", filePath, ftlPath);
-		Freemarker.printFile("jsp_edit_Template.ftl", root, "jsp/" + packageName + "/" + objectName.toLowerCase() + "/" + objectName.toLowerCase()
-				+ "_edit.jsp", filePath, ftlPath);
+		Freemarker.printFile("jsp_list_Template.ftl", root,
+				"jsp/" + businessOrsystem + "/" + objectName.toLowerCase() + "/" + objectName.toLowerCase() + "_list.jsp", filePath, ftlPath);
+		Freemarker.printFile("jsp_edit_Template.ftl", root,
+				"jsp/" + businessOrsystem + "/" + objectName.toLowerCase() + "/" + objectName.toLowerCase() + "_edit.jsp", filePath, ftlPath);
 
 		/*生成说明文档*/
 		//Freemarker.printFile("docTemplate.ftl", root, "说明.doc", filePath, ftlPath);

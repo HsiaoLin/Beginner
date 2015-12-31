@@ -6,7 +6,7 @@
  * <b>日期：</b>2015年10月26日-上午11:04:09<br/>
  * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
  */
-package com.beginner.plugin.shiro;
+package com.beginner.base.plugin.shiro;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

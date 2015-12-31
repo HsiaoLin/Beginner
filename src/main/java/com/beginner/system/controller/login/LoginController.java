@@ -6,7 +6,7 @@
 * <b>日期：</b>2015年10月26日-下午3:18:18<br/>
 * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
 */
-package com.beginner.system.controller;
+package com.beginner.system.controller.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
-import com.beginner.common.Constant;
-import com.beginner.plugin.page.PageData;
-import com.beginner.system.bean.User;
-import com.beginner.utils.AppUtil;
-import com.beginner.utils.Tools;
+import com.beginner.base.plugin.page.PageData;
+import com.beginner.base.utils.AppUtil;
+import com.beginner.base.utils.Tools;
+import com.beginner.system.bean.user.User;
 
 /**
 * <b>类名称：</b>LoginController<br/>
@@ -56,7 +56,7 @@ public class LoginController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("SYSNAME", Tools.readTxtFile(Constant.SYSNAME)); //读取系统名称
+		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
 		mv.setViewName("system/admin/login");
 		mv.addObject("pd", pd);
 		return mv;
@@ -84,7 +84,7 @@ public class LoginController extends BaseController {
 			//shiro管理的session
 			Subject currentUser = SecurityUtils.getSubject();
 			Session session = currentUser.getSession();
-			String sessionCode = (String) session.getAttribute(Constant.SECURITY_CODE); //获取session中的验证码
+			String sessionCode = (String) session.getAttribute(Const.SECURITY_CODE); //获取session中的验证码
 
 			String code = KEYDATA[2];
 			if (null == code || "".equals(code)) {
@@ -116,9 +116,9 @@ public class LoginController extends BaseController {
 				//							user.setLastLogin(pd.getString("LAST_LOGIN"));
 				//							user.setIp(pd.getString("IP"));
 				//							user.setUserStatus(pd.getString("userStatus"));
-				session.setAttribute(Constant.USER, user);
-				session.removeAttribute(Constant.SECURITY_CODE);
-				session.setAttribute(Constant.USER_PAGEDATA, pds);
+				session.setAttribute(Const.USER, user);
+				session.removeAttribute(Const.SECURITY_CODE);
+				session.setAttribute(Const.USER_PAGEDATA, pds);
 				//shiro加入身份验证
 				Subject subject = SecurityUtils.getSubject();
 				UsernamePasswordToken token = new UsernamePasswordToken(USERNAME, PASSWORD);

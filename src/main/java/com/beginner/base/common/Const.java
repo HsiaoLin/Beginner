@@ -1,4 +1,4 @@
-package com.beginner.common;
+package com.beginner.base.common;
 
 /**
 * <b>类名称：</b>Constant<br/>
@@ -9,7 +9,7 @@ package com.beginner.common;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public class Constant {
+public class Const {
 
 	//======================Log Start =======================
 	/**

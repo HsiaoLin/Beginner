@@ -228,6 +228,14 @@
 			$("#ddefault").attr("disabled",false);
 		}
 	}
+	//赋值是生成系统代码还是业务代码
+	function businessOrsystem(value){
+		if(value == 'business'){
+			$("#businessOrsystem").val('business');
+		}else{
+			$("#businessOrsystem").val('system');
+		}
+	}
 	
 	
 	var arField = new Array();

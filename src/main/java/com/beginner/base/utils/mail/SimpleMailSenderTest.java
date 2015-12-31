@@ -6,7 +6,7 @@
 * <b>日期：</b>2015年10月28日-上午9:14:04<br/>
 * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
 */
-package com.beginner.utils.mail;
+package com.beginner.base.utils.mail;
 
 import static org.junit.Assert.*;
 

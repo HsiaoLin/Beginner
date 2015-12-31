@@ -1,7 +1,9 @@
-package com.beginner.system.bean;
+package com.beginner.system.bean.user;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.beginner.system.bean.role.Role;
 
 /**
 * <b>类名称：</b>User<br/>

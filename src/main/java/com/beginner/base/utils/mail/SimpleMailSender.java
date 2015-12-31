@@ -1,4 +1,4 @@
-package com.beginner.utils.mail;
+package com.beginner.base.utils.mail;
 
 /**   
  * 简单邮件（不带附件的邮件）发送器   

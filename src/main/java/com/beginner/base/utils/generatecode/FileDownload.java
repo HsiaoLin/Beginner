@@ -1,4 +1,4 @@
-package com.beginner.utils.generatecode;
+package com.beginner.base.utils.generatecode;
 
 import java.io.BufferedOutputStream;
 import java.io.OutputStream;
