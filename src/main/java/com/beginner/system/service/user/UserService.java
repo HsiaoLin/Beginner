@@ -34,7 +34,7 @@ public class UserService implements IUserService {
 	@Override
 	@Transactional(readOnly = false)
 	public Object save(PageData pd) throws Exception {
-		return dao.save("", pd);
+		return dao.save("UserMapper.save", pd);
 	}
 
 	/*
@@ -43,7 +43,7 @@ public class UserService implements IUserService {
 	@Override
 	@Transactional(readOnly = false)
 	public Object delete(PageData pd) throws Exception {
-		return dao.delete("", pd);
+		return dao.delete("UserMapper.delete", pd);
 	}
 
 	/*
@@ -52,7 +52,7 @@ public class UserService implements IUserService {
 	@Override
 	@Transactional(readOnly = false)
 	public void deleteAll(String[] ArrayDATA_IDS) throws Exception {
-		dao.delete("", ArrayDATA_IDS);
+		dao.delete("UserMapper.deleteAll", ArrayDATA_IDS);
 	}
 
 	/*
@@ -61,7 +61,7 @@ public class UserService implements IUserService {
 	@Override
 	@Transactional(readOnly = false)
 	public Object edit(PageData pd) throws Exception {
-		return dao.update("", pd);
+		return dao.update("UserMapper.edit", pd);
 	}
 
 	/*
@@ -69,7 +69,7 @@ public class UserService implements IUserService {
 	*/
 	@Override
 	public List<PageData> list(Page page) throws Exception {
-		return (List<PageData>) dao.findForList("", page);
+		return (List<PageData>) dao.findForList("UserMapper.datalistPage", page);
 	}
 
 	/*
@@ -77,7 +77,7 @@ public class UserService implements IUserService {
 	*/
 	@Override
 	public List<PageData> listAll(PageData pd) throws Exception {
-		return (List<PageData>) dao.findForList("", pd);
+		return (List<PageData>) dao.findForList("UserMapper.listAll", pd);
 	}
 
 	/*
@@ -85,6 +85,6 @@ public class UserService implements IUserService {
 	*/
 	@Override
 	public PageData findById(PageData pd) throws Exception {
-		return (PageData) dao.findForObject("", pd);
+		return (PageData) dao.findForObject("UserMapper.findById", pd);
 	}
 }

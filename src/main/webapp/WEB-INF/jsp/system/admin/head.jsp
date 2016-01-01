@@ -1,7 +1,7 @@
 ﻿<div class="navbar navbar-inverse">
 		  <div class="navbar-inner">
 		   <div class="container-fluid">
-			  <a class="brand"><small><i class="icon-leaf"></i> ${pd.SYSNAME}</small> </a>
+			  <a class="brand"><small><i class="icon-heart-empty"></i> ${pd.SYSNAME}</small> </a>
 			  
 			  <ul class="nav ace-nav pull-right">
 			  

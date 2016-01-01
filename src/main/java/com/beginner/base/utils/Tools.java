@@ -24,8 +24,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import com.beginner.system.bean.Menu;
-
 /**
 * <b>类名称：</b>Tools<br/>
 * <b>类描述：</b><br/>
@@ -349,10 +347,4 @@ public class Tools {
 			response.close();
 		return ret;
 	}
-
-	public static void main(String[] args) {
-		System.out.println(getRandomNum());
-		Menu m = new Menu();
-	}
-
 }

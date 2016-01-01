@@ -56,7 +56,6 @@ public class BaseController {
 	* @exception
 	* @since  1.0.0
 	*/
-	@Deprecated
 	public PageData getPageData() {
 		return new PageData(this.getRequest());
 	}

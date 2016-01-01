@@ -21,7 +21,6 @@
 		<property name="unauthorizedUrl" value="/login/to_login" />
 		<property name="filterChainDefinitions">
 			<value>
-				/** 						= authc
 				/code.do 					= anon
 				/api/** 					= anon
 				/app**/** 					= anon
@@ -32,6 +31,7 @@
 				/static/js/myjs/** 			= authc
 				/login/login_validation 	= anon
 				/uploadFiles/uploadImgs/** 	= anon
+				/** 						= authc
 			</value>
 		</property>
 	</bean>

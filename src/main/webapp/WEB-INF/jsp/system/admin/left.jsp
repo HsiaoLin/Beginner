@@ -35,20 +35,19 @@
 				<ul class="nav nav-list">
 
 					<li class="active" id="loginindex">
-					  <a href="login/index"><i class="icon-dashboard"></i><span>后台首页</span></a>
+					  <a href="login/index"><i class=" icon-home"></i><span>后台首页</span></a>
 					</li>
 					
 					<li id="lmmenuMENU_ID">
 					  <a style="cursor:pointer;" class="dropdown-toggle" >
 						<i class="icon-desktop"></i>
-						<span>用户列表</span>
+						<span>有史以来分量最重</span>
 						<b class="arrow icon-angle-down"></b>
 					  </a>
 					  <ul class="submenu">
 						  <li id="zsubMENU_ID">
-						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户列表','system/user/list')"><i class="icon-double-angle-right"></i>用户列表0</a>
-						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID2','lmmenuMENU_ID2','用户列表1','business/user/list')"><i class="icon-double-angle-right"></i>用户列表1</a>
-						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID1','lmmenuMENU_ID1','地图','<%=basePathl %>static/map.html')"><i class="icon-double-angle-right"></i>地图</a>
+						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户信息','system/user/list')"><i class="icon-double-angle-right"></i>用户信息</a>
+						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID1','lmmenuMENU_ID1','地图展示','<%=basePathl %>static/map/map.html')"><i class="icon-double-angle-right"></i>地图展示</a>
 						</li>
 						</ul>
 					</li>

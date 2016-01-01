@@ -1,51 +1,46 @@
 /**
 * <b>项目名：</b>不忘初心方得始终<br/>
 * <b>包名：</b>com.beginner.system.controller<br/>
-* <b>文件名：</b>GisController.java<br/>
+* <b>文件名：</b>LoginController.java<br/>
 * <b>版本信息：</b><br/>
-* <b>日期：</b>2015年10月27日-下午7:57:07<br/>
+* <b>日期：</b>2015年10月26日-下午3:18:18<br/>
 * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
 */
-package com.beginner.gis.controller;
+package com.beginner.system.controller.login;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
 import com.beginner.base.plugin.page.PageData;
+import com.beginner.base.utils.Tools;
 
 /**
-* <b>类名称：</b>GisController<br/>
+* <b>类名称：</b>LogoutController<br/>
 * <b>类描述：</b><br/>
 * <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
-* <b>创建时间：</b>2015-10-28<br/>
 * <b>修改人：</b><br/>
-* <b>修改时间：</b><br/>
+* <b>修改时间：</b>2016-1-1 上午1:05:14<br/>
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
 @Controller
-@RequestMapping(value = "/gis")
-public class GisController extends BaseController {
+public class LogoutController extends BaseController {
 
-	/**
-	 * 去GIS地图页面
-	 */
-	@RequestMapping(value = "/goGis")
-	public ModelAndView goAdd() {
-		before(logger, "去Gis地图展示页面");
+	@RequestMapping(value = "/logout")
+	public ModelAndView logout() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		try {
-			mv.setViewName("gis/map");
-			mv.addObject("pd", pd);
-		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
-		}
+		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		mv.setViewName("system/admin/login");
+		mv.addObject("pd", pd);
+		Subject currentUser = SecurityUtils.getSubject();
+		currentUser.logout();
 		return mv;
 	}
 }

@@ -157,6 +157,10 @@ public class LoginController extends BaseController {
 	 */
 	@RequestMapping(value = "/index")
 	public String index() {
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		this.getRequest().setAttribute("pd", pd);
 		return "system/admin/index";
 	}
 

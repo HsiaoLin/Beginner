@@ -69,7 +69,7 @@ public class ${objectName}Service implements I${objectName}Service {
 	*/
 	@Override
 	public List<PageData> list(Page page) throws Exception {
-		return (List<PageData>) dao.findForList("${objectName}Mapper.list", page);
+		return (List<PageData>) dao.findForList("${objectName}Mapper.datalistPage", page);
 	}
 
 	/*
