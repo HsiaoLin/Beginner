@@ -28,6 +28,7 @@
 				/static/js/** 				= anon
 				/do_register/** 			= anon
 				/static/login/** 			= anon
+				/static/signin/** 			= anon
 				/static/js/myjs/** 			= authc
 				/login/login_validation 	= anon
 				/uploadFiles/uploadImgs/** 	= anon

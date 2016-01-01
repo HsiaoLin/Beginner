@@ -288,17 +288,10 @@
 	<a href="#" id="btn-scroll-up" class="btn btn-small btn-inverse"> <i
 		class="icon-double-angle-up icon-only"></i>
 	</a>
-	<!-- basic scripts -->
-	<script src="static/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		window.jQuery
-				|| document
-						.write("<script src='static/js/jquery-1.9.1.min.js'>\x3C/script>");
+		window.jQuery|| document.write("<script src='static/js/jquery-1.9.1.min.js'>\x3C/script>");
 	</script>
-
 	<script src="static/js/bootstrap.min.js"></script>
-	<!-- page specific plugin scripts -->
-
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="static/js/excanvas.min.js"></script>
 		<![endif]-->

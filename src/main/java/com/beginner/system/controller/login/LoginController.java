@@ -62,6 +62,17 @@ public class LoginController extends BaseController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/to_signIn")
+	public ModelAndView toSignIn() {
+		ModelAndView mv = this.getModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		mv.setViewName("system/admin/signIn");
+		mv.addObject("pd", pd);
+		return mv;
+	}
+
 	/**
 	* login(方法描述：请求登录，验证用户) <br />
 	* (方法适用条件描述： – 可选)

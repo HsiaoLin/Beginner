@@ -204,7 +204,7 @@
 		</a>
 		
 		<!-- 引入 -->
-		<script src="static/1.9.1/jquery.min.js"></script>
+		<script src="static/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript">window.jQuery || document.write("<script src='static/js/jquery-1.9.1.min.js'>\x3C/script>");</script>
 		<script src="static/js/bootstrap.min.js"></script>
 		<script src="static/js/ace-elements.min.js"></script>
