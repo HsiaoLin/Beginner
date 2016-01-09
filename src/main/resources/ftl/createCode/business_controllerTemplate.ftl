@@ -1,5 +1,5 @@
 /**
-* <b>项目名：</b>不忘初心方得始终<br/>
+* <b>项目名：</b>勿忘初心方得始终<br/>
 * <b>包名：</b>com.beginner.business.controller.${packageName}<br/>
 * <b>文件名：</b>${objectName}Controller.java<br/>
 * <b>版本信息：</b><br/>

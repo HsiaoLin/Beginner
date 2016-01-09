@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="static/css/ace.min.css" />
 	<link rel="stylesheet" href="static/css/ace-responsive.min.css" />
 	<link rel="stylesheet" href="static/css/ace-skins.min.css" />
+	<link rel="icon" href="static/signin/favicon.ico" type="image/x-icon" />
+	<link rel="bookmark" href="static/signin/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="static/signin/favicon.ico" type="image/x-icon" />
 	<script type="text/javascript" src="static/js/jquery-1.7.2.js"></script>
 	<link rel="stylesheet" href="static/css/datepicker.css" /><!-- 日期框 -->
 	<!--引入弹窗组件start-->

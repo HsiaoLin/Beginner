@@ -20,6 +20,9 @@
 <link rel="stylesheet" href="static/login/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="static/login/matrix-login.css" />
 <link href="static/login/font-awesome.css" rel="stylesheet" />
+<link rel="icon" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
+<link rel="bookmark" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
 <script type="text/javascript" src="static/js/jquery-1.5.1.min.js"></script>
 
 </head>
@@ -32,7 +35,7 @@
 				id="loginForm">
 				<div class="control-group normal_text">
 					<h3>
-						不忘初心方得始终
+						勿忘初心方得始终
 					</h3>
 				</div>
 				<div class="control-group">
