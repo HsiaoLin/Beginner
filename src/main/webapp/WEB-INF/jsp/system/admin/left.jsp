@@ -45,7 +45,8 @@
 						<b class="arrow icon-angle-down"></b>
 					  </a>
 					  <ul class="submenu">
-						  <li id="zsubMENU_ID">
+						<li id="zsubMENU_ID">
+						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID2','lmmenuMENU_ID2','Druid Monitor','<%=basePathl %>druid/index.html');hangge();"><i class="icon-double-angle-right"></i>系统监控</a>
 						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户信息','system/user/list')"><i class="icon-double-angle-right"></i>用户信息</a>
 						<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('zsubMENU_ID1','lmmenuMENU_ID1','地图展示','<%=basePathl %>static/map/map.html')"><i class="icon-double-angle-right"></i>地图展示</a>
 						</li>

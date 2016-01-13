@@ -41,13 +41,14 @@
 
 	<!-- 阿里 druid数据库连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
-		destroy-method="close">
+		init-method="init" destroy-method="close">
 		<!-- 数据库基本信息配置 -->
 		<property name="url" value="${url}" />
 		<property name="username" value="${username}" />
 		<property name="password" value="${password}" />
 		<property name="driverClassName" value="${driver}" />
 		<property name="filters" value="${filters}" />
+		<property name="connectionProperties" value="${connectionProperties}" />
 		<!-- 最大并发连接数 -->
 		<property name="maxActive" value="${maxActive}" />
 		<!-- 初始化连接数量 -->
