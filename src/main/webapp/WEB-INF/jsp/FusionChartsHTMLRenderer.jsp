@@ -34,7 +34,6 @@
  * @param scaleMode - "noScale", "exactFit"
  * @param lang - Application Message Language - 2 letter code
  */
-
 %>
 <%
 	String chartSWF= request.getParameter("chartSWF"); 
@@ -45,13 +44,12 @@
 	String chartHeightStr= request.getParameter("chartHeight");
 	String debugModeStr= request.getParameter("debugMode"); // not used in Free version
 	String registerWithJSStr= request.getParameter("registerWithJS"); 
-	
+
 	String wMode = request.getParameter("wMode"); 
 	String color = request.getParameter("color"); 
 	String scaleMode = request.getParameter("scaleMode"); 
 	String lang = request.getParameter("lang"); 
 
-	
 	int chartWidth= 0;
 	int chartHeight=0;
 	Boolean debugMode=new Boolean("false");
@@ -74,7 +72,6 @@
 		regWithJSInt=boolToNum(registerWithJS);
 	}
 
-
 	if(wMode==null) 
 		wMode="";
 	if(scaleMode==null) 
@@ -85,49 +82,48 @@
 		lang="";
 
 	String strFlashVars="";
-	strFlashVars = "chartWidth=" + chartWidth + "&chartHeight="
-    + chartHeight + "&DOMId=" + chartId + "&debugMode=" + debugModeInt + "&registerWithJS=" + regWithJSInt;
-    
+	strFlashVars = "chartWidth=" + chartWidth + "&chartHeight=" + chartHeight + "&DOMId=" + chartId + "&debugMode=" + debugModeInt + "&registerWithJS=" + regWithJSInt;
 	if (strXML==null || strXML.equals("")) {
-	    // DataURL Mode
-	    strFlashVars +="&dataURL=" + strURL + "";
+		// DataURL Mode
+		strFlashVars +="&dataURL=" + strURL + "";
 	} else {
-	    // dataStr Mode
-	    strFlashVars += "&dataXML=" + strXML + "";
+		// dataStr Mode
+		strFlashVars += "&dataXML=" + strXML + "";
 	}
 	strFlashVars+= "&scaleMode=" + scaleMode+ "&lang=" + lang;
-	
-	
-%> 
-			<!--START Code Block for Chart <%=chartId%> -->
-			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
-			width="<%= chartWidth%>" height="<%= chartHeight%>" id="<%= chartId%>">
-			<param name="allowScriptAccess" value="always" />
-			<param name="movie" value="<%=chartSWF%>"/>
-			<param name="FlashVars" value="<%=strFlashVars%>" />
-			<param name="quality" value="high" />
-			<param name="wmode" value="<%=wMode%>" />
-			<param name="bgcolor" value="<%=color%>" />
-			<embed src="<%=chartSWF%>" FlashVars="<%=strFlashVars%>" 
-			quality="high" width="<%=chartWidth%>" 
-			height="<%=chartHeight%>" name="<%=chartId%>"
-			allowScriptAccess="always" type="application/x-shockwave-flash" 
-                        pluginspage="http://www.macromedia.com/go/getflashplayer" 
-                        wmode="transparent" bgcolor="<%=color%>" />
-			</object>
-			<!--END Code Block for Chart <%=chartId%> -->
+%>
+<!--START Code Block for Chart <%=chartId%>-->
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
+	width="<%= chartWidth%>" height="<%= chartHeight%>" id="<%= chartId%>">
+	<param name="allowScriptAccess" value="always" />
+	<param name="movie" value="<%=chartSWF%>"/>
+	<param name="FlashVars" value="<%=strFlashVars%>" />
+	<param name="quality" value="high" />
+	<param name="wmode" value="<%=wMode%>" />
+	<param name="bgcolor" value="<%=color%>" />
+	<embed src="<%=chartSWF%>" FlashVars="<%=strFlashVars%>"
+		quality="high" width="<%=chartWidth%>"
+		height="<%=chartHeight%>" name="<%=chartId%>"
+		allowScriptAccess="always" type="application/x-shockwave-flash"
+		pluginspage="http://www.macromedia.com/go/getflashplayer" 
+		wmode="transparent" bgcolor="<%=color%>" />
+</object>
+<!--END Code Block for Chart <%=chartId%>-->
+
 <%!
-    /**
-     * Converts a Boolean value to int value<br>
-     * 
-     * @param bool Boolean value which needs to be converted to int value 
-     * @return int value correspoding to the boolean : 1 for true and 0 for false
-     */
-   public int boolToNum(Boolean bool) {
-	int num = 0;
-	if (bool.booleanValue()) {
-	    num = 1;
+/**
+ * Converts a Boolean value to int value<br>
+ * 
+ * @param bool Boolean value which needs to be converted to int value 
+ * @return int value correspoding to the boolean : 1 for true and 0 for false
+ */
+%>
+<%!
+	public int boolToNum(Boolean bool) {
+		int num = 0;
+		if (bool.booleanValue()) {
+			num = 1;
+		}
+		return num;
 	}
-	return num;
-    }
 %>

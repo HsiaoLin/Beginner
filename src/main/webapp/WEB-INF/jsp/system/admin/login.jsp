@@ -1,20 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-		+ request.getServerName() + ":" + request.getServerPort()
-		+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <title>${pd.SYSNAME}</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <link rel="stylesheet" href="static/login/bootstrap.min.css" />
 <link rel="stylesheet" href="static/login/css/camera.css" />
 <link rel="stylesheet" href="static/login/bootstrap-responsive.min.css" />
@@ -24,18 +19,14 @@
 <link rel="bookmark" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
 <script type="text/javascript" src="static/js/jquery-1.5.1.min.js"></script>
-
 </head>
 <body>
-
-	<div
-		style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
+	<div style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
 		<div id="loginbox">
-			<form action="" method="post" name="loginForm"
-				id="loginForm">
+			<form action="" method="post" name="loginForm" id="loginForm">
 				<div class="control-group normal_text">
 					<h3>
-						勿忘初心方得始终
+						${pd.SYSNAME}
 					</h3>
 				</div>
 				<div class="control-group">
@@ -283,5 +274,4 @@
 	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 	<script type="text/javascript" src="static/js/jquery.cookie.js"></script>
 </body>
-
 </html>
