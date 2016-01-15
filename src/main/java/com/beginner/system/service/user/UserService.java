@@ -38,6 +38,14 @@ public class UserService implements IUserService {
 	}
 
 	/*
+	* 批量新增
+	*/
+	@Override
+	public Object saveBatch(PageData pd) throws Exception {
+		return dao.save("UserMapper.saveBatch", pd);
+	}
+
+	/*
 	* 删除
 	*/
 	@Override

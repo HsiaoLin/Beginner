@@ -12,6 +12,15 @@ public interface DAO {
 	public Object save(String str, Object obj) throws Exception;
 
 	/**
+	 * 批量新增
+	 * @param str
+	 * @param obj
+	 * @return
+	 * @throws Exception
+	 */
+	public Object saveBatch(String str, Object obj) throws Exception;
+
+	/**
 	 * 更新
 	 * @param str
 	 * @param obj

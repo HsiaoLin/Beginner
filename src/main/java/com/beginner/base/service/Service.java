@@ -38,6 +38,18 @@ public interface Service {
 	public Object save(PageData pd) throws Exception;
 
 	/**
+	 * saveBatch(方法描述：批量新增) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @param str
+	 * @param pd
+	 * @throws Exception
+	 * Object
+	 * @exception
+	 * @since  1.0.0
+	 */
+	public Object saveBatch(PageData pd) throws Exception;
+
+	/**
 	* delete(方法描述：删除) <br />
 	* (方法适用条件描述： – 可选)
 	* @param str

@@ -16,17 +16,35 @@
 		T.${objectNameUpper}_ID
 	</sql>
 
+	<!-- 批量新增-->
+	<insert id="saveBatch" parameterType="pd" keyProperty="${objectNameUpper}_ID">
+		INSERT INTO ${tabletop}${objectNameUpper}(
+		<#list fieldList as var>
+			${var[0]},
+		</#list>
+			${objectNameUpper}_ID
+		) VALUES 
+		<foreach collection="list" item="item" index="index" separator="," >
+		(
+		<#list fieldList as var>
+			${r"#{"}${var[0]}${r"}"},
+		</#list>
+			${r"#{"}${objectNameUpper}_ID${r"}"}
+		)
+		</foreach>
+	</insert>
+
 	<!-- 新增-->
 	<insert id="save" parameterType="pd" keyProperty="${objectNameUpper}_ID">
 		INSERT INTO ${tabletop}${objectNameUpper}(
-	<#list fieldList as var>
+		<#list fieldList as var>
 			${var[0]},
-	</#list>
+		</#list>
 			${objectNameUpper}_ID
 		) VALUES (
-	<#list fieldList as var>
+		<#list fieldList as var>
 			${r"#{"}${var[0]}${r"}"},
-	</#list>
+		</#list>
 			${r"#{"}${objectNameUpper}_ID${r"}"}
 		)
 	</insert>

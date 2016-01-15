@@ -30,6 +30,18 @@ public class DaoSupport implements DAO {
 	}
 
 	/**
+	 * 新增
+	 * @param str
+	 * @param obj
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public Object saveBatch(String str, Object obj) throws Exception {
+		return sqlSessionTemplate.insert(str, obj);
+	}
+
+	/**
 	 * 批量新增
 	 * @param str
 	 * @param obj

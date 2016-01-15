@@ -38,6 +38,15 @@ public class ${objectName}Service implements I${objectName}Service {
 	}
 
 	/*
+	* 批量新增
+	*/
+	@Override
+	@Transactional(readOnly = false)
+	public Object saveBatch(PageData pd) throws Exception {
+		return dao.save("${objectName}Mapper.saveBatch", pd);
+	}
+
+	/*
 	* 删除
 	*/
 	@Override
