@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 /**
 * <b>类名称：</b>反射工具类<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2015年10月22日 下午4:11:22<br/>
 * <b>修改备注：</b><br/>
@@ -21,7 +21,7 @@ public class ReflectHelper {
 	* @return
 	* Field
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Field getFieldByFieldName(Object obj, String fieldName) {
 		for (Class<?> superClass = obj.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()) {
@@ -45,7 +45,7 @@ public class ReflectHelper {
 	* @throws IllegalAccessException
 	* Object
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Object getValueByFieldName(Object obj, String fieldName) throws SecurityException, NoSuchFieldException, IllegalArgumentException,
 			IllegalAccessException {
@@ -75,7 +75,7 @@ public class ReflectHelper {
 	* @throws IllegalAccessException
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void setValueByFieldName(Object obj, String fieldName, Object value) throws SecurityException, NoSuchFieldException,
 			IllegalArgumentException, IllegalAccessException {

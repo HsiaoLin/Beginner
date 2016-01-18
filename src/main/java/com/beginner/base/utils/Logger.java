@@ -19,7 +19,7 @@ public class Logger {
 	* @return
 	* Logger
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Logger getLogger(@SuppressWarnings("rawtypes") Class classObject) {
 		return new Logger(org.apache.log4j.Logger.getLogger(classObject));
@@ -32,7 +32,7 @@ public class Logger {
 	* @return
 	* Logger
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Logger getLogger(String loggerName) {
 		return new Logger(org.apache.log4j.Logger.getLogger(loggerName));

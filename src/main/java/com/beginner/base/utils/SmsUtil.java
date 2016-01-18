@@ -10,10 +10,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.beginner.base.plugin.page.PageData;
 
@@ -125,20 +123,14 @@ public class SmsUtil {
 	 * @param code  短信内容
 	 */
 	public static void sendSms2(String mobile, String code) {
-		HttpClient client = new DefaultHttpClient();
 		HttpUriRequest method = new HttpPost(Url);
 
 		method.setHeader("ContentType", "application/x-www-form-urlencoded;charset=UTF-8");
 
-		String content = new String(code);
-
-		String account = "", password = "";
 		String strSMS2 = "";//2015/08/20 Tools.readTxtFile(Const.SMS2);			//读取短信2配置
 		if (null != strSMS2 && !"".equals(strSMS2)) {
 			String strS2[] = strSMS2.split(",fh,");
 			if (strS2.length == 2) {
-				account = strS2[0];
-				password = strS2[1];
 			}
 		}
 

@@ -84,7 +84,7 @@
 
 			<div class="controls">
 				<div class="main_input_box">
-					<font color="white"><span id="nameerr">Copyright © 尹枭凌工作室 </span></font>
+					<font color="white"><span id="nameerr">Copyright © Hsiao Lin Studio </span></font>
 				</div>
 			</div>
 		</div>

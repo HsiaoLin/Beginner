@@ -46,8 +46,8 @@ public class MapDistance {
 	 * 最大经度 maxLng 
 	 * 最大纬度 minLat
 	 */
-	public static Map getAround(String latStr, String lngStr, String raidus) {
-		Map map = new HashMap();
+	public static Map<String, String> getAround(String latStr, String lngStr, String raidus) {
+		Map<String, String> map = new HashMap<String, String>();
 
 		Double latitude = Double.parseDouble(latStr);// 传值给经度
 		Double longitude = Double.parseDouble(lngStr);// 传值给纬度

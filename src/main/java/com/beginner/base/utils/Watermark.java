@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
+@SuppressWarnings("restriction")
 public class Watermark {
 
 	private static String strFWATERM, strIWATERM;
@@ -116,7 +117,6 @@ public class Watermark {
 	 *            偏移量
 	 * @param y
 	 */
-
 	public static void pressText(String pressText, String targetImg, String fontName, int fontStyle, Color color, int fontSize, int x, int y) {
 		try {
 			File _file = new File(targetImg);

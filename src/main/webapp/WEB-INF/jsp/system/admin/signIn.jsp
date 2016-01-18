@@ -65,7 +65,7 @@
                 </div>
                 <div class="login-footer">
                     <div class="pull-left">
-                        &copy; 2016 尹枭凌工作室
+                        &copy; 2016 Hsiao Lin Studio
                     </div>
                     <div class="pull-right">
                         <a href="#">关于我们</a> |

@@ -8,14 +8,12 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import com.beginner.base.utils.Logger;
-import com.beginner.base.utils.SpringUtil;
-import com.beginner.system.service.user.IUserService;
 
 public class QuartzJob implements Job {
 
 	protected Logger log = Logger.getLogger(this.getClass());
 
-	private IUserService userService = (IUserService) SpringUtil.getBean("userService");
+	//private IUserService userService = (IUserService) SpringUtil.getBean("userService");
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {

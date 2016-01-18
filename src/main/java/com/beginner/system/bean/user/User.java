@@ -3,12 +3,14 @@ package com.beginner.system.bean.user;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.validator.constraints.Email;
+
 import com.beginner.system.bean.role.Role;
 
 /**
 * <b>类名称：</b>User<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2015年10月27日 下午2:08:24<br/>
 * <b>修改备注：</b><br/>
@@ -28,6 +30,7 @@ public class User {
 
 	private String userPhone; // 个人电话
 
+	@Email(message = "email地址无效！")
 	private String userMail; // 用户邮箱
 
 	private String userStatus; // 用户状态
@@ -174,5 +177,13 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userType=" + userType + ", userName=" + userName + ", name=" + name + ", userPassword=" + userPassword
+				+ ", userPhone=" + userPhone + ", userMail=" + userMail + ", userStatus=" + userStatus + ", buyerId=" + buyerId + ", supplierId="
+				+ supplierId + ", parentId=" + parentId + ", lastLogin=" + lastLogin + ", ip=" + ip + ", userSkin=" + userSkin + ", roleSet="
+				+ roleSet + ", hasUser=" + hasUser + "]";
 	}
 }

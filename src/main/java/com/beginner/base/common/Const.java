@@ -3,7 +3,7 @@ package com.beginner.base.common;
 /**
 * <b>类名称：</b>Constant<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2015年10月26日 下午4:12:56<br/>
 * <b>修改备注：</b><br/>

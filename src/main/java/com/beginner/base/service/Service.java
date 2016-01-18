@@ -4,7 +4,7 @@
 * <b>文件名：</b>IBaseService.java<br/>
 * <b>版本信息：</b><br/>
 * <b>日期：</b>2015年10月27日-下午7:44:12<br/>
-* <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+* <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
 */
 package com.beginner.base.service;
 
@@ -16,7 +16,7 @@ import com.beginner.base.plugin.page.PageData;
 /**
 * <b>类名称：</b>IBaseService<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>创建时间：</b>2015年10月27日 下午7:44:12<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b><br/>
@@ -33,7 +33,7 @@ public interface Service {
 	* @throws Exception
 	* Object
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public Object save(PageData pd) throws Exception;
 
@@ -45,7 +45,7 @@ public interface Service {
 	 * @throws Exception
 	 * Object
 	 * @exception
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public Object saveBatch(PageData pd) throws Exception;
 
@@ -57,7 +57,7 @@ public interface Service {
 	* @throws Exception
 	* Object
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public Object delete(PageData pd) throws Exception;
 
@@ -70,7 +70,7 @@ public interface Service {
 	* @throws Exception
 	* Object
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public Object edit(PageData pd) throws Exception;
 
@@ -83,7 +83,7 @@ public interface Service {
 	* @throws Exception
 	* List<PageData>
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public List<PageData> list(Page page) throws Exception;
 
@@ -96,7 +96,7 @@ public interface Service {
 	* @throws Exception
 	* List<PageData>
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public List<PageData> listAll(PageData pd) throws Exception;
 
@@ -109,7 +109,7 @@ public interface Service {
 	* @throws Exception
 	* PageData
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public PageData findById(PageData pd) throws Exception;
 
@@ -121,7 +121,7 @@ public interface Service {
 	* @throws Exception
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public void deleteAll(String[] ArrayDATA_IDS) throws Exception;
 

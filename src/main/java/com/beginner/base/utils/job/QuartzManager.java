@@ -13,7 +13,7 @@ import org.quartz.impl.StdSchedulerFactory;
 /**
 * <b>类名称：</b>QuartzManager<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2015年11月6日 下午7:32:31<br/>
 * <b>修改备注：</b><br/>
@@ -45,7 +45,7 @@ public class QuartzManager {
 	* @param cron		定时任务的时间通配符
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void addJob(Class cls, String cron) {
 		addJob(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, cls, cron);
@@ -64,7 +64,7 @@ public class QuartzManager {
 	* @param cron		定时任务的时间通配符
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void addJob(String jobName, String triggerName, Class cls, String cron) {
 		addJob(jobName, JOB_GROUP_NAME, triggerName, TRIGGER_GROUP_NAME, cls, cron);
@@ -82,7 +82,7 @@ public class QuartzManager {
 	* @param cron				定时任务的时间通配符
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void addJob(String jobName, String jobGroupName, String triggerName, String triggerGroupName, Class cls, String cron) {
 		try {
@@ -117,7 +117,7 @@ public class QuartzManager {
 	* @param cron	定时任务的时间通配符
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void modifyJobTime(String cron) {
 		modifyJobTime(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, cron);
@@ -132,7 +132,7 @@ public class QuartzManager {
 	* @param cron			定时任务的时间通配符
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void modifyJobTime(String jobName, String triggerName, String cron) {
 		modifyJobTime(jobName, JOB_GROUP_NAME, triggerName, TRIGGER_GROUP_NAME, cron);
@@ -150,7 +150,7 @@ public class QuartzManager {
 	* @param cron				定时任务的时间通配符
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void modifyJobTime(String jobName, String jobGroupName, String triggerName, String triggerGroupName, String cron) {
 		try {
@@ -236,7 +236,7 @@ public class QuartzManager {
 	* (方法适用条件描述： – 可选)
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void startJobs() {
 		try {
@@ -252,7 +252,7 @@ public class QuartzManager {
 	* (方法适用条件描述： – 可选)
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void shutdownJobs() {
 		try {

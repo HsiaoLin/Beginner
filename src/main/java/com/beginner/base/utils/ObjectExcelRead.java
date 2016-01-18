@@ -26,6 +26,7 @@ public class ObjectExcelRead {
 	 * @param sheetnum //sheet
 	 * @return list
 	 */
+	@SuppressWarnings("deprecation")
 	public static List<Object> readExcel(String filepath, String filename, int startrow, int startcol, int sheetnum) {
 		List<Object> varList = new ArrayList<Object>();
 

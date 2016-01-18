@@ -20,12 +20,13 @@ import com.beginner.base.plugin.page.PageData;
 * 导入到EXCEL
 * 类名称：ObjectExcelView.java
  */
+@SuppressWarnings("deprecation")
 public class ObjectExcelView extends AbstractExcelView {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildExcelDocument(Map<String, Object> model, HSSFWorkbook workbook, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// TODO Auto-generated method stub
 		Date date = new Date();
 		String filename = Tools.date2Str(date, "yyyyMMddHHmmss");
 		HSSFSheet sheet;

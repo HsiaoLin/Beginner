@@ -4,7 +4,7 @@
  * <b>文件名：</b>BaseController.java<br/>
  * <b>版本信息：</b><br/>
  * <b>日期：</b>2015年10月26日-下午3:24:40<br/>
- * <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+ * <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
  */
 package com.beginner.base.controller;
 
@@ -37,7 +37,7 @@ import com.beginner.base.utils.UUIDUtils;
 /**
  * <b>类名称：</b>BaseController<br/>
  * <b>类描述：</b><br/>
- * <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
  * <b>创建时间：</b>2015年10月26日 下午3:24:40<br/>
  * <b>修改人：</b><br/>
  * <b>修改时间：</b><br/>
@@ -54,7 +54,7 @@ public class BaseController {
 	* @return
 	* PageData
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public PageData getPageData() {
 		return new PageData(this.getRequest());
@@ -66,7 +66,7 @@ public class BaseController {
 	* @return
 	* ModelAndView
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public ModelAndView getModelAndView() {
 		return new ModelAndView();
@@ -78,7 +78,7 @@ public class BaseController {
 	* @return
 	* HttpServletRequest
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public HttpServletRequest getRequest() {
 		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -104,7 +104,7 @@ public class BaseController {
 	 * @return
 	 * String
 	 * @exception
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public String get32UUID() {
 		return UUIDUtils.get32UUID();
@@ -116,7 +116,7 @@ public class BaseController {
 	 * @return
 	 * String
 	 * @exception
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public String getUUID() {
 		return UUIDUtils.getUUID();
@@ -128,7 +128,7 @@ public class BaseController {
 	* @return
 	* Page
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public Page getPage() {
 		return new Page();
@@ -141,7 +141,7 @@ public class BaseController {
 	* @param interfaceName
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void before(Logger logger, String interfaceName) {
 		logger.info("");
@@ -155,7 +155,7 @@ public class BaseController {
 	* @param logger
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void after(Logger logger) {
 		logger.info(Const.END_CN);
@@ -168,7 +168,7 @@ public class BaseController {
 	* @return
 	* Map<String,String>
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	@SuppressWarnings("unchecked")
 	public Map<String, String> getRights() {
@@ -184,7 +184,7 @@ public class BaseController {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public String htmlEscape(String text) {
 		return HtmlUtils.htmlEscape(text);
@@ -197,7 +197,7 @@ public class BaseController {
 	 * @return
 	 * String
 	 * @exception
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public String htmlUnescape(String text) {
 		return HtmlUtils.htmlUnescape(text);
@@ -209,7 +209,7 @@ public class BaseController {
 	* @param binder
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {

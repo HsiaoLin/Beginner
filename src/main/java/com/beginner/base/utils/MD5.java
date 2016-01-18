@@ -41,7 +41,7 @@ public class MD5 {
 	 * @return
 	 * String 签名结果
 	 * @exception
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public static String sign(String text, String key, String input_charset) {
 		text = text + key;
@@ -58,7 +58,7 @@ public class MD5 {
 	 * @return
 	 * boolean 签名结果
 	 * @exception
-	 * @since  1.0.0
+	 * @since 1.0.0
 	 */
 	public static boolean verify(String text, String sign, String key, String input_charset) {
 		text = text + key;
@@ -78,7 +78,7 @@ public class MD5 {
 	* @return
 	* byte[]
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	private static byte[] getContentBytes(String content, String charset) {
 		if (charset == null || "".equals(charset)) {

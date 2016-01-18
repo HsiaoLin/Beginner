@@ -12,13 +12,9 @@ public class AppUtil {
 
 	protected static Logger logger = Logger.getLogger(AppUtil.class);
 
-	public static void main(String[] args) {
-		PageData pd = new PageData();
-		pd.put("username", "AAAAAAAAAAA");
-	}
-
 	/**
-	 * 设置分页的参数
+	 * 设置分页参数
+	 * 
 	 * @param pd
 	 * @return
 	 */
@@ -68,7 +64,7 @@ public class AppUtil {
 		return listReturn;
 	}
 
-	public static Object returnObject(PageData pd, Map map) {
+	public static Object returnObject(PageData pd, Map<String, Object> map) {
 		if (pd.containsKey("callback")) {
 			String callback = pd.get("callback").toString();
 			return new JSONPObject(callback, map);

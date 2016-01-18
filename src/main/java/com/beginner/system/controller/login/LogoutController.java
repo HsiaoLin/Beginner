@@ -4,7 +4,7 @@
 * <b>文件名：</b>LoginController.java<br/>
 * <b>版本信息：</b><br/>
 * <b>日期：</b>2015年10月26日-下午3:18:18<br/>
-* <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+* <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
 */
 package com.beginner.system.controller.login;
 
@@ -22,7 +22,7 @@ import com.beginner.base.utils.Tools;
 /**
 * <b>类名称：</b>LogoutController<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2016-1-1 上午1:05:14<br/>
 * <b>修改备注：</b><br/>

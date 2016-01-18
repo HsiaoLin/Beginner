@@ -11,7 +11,7 @@ import org.apache.commons.lang3.time.DateUtils;
 /**
 * <b>类名称：</b>日期工具类<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2015年10月22日 下午5:17:31<br/>
 * <b>修改备注：</b><br/>
@@ -38,7 +38,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getYear() {
 		return yyyy.format(new Date());
@@ -50,7 +50,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getDay() {
 		return yyyy_MM_dd.format(new Date());
@@ -62,7 +62,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getDays() {
 		return yyyyMMdd.format(new Date());
@@ -74,7 +74,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getTime() {
 		return yyyy_MM_dd_HH_mm_ss.format(new Date());
@@ -86,7 +86,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getTimeSecond() {
 		return yyyyMMddHHmmss.format(new Date());
@@ -100,7 +100,7 @@ public class DateUtil {
 	* @return
 	* boolean
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static boolean compareDate(String s, String e) {
 		if (fomatDate(s) == null || fomatDate(e) == null) {
@@ -116,7 +116,7 @@ public class DateUtil {
 	* @return
 	* Date
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Date fomatDate(String date) {
 		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
@@ -136,7 +136,7 @@ public class DateUtil {
 	* @return
 	* Date
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Date fomatDateEx(String date, String pattern) {
 		if (date == null || "".equals(date)) {
@@ -158,7 +158,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String fomatDateString(String datetime) {
 		StringBuffer dateStr = new StringBuffer();
@@ -186,7 +186,7 @@ public class DateUtil {
 	* @return
 	* boolean
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static boolean isValidDate(String s) {
 		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
@@ -206,7 +206,7 @@ public class DateUtil {
 	* @return
 	* int
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static int getDiffYear(String startTime, String endTime) {
 		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
@@ -226,7 +226,7 @@ public class DateUtil {
 	* @return
 	* long
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static long getDaySub(String beginDateStr, String endDateStr) {
 		long day = 0;
@@ -251,7 +251,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getAfterDayDate(String days) {
 		int daysInt = Integer.parseInt(days);
@@ -273,7 +273,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getAfterDayWeek(String days) {
 		int daysInt = Integer.parseInt(days);
@@ -296,7 +296,7 @@ public class DateUtil {
 	* @return
 	* Date
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Date getDateAfterMinute(Date date, int minute) {
 		Calendar calendar = Calendar.getInstance();
@@ -312,7 +312,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getTimeFormatDateString(Date date) {
 		SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -326,7 +326,7 @@ public class DateUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getFormatDateString(Date date) {
 		SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd");
@@ -344,7 +344,7 @@ public class DateUtil {
 	* @return
 	* Date
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Date parseDate(Object str) {
 		if (str == null) {

@@ -14,7 +14,7 @@ import com.beginner.base.plugin.page.PageData;
 /**
 * <b>类名称：</b>UserService<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>创建时间：</b>2015-10-28<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b><br/>
@@ -75,6 +75,7 @@ public class UserService implements IUserService {
 	/*
 	*列表
 	*/
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> list(Page page) throws Exception {
 		return (List<PageData>) dao.findForList("UserMapper.datalistPage", page);
@@ -83,6 +84,7 @@ public class UserService implements IUserService {
 	/*
 	*列表(全部)
 	*/
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> listAll(PageData pd) throws Exception {
 		return (List<PageData>) dao.findForList("UserMapper.listAll", pd);

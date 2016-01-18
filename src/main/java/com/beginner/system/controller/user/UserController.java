@@ -4,7 +4,7 @@
 * <b>文件名：</b>UserController.java<br/>
 * <b>版本信息：</b><br/>
 * <b>日期：</b>2015年10月27日-下午7:57:07<br/>
-* <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+* <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
 */
 package com.beginner.system.controller.user;
 
@@ -33,7 +33,7 @@ import com.beginner.system.service.user.IUserService;
 /**
 * <b>类名称：</b>UserController<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>创建时间：</b>2015-10-28<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b><br/>

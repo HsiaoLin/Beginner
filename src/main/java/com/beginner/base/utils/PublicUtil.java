@@ -22,7 +22,7 @@ public class PublicUtil {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getIp() {
 		String ip = StringUtils.EMPTY;

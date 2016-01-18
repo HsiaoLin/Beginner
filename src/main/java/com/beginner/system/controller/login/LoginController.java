@@ -4,7 +4,7 @@
 * <b>文件名：</b>LoginController.java<br/>
 * <b>版本信息：</b><br/>
 * <b>日期：</b>2015年10月26日-下午3:18:18<br/>
-* <b>Copyright (c)</b> 2015尹枭凌工作室-版权所有<br/>
+* <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
 */
 package com.beginner.system.controller.login;
 
@@ -32,7 +32,7 @@ import com.beginner.system.bean.user.User;
 /**
 * <b>类名称：</b>LoginController<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>创建时间：</b>2015年10月26日 下午3:18:18<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b><br/>
@@ -49,7 +49,7 @@ public class LoginController extends BaseController {
 	* @return
 	* ModelAndView
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	@RequestMapping(value = "/to_login")
 	public ModelAndView toLogin() {
@@ -80,12 +80,12 @@ public class LoginController extends BaseController {
 	* @throws Exception
 	* Object
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	@RequestMapping(value = "/login_validation", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Object loginValidation() throws Exception {
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		String errInfo = "";
@@ -95,7 +95,7 @@ public class LoginController extends BaseController {
 			//shiro管理的session
 			Subject currentUser = SecurityUtils.getSubject();
 			Session session = currentUser.getSession();
-			String sessionCode = (String) session.getAttribute(Const.SECURITY_CODE); //获取session中的验证码
+			//String sessionCode = (String) session.getAttribute(Const.SECURITY_CODE); //获取session中的验证码
 
 			String code = KEYDATA[2];
 			if (null == code || "".equals(code)) {
@@ -120,7 +120,7 @@ public class LoginController extends BaseController {
 				user.setUserName("尹枭凌");
 				user.setName("尹枭凌");
 				user.setUserPassword("123");
-				Map pds = new HashMap();
+				Map<?, ?> pds = new HashMap<String, Object>();
 				try {
 					pds = BeanUtils.describe(user);
 				} catch (Exception e1) {
@@ -181,7 +181,7 @@ public class LoginController extends BaseController {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	@RequestMapping(value = "/tab")
 	public String tab() {
@@ -194,7 +194,7 @@ public class LoginController extends BaseController {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	@RequestMapping(value = "/login_default")
 	public String defaultPage() {

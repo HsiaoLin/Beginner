@@ -27,7 +27,7 @@ import org.apache.http.util.EntityUtils;
 /**
 * <b>类名称：</b>Tools<br/>
 * <b>类描述：</b><br/>
-* <b>创建人：</b>尹枭凌工作室-Hsiao Lin<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2015年10月22日 下午5:54:40<br/>
 * <b>修改备注：</b><br/>
@@ -41,7 +41,7 @@ public class Tools {
 	* @return
 	* int
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static int getRandomNum() {
 		Random r = new Random();
@@ -55,7 +55,7 @@ public class Tools {
 	* @return
 	* boolean
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static boolean notEmpty(String s) {
 		return s != null && !"".equals(s) && !"null".equals(s) && !"NULL".equals(s) && !"Null".equals(s);
@@ -68,7 +68,7 @@ public class Tools {
 	* @return
 	* boolean
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static boolean isEmpty(String s) {
 		return s == null || "".equals(s) || "null".equals(s) || "NULL".equals(s) || "Null".equals(s);
@@ -82,7 +82,7 @@ public class Tools {
 	* @return
 	* String[]
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String[] str2StrArray(String str, String splitRegex) {
 		if (isEmpty(str)) {
@@ -98,7 +98,7 @@ public class Tools {
 	* @return
 	* String[]
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String[] str2StrArray(String str) {
 		return str2StrArray(str, ",\\s*");
@@ -111,7 +111,7 @@ public class Tools {
 	* @return
 	* String yyyy-MM-dd HH:mm:ss
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String date2Str(Date date) {
 		return date2Str(date, "yyyy-MM-dd HH:mm:ss");
@@ -124,7 +124,7 @@ public class Tools {
 	* @return
 	* Date
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static Date str2Date(String date) {
 		if (notEmpty(date)) {
@@ -148,7 +148,7 @@ public class Tools {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String date2Str(Date date, String format) {
 		if (date != null) {
@@ -166,7 +166,7 @@ public class Tools {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getTimes(String StrDate) {
 		String resultTimes = "";
@@ -207,7 +207,7 @@ public class Tools {
 	* @param content 写入的内容
 	* void
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static void writeFile(String fileP, String content) {
 		String filePath = String.valueOf(Thread.currentThread().getContextClassLoader().getResource("")) + "../../"; //项目路径
@@ -233,7 +233,7 @@ public class Tools {
 	* @return
 	* boolean
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static boolean checkEmail(String email) {
 		boolean flag = false;
@@ -255,7 +255,7 @@ public class Tools {
 	* @return
 	* boolean
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static boolean checkMobileNumber(String mobileNumber) {
 		boolean flag = false;
@@ -278,7 +278,7 @@ public class Tools {
 	* @return
 	* boolean 为空则返回true否则返回false
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static boolean checkKey(String paraname, String FKEY) {
 		paraname = (null == paraname) ? "" : paraname;
@@ -292,7 +292,7 @@ public class Tools {
 	* @return
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String readTxtFile(String path) {
 		try {
@@ -332,7 +332,7 @@ public class Tools {
 	* @throws Exception
 	* String
 	* @exception
-	* @since  1.0.0
+	* @since 1.0.0
 	*/
 	public static String getResponseBody(CloseableHttpClient httpclient, HttpPost httppost, JSONObject json)
 			throws Exception {
