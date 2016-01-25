@@ -3,7 +3,7 @@
 	String basePathl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pathl+"/";
 %>
 <!-- 本页面涉及的js函数，都在head.jsp页面中     -->
-<div id="sidebar" class="">
+<div id="sidebar">
 	<div id="sidebar-shortcuts">
 		<div id="sidebar-shortcuts-large">
 			<button class="btn btn-small btn-success" onclick="changeMenu();" title="切换菜单">
@@ -27,19 +27,31 @@
 		</div>
 		<ul class="nav nav-list">
 			<li class="active" id="loginindex">
-				<a href="login/index"><i class=" icon-home"></i><span>后台首页</span></a>
+				<a href="login/index">
+					<i class="icon-home"></i>
+					<span>后台首页</span>
+				</a>
 			</li>
 			<li id="lmmenuMENU_ID">
-				<a style="cursor:pointer;" class="dropdown-toggle" >
-				<i class="icon-desktop"></i>
-				<span>有史以来分量最重</span>
-				<b class="arrow icon-angle-down"></b>
+				<a style="cursor:pointer;" class="dropdown-toggle">
+					<i class="icon-desktop"></i>
+					<span>系统管理</span>
+					<b class="arrow icon-angle-down"></b>
 				</a>
 				<ul class="submenu">
 					<li id="zsubMENU_ID">
-						<a style="cursor:pointer;" target="mainFrame" onclick="siMenu('zsubMENU_ID2','lmmenuMENU_ID2','Druid Monitor','<%=basePathl %>druid/index.html');hangge();"><i class="icon-double-angle-right"></i>系统监控</a>
-						<a style="cursor:pointer;" target="mainFrame" onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户信息','system/user/list')"><i class="icon-double-angle-right"></i>用户信息</a>
-						<a style="cursor:pointer;" target="mainFrame" onclick="siMenu('zsubMENU_ID1','lmmenuMENU_ID1','地图展示','<%=basePathl %>static/map/map.html')"><i class="icon-double-angle-right"></i>地图展示</a>
+						<a style="cursor:pointer;" target="mainFrame" onclick="siMenu('zsubMENU_ID2','lmmenuMENU_ID2','Druid Monitor','<%=basePathl %>druid/index.html');hangge();">
+							<i class="icon-double-angle-right"></i>
+							<span>系统监控</span>
+						</a>
+						<a style="cursor:pointer;" target="mainFrame" onclick="siMenu('zsubMENU_ID','lmmenuMENU_ID','用户信息','system/user/list')">
+							<i class="icon-double-angle-right"></i>
+							<span>用户信息</span>
+						</a>
+						<a style="cursor:pointer;" target="mainFrame" onclick="siMenu('zsubMENU_ID1','lmmenuMENU_ID1','地图展示','<%=basePathl %>static/map/map.html')">
+							<i class="icon-double-angle-right"></i>
+							<span>地图展示</span>
+						</a>
 					</li>
 				</ul>
 			</li>
@@ -57,7 +69,7 @@
 									<c:choose>
 										<c:when test="${not empty sub.MENU_URL}">
 											<li id="z${sub.MENU_ID }">
-												<a style="cursor:pointer;" target="mainFrame"  onclick="siMenu('z${sub.MENU_ID }','lm${menu.MENU_ID }','${sub.MENU_NAME }','${sub.MENU_URL }')">
+												<a style="cursor:pointer;" target="mainFrame" onclick="siMenu('z${sub.MENU_ID }','lm${menu.MENU_ID }','${sub.MENU_NAME }','${sub.MENU_URL }')">
 													<i class="icon-double-angle-right"></i>${sub.MENU_NAME }
 												</a>
 											</li>
