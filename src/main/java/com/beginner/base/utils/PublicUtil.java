@@ -5,25 +5,31 @@ import java.net.UnknownHostException;
 
 import org.apache.commons.lang3.StringUtils;
 
+/**
+* <b>类名称：</b>PublicUtil<br/>
+* <b>类描述：</b>公共工具类<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月26日 下午3:31:53<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 public class PublicUtil {
 
-	public static void main(String[] args) {
-		System.out.println("本机的ip=" + PublicUtil.getIp());
-		System.out.println("項目路徑=" + PublicUtil.getPorjectPath());
-	}
-
+	/**
+	 * 获取项目路径
+	 * @return String 	项目路径（D:\workspace\Beginner\）
+	 * @since 			1.0.0
+	 */
 	public static String getPorjectPath() {
 		return System.getProperty("user.dir") + "\\";
 	}
 
 	/**
-	* getIp(方法描述：获取本机ip) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取本机IP地址
+	 * @return String 	IP地址（192.168.6.240）
+	 * @since 			1.0.0
+	 */
 	public static String getIp() {
 		String ip = StringUtils.EMPTY;
 		try {
@@ -34,5 +40,4 @@ public class PublicUtil {
 		}
 		return ip;
 	}
-
 }

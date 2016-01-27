@@ -10,30 +10,44 @@ import java.io.FileOutputStream;
 
 import javax.imageio.ImageIO;
 
+import com.beginner.base.common.Const;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
+/**
+* <b>类名称：</b>Watermark<br/>
+* <b>类描述：</b>添加文字、图片水印工具类<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月26日 下午3:31:53<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 @SuppressWarnings("restriction")
 public class Watermark {
 
 	private static String strFWATERM, strIWATERM;
 
+	/**
+	 * 初始化水印配置
+	 */
 	static {
-		strFWATERM = "";//2015/08/20 Tools.readTxtFile(Const.FWATERM);	//读取文字水印配置
-		strIWATERM = "";//2015/08/20 Tools.readTxtFile(Const.IWATERM);	//读取图片水印配置
+		strFWATERM = Tools.readTxtFile(Const.FWATERM); //读取文字水印配置
+		strIWATERM = Tools.readTxtFile(Const.IWATERM); //读取图片水印配置
 	}
 
 	/**
-	 * 刷新
-	*/
+	 * 刷新水印配置
+	 */
 	public static void fushValue() {
-		strFWATERM = "";//2015/08/20 Tools.readTxtFile(Const.FWATERM);	//读取文字水印配置
-		strIWATERM = "";//2015/08/20 Tools.readTxtFile(Const.IWATERM);	//读取图片水印配置
+		strFWATERM = Tools.readTxtFile(Const.FWATERM); //读取文字水印配置
+		strIWATERM = Tools.readTxtFile(Const.IWATERM); //读取图片水印配置
 	}
 
 	/**
+	 * 添加水印
 	 * @param imagePath 图片全路径
-	*/
+	 */
 	public static void setWatemark(String imagePath) {
 		//文字水印
 		if (null != strFWATERM && !"".equals(strFWATERM)) {
@@ -60,14 +74,10 @@ public class Watermark {
 	/**
 	 * 把图片印刷到图片上
 	 * 
-	 * @param pressImg --
-	 *            水印文件
-	 * @param targetImg --
-	 *            目标文件
-	 * @param x
-	 *            --x坐标
-	 * @param y
-	 *            --y坐标
+	 * @param pressImg 	水印文件
+	 * @param targetImg 目标文件
+	 * @param x 		x坐标
+	 * @param y 		y坐标
 	 */
 	public final static void pressImage(String pressImg, String targetImg, int x, int y) {
 		try {
@@ -100,22 +110,14 @@ public class Watermark {
 
 	/**
 	 * 打印文字水印图片
-	 * 
-	 * @param pressText
-	 *            --文字
-	 * @param targetImg --
-	 *            目标图片
-	 * @param fontName --
-	 *            字体名
-	 * @param fontStyle --
-	 *            字体样式
-	 * @param color --
-	 *            字体颜色
-	 * @param fontSize --
-	 *            字体大小
-	 * @param x --
-	 *            偏移量
-	 * @param y
+	 * @param pressText 文字
+	 * @param targetImg 目标图片
+	 * @param fontName 	字体名
+	 * @param fontStyle 字体样式
+	 * @param color 	字体颜色
+	 * @param fontSize 	字体大小
+	 * @param x 		x坐标偏移量
+	 * @param y 		y坐标偏移量
 	 */
 	public static void pressText(String pressText, String targetImg, String fontName, int fontStyle, Color color, int fontSize, int x, int y) {
 		try {
@@ -135,8 +137,7 @@ public class Watermark {
 			encoder.encode(image);
 			out.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
-
 }

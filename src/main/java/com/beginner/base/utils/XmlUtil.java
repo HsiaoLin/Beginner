@@ -2,15 +2,24 @@ package com.beginner.base.utils;
 
 import com.thoughtworks.xstream.XStream;
 
-public class Xml2BeanUtil {
+/**
+* <b>类名称：</b>XmlUtil<br/>
+* <b>类描述：</b>XML工具类<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月26日 下午3:31:53<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
+public class XmlUtil {
 
 	/** 
-	 * xml转换成JavaBean 
+	 * Xml转换成JavaBean
 	 * 
-	 * @param xml xml格式的字符串
-	 * @param rootElement xml格式字符串的根元素
-	 * @param c 要转换的JavaBean的class
-	 * @return 
+	 * @param xml 			Xml格式的字符串
+	 * @param rootElement 	Xml格式字符串的根元素
+	 * @param c 			要转换的JavaBean的Class
+	 * @return JavaBean
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T convertToJaveBean(String xml, String rootElement, Class<T> c) {
@@ -26,8 +35,6 @@ public class Xml2BeanUtil {
 	}
 
 	private static class singleXStream {
-
 		public final static XStream xStream = new XStream();
 	}
-
 }

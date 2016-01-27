@@ -152,7 +152,7 @@ public class PagePlugin implements Interceptor {
 	 * @return
 	 */
 	private String generatePageSql(String sql, Page page) {
-		if (page != null && Tools.notEmpty(dialect)) {
+		if (page != null && Tools.isNotEmpty(dialect)) {
 			StringBuffer pageSql = new StringBuffer();
 			if ("mysql".equals(dialect)) {
 				pageSql.append(sql);

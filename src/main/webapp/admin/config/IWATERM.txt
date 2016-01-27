@@ -1,1 +1,1 @@
-yes,fh,watermark.png,fh,1,fh,1
+yes,beginner,watermark.png,beginner,1,beginner,1
