@@ -12,19 +12,21 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
 
+/**
+* <b>类名称：</b>文件工具类<br/>
+* <b>类描述：</b><br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月22日 下午5:17:31<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 public class FileUtil {
-
-	public static void main(String[] args) {
-		String dirName = "d:/FH/topic/";// 创建目录
-		FileUtil.createDir(dirName);
-	}
 
 	/**
 	 * 创建目录
-	 * 
-	 * @param destDirName
-	 *            目标目录名
-	 * @return 目录创建成功返回true，否则返回false
+	 * @param destDirName 目标目录名
+	 * @return 成功：true 失败:false
 	 */
 	public static boolean createDir(String destDirName) {
 		File dir = new File(destDirName);
@@ -44,12 +46,7 @@ public class FileUtil {
 
 	/**
 	 * 删除文件
-	 * 
-	 * @param filePathAndName
-	 *            String 文件路径及名称 如c:/fqf.txt
-	 * @param fileContent
-	 *            String
-	 * @return boolean
+	 * @param filePathAndName 文件路径及名称 如c:/del.txt
 	 */
 	public static void delFile(String filePathAndName) {
 		try {
@@ -57,26 +54,22 @@ public class FileUtil {
 			filePath = filePath.toString();
 			java.io.File myDelFile = new java.io.File(filePath);
 			myDelFile.delete();
-
 		} catch (Exception e) {
 			System.out.println("删除文件操作出错");
 			e.printStackTrace();
-
 		}
-
 	}
 
 	/**
 	 * 读取到字节数组0
-	 * 
-	 * @param filePath //路径
-	 * @throws IOException
+	 * @param filePath 		路径
+	 * @throws IOException 	IO异常
 	 */
 	public static byte[] getContent(String filePath) throws IOException {
 		File file = new File(filePath);
 		long fileSize = file.length();
 		if (fileSize > Integer.MAX_VALUE) {
-			System.out.println("file too big...");
+			System.out.println("文件太大嘞...");
 			return null;
 		}
 		FileInputStream fi = new FileInputStream(file);
@@ -96,13 +89,11 @@ public class FileUtil {
 
 	/**
 	 * 读取到字节数组1
-	 * 
-	 * @param filePath
-	 * @return
-	 * @throws IOException
+	 * @param filePath 		文件路径
+	 * @return byte[] 		字节数组
+	 * @throws IOException 	IO异常
 	 */
 	public static byte[] toByteArray(String filePath) throws IOException {
-
 		File f = new File(filePath);
 		if (!f.exists()) {
 			throw new FileNotFoundException(filePath);
@@ -133,13 +124,11 @@ public class FileUtil {
 
 	/**
 	 * 读取到字节数组2
-	 * 
-	 * @param filePath
-	 * @return
-	 * @throws IOException
+	 * @param filePath 		文件路径
+	 * @return byte[] 		字节数组
+	 * @throws IOException 	IO异常
 	 */
 	public static byte[] toByteArray2(String filePath) throws IOException {
-
 		File f = new File(filePath);
 		if (!f.exists()) {
 			throw new FileNotFoundException(filePath);
@@ -175,13 +164,11 @@ public class FileUtil {
 
 	/**
 	 * Mapped File way MappedByteBuffer 可以在处理大文件时，提升性能
-	 * 
-	 * @param filename
-	 * @return
-	 * @throws IOException
+	 * @param filePath 		文件路径
+	 * @return byte[] 		字节数组
+	 * @throws IOException 	IO异常
 	 */
 	public static byte[] toByteArray3(String filePath) throws IOException {
-
 		FileChannel fc = null;
 		RandomAccessFile rf = null;
 		try {
@@ -207,5 +194,4 @@ public class FileUtil {
 			}
 		}
 	}
-
 }

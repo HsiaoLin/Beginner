@@ -8,6 +8,15 @@ import org.codehaus.jackson.map.util.JSONPObject;
 
 import com.beginner.base.plugin.page.PageData;
 
+/**
+* <b>类名称：</b>项目工具类<br/>
+* <b>类描述：</b><br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月22日 下午5:17:31<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 public class AppUtil {
 
 	protected static Logger logger = Logger.getLogger(AppUtil.class);

@@ -17,14 +17,18 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 /**
- * 
- * @version
+ * <b>类名称：</b>Freemarker工具类<br/>
+ * <b>类描述：</b><br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b>2015年10月22日 下午5:17:31<br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
  */
 public class Freemarker {
 
 	/**
 	 * 打印到控制台(测试用)
-	 *  @param ftlName
 	 */
 	public static void print(String ftlName, Map<String, Object> root, String ftlPath) throws Exception {
 		try {
@@ -39,7 +43,7 @@ public class Freemarker {
 
 	/**
 	 * 输出到输出到文件
-	 * @param ftlName   ftl文件名
+	 * @param ftlName	ftl文件名
 	 * @param root		传入的map
 	 * @param outFile	输出后的文件全部路径
 	 * @param filePath	输出前的文件上部路径
@@ -64,7 +68,8 @@ public class Freemarker {
 
 	/**
 	 * 通过文件名加载模版
-	 * @param ftlName
+	 * @param ftlName 文件名称
+	 * @param ftlPath 文件路径
 	 */
 	public static Template getTemplate(String ftlName, String ftlPath) throws Exception {
 		try {

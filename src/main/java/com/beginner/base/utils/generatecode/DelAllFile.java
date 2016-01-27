@@ -3,18 +3,15 @@ package com.beginner.base.utils.generatecode;
 import java.io.File;
 
 /**
- * java删除所有文件和文件夹
- * @version
- */
+* <b>类名称：</b>删除所有文件和文件夹工具类<br/>
+* <b>类描述：</b><br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年10月22日 下午5:17:31<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 public class DelAllFile {
-
-	public static void main(String args[]) {
-		delFolder("e:/e/a"); //只删除e下面a及a下面所有文件和文件夹,e不会被删掉
-		//delFolder("D:/WEBSerser/apache-tomcat-8.0.15/me-webapps/UIMYSQL/WEB-INF/classes/../../admin00/ftl/code");	
-		//delFolder("D:\\WEBSerser\\apache-tomcat-8.0.15\\me-webapps\\UIMYSQL\\admin00\\ftl\\code");
-		//delFolder("D:/WEBSerser/apache-tomcat-8.0.15/me-webapps/UIMYSQL/WEB-INF/classes/../../admin00/ftl/code");
-		System.out.println("deleted");
-	}
 
 	/**
 	 * @param folderPath 文件路径 (只删除此路径的最末路径下所有文件和文件夹)
