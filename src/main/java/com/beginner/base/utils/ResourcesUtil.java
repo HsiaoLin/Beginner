@@ -2,37 +2,40 @@ package com.beginner.base.utils;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.lang3.StringUtils;
 
 public class ResourcesUtil {
 
 	/**
 	 * 读取配置文件
-	 * @param strfile
-	 * @return
+	 * @param fileName
+	 * @return String
 	 */
-	public static Configuration getConfig(String strfile) {
+	public static Configuration getConfig(String fileName) {
 		Configuration config = null;
 		try {
-			PropertiesConfiguration factory = new PropertiesConfiguration(strfile);
-			config = factory.getConfiguration();
+			config = new PropertiesConfiguration(fileName);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return config;
 	}
+
+	public static String getProperties(String key, String fileName) {
+		String properties = StringUtils.EMPTY;
+		try {
+			properties = getConfig(fileName).getString(key);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return properties;
+	}
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//ConfigHelper ch = new ConfigHelper();
-		//ch.test();
-		try {
-			Configuration config = getConfig("config.xml");
-			String backColor = config.getString("colors.background");
-			System.out.println("color: " + backColor);
-			config = null;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		//默认classpath路径下查找
+		System.out.println(getProperties("type", "beginner.properties"));
 	}
 }
