@@ -20,12 +20,20 @@ public class EhcacheUtil {
 	private static final String CONFIGURATION_FILE = "ehcache.xml";
 
 	/**
-	 * 获取缓存管理类的实例
-	 * @return CacheManager 所有缓存实例名称的数组
+	 * 获取缓存管理类的实例，默认配置文件classpath下的ehcache.xml
+	 * @return CacheManager 缓存管理类实例
 	 */
 	public static CacheManager getCacheManager() {
-		InputStream in = EhcacheUtil.class.getResourceAsStream(CONFIGURATION_FILE);
-		return CacheManager.create(in);
+		return getCacheManager(CONFIGURATION_FILE);
+	}
+
+	/**
+	 * 获取缓存管理类的实例，指定配置文件名称
+	 * @param ehcache 指定配置文件的名称比如：ehcache-failsafe.xml
+	 * @return CacheManager 缓存管理类实例
+	 */
+	public static CacheManager getCacheManager(String ehcache) {
+		return CacheManager.create(EhcacheUtil.class.getResourceAsStream(ehcache));
 	}
 
 	/**
@@ -35,32 +43,103 @@ public class EhcacheUtil {
 	public static String[] getCacheNames(){
 		return getCacheManager().getCacheNames();
 	}
+
 	/**
-	 * 根据指定名称查找缓存对象
+	 * 获取所有缓存实例的名称不包含defaultCache
+	 * @param ehcache 	指定配置文件的名称比如：ehcache-failsafe.xml
+	 * @return String[] 所有缓存实例名称的数组
+	 */
+	public static String[] getCacheNames(String ehcache){
+		return getCacheManager(ehcache).getCacheNames();
+	}
+
+	/**
+	 * 根据指定名称获取缓存的实例对象
 	 * @param cacheName 	缓存实例名称
 	 * @return Cache 		缓存对象
 	 */
 	public static Cache getCache(String cacheName){
 		return getCacheManager().getCache(cacheName);
 	}
+
+	/**
+	 * 根据指定名称获取缓存的实例对象
+	 * @param cacheName 	缓存实例名称
+	 * @param ehcache 		指定配置文件的名称比如：ehcache-failsafe.xml
+	 * @return Cache 		缓存对象
+	 */
+	public static Cache getCache(String cacheName,String ehcache){
+		return getCacheManager(ehcache).getCache(cacheName);
+	}
+
+	/**
+	 * 根据指定名称获取缓存在内存中的配置信息，缓存配置动态修改也会体现出来
+	 * @param cacheName 	缓存实例名称
+	 * @return String 		XML结构的字符串配置信息
+	 */
+	public static String getActiveConfigText(String cacheName){
+		return getCacheManager().getActiveConfigurationText();
+	}
+
+	/**
+	 * 根据指定名称获取缓存在内存中的配置信息，缓存配置动态修改也会体现出来
+	 * @param cacheName 	缓存实例名称
+	 * @param ehcache 		指定配置文件的名称比如：ehcache-failsafe.xml
+	 * @return String 		XML结构的字符串配置信息
+	 */
+	public static String getActiveConfigText(String cacheName,String ehcache){
+		return getCacheManager(ehcache).getActiveConfigurationText();
+	}
+
+	/**
+	 * 根据指定名称获取缓存配置信息的实例对象
+	 * @param cacheName 			缓存实例名称
+	 * @return CacheConfiguration 	缓存配置信息
+	 */
+	public static CacheConfiguration getCacheConfig(String cacheName){
+		return getCache(cacheName).getCacheConfiguration();
+	}
+
+	/**
+	 * 根据指定名称获取缓存配置信息的实例对象
+	 * @param cacheName 			缓存实例名称
+	 * @param ehcache 				指定配置文件的名称比如：ehcache-failsafe.xml
+	 * @return CacheConfiguration 	缓存配置信息
+	 */
+	public static CacheConfiguration getCacheConfig(String cacheName,String ehcache){
+		return getCache(cacheName,ehcache).getCacheConfiguration();
+	}
 	
+	/**
+	 * 清除所有缓存的数据，但是缓存实例仍存在
+	 */
+	public static void clearAll(){
+		getCacheManager().clearAll();
+	}
 	
-		//
-		Cache cache = cm.getCache("beginner"); //根据缓存名称获取缓存
-		Assert.assertNotNull(cache);
+	/**
+	 * 清除所有缓存的数据，但是缓存实例仍存在
+	 * @param ehcache 指定配置文件的名称比如：ehcache-failsafe.xml
+	 */
+	public static void clearAll(String ehcache) {
+		getCacheManager(ehcache).clearAll();
+	}
 
-		//获取，更新Cache配置的接口
-		CacheConfiguration configuration = cache.getCacheConfiguration();
-		configuration.setTimeToIdleSeconds(3600);
+	/**
+	 * 从内存中删除一个缓存以及所有的数据，Cache被销毁
+	 * @param cacheName 缓存实例名称
+	 */
+	public static void removeCache(String cacheName) {
+		getCacheManager().removeCache(cacheName);
+	}
 
-		//缓存在内存中的配置信息，缓存配置动态修改也会体现出来,
-		System.out.println(cm.getActiveConfigurationText());
-
-		//清除所有缓存的数据，但是缓存本身仍然存在
-		cm.clearAll();
-
-		//从内存中删除一个缓存以及所有的数据，Cache被销毁
-		//cm.removeCache("beginner");
+	/**
+	 * 从内存中删除一个缓存以及所有的数据，Cache被销毁
+	 * @param cacheName 缓存实例名称
+	 * @param ehcache 	指定配置文件的名称比如：ehcache-failsafe.xml
+	 */
+	public static void removeCache(String cacheName, String ehcache) {
+		getCacheManager(ehcache).removeCache(cacheName);
 	}
 
 	@Test
@@ -70,16 +149,16 @@ public class EhcacheUtil {
 
 		Cache cache = cm.getCache("beginner");
 
-		Person p1 = new Person(1, "Jack", 21);
-		Person p2 = new Person(2, "Mike", 73);
+		//		Person p1 = new Person(1, "Jack", 21);
+		//		Person p2 = new Person(2, "Mike", 73);
 
-		cache.putIfAbsent(new Element(p1, p1, 1));
-		cache.put(new Element(p2, p2, 1));
-		cache.putIfAbsent(new Element(p2, p1, 1));//只有Key为p2的数据不存在才插入
-
-		//得到的是p2,而不是p1
-		Element e = cache.get(p2);
-		Assert.assertEquals(p2, e.getObjectValue());
+		//		cache.putIfAbsent(new Element(p1, p1, 1));
+		//		cache.put(new Element(p2, p2, 1));
+		//		cache.putIfAbsent(new Element(p2, p1, 1));//只有Key为p2的数据不存在才插入
+		//
+		//		//得到的是p2,而不是p1
+		//		Element e = cache.get(p2);
+		//		Assert.assertEquals(p2, e.getObjectValue());
 
 		//把数据从内存刷到DiskStore，从DiskStore刷新到Disk中
 		cache.flush();
@@ -92,20 +171,20 @@ public class EhcacheUtil {
 
 		Cache cache = cm.getCache("beginner");
 
-		Person p1 = new Person(1, "Jack", 21);
-		Person p2 = new Person(2, "Mike", 73);
-
-		Element e1 = new Element(p1, p1, 1);
-		cache.putIfAbsent(e1);
-		Element e2 = new Element(p2, p2, 1);
-		cache.put(e2);
-
-		cache.remove(p1);
-		boolean isSucc = cache.removeElement(e1);
-		//e1已经被删除，因此操作返回false
-		Assert.assertFalse(isSucc);
-
-		cache.put(e1);
+		//		Person p1 = new Person(1, "Jack", 21);
+		//		Person p2 = new Person(2, "Mike", 73);
+		//
+		//		Element e1 = new Element(p1, p1, 1);
+		//		cache.putIfAbsent(e1);
+		//		Element e2 = new Element(p2, p2, 1);
+		//		cache.put(e2);
+		//
+		//		cache.remove(p1);
+		//		boolean isSucc = cache.removeElement(e1);
+		//		//e1已经被删除，因此操作返回false
+		//		Assert.assertFalse(isSucc);
+		//
+		//		cache.put(e1);
 
 		cache.removeAll();
 
@@ -119,18 +198,18 @@ public class EhcacheUtil {
 
 		Cache cache = cm.getCache("beginner");
 
-		Person p1 = new Person(1, "Jack", 21);
-		Person p2 = new Person(2, "Mike", 73);
-
-		Element e1 = new Element(p1, p1, 1);
-		cache.putIfAbsent(e1);
-		Element e2 = new Element(p2, p2, 1);
-		cache.put(e2);
-
-		e2 = new Element(p2, p1, 1);
-		cache.replace(e2);
-
-		Assert.assertEquals(p1, e2.getObjectValue());
+		//		Person p1 = new Person(1, "Jack", 21);
+		//		Person p2 = new Person(2, "Mike", 73);
+		//
+		//		Element e1 = new Element(p1, p1, 1);
+		//		cache.putIfAbsent(e1);
+		//		Element e2 = new Element(p2, p2, 1);
+		//		cache.put(e2);
+		//
+		//		e2 = new Element(p2, p1, 1);
+		//		cache.replace(e2);
+		//
+		//		Assert.assertEquals(p1, e2.getObjectValue());
 	}
 
 	@Test

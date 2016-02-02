@@ -32,7 +32,7 @@ import com.beginner.base.plugin.page.Page;
 import com.beginner.base.plugin.page.PageData;
 import com.beginner.base.utils.DateUtil;
 import com.beginner.base.utils.Logger;
-import com.beginner.base.utils.UUIDUtils;
+import com.beginner.base.utils.UUIDUtil;
 
 /**
  * <b>类名称：</b>BaseController<br/>
@@ -107,7 +107,7 @@ public class BaseController {
 	 * @since 1.0.0
 	 */
 	public String get32UUID() {
-		return UUIDUtils.get32UUID();
+		return UUIDUtil.get32UUID();
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class BaseController {
 	 * @since 1.0.0
 	 */
 	public String getUUID() {
-		return UUIDUtils.getUUID();
+		return UUIDUtil.getUUID();
 	}
 
 	/**

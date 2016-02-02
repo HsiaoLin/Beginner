@@ -12,7 +12,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
 /**
-* <b>类名称：</b>HttpUtils<br/>
+* <b>类名称：</b>HttpUtil<br/>
 * <b>类描述：</b>HTTP请求工具类<br/>
 * <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
@@ -20,7 +20,7 @@ import org.apache.http.util.EntityUtils;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public class HttpUtils {
+public class HttpUtil {
 
 	/**
 	 * <p>To request the POST way.</p>

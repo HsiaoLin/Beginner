@@ -194,6 +194,7 @@ public class FileZip {
 		}
 		zFile.extractAll(dest);
 
+		@SuppressWarnings("unchecked")
 		List<FileHeader> headerList = zFile.getFileHeaders();
 		List<File> extractedFileList = new ArrayList<File>();
 		for (FileHeader fileHeader : headerList) {

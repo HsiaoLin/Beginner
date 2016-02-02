@@ -11,7 +11,7 @@ import java.util.UUID;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public class UUIDUtils {
+public class UUIDUtil {
 
 	public static String getUUID() {
 		String uuid = UUID.randomUUID().toString().trim();

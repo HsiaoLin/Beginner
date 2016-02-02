@@ -1,5 +1,8 @@
 package com.beginner.base.utils;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -20,9 +23,9 @@ import org.apache.commons.lang3.StringUtils;
 public class ResourcesUtil {
 
 	/**
-	 * java.util.ResourceBundle读取classpath下的properties配置文件
+	 * java.util.ResourceBundle读取classpath下的properties配置文件（使用方法见TestResourcesUtil类）
 	 * @param key 		key的值
-	 * @param fileName 	文件路径+文件名称
+	 * @param fileName 	文件路径+文件名称（不要加.properties文件扩展名）
 	 * @return String 	返回key值对应的value
 	 */
 	public static String getProperty(String key, String fileName) {
@@ -41,7 +44,7 @@ public class ResourcesUtil {
 	}
 
 	/**
-	 * org.apache.commons.configuration.Configuration读取properties配置文件
+	 * org.apache.commons.configuration.Configuration读取properties配置文件（使用方法见TestResourcesUtil类）
 	 * <p>
 	 * 可读取任意位置的properties配置文件：<br>
 	 * 1、classpath下：key=type fileName=beginner.properties 				返回值-mysql<br>
@@ -72,7 +75,14 @@ public class ResourcesUtil {
 		return properties;
 	}
 
-	public static String getXmlProperties(String key, String fileName) throws Exception {
+	/**
+	 * 读取XML配置文件指定key的值（使用方法见TestResourcesUtil类）
+	 * @param key 			XML文档的key
+	 * @param fileName 		XML配置文件名称
+	 * @return String 		指定key的值
+	 * @throws Exception 	抛出的异常
+	 */
+	public static String getXmlProperty(String key, String fileName) throws Exception {
 
 		if (StringUtils.isBlank(key))
 			throw new IllegalArgumentException("The key cannot be null and cannot be empty.");
@@ -91,13 +101,30 @@ public class ResourcesUtil {
 		return properties;
 	}
 
-	public static void main(String[] args) throws Exception {
-		System.out.println(getProperties("type", "beginner.properties"));
-		System.out.println(getProperties("type", "/data/app/beginner.properties"));
-		System.out.println(getProperties("type", "D:/data/app/beginner.properties"));
-		System.out.println(getProperty("type", "beginner"));
+	/**
+	 * 读取XML配置文件所有的KEY（使用方法见TestResourcesUtil类）
+	 * @param fileName 		XML配置文件名称
+	 * @return List<String> 返回数组类型的集合类
+	 * @throws Exception 	抛出异常信息
+	 */
+	public static List<String> getXmlProperties(String fileName) throws Exception {
 
-		System.out.println(getXmlProperties("configuration.processing.test", "config.xml"));
-		System.out.println(getXmlProperties("configuration.processing[@stage]", "config.xml"));
+		if (StringUtils.isBlank(fileName))
+			throw new IllegalArgumentException("The fileName cannot be null and cannot be empty.");
+		
+		XMLConfiguration config = null;
+		Iterator<String> properties = null;
+		List<String> list = new ArrayList<String>();
+		try {
+			config = new XMLConfiguration(fileName);
+			properties = config.getKeys();
+			while (properties.hasNext()) {
+				String key = (String) properties.next();
+				list.add(key);
+			}
+		} catch (Exception e) {
+			throw new Exception();
+		}
+		return list;
 	}
 }
