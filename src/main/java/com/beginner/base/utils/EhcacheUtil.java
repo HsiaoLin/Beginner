@@ -15,21 +15,31 @@ import net.sf.ehcache.search.Results;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class EhcacheUtil {
-	
-	private static final String CONFIGURATION_FILE = "ehcache.xml";
+import com.beginner.base.common.Const;
 
-	/**
-	 * 获取缓存管理类的实例，默认配置文件classpath下的ehcache.xml
-	 * @return CacheManager 缓存管理类实例
-	 */
-	public static CacheManager getCacheManager() {
-		return getCacheManager(CONFIGURATION_FILE);
+/**
+* <b>类名称：</b>EhcacheUtil<br/>
+* <b>类描述：</b>ehcache缓存工具类<br/>
+* <b>创建人：</b>Hsiao Lin Studio<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
+public class EhcacheUtil {
+
+	private static final String EHCACHE_SETTING = "ehcache.configFile";
+
+	//缓存管理
+	private static CacheManager cacheManager;
+
+	static {
+		cacheManager = getCacheManager(ResourcesUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER));
 	}
 
 	/**
 	 * 获取缓存管理类的实例，指定配置文件名称
-	 * @param ehcache 指定配置文件的名称比如：ehcache-failsafe.xml
+	 * @param ehcache 指定配置文件的名称比如：ehcache-failsafe.xml、ehcache.xml等
 	 * @return CacheManager 缓存管理类实例
 	 */
 	public static CacheManager getCacheManager(String ehcache) {
@@ -41,16 +51,7 @@ public class EhcacheUtil {
 	 * @return String[] 所有缓存实例名称的数组
 	 */
 	public static String[] getCacheNames(){
-		return getCacheManager().getCacheNames();
-	}
-
-	/**
-	 * 获取所有缓存实例的名称不包含defaultCache
-	 * @param ehcache 	指定配置文件的名称比如：ehcache-failsafe.xml
-	 * @return String[] 所有缓存实例名称的数组
-	 */
-	public static String[] getCacheNames(String ehcache){
-		return getCacheManager(ehcache).getCacheNames();
+		return cacheManager.getCacheNames();
 	}
 
 	/**
@@ -59,17 +60,7 @@ public class EhcacheUtil {
 	 * @return Cache 		缓存对象
 	 */
 	public static Cache getCache(String cacheName){
-		return getCacheManager().getCache(cacheName);
-	}
-
-	/**
-	 * 根据指定名称获取缓存的实例对象
-	 * @param cacheName 	缓存实例名称
-	 * @param ehcache 		指定配置文件的名称比如：ehcache-failsafe.xml
-	 * @return Cache 		缓存对象
-	 */
-	public static Cache getCache(String cacheName,String ehcache){
-		return getCacheManager(ehcache).getCache(cacheName);
+		return cacheManager.getCache(cacheName);
 	}
 
 	/**
@@ -78,17 +69,7 @@ public class EhcacheUtil {
 	 * @return String 		XML结构的字符串配置信息
 	 */
 	public static String getActiveConfigText(String cacheName){
-		return getCacheManager().getActiveConfigurationText();
-	}
-
-	/**
-	 * 根据指定名称获取缓存在内存中的配置信息，缓存配置动态修改也会体现出来
-	 * @param cacheName 	缓存实例名称
-	 * @param ehcache 		指定配置文件的名称比如：ehcache-failsafe.xml
-	 * @return String 		XML结构的字符串配置信息
-	 */
-	public static String getActiveConfigText(String cacheName,String ehcache){
-		return getCacheManager(ehcache).getActiveConfigurationText();
+		return cacheManager.getActiveConfigurationText();
 	}
 
 	/**
@@ -101,28 +82,10 @@ public class EhcacheUtil {
 	}
 
 	/**
-	 * 根据指定名称获取缓存配置信息的实例对象
-	 * @param cacheName 			缓存实例名称
-	 * @param ehcache 				指定配置文件的名称比如：ehcache-failsafe.xml
-	 * @return CacheConfiguration 	缓存配置信息
-	 */
-	public static CacheConfiguration getCacheConfig(String cacheName,String ehcache){
-		return getCache(cacheName,ehcache).getCacheConfiguration();
-	}
-	
-	/**
 	 * 清除所有缓存的数据，但是缓存实例仍存在
 	 */
 	public static void clearAll(){
-		getCacheManager().clearAll();
-	}
-	
-	/**
-	 * 清除所有缓存的数据，但是缓存实例仍存在
-	 * @param ehcache 指定配置文件的名称比如：ehcache-failsafe.xml
-	 */
-	public static void clearAll(String ehcache) {
-		getCacheManager(ehcache).clearAll();
+		cacheManager.clearAll();
 	}
 
 	/**
@@ -130,16 +93,15 @@ public class EhcacheUtil {
 	 * @param cacheName 缓存实例名称
 	 */
 	public static void removeCache(String cacheName) {
-		getCacheManager().removeCache(cacheName);
+		cacheManager.removeCache(cacheName);
 	}
 
 	/**
-	 * 从内存中删除一个缓存以及所有的数据，Cache被销毁
+	 * 把数据从内存刷到DiskStore，从DiskStore刷新到Disk中
 	 * @param cacheName 缓存实例名称
-	 * @param ehcache 	指定配置文件的名称比如：ehcache-failsafe.xml
 	 */
-	public static void removeCache(String cacheName, String ehcache) {
-		getCacheManager(ehcache).removeCache(cacheName);
+	public static void flush(String cacheName) {
+		getCache(cacheName).flush();
 	}
 
 	@Test

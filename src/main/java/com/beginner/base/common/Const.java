@@ -11,6 +11,21 @@ package com.beginner.base.common;
 */
 public class Const {
 
+	//======================Beginner Start =======================
+	/**
+	* BEGINNER:（变量描述：beginner）
+	* @since 1.0.0
+	*/
+	public static final String BEGINNER = "beginner";
+
+	/**
+	* BEGINNER_PROPERTIES:（变量描述：beginner.properties）
+	* @since 1.0.0
+	*/
+	public static final String BEGINNER_PROPERTIES = "beginner.properties";
+
+	//======================Beginner End =======================
+
 	//======================Log Start =======================
 	/**
 	* START_CN:（变量描述：汉语“开始”）
