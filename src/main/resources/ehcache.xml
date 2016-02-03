@@ -22,5 +22,7 @@
 		overflowToDisk="false"
 		timeToIdleSeconds="1800"
 		timeToLiveSeconds="1800"
-		memoryStoreEvictionPolicy="LRU" />
+		memoryStoreEvictionPolicy="LRU">
+		<searchable/>
+	</cache>
 </ehcache>
