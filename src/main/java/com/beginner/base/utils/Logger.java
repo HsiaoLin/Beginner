@@ -1,8 +1,12 @@
 package com.beginner.base.utils;
 
+import org.slf4j.LoggerFactory;
+
 public class Logger {
 
 	private org.apache.log4j.Logger log;
+
+	private org.slf4j.Logger LOG = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	* 创建一个新的实例 Logger,初始化Log4j的日志对象.

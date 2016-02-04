@@ -7,33 +7,41 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.slf4j.LoggerFactory;
+
 import com.beginner.system.bean.user.User;
 
 public class Test {
 
+	private static org.slf4j.Logger log = LoggerFactory.getLogger(Test.class);
+
 	public static void main(String[] args) {
 		User u = new User();
 		u.setUserMail("1");
-		System.out.println(validateModel(u));
-		int[] arrays = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		mark: {
-			for (int i = 0; i < arrays.length; i++) {
-				for (int j = 0; j < arrays.length; j++) {
-					if (arrays[j] == 5) {
-						System.out.println(arrays[i]);
-						System.out.println(arrays[j]);
-						break mark;
-					}
-				}
-			}
-		}
-		System.out.println("继续运行~！");
+		//		System.out.println(validateModel(u));
+		//		int[] arrays = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		//		mark: {
+		//			for (int i = 0; i < arrays.length; i++) {
+		//				for (int j = 0; j < arrays.length; j++) {
+		//					if (arrays[j] == 5) {
+		//						System.out.println(arrays[i]);
+		//						System.out.println(arrays[j]);
+		//						break mark;
+		//					}
+		//				}
+		//			}
+		//		}
+		log.debug("继续运行~！debug");
+		log.info("继续运行~！info");
+		log.warn("继续运行~！info");
+		log.error("error");
+		log.trace("trace!");
 
-		String s = "1,2,3,4,5";
-		char[] c = s.toCharArray();
-		for (char d : c) {
-			System.out.println(d);
-		}
+		//		String s = "1,2,3,4,5";
+		//		char[] c = s.toCharArray();
+		//		for (char d : c) {
+		//			System.out.println(d);
+		//		}
 	}
 
 	public static String validateModel(Object obj) {//验证某一个对象  
