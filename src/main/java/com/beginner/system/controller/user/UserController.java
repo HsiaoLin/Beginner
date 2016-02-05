@@ -1,11 +1,11 @@
 /**
-* <b>项目名：</b>勿忘初心方得始终<br/>
-* <b>包名：</b>com.beginner.system.controller<br/>
-* <b>文件名：</b>UserController.java<br/>
-* <b>版本信息：</b><br/>
-* <b>日期：</b>2015年10月27日-下午7:57:07<br/>
-* <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
-*/
+ * <b>项目名：</b>勿忘初心方得始终<br/>
+ * <b>包名：</b>com.beginner.system.controller<br/>
+ * <b>文件名：</b>UserController.java<br/>
+ * <b>版本信息：</b><br/>
+ * <b>日期：</b>2015年10月27日-下午7:57:07<br/>
+ * <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
+ */
 package com.beginner.system.controller.user;
 
 import java.io.PrintWriter;
@@ -16,6 +16,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,23 +28,24 @@ import com.beginner.base.controller.BaseController;
 import com.beginner.base.plugin.page.Page;
 import com.beginner.base.plugin.page.PageData;
 import com.beginner.base.utils.AppUtil;
-import com.beginner.base.utils.Jurisdiction;
 import com.beginner.base.utils.ObjectExcelView;
 import com.beginner.system.service.user.IUserService;
 
 /**
-* <b>类名称：</b>UserController<br/>
-* <b>类描述：</b><br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>创建时间：</b>2015-10-28<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b><br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
+ * <b>类名称：</b>UserController<br/>
+ * <b>类描述：</b><br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>创建时间：</b>2015-10-28<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b><br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
 @Controller(value = "userController0")
 @RequestMapping(value = "/system/user")
 public class UserController extends BaseController {
+
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	String menuUrl = "system/user/list"; //菜单地址(权限用)
 
@@ -54,10 +57,6 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/save")
 	public ModelAndView save() throws Exception {
-		before(logger, "新增User");
-		if (!Jurisdiction.buttonJurisdiction(menuUrl, "add")) {
-			return null;
-		} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -70,7 +69,6 @@ public class UserController extends BaseController {
 		userService.save(pd);
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");
-		after(logger);
 		return mv;
 	}
 
@@ -79,20 +77,15 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/delete")
 	public void delete(PrintWriter out) {
-		before(logger, "删除User");
-		if (!Jurisdiction.buttonJurisdiction(menuUrl, "del")) {
-			return;
-		} //校验权限
 		PageData pd = new PageData();
 		try {
 			pd = this.getPageData();
 			userService.delete(pd);
 			out.write("success");
 			out.close();
+			logger.info("删除User成功");
 		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("删除User失败", e);
 		}
 	}
 
@@ -100,18 +93,18 @@ public class UserController extends BaseController {
 	 * 修改
 	 */
 	@RequestMapping(value = "/edit")
-	public ModelAndView edit() throws Exception {
-		before(logger, "修改User");
-		if (!Jurisdiction.buttonJurisdiction(menuUrl, "edit")) {
-			return null;
-		} //校验权限
+	public ModelAndView edit() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
-		pd = this.getPageData();
-		userService.edit(pd);
+		try {
+			pd = this.getPageData();
+			userService.edit(pd);
+			logger.info("修改用户信息成功");
+		} catch (Exception e) {
+			logger.error("修改用户信息失败", e);
+		}
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");
-		after(logger);
 		return mv;
 	}
 
@@ -120,23 +113,19 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/list")
 	public ModelAndView list(Page page) {
-		before(logger, "列表User");
-		//if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		try {
 			pd = this.getPageData();
 			page.setPd(pd);
 			List<PageData> varList = userService.list(page); //列出User列表
-			mv.setViewName("system/user/user_list");
 			mv.addObject("varList", varList);
-			mv.addObject("pd", pd);
-			mv.addObject(Const.ROLE_RIGHTS, this.getRights()); //按钮权限
 		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("用户列表查询失败", e);
 		}
+		mv.setViewName("system/user/user_list");
+		mv.addObject("pd", pd);
+		mv.addObject(Const.ROLE_RIGHTS, this.getRights()); //按钮权限
 		return mv;
 	}
 
@@ -145,19 +134,12 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/goAdd")
 	public ModelAndView goAdd() {
-		before(logger, "去新增User页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		try {
-			mv.setViewName("system/user/user_edit");
-			mv.addObject("msg", "save");
-			mv.addObject("pd", pd);
-		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
-		}
+		mv.setViewName("system/user/user_edit");
+		mv.addObject("msg", "save");
+		mv.addObject("pd", pd);
 		return mv;
 	}
 
@@ -166,20 +148,17 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/goEdit")
 	public ModelAndView goEdit() {
-		before(logger, "去修改User页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		try {
 			pd = userService.findById(pd); //根据ID读取
-			mv.setViewName("system/user/user_edit");
-			mv.addObject("msg", "edit");
-			mv.addObject("pd", pd);
 		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("根据ID查询用户失败", e);
 		}
+		mv.setViewName("system/user/user_edit");
+		mv.addObject("msg", "edit");
+		mv.addObject("pd", pd);
 		return mv;
 	}
 
@@ -189,10 +168,6 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/deleteAll")
 	@ResponseBody
 	public Object deleteAll() {
-		before(logger, "批量删除User");
-		if (!Jurisdiction.buttonJurisdiction(menuUrl, "dell")) {
-			return null;
-		} //校验权限
 		PageData pd = new PageData();
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
@@ -208,10 +183,10 @@ public class UserController extends BaseController {
 			}
 			pdList.add(pd);
 			map.put("list", pdList);
+
+			logger.info("批量删除User成功");
 		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("批量删除User失败", e);
 		}
 		return AppUtil.returnObject(pd, map);
 	}
@@ -222,10 +197,6 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = "/excel")
 	public ModelAndView exportExcel() {
-		before(logger, "导出User到excel");
-		if (!Jurisdiction.buttonJurisdiction(menuUrl, "cha")) {
-			return null;
-		}
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -266,10 +237,10 @@ public class UserController extends BaseController {
 			dataMap.put("varList", varList);
 			ObjectExcelView erv = new ObjectExcelView();
 			mv = new ModelAndView(erv, dataMap);
+
+			logger.info("导出User到excel成功");
 		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("导出User到excel失败", e);
 		}
 		return mv;
 	}

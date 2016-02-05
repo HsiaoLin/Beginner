@@ -8,6 +8,8 @@
 */
 package com.beginner.gis.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,23 +31,18 @@ import com.beginner.base.plugin.page.PageData;
 @RequestMapping(value = "/gis")
 public class GisController extends BaseController {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	/**
 	 * 去GIS地图页面
 	 */
 	@RequestMapping(value = "/goGis")
 	public ModelAndView goAdd() {
-		before(logger, "去Gis地图展示页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		try {
-			mv.setViewName("gis/map");
-			mv.addObject("pd", pd);
-		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
-		}
+		mv.setViewName("gis/map");
+		mv.addObject("pd", pd);
 		return mv;
 	}
 }

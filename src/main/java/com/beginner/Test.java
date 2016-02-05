@@ -31,12 +31,13 @@ public class Test {
 		//				}
 		//			}
 		//		}
-		log.debug("继续运行~！debug");
-		log.info("继续运行~！info");
-		log.warn("继续运行~！info");
-		log.error("error");
-		log.trace("trace!");
-
+		try {
+			int i = 10;
+			int j = 10 / i;
+			log.info("测试成功{}", j);
+		} catch (Exception e) {
+			log.error("测试失败", e);
+		}
 		//		String s = "1,2,3,4,5";
 		//		char[] c = s.toCharArray();
 		//		for (char d : c) {

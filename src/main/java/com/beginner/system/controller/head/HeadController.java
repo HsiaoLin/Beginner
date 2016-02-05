@@ -11,6 +11,8 @@ import org.apache.commons.collections.MapUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,21 +37,21 @@ import com.beginner.system.bean.user.User;
 @RequestMapping(value = "/head")
 public class HeadController extends BaseController {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	//	@Resource(name = "userService")
 	//	private UserService userService;
 	//	@Resource(name = "appuserService")
 	//	private AppuserService appuserService;
 
 	/**
-	 * 获取头部信息
+	 * 获取当前登陆用户信息
 	 */
 	@RequestMapping(value = "/getUname")
 	@ResponseBody
-	public Object getList() {
-		before(logger, "HeadController.getList()获取头部信息");
+	public Object getList() throws Exception {
 		PageData pd = new PageData();
 		Map<String, Object> map = new HashMap<String, Object>();
-		try {
 			pd = this.getPageData();
 			List<Map> pdList = new ArrayList<Map>();
 
@@ -75,11 +77,6 @@ public class HeadController extends BaseController {
 			}
 			pdList.add(pds);
 			map.put("list", pdList);
-		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
-		}
 		return AppUtil.returnObject(pd, map);
 	}
 
@@ -87,27 +84,23 @@ public class HeadController extends BaseController {
 	 * 保存皮肤
 	 */
 	@RequestMapping(value = "/setSKIN")
-	public void setSKIN(PrintWriter out) {
+	public void setSKIN(PrintWriter out) throws Exception {
+		logger.info(Const.START_CN);
+		logger.info("保存皮肤");
 		PageData pd = new PageData();
-		try {
-			pd = this.getPageData();
+		pd = this.getPageData();
 
-			//shiro管理的session
-			Subject currentUser = SecurityUtils.getSubject();
-			Session session = currentUser.getSession();
+		//shiro管理的session
+		Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
 
-			String USERNAME = session.getAttribute(Const.USERNAME).toString();//获取当前登录者loginname
-			pd.put("USERNAME", USERNAME);
-			//userService.setSKIN(pd);
-			session.removeAttribute(Const.USER_OBJ);
-			session.removeAttribute(Const.USER_PAGEDATA);
-			out.write("success");
-			out.close();
-		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
-		}
+		String USERNAME = session.getAttribute(Const.USERNAME).toString();//获取当前登录者loginname
+		pd.put("USERNAME", USERNAME);
+		//userService.setSKIN(pd);
+		session.removeAttribute(Const.USER_OBJ);
+		session.removeAttribute(Const.USER_PAGEDATA);
+		out.write("success");
+		out.close();
 	}
 
 	/**

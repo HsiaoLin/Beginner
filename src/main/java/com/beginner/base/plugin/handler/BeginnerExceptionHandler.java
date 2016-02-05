@@ -3,6 +3,8 @@ package com.beginner.base.plugin.handler;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,14 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 */
 public class BeginnerExceptionHandler implements HandlerExceptionResolver {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-		System.out.println("==============异常开始=============");
-		ex.printStackTrace();
-		System.out.println("==============异常结束=============");
-		ModelAndView mv = new ModelAndView("error");
-		mv.addObject("exception", ex.toString().replaceAll("\n", "<br/>"));
+		logger.error("==============异常开始=============");
+		logger.error("应用程序发生异常", ex);
+		logger.error("==============异常结束=============");
+		ModelAndView mv = new ModelAndView("500");
+		mv.addObject("ex", ex.toString().replaceAll("\n", "<br/>"));
 		return mv;
 	}
-
 }

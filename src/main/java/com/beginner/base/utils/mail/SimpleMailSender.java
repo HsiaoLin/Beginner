@@ -36,7 +36,6 @@ public class SimpleMailSender extends BaseController {
 		}
 		// 根据邮件会话属性和密码验证器构造一个发送邮件的session    
 		Session sendMailSession = Session.getDefaultInstance(pro, authenticator);
-		before(logger, "构造一个发送邮件的session");
 
 		// 根据session创建一个邮件消息    
 		Message mailMessage = new MimeMessage(sendMailSession);
@@ -56,7 +55,6 @@ public class SimpleMailSender extends BaseController {
 		mailMessage.setText(mailContent);
 		// 发送邮件    
 		Transport.send(mailMessage);
-		before(logger, "发送成功！");
 		return true;
 	}
 

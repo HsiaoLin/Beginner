@@ -16,13 +16,15 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.beginner.base.common.Const;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestEhcacheUtil {
 
-	private static Logger log = Logger.getLogger(TestEhcacheUtil.class);
+	private static Logger log = LoggerFactory.getLogger(TestEhcacheUtil.class);
 
 	private static final String EHCACHE_SETTING = "ehcache.configFile";
 

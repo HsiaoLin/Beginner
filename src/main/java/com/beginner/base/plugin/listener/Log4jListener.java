@@ -8,8 +8,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import org.apache.log4j.PropertyConfigurator;
-
-import com.beginner.base.utils.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <b>类名称：</b>Log4jListener<br/>
@@ -22,7 +22,7 @@ import com.beginner.base.utils.Logger;
  */
 public class Log4jListener implements ServletContextListener {
 
-	Logger logger = Logger.getLogger(this.getClass());
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	public void contextDestroyed(ServletContextEvent event) {
 		logger.info("ServletContext Destroyed...");

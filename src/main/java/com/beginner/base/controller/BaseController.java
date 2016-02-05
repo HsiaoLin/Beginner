@@ -16,7 +16,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -31,7 +30,6 @@ import com.beginner.base.common.Const;
 import com.beginner.base.plugin.page.Page;
 import com.beginner.base.plugin.page.PageData;
 import com.beginner.base.utils.DateUtil;
-import com.beginner.base.utils.Logger;
 import com.beginner.base.utils.UUIDUtil;
 
 /**
@@ -45,8 +43,6 @@ import com.beginner.base.utils.UUIDUtil;
  * @version 1.0.0<br/>
  */
 public class BaseController {
-
-	protected Logger logger = Logger.getLogger(this.getClass());
 
 	/**
 	* getPageData(方法描述：获取PageData) <br />
@@ -132,34 +128,6 @@ public class BaseController {
 	*/
 	public Page getPage() {
 		return new Page();
-	}
-
-	/**
-	* before(方法描述：方法开始的Log日志) <br />
-	* (方法适用条件描述： – 可选)
-	* @param logger
-	* @param interfaceName
-	* void
-	* @exception
-	* @since 1.0.0
-	*/
-	public static void before(Logger logger, String interfaceName) {
-		logger.info("");
-		logger.info(Const.START_CN);
-		logger.info(interfaceName);
-	}
-
-	/**
-	* after(方法描述：方法结束的Log日志) <br />
-	* (方法适用条件描述： – 可选)
-	* @param logger
-	* void
-	* @exception
-	* @since 1.0.0
-	*/
-	public static void after(Logger logger) {
-		logger.info(Const.END_CN);
-		logger.info(StringUtils.EMPTY);
 	}
 
 	/**

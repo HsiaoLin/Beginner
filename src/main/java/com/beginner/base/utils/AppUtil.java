@@ -16,8 +16,6 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 */
 public class AppUtil {
 
-	protected static Logger logger = Logger.getLogger(AppUtil.class);
-
 	/**
 	 * 设置分页参数
 	 */

@@ -150,8 +150,8 @@ function add(){
 	diag.Drag=true;
 	diag.Title ="新增";
 	diag.URL = '<%=basePath%>system/user/goAdd';
-	diag.Width = 450;
-	diag.Height = 355;
+	diag.Width = $(document).width()/3;
+	diag.Height = $(document).height()/2;
 	diag.CancelEvent = function(){ //关闭事件
 		if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
 			if('${page.currentPage}' == '0'){

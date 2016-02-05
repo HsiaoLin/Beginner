@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.quartz.CronTrigger;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
@@ -16,11 +17,14 @@ import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.TriggerKey;
 import org.quartz.impl.matchers.GroupMatcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
 import com.beginner.base.plugin.page.PageData;
 import com.beginner.base.utils.job.JobEntity;
@@ -40,26 +44,30 @@ import com.beginner.base.utils.job.QuartzManager;
 @RequestMapping(value = "/job")
 public class JobController extends BaseController {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Resource(name = "quartzScheduler")
 	private Scheduler quartzScheduler;
 
 	//去列表定时任务页面
 	@RequestMapping(value = "/goList")
 	public ModelAndView goList() throws Exception {
-		before(logger, "去定时任务列表页面");
+		logger.info("去定时任务列表页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		mv.setViewName("system/tools/task");
 		mv.addObject("pd", pd);
 		mv.addObject("jobInfos", getSchedulerJobInfo(pd));
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//去编辑定时任务页面
 	@RequestMapping(value = "/goEdit")
 	public ModelAndView goEdit() throws Exception {
-		before(logger, "去编辑定时任务页面");
+		logger.info(Const.START_CN);
+		logger.info("去编辑定时任务页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -80,27 +88,31 @@ public class JobController extends BaseController {
 		mv.setViewName("system/tools/edit_job");
 		mv.addObject("pd", pd);
 		mv.addObject("msg", "edit");
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//去新增定时任务页面
 	@RequestMapping(value = "/goAdd")
 	public ModelAndView goAdd() throws Exception {
-		before(logger, "去新增定时任务页面");
+		logger.info(Const.START_CN);
+		logger.info("去新增定时任务页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		mv.setViewName("system/tools/edit_job");
 		mv.addObject("pd", pd);
 		mv.addObject("msg", "add");
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//暂停任务
 	@RequestMapping(value = "/pauseJob")
 	@ResponseBody
 	public ModelAndView pauseJob() throws Exception {
-		before(logger, "暂停任务");
+		logger.info(Const.START_CN);
+		logger.info("暂停任务");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -112,13 +124,15 @@ public class JobController extends BaseController {
 		mv.setViewName("system/tools/task");
 		mv.addObject("pd", pd);
 		mv.addObject("jobInfos", getSchedulerJobInfo(new PageData()));
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//恢复任务
 	@RequestMapping(value = "/resumeJob")
 	public ModelAndView resumeJob() throws Exception {
-		before(logger, "恢复任务");
+		logger.info(Const.START_CN);
+		logger.info("恢复任务");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -129,13 +143,15 @@ public class JobController extends BaseController {
 		mv.setViewName("system/tools/task");
 		mv.addObject("pd", pd);
 		mv.addObject("jobInfos", getSchedulerJobInfo(new PageData()));
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//删除任务
 	@RequestMapping(value = "/deleteJob")
 	public ModelAndView deleteJob() throws Exception {
-		before(logger, "删除任务");
+		logger.info(Const.START_CN);
+		logger.info("删除任务");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -146,13 +162,15 @@ public class JobController extends BaseController {
 		mv.setViewName("system/tools/task");
 		mv.addObject("pd", pd);
 		mv.addObject("jobInfos", getSchedulerJobInfo(new PageData()));
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//立即运行任务
 	@RequestMapping(value = "/triggerJob")
 	public ModelAndView triggerJob() throws Exception {
-		before(logger, "立即运行任务");
+		logger.info(Const.START_CN);
+		logger.info("立即运行任务");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -162,13 +180,15 @@ public class JobController extends BaseController {
 		quartzScheduler.triggerJob(jobKey);
 		mv.setViewName("system/tools/task");
 		mv.addObject("pd", pd);
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//添加一个定时任务
 	@RequestMapping(value = "/add")
 	public ModelAndView add() throws Exception {
-		before(logger, "添加定时任务");
+		logger.info(Const.START_CN);
+		logger.info("添加定时任务");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -182,13 +202,15 @@ public class JobController extends BaseController {
 		mv.setViewName("system/tools/task");
 		mv.addObject("pd", pd);
 		mv.addObject("jobInfos", getSchedulerJobInfo(new PageData()));
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 	//修改一个定时任务
 	@RequestMapping(value = "/edit")
 	public ModelAndView edit() throws Exception {
-		before(logger, "修改定时任务");
+		logger.info(Const.START_CN);
+		logger.info("修改定时任务");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -201,7 +223,8 @@ public class JobController extends BaseController {
 		mv.setViewName("system/tools/task");
 		mv.addObject("pd", pd);
 		mv.addObject("jobInfos", getSchedulerJobInfo(new PageData()));
-		after(logger);
+		logger.info(Const.END_CN);
+		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 
