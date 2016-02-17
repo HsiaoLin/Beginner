@@ -90,7 +90,7 @@
 			if(check()){
 				var loginname = $("#loginname").val();
 				var password = $("#password").val();
-				var code = loginname+",99,"+password+",99,"+$("#code").val();
+				var code = loginname+",beginner,"+password+",beginner,"+$("#code").val();
 				$.ajax({
 					type: "POST",
 					url: '<%=basePath%>login/login_validation',

@@ -1,11 +1,11 @@
 /**
-* <b>项目名：</b>勿忘初心方得始终<br/>
-* <b>包名：</b>com.beginner.system.controller<br/>
-* <b>文件名：</b>LoginController.java<br/>
-* <b>版本信息：</b><br/>
-* <b>日期：</b>2015年10月26日-下午3:18:18<br/>
-* <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
-*/
+ * <b>项目名：</b>勿忘初心方得始终<br/>
+ * <b>包名：</b>com.beginner.system.controller<br/>
+ * <b>文件名：</b>LoginController.java<br/>
+ * <b>版本信息：</b><br/>
+ * <b>日期：</b>2015年10月26日-下午3:18:18<br/>
+ * <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
+ */
 package com.beginner.system.controller.login;
 
 import java.util.HashMap;
@@ -17,6 +17,8 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,58 +32,52 @@ import com.beginner.base.utils.Tools;
 import com.beginner.system.bean.user.User;
 
 /**
-* <b>类名称：</b>LoginController<br/>
-* <b>类描述：</b><br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>创建时间：</b>2015年10月26日 下午3:18:18<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b><br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
+ * <b>类名称：</b>LoginController<br/>
+ * <b>类描述：</b><br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>创建时间：</b>2015年10月26日 下午3:18:18<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b><br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
 @Controller
 @RequestMapping(value = "/login")
 public class LoginController extends BaseController {
 
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	/**
-	* to_login(方法描述：访问登陆页面) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* ModelAndView
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 访问登陆页面第一版
+	 */
 	@RequestMapping(value = "/to_login")
 	public ModelAndView toLogin() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		pd.put(Const.SYSTEM_NAME, Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
 		mv.setViewName("system/admin/login");
 		mv.addObject("pd", pd);
 		return mv;
 	}
 
-	@RequestMapping(value = "/to_signIn")
-	public ModelAndView toSignIn() {
+	/**
+	 * 访问登陆页面第二版
+	 */
+	@RequestMapping(value = "/to_signin")
+	public ModelAndView toSignin() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
-		mv.setViewName("system/admin/signIn");
+		pd.put(Const.SYSTEM_NAME, Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		mv.setViewName("system/admin/signin");
 		mv.addObject("pd", pd);
 		return mv;
 	}
 
 	/**
-	* login(方法描述：请求登录，验证用户) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* @throws Exception
-	* Object
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 请求登录，验证用户
+	 */
 	@RequestMapping(value = "/login_validation", produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	public Object loginValidation() throws Exception {
@@ -89,7 +85,7 @@ public class LoginController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		String errInfo = "";
-		String KEYDATA[] = pd.getString("KEYDATA").split(",99,");
+		String KEYDATA[] = pd.getString("KEYDATA").split(",beginner,");
 
 		if (null != KEYDATA && KEYDATA.length == 3) {
 			//shiro管理的session
@@ -124,6 +120,8 @@ public class LoginController extends BaseController {
 				try {
 					pds = BeanUtils.describe(user);
 				} catch (Exception e1) {
+					logger.error("登陆失败：用户转Map发生异常！");
+					logger.debug("");
 					throw new Exception();
 				}
 
@@ -140,6 +138,7 @@ public class LoginController extends BaseController {
 				try {
 					subject.login(token);
 				} catch (AuthenticationException e) {
+					logger.info("登陆失败：身份验证失败！");
 					errInfo = "身份验证失败！";
 				}
 				//						} else {
@@ -152,10 +151,12 @@ public class LoginController extends BaseController {
 				//					errInfo = "codeerror"; //验证码输入有误
 				//				}
 				if (Tools.isEmpty(errInfo)) {
+					logger.info("{}登陆成功", user.getName());
 					errInfo = "success"; //验证成功
 				}
 			}
 		} else {
+			logger.info("登陆失败：缺失必要参数！");
 			errInfo = "error"; //缺少参数
 		}
 		map.put("result", errInfo);
@@ -164,38 +165,27 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 进入tab标签
-	 * @return
 	 */
 	@RequestMapping(value = "/index")
 	public String index() {
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		pd.put(Const.SYSTEM_NAME, Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
 		this.getRequest().setAttribute("pd", pd);
 		return "system/admin/index";
 	}
 
 	/**
-	* tab(方法描述：tab页签) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * tab页签
+	 */
 	@RequestMapping(value = "/tab")
 	public String tab() {
 		return "system/admin/tab";
 	}
 
 	/**
-	* defaultPage(方法描述：进入首页后右侧显示默认页面) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 进入首页后右侧显示默认页面
+	 */
 	@RequestMapping(value = "/login_default")
 	public String defaultPage() {
 		return "system/admin/default";

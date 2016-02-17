@@ -9,7 +9,10 @@
 package com.beginner.system.controller.login;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +21,7 @@ import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
 import com.beginner.base.plugin.page.PageData;
 import com.beginner.base.utils.Tools;
+import com.beginner.system.bean.user.User;
 
 /**
 * <b>类名称：</b>LogoutController<br/>
@@ -31,15 +35,20 @@ import com.beginner.base.utils.Tools;
 @Controller
 public class LogoutController extends BaseController {
 
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.put("SYSNAME", Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
-		mv.setViewName("system/admin/login");
+		pd.put(Const.SYSTEM_NAME, Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
+		mv.setViewName("system/admin/signin");
 		mv.addObject("pd", pd);
 		Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
+		User user = (User) session.getAttribute(Const.USER);
+		logger.info("{}已登出", user.getName());
 		currentUser.logout();
 		return mv;
 	}

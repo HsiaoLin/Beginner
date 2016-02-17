@@ -17,8 +17,8 @@ import org.springframework.web.servlet.view.document.AbstractExcelView;
 import com.beginner.base.plugin.page.PageData;
 
 /**
-* 导入到EXCEL
-* 类名称：ObjectExcelView.java
+ * 导入到EXCEL
+ * 类名称：ObjectExcelView.java
  */
 @SuppressWarnings("deprecation")
 public class ObjectExcelView extends AbstractExcelView {
@@ -66,9 +66,6 @@ public class ObjectExcelView extends AbstractExcelView {
 				cell.setCellStyle(contentStyle);
 				setText(cell, varstr);
 			}
-
 		}
-
 	}
-
 }

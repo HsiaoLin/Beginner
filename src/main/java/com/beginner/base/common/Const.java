@@ -142,6 +142,8 @@ public class Const {
 	*/
 	public static final String SYSNAME = "admin/config/SYSNAME.txt";
 
+	public static final String SYSTEM_NAME = "SYSNAME";
+
 	/**
 	* PAGE:（变量描述：分页条数配置路径）
 	* @since 1.0.0

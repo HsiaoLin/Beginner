@@ -72,17 +72,13 @@ public class ObjectExcelRead {
 					} else {
 						cellValue = "";
 					}
-
 					varpd.put("var" + j, cellValue);
-
 				}
 				varList.add(varpd);
 			}
-
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-
 		return varList;
 	}
 }

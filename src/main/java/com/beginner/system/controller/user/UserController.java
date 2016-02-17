@@ -45,7 +45,7 @@ import com.beginner.system.service.user.IUserService;
 @RequestMapping(value = "/system/user")
 public class UserController extends BaseController {
 
-	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	String menuUrl = "system/user/list"; //菜单地址(权限用)
 
