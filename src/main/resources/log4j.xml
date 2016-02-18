@@ -2,6 +2,13 @@
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
+	<!-- Root Logger -->
+	<root>
+		<priority value="DEBUG" />
+		<appender-ref ref="BEGINNER" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
 	<!-- Appenders -->
 	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
@@ -53,11 +60,4 @@
 	<logger name="java.sql">
 		<level value="info" />
 	</logger>
-
-	<!-- Root Logger -->
-	<root>
-		<priority value="INFO" />
-		<appender-ref ref="BEGINNER" />
-		<appender-ref ref="CONSOLE" />
-	</root>
 </log4j:configuration>

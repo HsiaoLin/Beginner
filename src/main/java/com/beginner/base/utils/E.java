@@ -5,7 +5,7 @@ import net.sf.json.JSONObject;
 
 /**
 * <b>类名称：</b>E<br/>
-* <b>类描述：</b>枚举工具类<br/>
+* <b>类描述：</b>枚举工具类-新版本做返回信息国际化、自定义、可配置<br/>
 * <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2016-1-18 下午4:20:41<br/>
@@ -14,19 +14,17 @@ import net.sf.json.JSONObject;
 */
 public enum E {
 
-	//====================状态码KEY、VALUE、信息的KEY、数据的KEY start====================
+	//状态码KEY、VALUE、信息的KEY、数据的KEY
 	SUCCESS("status", "0", "msg", "data"),
 
 	FAILURE("status", "1", "msg", "data"),
-	//====================状态码KEY、VALUE、信息的KEY、数据的KEY end====================
 
-	//====================状态码、中文信息、英文信息 start====================
+	//状态码、中文信息、英文信息
 	MSG_SUCCESS("0", "成功", "success"),
 
 	MSG_FAILURE("1", "失败", "failure"),
-	//====================状态码、中文信息、英文信息 end====================
 
-	//====================状态码、中文信息、英文信息 start====================
+	//状态码、中文信息、英文信息
 	MSG_1001("1001", "新增失败", "The put fails."),
 
 	MSG_1002("1002", "更新失败", "The update fails."),
@@ -38,7 +36,6 @@ public enum E {
 	MSG_1005("1005", "程序异常", "The program is Abnormal."),
 
 	MSG_1006("1006", "参数非法", "Illegal request parameters."),
-	//====================状态码、中文信息、英文信息 end====================
 	;
 
 	public static void main(String[] args) {

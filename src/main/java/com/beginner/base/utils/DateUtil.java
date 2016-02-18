@@ -9,14 +9,14 @@ import java.util.Date;
 import org.apache.commons.lang3.time.DateUtils;
 
 /**
-* <b>类名称：</b>DateUtil<br/>
-* <b>类描述：</b>日期工具类<br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
+ * <b>类名称：</b>DateUtil<br/>
+ * <b>类描述：</b>日期工具类<br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
 public class DateUtil {
 
 	private final static SimpleDateFormat yyyy = new SimpleDateFormat("yyyy");
@@ -33,75 +33,43 @@ public class DateUtil {
 			"yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM", "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM" };
 
 	/**
-	* getYear(方法描述：获取YYYY格式) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型YYYY格式日期
+	 */
 	public static String getYear() {
 		return yyyy.format(new Date());
 	}
 
 	/**
-	* getDay(方法描述：获取YYYY-MM-DD格式) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型YYYY-MM-DD格式日期
+	 */
 	public static String getDay() {
 		return yyyy_MM_dd.format(new Date());
 	}
 
 	/**
-	* getDays(方法描述：获取YYYYMMDD格式) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型YYYYMMDD格式日期
+	 */
 	public static String getDays() {
 		return yyyyMMdd.format(new Date());
 	}
 
 	/**
-	* getTime(方法描述：获取YYYY-MM-DD HH:mm:ss格式) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型YYYY-MM-DD HH:mm:ss格式日期
+	 */
 	public static String getTime() {
 		return yyyy_MM_dd_HH_mm_ss.format(new Date());
 	}
 
 	/**
-	* getTimeSecond(方法描述：获取YYYYMMDDHHmmss格式) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型YYYYMMDDHHmmss格式日期
+	 */
 	public static String getTimeSecond() {
 		return yyyyMMddHHmmss.format(new Date());
 	}
 
 	/**
-	* compareDate(方法描述：日期比较，如果s>=e 返回true 否则返回false) <br />
-	* (方法适用条件描述： – 可选)
-	* @param s
-	* @param e
-	* @return
-	* boolean
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 日期比较，如果s>=e 返回true 否则返回false
+	 */
 	public static boolean compareDate(String s, String e) {
 		if (fomatDate(s) == null || fomatDate(e) == null) {
 			return false;
@@ -110,14 +78,8 @@ public class DateUtil {
 	}
 
 	/**
-	* fomatDate(方法描述：格式化日期) <br />
-	* (方法适用条件描述： – 可选)
-	* @param date
-	* @return
-	* Date
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取Date类型yyyy-MM-dd格式日期
+	 */
 	public static Date fomatDate(String date) {
 		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -129,15 +91,8 @@ public class DateUtil {
 	}
 
 	/**
-	* fomatDateEx(方法描述：格式化日期) <br />
-	* (方法适用条件描述： – 可选)
-	* @param date
-	* @param pattern
-	* @return
-	* Date
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取Date类型指定格式日期
+	 */
 	public static Date fomatDateEx(String date, String pattern) {
 		if (date == null || "".equals(date)) {
 			return null;
@@ -152,14 +107,8 @@ public class DateUtil {
 	}
 
 	/**
-	* fomatDateString(方法描述：格式化日期) <br />
-	* (方法适用条件描述： – 可选)
-	* @param datetime
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型YYYY-MM-DD HH:mm格式日期
+	 */
 	public static String fomatDateString(String datetime) {
 		StringBuffer dateStr = new StringBuffer();
 		if (datetime != null && !"".equals(datetime)) {
@@ -180,14 +129,8 @@ public class DateUtil {
 	}
 
 	/**
-	* isValidDate(方法描述：校验日期是否合法) <br />
-	* (方法适用条件描述： – 可选)
-	* @param s
-	* @return
-	* boolean
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 校验日期是否合法
+	 */
 	public static boolean isValidDate(String s) {
 		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -199,15 +142,8 @@ public class DateUtil {
 	}
 
 	/**
-	* getDiffYear(方法描述：时间相减得到年数) <br />
-	* (方法适用条件描述： endTime - startTime)
-	* @param startTime
-	* @param endTime
-	* @return
-	* int
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 时间相减得到年数(endTime - startTime)
+	 */
 	public static int getDiffYear(String startTime, String endTime) {
 		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
 		try {
@@ -219,15 +155,8 @@ public class DateUtil {
 	}
 
 	/**
-	* getDaySub(方法描述：时间相减得到天数) <br />
-	* (方法适用条件描述： endDateStr-beginDateStr)
-	* @param beginDateStr
-	* @param endDateStr
-	* @return
-	* long
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 时间相减得到天数(endDateStr-beginDateStr)
+	 */
 	public static long getDaySub(String beginDateStr, String endDateStr) {
 		long day = 0;
 		java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd");
@@ -245,14 +174,8 @@ public class DateUtil {
 	}
 
 	/**
-	* getAfterDayDate(方法描述：得到n天之后的日期) <br />
-	* (方法适用条件描述： – 可选)
-	* @param days
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 得到n天之后的日期
+	 */
 	public static String getAfterDayDate(String days) {
 		int daysInt = Integer.parseInt(days);
 
@@ -267,14 +190,8 @@ public class DateUtil {
 	}
 
 	/**
-	* getAfterDayWeek(方法描述：得到n天之后是周几) <br />
-	* (方法适用条件描述： – 可选)
-	* @param days
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 得到n天之后是周几
+	 */
 	public static String getAfterDayWeek(String days) {
 		int daysInt = Integer.parseInt(days);
 
@@ -289,15 +206,8 @@ public class DateUtil {
 	}
 
 	/**
-	* getDateAfterMinute(方法描述：获取指定时间，指定分钟后的时间) <br />
-	* (方法适用条件描述： – 可选)
-	* @param date
-	* @param minute
-	* @return
-	* Date
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取指定时间，指定分钟后的时间
+	 */
 	public static Date getDateAfterMinute(Date date, int minute) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
@@ -306,46 +216,28 @@ public class DateUtil {
 	}
 
 	/**
-	* getTimeFormatDateString(方法描述：获取yyyy-MM-dd HH:mm:ss格式的时间字符串) <br />
-	* (方法适用条件描述： – 可选)
-	* @param date
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型yyyy-MM-dd HH:mm:ss格式日期
+	 */
 	public static String getTimeFormatDateString(Date date) {
 		SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return sdfd.format(date);
 	}
 
 	/**
-	* getFormatDateString(方法描述：获取yyyy-MM-dd格式的时间字符串) <br />
-	* (方法适用条件描述： – 可选)
-	* @param date
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 获取String类型yyyy-MM-dd格式日期
+	 */
 	public static String getFormatDateString(Date date) {
 		SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd");
 		return sdfd.format(date);
 	}
 
 	/**
-	* parseDate(方法描述：日期型字符串转化为日期格式) <br />
-	* (方法适用条件描述： – 可选)
-	* @param str
-	* 适用格式:
-	* { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
-	*   "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm",
-	*   "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm" }
-	* @return
-	* Date
-	* @exception
-	* @since 1.0.0
-	*/
+	 * 日期型字符串转化为日期格式
+	 * 适用格式:
+	 * { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", 
+	 *   "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm",
+	 *   "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm" }
+	 */
 	public static Date parseDate(Object str) {
 		if (str == null) {
 			return null;

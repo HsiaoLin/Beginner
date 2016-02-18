@@ -117,7 +117,7 @@ public class CreateCodeController extends BaseController {
 		//Freemarker.printFile("docTemplate.ftl", root, "说明.doc", filePath, ftlPath);
 
 		/*生成的全部代码压缩成zip文件*/
-		FileZip.zip(PathUtil.getClasspath() + "admin/ftl/code", PathUtil.getClasspath() + "admin/ftl/code.zip");
+		FileZip.zip(PathUtil.getClasspath() + "admin/ftl/code");
 
 		/*下载代码*/
 		FileDownload.fileDownload(response, PathUtil.getClasspath() + "admin/ftl/code.zip", "code.zip");
