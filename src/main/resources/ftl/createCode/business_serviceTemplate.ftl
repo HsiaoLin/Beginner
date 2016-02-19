@@ -12,15 +12,15 @@ import com.beginner.base.plugin.page.Page;
 import com.beginner.base.plugin.page.PageData;
 
 /**
-* <b>类名称：</b>${objectName}Service<br/>
-* <b>类描述：</b><br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>创建时间：</b>${nowDate?string("yyyy-MM-dd")}<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b><br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
+ * <b>类名称：</b>${objectName}Service<br/>
+ * <b>类描述：</b><br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>创建时间：</b>${nowDate?string("yyyy-MM-dd")}<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b><br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
 @Service("${objectNameLower}Service")
 @Transactional(readOnly = true)
 public class ${objectName}Service implements I${objectName}Service {
@@ -29,8 +29,8 @@ public class ${objectName}Service implements I${objectName}Service {
 	private DAO dao;
 
 	/*
-	* 新增
-	*/
+	 * 新增
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public Object save(PageData pd) throws Exception {
@@ -38,8 +38,8 @@ public class ${objectName}Service implements I${objectName}Service {
 	}
 
 	/*
-	* 删除
-	*/
+	 * 删除
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public Object delete(PageData pd) throws Exception {
@@ -47,8 +47,8 @@ public class ${objectName}Service implements I${objectName}Service {
 	}
 
 	/*
-	* 批量删除
-	*/
+	 * 批量删除
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public void deleteAll(String[] ArrayDATA_IDS) throws Exception {
@@ -56,8 +56,8 @@ public class ${objectName}Service implements I${objectName}Service {
 	}
 
 	/*
-	* 修改
-	*/
+	 * 修改
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public Object edit(PageData pd) throws Exception {
@@ -65,8 +65,8 @@ public class ${objectName}Service implements I${objectName}Service {
 	}
 
 	/*
-	*列表
-	*/
+	 *列表
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> list(Page page) throws Exception {
@@ -74,8 +74,8 @@ public class ${objectName}Service implements I${objectName}Service {
 	}
 
 	/*
-	*列表(全部)
-	*/
+	 *列表(全部)
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> listAll(PageData pd) throws Exception {
@@ -83,8 +83,8 @@ public class ${objectName}Service implements I${objectName}Service {
 	}
 
 	/*
-	* 通过id获取数据
-	*/
+	 * 通过id获取数据
+	 */
 	@Override
 	public PageData findById(PageData pd) throws Exception {
 		return (PageData) dao.findForObject("${objectName}Mapper.findById", pd);

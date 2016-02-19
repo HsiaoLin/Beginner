@@ -36,7 +36,7 @@ import com.beginner.base.utils.UUIDUtil;
  * <b>类名称：</b>BaseController<br/>
  * <b>类描述：</b><br/>
  * <b>创建人：</b>Hsiao Lin Studio<br/>
- * <b>创建时间：</b>2015年10月26日 下午3:24:40<br/>
+ * <b>创建时间：</b>2015年05月21日 下午6:18:18<br/>
  * <b>修改人：</b><br/>
  * <b>修改时间：</b><br/>
  * <b>修改备注：</b><br/>
@@ -45,37 +45,37 @@ import com.beginner.base.utils.UUIDUtil;
 public class BaseController {
 
 	/**
-	* getPageData(方法描述：获取PageData) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* PageData
-	* @exception
-	* @since 1.0.0
-	*/
+	 * getPageData(方法描述：获取PageData) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @return
+	 * PageData
+	 * @exception
+	 * @since 1.0.0
+	 */
 	public PageData getPageData() {
 		return new PageData(this.getRequest());
 	}
 
 	/**
-	* getModelAndView(方法描述：获取ModelAndView) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* ModelAndView
-	* @exception
-	* @since 1.0.0
-	*/
+	 * getModelAndView(方法描述：获取ModelAndView) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @return
+	 * ModelAndView
+	 * @exception
+	 * @since 1.0.0
+	 */
 	public ModelAndView getModelAndView() {
 		return new ModelAndView();
 	}
 
 	/**
-	* getRequest(方法描述：取得request对象) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* HttpServletRequest
-	* @exception
-	* @since 1.0.0
-	*/
+	 * getRequest(方法描述：取得request对象) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @return
+	 * HttpServletRequest
+	 * @exception
+	 * @since 1.0.0
+	 */
 	public HttpServletRequest getRequest() {
 		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	}
@@ -114,30 +114,30 @@ public class BaseController {
 	 * @exception
 	 * @since 1.0.0
 	 */
-	public String getUUID() {
-		return UUIDUtil.getUUID();
+	public String get36UUID() {
+		return UUIDUtil.get36UUID();
 	}
 
 	/**
-	* getPage(方法描述：获取分页列表的信息 ) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* Page
-	* @exception
-	* @since 1.0.0
-	*/
+	 * getPage(方法描述：获取分页列表的信息 ) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @return
+	 * Page
+	 * @exception
+	 * @since 1.0.0
+	 */
 	public Page getPage() {
 		return new Page();
 	}
 
 	/**
-	* getRights(方法描述：权限验证) <br />
-	* (方法适用条件描述： – 可选)
-	* @return
-	* Map<String,String>
-	* @exception
-	* @since 1.0.0
-	*/
+	 * getRights(方法描述：权限验证) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @return
+	 * Map<String,String>
+	 * @exception
+	 * @since 1.0.0
+	 */
 	@SuppressWarnings("unchecked")
 	public Map<String, String> getRights() {
 		Subject currentUser = SecurityUtils.getSubject(); //shiro管理的session
@@ -146,14 +146,14 @@ public class BaseController {
 	}
 
 	/**
-	* htmlEscape(方法描述：HTML转义-不会转义中文) <br />
-	* (方法适用条件描述： – 可选)
-	* @param text
-	* @return
-	* String
-	* @exception
-	* @since 1.0.0
-	*/
+	 * htmlEscape(方法描述：HTML转义-不会转义中文) <br />
+	 * (方法适用条件描述： – 可选)
+	 * @param text
+	 * @return
+	 * String
+	 * @exception
+	 * @since 1.0.0
+	 */
 	public String htmlEscape(String text) {
 		return HtmlUtils.htmlEscape(text);
 	}
@@ -172,13 +172,13 @@ public class BaseController {
 	}
 
 	/**
-	* initBinder(方法描述：日期、字符串和Javabean中的日期类型的属性自动转换) <br />
-	* (方法适用条件描述：支持的日期格式详见com.beginner.utils.DateUtil)
-	* @param binder
-	* void
-	* @exception
-	* @since 1.0.0
-	*/
+	 * initBinder(方法描述：日期、字符串和Javabean中的日期类型的属性自动转换) <br />
+	 * (方法适用条件描述：支持的日期格式详见com.beginner.utils.DateUtil)
+	 * @param binder
+	 * void
+	 * @exception
+	 * @since 1.0.0
+	 */
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new PropertyEditorSupport() {

@@ -29,6 +29,8 @@ public class DateUtil {
 
 	private final static SimpleDateFormat yyyyMMddHHmmss = new SimpleDateFormat("yyyyMMddHHmmss");
 
+	private final static SimpleDateFormat yyyyMMddHHmmssS = new SimpleDateFormat("yyyyMMddHHmmssS");
+
 	private static String[] PARSE_PATTERNS = { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", "yyyy/MM/dd",
 			"yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM", "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM" };
 
@@ -65,6 +67,13 @@ public class DateUtil {
 	 */
 	public static String getTimeSecond() {
 		return yyyyMMddHHmmss.format(new Date());
+	}
+
+	/**
+	 * 获取String类型yyyyMMddHHmmssS格式日期
+	 */
+	public static String getTimeMillisecond() {
+		return yyyyMMddHHmmssS.format(new Date());
 	}
 
 	/**

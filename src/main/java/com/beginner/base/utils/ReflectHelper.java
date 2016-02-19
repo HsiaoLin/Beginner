@@ -7,21 +7,14 @@ import java.lang.reflect.Field;
 * <b>类描述：</b><br/>
 * <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
-* <b>修改时间：</b>2015年10月22日 下午4:11:22<br/>
+* <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
 public class ReflectHelper {
 
 	/**
-	* getFieldByFieldName(方法描述：获取obj对象fieldName的Field) <br />
-	* (方法适用条件描述： – 可选)
-	* @param obj
-	* @param fieldName
-	* @return
-	* Field
-	* @exception
-	* @since 1.0.0
+	 * 利用反射获取obj对象fieldName的Field
 	*/
 	public static Field getFieldByFieldName(Object obj, String fieldName) {
 		for (Class<?> superClass = obj.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()) {
@@ -34,18 +27,7 @@ public class ReflectHelper {
 	}
 
 	/**
-	* getValueByFieldName(方法描述：获取obj对象fieldName的属性值) <br />
-	* (方法适用条件描述： – 可选)
-	* @param obj
-	* @param fieldName
-	* @return
-	* @throws SecurityException
-	* @throws NoSuchFieldException
-	* @throws IllegalArgumentException
-	* @throws IllegalAccessException
-	* Object
-	* @exception
-	* @since 1.0.0
+	 * 利用反射获取obj对象fieldName的属性值
 	*/
 	public static Object getValueByFieldName(Object obj, String fieldName) throws SecurityException, NoSuchFieldException, IllegalArgumentException,
 			IllegalAccessException {
@@ -64,18 +46,7 @@ public class ReflectHelper {
 	}
 
 	/**
-	* setValueByFieldName(方法描述：设置obj对象fieldName的属性值) <br />
-	* (方法适用条件描述： – 可选)
-	* @param obj
-	* @param fieldName
-	* @param value
-	* @throws SecurityException
-	* @throws NoSuchFieldException
-	* @throws IllegalArgumentException
-	* @throws IllegalAccessException
-	* void
-	* @exception
-	* @since 1.0.0
+	 * 利用反射设置obj对象fieldName的属性值
 	*/
 	public static void setValueByFieldName(Object obj, String fieldName, Object value) throws SecurityException, NoSuchFieldException,
 			IllegalArgumentException, IllegalAccessException {

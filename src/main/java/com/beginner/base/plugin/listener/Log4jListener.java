@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  * <b>类描述：</b>Servlet容器初始化时加载Log4j外部扩展的配置文件，需要时在web.xml中添加此监听并去掉org.springframework.web.util.Log4jConfigListener此监听。<br/>
  * <b>创建人：</b>Hsiao Lin Studio<br/>
  * <b>修改人：</b><br/>
- * <b>修改时间：</b>2015年10月28日 上午11:20:35<br/>
+ * <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
  * <b>修改备注：</b><br/>
  * @version 1.0.0<br/>
  */

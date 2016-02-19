@@ -35,9 +35,8 @@ import com.beginner.system.service.user.IUserService;
  * <b>类名称：</b>UserController<br/>
  * <b>类描述：</b><br/>
  * <b>创建人：</b>Hsiao Lin Studio<br/>
- * <b>创建时间：</b>2015-10-28<br/>
  * <b>修改人：</b><br/>
- * <b>修改时间：</b><br/>
+ * <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
  * <b>修改备注：</b><br/>
  * @version 1.0.0<br/>
  */
@@ -56,17 +55,21 @@ public class UserController extends BaseController {
 	 * 新增
 	 */
 	@RequestMapping(value = "/save")
-	public ModelAndView save() throws Exception {
+	public ModelAndView save() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
-		pd = this.getPageData();
-		pd.put("USER_ID", null); //主键
-		pd.put("USER_STATUS", "0"); //用户状态
-		pd.put("LAST_LOGIN", ""); //最后登陆时间
-		pd.put("PARENT_ID", "0"); //父用户ID
-		pd.put("BUYING_AGENT_ID", "0"); //采购代理商ID
-		pd.put("SUPPLIER_ID", "0"); //供应商ID
-		userService.save(pd);
+		try {
+			pd = this.getPageData();
+			pd.put("USER_ID", null); //主键
+			pd.put("USER_STATUS", "0"); //用户状态
+			pd.put("LAST_LOGIN", ""); //最后登陆时间
+			pd.put("PARENT_ID", "0"); //父用户ID
+			pd.put("BUYING_AGENT_ID", "0"); //采购代理商ID
+			pd.put("SUPPLIER_ID", "0"); //供应商ID
+			userService.save(pd);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		mv.addObject("msg", "success");
 		mv.setViewName("save_result");
 		return mv;

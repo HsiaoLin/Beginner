@@ -2,8 +2,7 @@
 * <b>项目名：</b>勿忘初心方得始终<br/>
 * <b>包名：</b>com.beginner.${packageName}.controller<br/>
 * <b>文件名：</b>${objectName}Controller.java<br/>
-* <b>版本信息：</b><br/>
-* <b>日期：</b>2015年10月27日-下午7:57:07<br/>
+* <b>日期：</b>2015年05月21日 下午6:18:18<br/>
 * <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
 */
 package com.beginner.system.controller.${packageName};
@@ -23,6 +22,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -44,7 +45,7 @@ import com.beginner.system.service.${objectNameLower}.${objectName}Service;
 * <b>类名称：</b>${objectName}Controller<br/>
 * <b>类描述：</b><br/>
 * <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>创建时间：</b>${nowDate?string("yyyy-MM-dd")}<br/>
+* <b>创建时间：</b>2015年05月21日 下午6:18:18<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b><br/>
 * <b>修改备注：</b><br/>
@@ -53,7 +54,9 @@ import com.beginner.system.service.${objectNameLower}.${objectName}Service;
 @Controller
 @RequestMapping(value="/${packageName}/${objectNameLower}")
 public class ${objectName}Controller extends BaseController {
-	
+
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	String menuUrl = "${packageName}/${objectNameLower}/list"; //菜单地址(权限用)
 	@Resource(name="${objectNameLower}Service")
 	private ${objectName}Service ${objectNameLower}Service;
@@ -62,35 +65,37 @@ public class ${objectName}Controller extends BaseController {
 	 * 新增
 	 */
 	@RequestMapping(value="/save")
-	public ModelAndView save() throws Exception{
-		before(logger, "新增${objectName}");
+	public ModelAndView save() {
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "add")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
-		pd = this.getPageData();
-		pd.put("${objectNameUpper}_ID", null);	//主键
-<#list fieldList as var>
-	<#if var[3] == "否">
-		<#if var[1] == 'Date'>
-		pd.put("${var[0]}", Tools.date2Str(new Date()));	//${var[2]}
-		<#else>
-		pd.put("${var[0]}", "${var[4]?replace("无","")}");	//${var[2]}
+		try {
+			pd = this.getPageData();
+			pd.put("${objectNameUpper}_ID", null);	//主键
+	<#list fieldList as var>
+		<#if var[3] == "否">
+			<#if var[1] == 'Date'>
+			pd.put("${var[0]}", Tools.date2Str(new Date()));	//${var[2]}
+			<#else>
+			pd.put("${var[0]}", "${var[4]?replace("无","")}");	//${var[2]}
+			</#if>
 		</#if>
-	</#if>
-</#list>
-		${objectNameLower}Service.save(pd);
+	</#list>
+			${objectNameLower}Service.save(pd);
+			logger.info("新增${objectName}成功");
+		} catch (Exception e) {
+			logger.error("新增${objectName}失败", e);
+		}
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
-		after(logger);
 		return mv;
 	}
-	
+
 	/**
 	 * 删除
 	 */
 	@RequestMapping(value="/delete")
 	public void delete(PrintWriter out){
-		before(logger, "删除${objectName}");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "del")){return;} //校验权限
 		PageData pd = new PageData();
 		try{
@@ -98,36 +103,37 @@ public class ${objectName}Controller extends BaseController {
 			${objectNameLower}Service.delete(pd);
 			out.write("success");
 			out.close();
+			logger.info("删除${objectName}成功");
 		} catch(Exception e){
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("删除${objectName}失败", e);
 		}
 	}
-	
+
 	/**
 	 * 修改
 	 */
 	@RequestMapping(value="/edit")
-	public ModelAndView edit() throws Exception{
-		before(logger, "修改${objectName}");
+	public ModelAndView edit() {
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "edit")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
-		pd = this.getPageData();
-		${objectNameLower}Service.edit(pd);
+		try {
+			pd = this.getPageData();
+			${objectNameLower}Service.edit(pd);
+			logger.info("修改${objectName}成功");
+		} catch (Exception e) {
+			logger.error("修改${objectName}失败", e);
+		}
 		mv.addObject("msg","success");
 		mv.setViewName("save_result");
-		after(logger);
 		return mv;
 	}
-	
+
 	/**
 	 * 列表
 	 */
 	@RequestMapping(value="/list")
 	public ModelAndView list(Page page){
-		before(logger, "列表${objectName}");
 		//if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;} //校验权限
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
@@ -141,63 +147,50 @@ public class ${objectName}Controller extends BaseController {
 			//权限
 			mv.addObject(Const.ROLE_RIGHTS, this.getRights());
 		} catch(Exception e){
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("${objectName}分页列表查询失败", e);
 		}
 		return mv;
 	}
-	
+
 	/**
 	 * 去新增页面
 	 */
 	@RequestMapping(value="/goAdd")
 	public ModelAndView goAdd(){
-		before(logger, "去新增${objectName}页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		try {
-			mv.setViewName("${packageName}/${objectNameLower}/${objectNameLower}_edit");
-			mv.addObject("msg", "save");
-			mv.addObject("pd", pd);
-		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
-		}
+		mv.setViewName("${packageName}/${objectNameLower}/${objectNameLower}_edit");
+		mv.addObject("msg", "save");
+		mv.addObject("pd", pd);
 		return mv;
 	}	
-	
+
 	/**
 	 * 去修改页面
 	 */
 	@RequestMapping(value="/goEdit")
 	public ModelAndView goEdit(){
-		before(logger, "去修改${objectName}页面");
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
-		pd = this.getPageData();
 		try {
+			pd = this.getPageData();
 			pd = ${objectNameLower}Service.findById(pd);//根据ID读取
-			mv.setViewName("${packageName}/${objectNameLower}/${objectNameLower}_edit");
-			mv.addObject("msg", "edit");
-			mv.addObject("pd", pd);
 		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("根据ID查询${objectName}失败", e);
 		}
+		mv.setViewName("${packageName}/${objectNameLower}/${objectNameLower}_edit");
+		mv.addObject("msg", "edit");
+		mv.addObject("pd", pd);
 		return mv;
-	}	
-	
+	}
+
 	/**
 	 * 批量删除
 	 */
 	@RequestMapping(value="/deleteAll")
 	@ResponseBody
 	public Object deleteAll() {
-		before(logger, "批量删除${objectName}");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "dell")){return null;} //校验权限
 		PageData pd = new PageData();		
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -214,21 +207,20 @@ public class ${objectName}Controller extends BaseController {
 			}
 			pdList.add(pd);
 			map.put("list", pdList);
+
+			logger.info("批量删除${objectName}成功");
 		} catch (Exception e) {
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("批量删除${objectName}失败", e);
 		}
 		return AppUtil.returnObject(pd, map);
 	}
-	
-	/*
+
+	/**
 	 * 导出到excel
 	 * @return
 	 */
 	@RequestMapping(value="/excel")
 	public ModelAndView exportExcel(){
-		before(logger, "导出${objectName}到excel");
 		if(!Jurisdiction.buttonJurisdiction(menuUrl, "cha")){return null;}
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
@@ -256,10 +248,10 @@ public class ${objectName}Controller extends BaseController {
 			dataMap.put("varList", varList);
 			ObjectExcelView erv = new ObjectExcelView();
 			mv = new ModelAndView(erv,dataMap);
+
+			logger.info("导出${objectName}到excel成功");
 		} catch(Exception e){
-			logger.error(e.toString(), e);
-		} finally {
-			after(logger);
+			logger.error("导出${objectName}到excel失败", e);
 		}
 		return mv;
 	}

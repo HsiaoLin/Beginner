@@ -12,15 +12,14 @@ import com.beginner.base.plugin.page.Page;
 import com.beginner.base.plugin.page.PageData;
 
 /**
-* <b>类名称：</b>UserService<br/>
-* <b>类描述：</b><br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>创建时间：</b>2015-10-28<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b><br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
+ * <b>类名称：</b>UserService<br/>
+ * <b>类描述：</b><br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
 @Service("userService0")
 @Transactional(readOnly = true)
 public class UserService implements IUserService {
@@ -29,8 +28,8 @@ public class UserService implements IUserService {
 	private DAO dao;
 
 	/*
-	* 新增
-	*/
+	 * 新增
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public Object save(PageData pd) throws Exception {
@@ -38,16 +37,16 @@ public class UserService implements IUserService {
 	}
 
 	/*
-	* 批量新增
-	*/
+	 * 批量新增
+	 */
 	@Override
 	public Object saveBatch(PageData pd) throws Exception {
 		return dao.save("UserMapper.saveBatch", pd);
 	}
 
 	/*
-	* 删除
-	*/
+	 * 删除
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public Object delete(PageData pd) throws Exception {
@@ -55,8 +54,8 @@ public class UserService implements IUserService {
 	}
 
 	/*
-	* 批量删除
-	*/
+	 * 批量删除
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public void deleteAll(String[] ArrayDATA_IDS) throws Exception {
@@ -64,8 +63,8 @@ public class UserService implements IUserService {
 	}
 
 	/*
-	* 修改
-	*/
+	 * 修改
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public Object edit(PageData pd) throws Exception {
@@ -73,8 +72,8 @@ public class UserService implements IUserService {
 	}
 
 	/*
-	*列表
-	*/
+	 *列表
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> list(Page page) throws Exception {
@@ -82,8 +81,8 @@ public class UserService implements IUserService {
 	}
 
 	/*
-	*列表(全部)
-	*/
+	 *列表(全部)
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PageData> listAll(PageData pd) throws Exception {
@@ -91,8 +90,8 @@ public class UserService implements IUserService {
 	}
 
 	/*
-	* 通过id获取数据
-	*/
+	 * 通过id获取数据
+	 */
 	@Override
 	public PageData findById(PageData pd) throws Exception {
 		return (PageData) dao.findForObject("UserMapper.findById", pd);

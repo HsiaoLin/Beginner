@@ -3,23 +3,73 @@ package com.beginner.base.utils;
 import java.util.UUID;
 
 /**
-* <b>类名称：</b>UuidUtil<br/>
-* <b>类描述：</b>UUID生成工具类<br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b>2015年10月26日 下午3:31:53<br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
+ * <b>类名称：</b>UUIDUtil<br/>
+ * <b>类描述：</b>UUID生成工具类<br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
 public class UUIDUtil {
 
-	public static String getUUID() {
-		String uuid = UUID.randomUUID().toString().trim();
-		return uuid;
+	private static long num = 0;
+
+	/**
+	 * 获取带连接符号36位UUID(小写)
+	 * @return 	36位UUID<br>例如：6a6cd388-f7ce-459c-a2e0-3747498c6786
+	 */
+	public static synchronized String get36UUID() {
+		return UUID.randomUUID().toString().trim();
 	}
 
-	public static String get32UUID() {
-		String uuid = UUID.randomUUID().toString().trim().replaceAll("-", "");
-		return uuid;
+	/**
+	 * 获取带连接符号36位UUID(大写)
+	 * @return 	36位UUID<br>例如：6A6CD388-F7CE-459C-A2E0-3747498C6786
+	 */
+	public static synchronized String get36UpperUUID() {
+		return get36UUID().toUpperCase();
+	}
+
+	/**
+	 * 获取不带连接符号32位UUID(小写)
+	 * @return 	32位UUID<br>例如：5dd5e786d748438fb906ddf1c32be594
+	 */
+	public static synchronized String get32UUID() {
+		return get36UUID().replaceAll("-", "");
+	}
+
+	/**
+	 * 获取不带连接符号32位UUID(大写)
+	 * @return 	32位UUID<br>例如：5DD5E786D748438FB906DDF1C32BE594
+	 */
+	public static synchronized String get32UpperUUID() {
+		return get32UUID().toUpperCase();
+	}
+
+	/**
+	 * 根据字符串生成固定UUID
+	 * @return 	32位固定的UUID<br>例如：Beginner永远都是2ddabc33a6103ceb9311697534035d8d
+	 */
+	public static synchronized String getUUID(String name) {
+		return UUID.nameUUIDFromBytes(name.getBytes()).toString().trim().replaceAll("-", "");
+	}
+
+	/**
+	  * 根据当前日期生成长整型ID
+	  * @return 例如：<br>
+	  * 计算时间点：2016年02月19日13时35分12秒314毫秒<br>
+	  * 计算的结果：2016021913351231401<br>
+	  */
+	public static synchronized long getLongId() {
+		String id = DateUtil.getTimeMillisecond();
+		if (num >= 99)
+			num = 0l;
+		++num;
+		if (num < 10)
+			id = id + 00 + num;
+		else
+			id += num;
+		return Long.valueOf(id);
 	}
 }

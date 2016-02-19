@@ -3,7 +3,7 @@
 * <b>包名：</b>com.beginner.business.controller.${packageName}<br/>
 * <b>文件名：</b>${objectName}Controller.java<br/>
 * <b>版本信息：</b><br/>
-* <b>日期：</b>2015年10月27日-下午7:57:07<br/>
+* <b>日期：</b>${nowDate?string("yyyy-MM-dd")}<br/>
 * <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
 */
 package com.beginner.business.controller.${packageName};
@@ -41,15 +41,15 @@ import com.beginner.base.utils.ObjectExcelView;
 import com.beginner.business.service.${objectNameLower}.${objectName}Service;
 
 /**
-* <b>类名称：</b>${objectName}Controller<br/>
-* <b>类描述：</b><br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>创建时间：</b>${nowDate?string("yyyy-MM-dd")}<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b><br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
+ * <b>类名称：</b>${objectName}Controller<br/>
+ * <b>类描述：</b><br/>
+ * <b>创建人：</b>Hsiao Lin Studio<br/>
+ * <b>创建时间：</b>${nowDate?string("yyyy-MM-dd")}<br/>
+ * <b>修改人：</b><br/>
+ * <b>修改时间：</b><br/>
+ * <b>修改备注：</b><br/>
+ * @version 1.0.0<br/>
+ */
 @Controller
 @RequestMapping(value="/business/${objectNameLower}")
 public class ${objectName}Controller extends BaseController {
@@ -222,7 +222,7 @@ public class ${objectName}Controller extends BaseController {
 		return AppUtil.returnObject(pd, map);
 	}
 	
-	/*
+	/**
 	 * 导出到excel
 	 * @return
 	 */

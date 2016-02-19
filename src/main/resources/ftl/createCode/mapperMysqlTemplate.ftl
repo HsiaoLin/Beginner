@@ -87,6 +87,14 @@
 			<include refid="columnsT"></include>
 		FROM 
 			${tabletop}${objectNameUpper} T
+		WHERE
+<#list fieldList as var>
+	<#if var[3] == "是">
+		<if test="${var[0]} != null and ${var[0]} != ''">
+			T.${var[0]} = ${r"#{"}${var[0]}${r"}"},
+		</if>
+	</#if>
+</#list>
 	</select>
 
 	<!-- 列表(全部) -->
@@ -95,6 +103,14 @@
 			<include refid="columnsT"></include>
 		FROM 
 			${tabletop}${objectNameUpper} T
+		WHERE
+<#list fieldList as var>
+	<#if var[3] == "是">
+		<if test="${var[0]} != null and ${var[0]} != ''">
+			T.${var[0]} = ${r"#{"}${var[0]}${r"}"},
+		</if>
+	</#if>
+</#list>
 	</select>
 
 	<!-- 批量删除 -->
