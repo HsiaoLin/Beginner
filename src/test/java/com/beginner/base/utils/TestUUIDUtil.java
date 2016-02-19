@@ -24,7 +24,7 @@ public class TestUUIDUtil implements Runnable {
 			pool.execute(new TestUUIDUtil());
 		}
 		pool.shutdown();
-
+		//http://www.mybatis.org/mybatis-3/zh/configuration.html#settings
 		try (Connection conn = DriverManager.getConnection("", "", "");
 			PreparedStatement ps = (PreparedStatement) conn.createStatement()) {
 			
