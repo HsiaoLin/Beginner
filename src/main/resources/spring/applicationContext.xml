@@ -23,6 +23,8 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<!-- 解决Job无法使用Spring容器对象问题，也可用下面的SpringUtil解决方案 -->
+	<bean id="beginnerJobFactory" class="com.beginner.base.utils.job.BeginnerJobFactory"></bean>
 	<!-- 定时任务获取Bean -->
 	<bean id="springUtil" name="springUtil" class="com.beginner.base.utils.SpringUtil" />
 
@@ -81,4 +83,6 @@
 	<import resource="applicationContext-shiro.xml" />
 	<!-- mybatis配置文件 -->
 	<import resource="applicationContext-mybatis.xml" />
+	<!-- quartz配置文件 -->
+	<import resource="applicationContext-quartz.xml" />
 </beans>

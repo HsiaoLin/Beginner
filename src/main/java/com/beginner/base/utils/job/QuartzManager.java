@@ -12,8 +12,8 @@ import org.quartz.TriggerKey;
 import org.quartz.impl.StdSchedulerFactory;
 
 /**
-* <b>类名称：</b>Quartz定时任务工具类<br/>
-* <b>类描述：</b><br/>
+* <b>类名称：</b>QuartzManager<br/>
+* <b>类描述：</b>Quartz定时任务工具类<br/>
 * <b>创建人：</b>Hsiao Lin Studio<br/>
 * <b>修改人：</b><br/>
 * <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>

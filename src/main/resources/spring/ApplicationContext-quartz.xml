@@ -15,76 +15,37 @@
 			<ref bean="dataSource" />
 		</property>
 		<property name="applicationContextSchedulerContextKey" value="applicationContext" />
-		<property name="configLocation" value="file:/data/conf/quartz.properties" />
-		<property name="quartzProperties">
-			<props>
-				<prop key="org.quartz.scheduler.instanceName">CRMscheduler</prop>
-				<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
-				<!-- 线程池配置 -->
-				<prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
-				<prop key="org.quartz.threadPool.threadCount">20</prop>
-				<prop key="org.quartz.threadPool.threadPriority">5</prop>
-				<prop key="org.quartz.jobStore.misfireThreshold">120000</prop>
-				<!-- JobStore 配置 -->
-				<prop key="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</prop>
-				<!-- 集群配置 -->
-				<prop key="org.quartz.jobStore.isClustered">true</prop>
-				<prop key="org.quartz.jobStore.clusterCheckinInterval">15000</prop>
-				<prop key="org.quartz.jobStore.maxMisfiresToHandleAtATime">1</prop>
-				<!-- 数据表设置 -->
-				<prop key="org.quartz.jobStore.tablePrefix">QRTZ_</prop>
-				<prop key="org.quartz.jobStore.dataSource">qzDS</prop>
-			</props>
-		</property>
+		<!-- 解决Job无法使用Spring容器对象问题，也可用SpringUtil的解决方案 -->
+		<property name="jobFactory" ref="beginnerJobFactory" />
+		<!-- <property name="configLocation" value="file:/data/conf/quartz.properties" /> -->
+		<property name="configLocation" value="classpath:quartz.properties" />
 		<!--应用启动完后 QuartzScheduler延时10秒再启动 -->
 		<property name="startupDelay" value="10" />
 		<!-- 注册触发器 -->
 		<property name="triggers">
 			<list>
 				<ref bean="cronTrigger" />
-				<ref bean="creditSendMailCronTrigger" />
 			</list>
 		</property>
 		<!-- 注册jobDetail -->
 		<property name="jobDetails">
 			<list>
 				<ref bean="complexJobDetail" />
-				<ref bean="creditSendMailJobDetail" />
 			</list>
 		</property>
 	</bean>
 
-	<bean name="complexJobDetail"
-		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass" value="com.tour.job.monitoring.Monitoring" />
+	<bean name="complexJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- <property name="jobClass" value="com.beginner.system.job.Monitoring" /> -->
+		<property name="jobClass" value="com.beginner.base.utils.job.BaseJob" />
 		<property name="durability" value="true" />
 		<property name="group" value="jobGroupName_Monitoring" />
 		<property name="name" value="jobName_Monitoring" />
 	</bean>
-	<bean id="cronTrigger"
-		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="complexJobDetail" />
-		<!-- 每30分钟执行一次 -->
-		<property name="cronExpression" value="0 0/30 * * * ?" />
+		<property name="cronExpression" value="0/30 * * * * ?" />
 		<property name="name" value="triggerName_Monitoring" />
 		<property name="group" value="triggerGroupName_Monitoring" />
 	</bean>
-	
-	<!-- 授信财务邮件发送 -->
-	<bean name="creditSendMailJobDetail"
-		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass" value="com.tour.controller.back.credit.CreditBackSendMailTask" />
-		<property name="durability" value="true" />
-		<property name="group" value="jobGroupName_credit" />
-		<property name="name" value="jobName_credit" />
-	</bean>
-	<bean id="creditSendMailCronTrigger"
-		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="creditSendMailJobDetail" />
-		<!-- 周一到周五，11点10分执行一次 -->
-		<property name="cronExpression" value="0 10 11 ? * MON-FRI" />
-		<property name="name" value="triggerName_credit" />
-		<property name="group" value="triggerGroupName_credit" />
-	</bean>
-	
 </beans>

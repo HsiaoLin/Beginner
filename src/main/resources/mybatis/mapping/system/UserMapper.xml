@@ -114,25 +114,11 @@
 			*
 		FROM 
 			PUB_USER T
-		WHERE 
+		<where>
 			<if test="USER_ID != null and USER_ID != ''">
 				and T.USER_ID = #{USER_ID}
 			</if>
-			<if test="USER_ID != null and USER_ID != ''">
-				and T.USER_ID LIKE #{USER_ID}
-			</if>
-			<if test="USER_ID != null and USER_ID != ''">
-				and T.USER_ID = #{USER_ID}
-			</if>
-			<if test="USER_ID != null and USER_ID != ''">
-				and T.USER_ID = #{USER_ID}
-			</if>
-			<if test="USER_ID != null and USER_ID != ''">
-				and T.USER_ID = #{USER_ID}
-			</if>
-			<if test="USER_ID != null and USER_ID != ''">
-				and T.USER_ID = #{USER_ID}
-			</if>
+		</where> 
 	</select>
 	
 	<!-- 批量删除 -->

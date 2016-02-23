@@ -1,8 +1,5 @@
 package com.beginner.base.utils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -24,14 +21,5 @@ public class TestUUIDUtil implements Runnable {
 			pool.execute(new TestUUIDUtil());
 		}
 		pool.shutdown();
-		//http://www.mybatis.org/mybatis-3/zh/configuration.html#settings
-		try (Connection conn = DriverManager.getConnection("", "", "");
-			PreparedStatement ps = (PreparedStatement) conn.createStatement()) {
-			
-			String sql = "SELECT * FROM liu_da_ran T WHERE T.ID='liuranran'";
-			ps.execute(sql);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }
