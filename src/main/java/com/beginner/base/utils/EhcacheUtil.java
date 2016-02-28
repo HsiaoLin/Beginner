@@ -28,7 +28,7 @@ public class EhcacheUtil {
 	private static CacheManager cacheManager;
 
 	static {
-		cacheManager = getCacheManager(ResourcesUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER));
+		cacheManager = getCacheManager(PropertyUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER));
 	}
 
 	/**

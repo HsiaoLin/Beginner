@@ -20,7 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public class ResourcesUtil {
+public class PropertyUtil {
 
 	/**
 	 * java.util.ResourceBundle读取classpath下的properties配置文件（使用方法见TestResourcesUtil类）
@@ -111,7 +111,7 @@ public class ResourcesUtil {
 
 		if (StringUtils.isBlank(fileName))
 			throw new IllegalArgumentException("The fileName cannot be null and cannot be empty.");
-		
+
 		XMLConfiguration config = null;
 		Iterator<String> properties = null;
 		List<String> list = new ArrayList<String>();

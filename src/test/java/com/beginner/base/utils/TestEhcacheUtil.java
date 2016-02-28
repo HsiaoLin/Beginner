@@ -30,8 +30,8 @@ public class TestEhcacheUtil {
 
 	@Test
 	public void testGetCacheManager() {
-		log.info("testGetCacheManager：" + EhcacheUtil.getCacheManager(ResourcesUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER)));
-		Assert.assertNotNull(EhcacheUtil.getCacheManager(ResourcesUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER)));
+		log.info("testGetCacheManager：" + EhcacheUtil.getCacheManager(PropertyUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER)));
+		Assert.assertNotNull(EhcacheUtil.getCacheManager(PropertyUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER)));
 	}
 
 	@Test
@@ -133,7 +133,7 @@ public class TestEhcacheUtil {
 		Cache cache = EhcacheUtil.getCache("beginner");
 		if (null == cache) {
 			cache = new Cache(new CacheConfiguration("beginner", 100));
-			EhcacheUtil.getCacheManager(ResourcesUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER)).addCache(cache);
+			EhcacheUtil.getCacheManager(PropertyUtil.getProperty(EHCACHE_SETTING, Const.BEGINNER)).addCache(cache);
 		}
 		EhcacheUtil.put(cache, EhcacheUtil.newElement("我是element", 1));
 		EhcacheUtil.put(cache, EhcacheUtil.newElement(11, 11));
