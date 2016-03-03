@@ -548,6 +548,13 @@
 			<version>${fastjson.version}</version>
 		</dependency>
 
+		<!-- Date and time library to replace JDK date handling -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
 		<!-- xstream xml -->
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>

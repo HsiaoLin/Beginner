@@ -21,27 +21,22 @@ import com.beginner.base.common.Const;
  */
 public class RedisUtil {
 
-	private static final String REDIS_KEYPREFIX = "redis.keyPrefix";
+	private static final String HOST = PropertyUtil.getProperty("redis.host", Const.BEGINNER);
 
-	private static final String REDIS_HOST = "redis.host";
+	private static final Integer PORT = Integer.parseInt(PropertyUtil.getProperty("redis.port", Const.BEGINNER));
 
-	private static final String REDIS_PORT = "redis.port";
+	private static final Integer TIMEOUT = Integer.parseInt(PropertyUtil.getProperty("redis.timeout", Const.BEGINNER));
 
-	private static final String REDIS_TIMEOUT = "redis.timeout";
+	private static final String PASSWORD = PropertyUtil.getProperty("redis.password", Const.BEGINNER);
 
-	private static final String REDIS_PASSWORD = "redis.password";
+	private static final Integer DATABASE = Integer.parseInt(PropertyUtil.getProperty("redis.database", Const.BEGINNER));
 
-	private static final String REDIS_DATABASE = "redis.database";
-
-	private static final String keyPrefix = PropertyUtil.getProperty(REDIS_KEYPREFIX, Const.BEGINNER);
+	private static final String KEYPREFIX = PropertyUtil.getProperty("redis.keyPrefix", Const.BEGINNER);
 
 	private static JedisPool pool;
 
 	static {
-		pool = new JedisPool(new JedisPoolConfig(), PropertyUtil.getProperty(REDIS_HOST, Const.BEGINNER),
-				Integer.parseInt(PropertyUtil.getProperty(REDIS_PORT, Const.BEGINNER)), Integer.parseInt(PropertyUtil
-						.getProperty(REDIS_TIMEOUT, Const.BEGINNER)), PropertyUtil.getProperty(REDIS_PASSWORD,
-						Const.BEGINNER), Integer.parseInt(PropertyUtil.getProperty(REDIS_DATABASE, Const.BEGINNER)));
+		pool = new JedisPool(new JedisPoolConfig(), HOST, PORT, TIMEOUT, PASSWORD, DATABASE);
 	}
 
 	public static Jedis getJedis() {
