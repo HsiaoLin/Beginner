@@ -2,6 +2,9 @@ package com.beginner.base.utils;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -21,6 +24,8 @@ import com.beginner.base.common.Const;
  */
 public class RedisUtil {
 
+	private static Logger logger = LoggerFactory.getLogger(RedisUtil.class);
+
 	private static final String HOST = PropertyUtil.getProperty("redis.host", Const.BEGINNER);
 
 	private static final Integer PORT = Integer.parseInt(PropertyUtil.getProperty("redis.port", Const.BEGINNER));
@@ -36,7 +41,7 @@ public class RedisUtil {
 	private static JedisPool pool;
 
 	static {
-		pool = new JedisPool(new JedisPoolConfig(), HOST, PORT, TIMEOUT, PASSWORD, DATABASE);
+		pool = new JedisPool(new JedisPoolConfig(), HOST, PORT, TIMEOUT);
 	}
 
 	public static Jedis getJedis() {
