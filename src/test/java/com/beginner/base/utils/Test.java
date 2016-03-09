@@ -48,8 +48,8 @@ public class Test {
 		//		logger.info("是否终止:" + executor.isTerminated());
 		//		logger.info("是否关闭:" + executor.isShutdown());
 
-		final List<Integer> list1 = new ArrayList<Integer>();
-		for (int i = 0; i < 1000000; i++) {
+		final List<Integer> list1 = new ArrayList<Integer>(100);
+		for (int i = 0; i < 100; i++) {
 			list1.add(i);
 		}
 
@@ -57,7 +57,15 @@ public class Test {
 		for (int i = 0; i < 10; i++) {
 			executor.execute(new Tets1(i, list1));
 		}
-		logger.info("list1全部加1之后：{}", list1.get(990000));
+
+		if (!executor.isShutdown()) {
+			executor.shutdownNow();
+			executor = null;
+		}
+
+		for (int i = 0; i < list1.size(); i++) {
+			logger.info("list1全部加1之后：{}", list1.get(i));
+		}
 	}
 
 	@Override
@@ -77,10 +85,12 @@ class Tets1 implements Runnable {
 		this.i = i;
 		this.list = list;
 	}
+
 	@Override
 	public void run() {
-		for (int j = i * 100000; j < (i + 1) * 100000 - 1; j++) {
+		for (int j = i * 10; j < (i + 1) * 10 - 1; j++) {
 			list.add(j, list.get(j) + 1);
+			list.remove(j + 1);
 		}
 	}
 
