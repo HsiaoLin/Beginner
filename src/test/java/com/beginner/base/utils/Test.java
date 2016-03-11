@@ -55,7 +55,10 @@ public class Test {
 
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 		for (int i = 0; i < 10; i++) {
-			executor.execute(new Tets1(i, list1));
+			Tets1 newTets1 = new Tets1();
+			newTets1.setI(i);
+			newTets1.setList(list1);
+			executor.execute(newTets1);
 		}
 
 		if (!executor.isShutdown()) {
@@ -81,17 +84,27 @@ class Tets1 implements Runnable {
 
 	private List<Integer> list = null;
 
-	public Tets1(int i, List<Integer> list) {
+	public int getI() {
+		return i;
+	}
+
+	public void setI(int i) {
 		this.i = i;
+	}
+
+	public List<Integer> getList() {
+		return list;
+	}
+
+	public void setList(List<Integer> list) {
 		this.list = list;
 	}
 
 	@Override
 	public void run() {
-		for (int j = i * 10; j < (i + 1) * 10 - 1; j++) {
-			list.add(j, list.get(j) + 1);
-			list.remove(j + 1);
+		for (int j = i * 10; j < (i + 1) * 10; j++) {
+			int count = list.get(j) + 1;
+			list.set(j, count);
 		}
 	}
-
 }

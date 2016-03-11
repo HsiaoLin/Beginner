@@ -1,4 +1,5 @@
 package com.beginner.base.utils;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -135,8 +136,8 @@ public class CharUtil {
 
 	/**
 	 * 编码是否有效
-	 * @param text 	要验证的字符串
-	 * @return 		有效返回true否则返回false
+	 * @param text 		要验证的字符串
+	 * @return boolean 	有效返回true否则返回false
 	 */
 	private static final boolean Utf8codeCheck(String text) {
 		String sign = "";
@@ -152,8 +153,8 @@ public class CharUtil {
 
 	/**
 	 * 判断是否Utf8Url编码
-	 * @param text 	要验证的字符串
-	 * @return 		是返回true否则返回false
+	 * @param text 		要验证的字符串
+	 * @return boolean 	是返回true否则返回false
 	 */
 	public static final boolean isUtf8Url(String text) {
 		text = text.toLowerCase();

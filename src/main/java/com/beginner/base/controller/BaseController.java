@@ -81,8 +81,7 @@ public class BaseController {
 	}
 
 	public String getRequestBody() throws IOException {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-				.getRequest();
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		if (request == null)
 			return "";
 		BufferedReader reader = request.getReader();

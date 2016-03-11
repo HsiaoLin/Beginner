@@ -2,6 +2,8 @@ package com.beginner.base.utils;
 
 import java.util.UUID;
 
+import org.joda.time.DateTime;
+
 /**
  * <b>类名称：</b>UUIDUtil<br/>
  * <b>类描述：</b>UUID生成工具类<br/>
@@ -62,7 +64,7 @@ public class UUIDUtil {
 	  * 计算的结果：2016021913351231401<br>
 	  */
 	public static synchronized long getLongId() {
-		String id = DateUtil.getTimeMillisecond();
+		String id = DateTime.now().toString("yyyyMMddHHmmssS");
 		if (num >= 99)
 			num = 0l;
 		++num;

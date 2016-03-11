@@ -1,5 +1,7 @@
 package com.beginner.base.utils.job;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
@@ -7,8 +9,6 @@ import org.quartz.JobExecutionException;
 import org.quartz.impl.JobDetailImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.beginner.base.utils.DateUtil;
 
 /**
 * <b>类名称：</b>BaseJob<br/>
@@ -24,10 +24,9 @@ public abstract class BaseJob implements Job {
 	private static Logger logger = LoggerFactory.getLogger(BaseJob.class);
 
 	@Override
-	public void execute(JobExecutionContext context)
-			throws JobExecutionException {
+	public void execute(JobExecutionContext context) throws JobExecutionException {
 		JobDetailImpl jobDetail = (JobDetailImpl) context.getJobDetail();
-		logger.info("定时任务执行开始,JobKey:[" + jobDetail.getKey() + "],执行时间:" + DateUtil.getTimeFormatDateString(context.getFireTime()));
+		logger.info("定时任务执行开始,JobKey:[" + jobDetail.getKey() + "],执行时间:" + DateTime.now().toString(DateTimeFormat.fullDate()));
 		jobHandler(context.getMergedJobDataMap());
 		logger.info("定时任务执行完成,JobKey:[" + jobDetail.getKey() + "]");
 	}

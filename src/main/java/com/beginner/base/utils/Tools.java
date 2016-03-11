@@ -232,18 +232,6 @@ public class Tools {
 	}
 
 	/**
-	 * 检测KEY是否正确
-	 * @param paraname 	传入参数
-	 * @param FKEY 		接收的 KEY
-	 * @return boolean 	为空则返回true否则返回false
-	 * @since 			1.0.0
-	 */
-	public static boolean checkKey(String paraname, String FKEY) {
-		paraname = (null == paraname) ? "" : paraname;
-		return MD5.md5(paraname + DateUtil.getDays() + ",beginner,").equals(FKEY);
-	}
-
-	/**
 	 * 向txt里写单行内容
 	 * @param fileP 	文件路径
 	 * @param content 	写入的内容
@@ -309,8 +297,7 @@ public class Tools {
 	 * @throws Exception 	抛出异常
 	 * @since 				1.0.0
 	 */
-	public static String getResponseBody(CloseableHttpClient httpclient, HttpPost httppost, JSONObject json)
-			throws Exception {
+	public static String getResponseBody(CloseableHttpClient httpclient, HttpPost httppost, JSONObject json) throws Exception {
 		CloseableHttpResponse response = null;
 		httppost.setHeader("Content-Type", "text/plain");
 		httppost.setEntity(new StringEntity(json.toString(), "UTF-8"));
