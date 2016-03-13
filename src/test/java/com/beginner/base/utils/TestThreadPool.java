@@ -8,16 +8,31 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+* <b>类名称：</b>TestThreadPool<br/>
+* <b>类描述：</b>简单介绍几种线程池<br/>
+* <b>创建人：</b>Hsiao Lin Studio-Hsiao Lin<br/>
+* <b>修改人：</b><br/>
+* <b>修改时间：</b>2016-3-13 下午5:08:11<br/>
+* <b>修改备注：</b><br/>
+* @version 1.0.0<br/>
+*/
 public class TestThreadPool {
 
 	private static Logger logger = LoggerFactory.getLogger(TestThreadPool.class);
 
 	public static void main(String[] args) {
-		//http://cuisuqiang.iteye.com/blog/2019372
+		/*参考博客文章：http://cuisuqiang.iteye.com/blog/2019372
+		注意以下测试方法都未关闭线程池*/
+
 		testCachedThreadPool();
+
 		testFixedThreadPool();
+
 		testScheduledThreadPool();
+
 		testScheduledThreadPoolAtFixedRate();
+
 		testSingleThreadExecutor();
 	}
 
@@ -41,6 +56,7 @@ public class TestThreadPool {
 			});
 		}
 	}
+
 	//创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
 	private static void testFixedThreadPool() {
 		ExecutorService executor = Executors.newFixedThreadPool(3);
@@ -62,6 +78,7 @@ public class TestThreadPool {
 			});
 		}
 	}
+
 	//创建一个定长线程池，支持定时及周期性任务执行。
 	private static void testScheduledThreadPool() {
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
@@ -73,6 +90,7 @@ public class TestThreadPool {
 			}
 		}, 3, TimeUnit.SECONDS);//表示延迟3秒执行。
 	}
+
 	//创建一个定长线程池，支持定时及周期性任务执行。
 	private static void testScheduledThreadPoolAtFixedRate() {
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
@@ -84,6 +102,7 @@ public class TestThreadPool {
 			}
 		}, 1, 3, TimeUnit.SECONDS);//表示延迟1秒后每3秒执行一次。
 	}
+
 	//创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
 	private static void testSingleThreadExecutor() {
 		ExecutorService executor = Executors.newSingleThreadExecutor();

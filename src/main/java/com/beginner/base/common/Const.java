@@ -1,5 +1,7 @@
 package com.beginner.base.common;
 
+import com.beginner.base.utils.PropertyUtil;
+
 /**
  * <b>类名称：</b>Const<br/>
  * <b>类描述：</b>常量类工具类<br/>
@@ -26,33 +28,6 @@ public class Const {
 	public static final String BEGINNER_PROPERTIES = "beginner.properties";
 
 	//======================Beginner End =======================
-
-	//======================Log Start =======================
-	/**
-	 * START_CN:（变量描述：汉语“开始”）
-	 * @since 1.0.0
-	 */
-	public static final String START_CN = "开始";
-
-	/**
-	 * END_CN:（变量描述：汉语“结束”）
-	 * @since 1.0.0
-	 */
-	public static final String END_CN = "结束";
-
-	/**
-	 * START_EN:（变量描述：英语“START”）
-	 * @since 1.0.0
-	 */
-	public static final String START_EN = "START";
-
-	/**
-	 * END_EN:（变量描述：英语“END”）
-	 * @since 1.0.0
-	 */
-	public static final String END_EN = "END";
-
-	//======================Log End =======================
 
 	//====================== Shiro Start =======================
 	/**
@@ -143,6 +118,10 @@ public class Const {
 	 */
 	public static final String SYSNAME = "admin/config/SYSNAME.txt";
 
+	/**
+	* SYSTEM_NAME:（变量描述：SYSNAME）
+	* @since 1.0.0
+	*/
 	public static final String SYSTEM_NAME = "SYSNAME";
 
 	/**
@@ -187,52 +166,16 @@ public class Const {
 	 */
 	public static final String WEIXIN = "admin/config/WEIXIN.txt";
 
-	/**
-	 * FILEPATHIMG:（变量描述：图片上传路径）
-	 * @since 1.0.0
-	 */
-	public static final String FILEPATHIMG = "uploadFiles/uploadImgs/";
-
-	/**
-	 * FILEPATHFILE:（变量描述：文件上传路径）
-	 * @since 1.0.0
-	 */
-	public static final String FILEPATHFILE = "uploadFiles/file/";
-
-	/**
-	 * FILEPATHTWODIMENSIONCODE:（变量描述：二维码存放路径）
-	 * @since 1.0.0
-	 */
-	public static final String FILEPATHTWODIMENSIONCODE = "uploadFiles/twoDimensionCode/";
-
-	/**
-	 * APP_REGISTERED_PARAM_ARRAY:（变量描述：app注册接口_请求协议参数）
-	 * @since 1.0.0
-	 */
-	public static final String[] APP_REGISTERED_PARAM_ARRAY = new String[] { "countries", "uname", "passwd", "title", "full_name", "company_name",
-		"countries_code", "area_code", "telephone", "mobile" };
-
-	public static final String[] APP_REGISTERED_VALUE_ARRAY = new String[] { "国籍", "邮箱帐号", "密码", "称谓", "名称", "公司名称", "国家编号", "区号", "电话", "手机号" };
-
-	// app根据用户名获取会员信息接口_请求协议中的参数
-	public static final String[] APP_GETAPPUSER_PARAM_ARRAY = new String[] { "USERNAME" };
-
-	public static final String[] APP_GETAPPUSER_VALUE_ARRAY = new String[] { "用户名" };
-
 	//====================== System End =======================
 
 	//====================== Other Start =======================
-	/**
-	 * TRUE:（变量描述：“T”）
-	 * @since 1.0.0
-	 */
-	public static final String TRUE = "T";
 
 	/**
-	 * FALSE:（变量描述：“F”）
-	 * @since 1.0.0
-	 */
-	public static final String FALSE = "F";
+	* KEYPREFIX:（变量描述：Redis key前缀）
+	* @since 1.0.0
+	*/
+	public static final String KEYPREFIX = PropertyUtil.getProperty("redis.keyPrefix", Const.BEGINNER);
+
 	//====================== Other End =======================
 
 }

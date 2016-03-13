@@ -19,7 +19,8 @@
 
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="com.beginner">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
 	<!-- 解决Job无法使用Spring容器对象问题，也可用下面的SpringUtil解决方案 -->
@@ -77,6 +78,23 @@
 		<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
 		<!-- 关闭abanded连接时输出错误日志 -->
 		<property name="logAbandoned" value="${logAbandoned}" />
+	</bean>
+
+	<!-- Redis连接池配置 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redis.pool.maxTotal}" />
+		<property name="maxIdle" value="${redis.pool.maxIdle}" />
+		<property name="minIdle" value="${redis.pool.minIdle}" />
+	</bean>
+
+	<!-- Redis连接池 -->
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg index="0" ref="jedisPoolConfig" />
+		<constructor-arg index="1" value="${redis.host}" />
+		<constructor-arg index="2" value="${redis.port}" type="int" />
+		<constructor-arg index="3" value="${redis.timeout}" type="int" />
+		<constructor-arg index="4" value="${redis.password}" />
+		<constructor-arg index="5" value="${redis.database}" type="int" />
 	</bean>
 
 	<!-- shiro配置文件 -->

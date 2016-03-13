@@ -52,31 +52,31 @@ public class HeadController extends BaseController {
 	public Object getList() throws Exception {
 		PageData pd = new PageData();
 		Map<String, Object> map = new HashMap<String, Object>();
-			pd = this.getPageData();
-			List<Map> pdList = new ArrayList<Map>();
+		pd = this.getPageData();
+		List<Map> pdList = new ArrayList<Map>();
 
-			//shiro管理的session
-			Subject currentUser = SecurityUtils.getSubject();
-			Session session = currentUser.getSession();
+		//shiro管理的session
+		Subject currentUser = SecurityUtils.getSubject();
+		Session session = currentUser.getSession();
 
-			Map pds = new HashMap();
-			pds = (Map) session.getAttribute(Const.USER_PAGEDATA);
+		Map pds = new HashMap();
+		pds = (Map) session.getAttribute(Const.USER_PAGEDATA);
 
-			if (MapUtils.isEmpty(pds)) {
-				//获取当前登录者loginname
-				String USERNAME = (String) currentUser.getPrincipal();
-				pd.put("USERNAME", USERNAME);
-				User user = new User();
-				user.setUserId(1);
-				user.setUserName("尹枭凌");
-				user.setName("尹枭凌");
-				user.setUserPassword("123");
-				pds = BeanUtils.describe(user);
-				//pds = userService.getUserByName(pd);
-				session.setAttribute(Const.USER_PAGEDATA, pds);
-			}
-			pdList.add(pds);
-			map.put("list", pdList);
+		if (MapUtils.isEmpty(pds)) {
+			//获取当前登录者loginname
+			String USERNAME = (String) currentUser.getPrincipal();
+			pd.put("USERNAME", USERNAME);
+			User user = new User();
+			user.setUserId(1);
+			user.setUserName("尹枭凌");
+			user.setName("尹枭凌");
+			user.setUserPassword("123");
+			pds = BeanUtils.describe(user);
+			//pds = userService.getUserByName(pd);
+			session.setAttribute(Const.USER_PAGEDATA, pds);
+		}
+		pdList.add(pds);
+		map.put("list", pdList);
 		return AppUtil.returnObject(pd, map);
 	}
 
@@ -85,7 +85,6 @@ public class HeadController extends BaseController {
 	 */
 	@RequestMapping(value = "/setSKIN")
 	public void setSKIN(PrintWriter out) throws Exception {
-		logger.info(Const.START_CN);
 		logger.info("保存皮肤");
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -405,8 +404,9 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		Tools.writeFile(Const.FWATERM, pd.getString("isCheck1") + ",fh," + pd.getString("fcontent") + ",fh," + pd.getString("fontSize") + ",fh,"
-				+ pd.getString("fontX") + ",fh," + pd.getString("fontY")); //文字水印配置
+		Tools.writeFile(Const.FWATERM,
+				pd.getString("isCheck1") + ",fh," + pd.getString("fcontent") + ",fh," + pd.getString("fontSize") + ",fh," + pd.getString("fontX")
+						+ ",fh," + pd.getString("fontY")); //文字水印配置
 		Tools.writeFile(Const.IWATERM,
 				pd.getString("isCheck2") + ",fh," + pd.getString("imgUrl") + ",fh," + pd.getString("imgX") + ",fh," + pd.getString("imgY")); //图片水印配置
 		Watermark.fushValue();

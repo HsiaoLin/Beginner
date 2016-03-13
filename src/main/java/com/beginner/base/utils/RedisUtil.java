@@ -2,14 +2,13 @@ package com.beginner.base.utils;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-
-import com.beginner.base.common.Const;
 
 /**
  * <b>类名称：</b>RedisUtil<br/>
@@ -24,45 +23,51 @@ import com.beginner.base.common.Const;
  */
 public class RedisUtil {
 
+	/**
+	* logger:（变量描述：日志）
+	* @since 1.0.0
+	*/
 	private static Logger logger = LoggerFactory.getLogger(RedisUtil.class);
 
-	private static final String HOST = PropertyUtil.getProperty("redis.host", Const.BEGINNER);
+	/**
+	* pool:（变量描述：Redis连接池）
+	* @since 1.0.0
+	*/
+	@Resource(name = "jedisPool")
+	private static JedisPool jedisPool;
 
-	private static final Integer PORT = Integer.parseInt(PropertyUtil.getProperty("redis.port", Const.BEGINNER));
-
-	private static final Integer TIMEOUT = Integer.parseInt(PropertyUtil.getProperty("redis.timeout", Const.BEGINNER));
-
-	private static final String PASSWORD = PropertyUtil.getProperty("redis.password", Const.BEGINNER);
-
-	private static final Integer DATABASE = Integer.parseInt(PropertyUtil.getProperty("redis.database", Const.BEGINNER));
-
-	private static final String KEYPREFIX = PropertyUtil.getProperty("redis.keyPrefix", Const.BEGINNER);
-
-	private static JedisPool pool;
-
-	static {
-		pool = new JedisPool(new JedisPoolConfig(), HOST, PORT, TIMEOUT);
-	}
-
+	/**
+	* getJedis(方法描述：获取Jedis) <br />
+	* (方法适用条件描述： – 可选)
+	* @return Jedis
+	* @exception
+	* @since  1.0.0
+	*/
 	public static Jedis getJedis() {
-		return pool.getResource();
+		return jedisPool.getResource();
 	}
 
 	public static void main(String[] args) {
-		try (Jedis jedis = getJedis()) {
-			jedis.set("测试key", "测试值");
-			System.out.println(jedis.get("测试key"));
 
-			//存储数据到列表中
+		// try-with-resource方式自动关闭Jedis连接（JDK1.7及以上）
+		try (Jedis jedis = getJedis()) {
+			// 一key一值
+			jedis.set("测试key", "测试值");
+			logger.info("‘测试key’的值是：{}", jedis.get("测试key"));
+
+			// 存储数据到列表中
 			jedis.lpush("test-list", "Redis");
 			jedis.lpush("test-list", "Mongodb");
 			jedis.lpush("test-list", "Mysql");
 			// 获取存储的数据并输出
-			List<String> list = jedis.lrange("test-list", 0, 5);
-			// 按照放入顺序倒序输出
+			List<String> list = jedis.lrange("test-list", 0, 3);
+			// 取得的List按照数据放入顺序的倒序排列
 			for (int i = 0; i < list.size(); i++) {
-				System.out.println("test-list" + i + "：" + list.get(i));
+				logger.info("test-list{}：{}", i, list.get(i));
 			}
+
+			// 清空当前DB
+			jedis.flushDB();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
