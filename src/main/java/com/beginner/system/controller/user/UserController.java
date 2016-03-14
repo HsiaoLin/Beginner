@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
 import com.beginner.base.common.Const;
 import com.beginner.base.controller.BaseController;
 import com.beginner.base.plugin.page.Page;
@@ -50,6 +53,9 @@ public class UserController extends BaseController {
 
 	@Resource(name = "userService0")
 	private IUserService userService;
+
+	@Resource(name = "jedisPool")
+	private JedisPool jedisPool;
 
 	/**
 	 * 新增
@@ -119,6 +125,31 @@ public class UserController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		try {
+			logger.info("null == jedisPool结果：{}", null == jedisPool);
+
+			// try-with-resource方式自动关闭Jedis连接（JDK1.7及以上）
+			try (Jedis jedis = jedisPool.getResource()) {
+				// 一key一值
+				jedis.set("测试key", "测试值");
+				System.out.println("‘测试key’的值是：" + jedis.get("测试key"));
+
+				// 存储数据到列表中
+				jedis.lpush("test-list", "Redis");
+				jedis.lpush("test-list", "Mongodb");
+				jedis.lpush("test-list", "Mysql");
+				// 获取存储的数据并输出
+				List<String> list = jedis.lrange("test-list", 0, 3);
+				// 取得的List按照数据放入顺序的倒序排列
+				for (int i = 0; i < list.size(); i++) {
+					System.out.println("test-list" + i + "：" + list.get(i));
+				}
+
+				// 清空当前DB
+				jedis.flushDB();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			pd = this.getPageData();
 			page.setPd(pd);
 			List<PageData> varList = userService.list(page); //列出User列表

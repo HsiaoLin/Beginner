@@ -2,10 +2,8 @@ package com.beginner.base.utils;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -21,39 +19,19 @@ import redis.clients.jedis.JedisPool;
  * <b>修改备注：</b><br/>
  * @version 1.0.0<br/>
  */
-public class RedisUtil {
-
-	/**
-	* logger:（变量描述：日志）
-	* @since 1.0.0
-	*/
-	private static Logger logger = LoggerFactory.getLogger(RedisUtil.class);
-
-	/**
-	* pool:（变量描述：Redis连接池）
-	* @since 1.0.0
-	*/
-	@Resource(name = "jedisPool")
-	private static JedisPool jedisPool;
-
-	/**
-	* getJedis(方法描述：获取Jedis) <br />
-	* (方法适用条件描述： – 可选)
-	* @return Jedis
-	* @exception
-	* @since  1.0.0
-	*/
-	public static Jedis getJedis() {
-		return jedisPool.getResource();
-	}
+public class Redis {
 
 	public static void main(String[] args) {
 
+		//具体使用方法参见：com.beginner.system.controller.user.UserController.list
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
+		JedisPool jedisPool = (JedisPool) context.getBean("jedisPool");
+
 		// try-with-resource方式自动关闭Jedis连接（JDK1.7及以上）
-		try (Jedis jedis = getJedis()) {
+		try (Jedis jedis = jedisPool.getResource()) {
 			// 一key一值
 			jedis.set("测试key", "测试值");
-			logger.info("‘测试key’的值是：{}", jedis.get("测试key"));
+			System.out.println("‘测试key’的值是：" + jedis.get("测试key"));
 
 			// 存储数据到列表中
 			jedis.lpush("test-list", "Redis");
@@ -63,7 +41,7 @@ public class RedisUtil {
 			List<String> list = jedis.lrange("test-list", 0, 3);
 			// 取得的List按照数据放入顺序的倒序排列
 			for (int i = 0; i < list.size(); i++) {
-				logger.info("test-list{}：{}", i, list.get(i));
+				System.out.println("test-list" + i + "：" + list.get(i));
 			}
 
 			// 清空当前DB

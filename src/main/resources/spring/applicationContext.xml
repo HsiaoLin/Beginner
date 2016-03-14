@@ -93,8 +93,9 @@
 		<constructor-arg index="1" value="${redis.host}" />
 		<constructor-arg index="2" value="${redis.port}" type="int" />
 		<constructor-arg index="3" value="${redis.timeout}" type="int" />
-		<constructor-arg index="4" value="${redis.password}" />
-		<constructor-arg index="5" value="${redis.database}" type="int" />
+		<!-- 非必选建议设置 -->
+		<!-- <constructor-arg index="4" value="${redis.password}" /> -->
+		<!-- <constructor-arg index="5" value="${redis.database}" type="int" /> -->
 	</bean>
 
 	<!-- shiro配置文件 -->
