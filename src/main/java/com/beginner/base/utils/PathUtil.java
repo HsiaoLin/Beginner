@@ -78,6 +78,15 @@ public class PathUtil {
 	}
 
 	/**
+	 * 获取项目名
+	 * @return String 项目名
+	 */
+	public static String appName() {
+		String appName = System.getProperty("user.dir");
+		return appName.substring(appName.lastIndexOf("\\") + 1, appName.length());
+	}
+
+	/**
 	 * 获取项目访问路径
 	 * @return String http://ip地址:端口号/项目名/
 	 */
