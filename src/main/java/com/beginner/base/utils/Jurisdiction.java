@@ -1,5 +1,19 @@
+/*
+ * Copyright 2015-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.beginner.base.utils;
-
 
 /**
  * 权限处理
@@ -8,10 +22,8 @@ public class Jurisdiction {
 
 	/**
 	 * 访问权限及初始化按钮权限(控制按钮的显示)
-	 * 
-	 * @param menuUrl
-	 *            菜单路径
-	 * @return
+	 * @param menuUrl 菜单路径
+	 * @return boolean
 	 */
 	public static boolean hasJurisdiction(String menuUrl) {
 		return true;
@@ -63,12 +75,9 @@ public class Jurisdiction {
 
 	/**
 	 * 按钮权限(方法中校验)
-	 * 
-	 * @param menuUrl
-	 *            菜单路径
-	 * @param type
-	 *            类型(add、del、edit、cha)
-	 * @return
+	 * @param menuUrl 菜单路径
+	 * @param type 类型(add、del、edit、cha)
+	 * @return boolean
 	 */
 	public static boolean buttonJurisdiction(String menuUrl, String type) {
 		// 判断是否拥有当前点击菜单的权限（内部过滤,防止通过url进入跳过菜单权限）

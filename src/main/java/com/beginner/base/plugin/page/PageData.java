@@ -1,3 +1,18 @@
+/*
+ * Copyright 2015-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.beginner.base.plugin.page;
 
 import java.util.Collection;
@@ -17,38 +32,39 @@ import javax.servlet.http.HttpServletRequest;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-@SuppressWarnings({ "unchecked","rawtypes" })
-public class PageData extends HashMap implements Map{
+@SuppressWarnings({ "unchecked", "rawtypes" })
+public class PageData extends HashMap implements Map {
 
 	private static final long serialVersionUID = 1L;
 
 	Map map = null;
+
 	HttpServletRequest request;
 
-	public PageData(HttpServletRequest request){
+	public PageData(HttpServletRequest request) {
 		this.request = request;
 		Map properties = request.getParameterMap();
-		Map returnMap = new HashMap(); 
-		Iterator entries = properties.entrySet().iterator(); 
-		Map.Entry entry; 
-		String name = "";  
-		String value = "";  
+		Map returnMap = new HashMap();
+		Iterator entries = properties.entrySet().iterator();
+		Map.Entry entry;
+		String name = "";
+		String value = "";
 		while (entries.hasNext()) {
-			entry = (Map.Entry) entries.next(); 
-			name = (String) entry.getKey(); 
-			Object valueObj = entry.getValue(); 
-			if(null == valueObj){ 
-				value = ""; 
-			}else if(valueObj instanceof String[]){ 
-				String[] values = (String[])valueObj;
-				for(int i=0;i<values.length;i++){ 
+			entry = (Map.Entry) entries.next();
+			name = (String) entry.getKey();
+			Object valueObj = entry.getValue();
+			if (null == valueObj) {
+				value = "";
+			} else if (valueObj instanceof String[]) {
+				String[] values = (String[]) valueObj;
+				for (int i = 0; i < values.length; i++) {
 					value = values[i] + ",";
 				}
-				value = value.substring(0, value.length()-1); 
-			}else{
-				value = valueObj.toString(); 
+				value = value.substring(0, value.length() - 1);
+			} else {
+				value = valueObj.toString();
 			}
-			returnMap.put(name, value); 
+			returnMap.put(name, value);
 		}
 		map = returnMap;
 	}
@@ -58,16 +74,16 @@ public class PageData extends HashMap implements Map{
 	@Override
 	public Object get(Object key) {
 		Object obj = null;
-		if(map.get(key) instanceof Object[]) {
-			Object[] arr = (Object[])map.get(key);
-			obj = request == null ? arr:(request.getParameter((String)key) == null ? arr:arr[0]);
+		if (map.get(key) instanceof Object[]) {
+			Object[] arr = (Object[]) map.get(key);
+			obj = request == null ? arr : (request.getParameter((String) key) == null ? arr : arr[0]);
 		} else {
 			obj = map.get(key);
 		}
 		return obj;
 	}
 	public String getString(Object key) {
-		return (String)get(key);
+		return (String) get(key);
 	}
 	@Override
 	public Object put(Object key, Object value) {

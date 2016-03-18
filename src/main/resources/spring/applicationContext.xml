@@ -23,14 +23,15 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<bean class="com.beginner.base.utils.TestConfig" />
+
 	<!-- 解决Job无法使用Spring容器对象问题，也可用下面的SpringUtil解决方案 -->
 	<bean id="beginnerJobFactory" class="com.beginner.base.utils.job.BeginnerJobFactory"></bean>
 	<!-- 定时任务获取Bean -->
 	<bean id="springUtil" name="springUtil" class="com.beginner.base.utils.SpringUtil" />
 
 	<!-- 引入配置文件 -->
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:beginner.properties" />
 	</bean>
 

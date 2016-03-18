@@ -1,12 +1,15 @@
 package com.beginner.base.utils;
 
+import java.net.UnknownHostException;
+
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
-import org.I0Itec.zkclient.ZkConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 
-public class TestConfig {
+public class TestConfig implements ApplicationListener<ContextRefreshedEvent> {
 
 	private static Logger logger = LoggerFactory.getLogger(TestConfig.class);
 
@@ -26,12 +29,14 @@ public class TestConfig {
 	 * dubbo如何使用zookeeper
 	 */
 	private static ZkClient zk;
-	static {
-		zk = new ZkClient(new ZkConnection("127.0.0.1:2181", 100000));
-	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnknownHostException {
+		//InetAddress addr = InetAddress.getLocalHost();
 		//logger.info("获取项目路径：{}", PathUtil.appName());
+		//logger.info("获取项目路径：{}", addr.getHostAddress());
+		//ClassPathXmlApplicationContext app = new ClassPathXmlApplicationContext(new String[] { "classpath:spring/applicationContext.xml" });
+		//ApplicationContext app = new XmlWebApplicationContext("spring/applicationContext.xml");
+		//TestConfig c = (TestConfig) app.getBean("aa");
 		//testDataListener();
 	}
 	/**
@@ -71,6 +76,16 @@ public class TestConfig {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void onApplicationEvent(ContextRefreshedEvent event) {
+		if (event.getApplicationContext().getParent() == null) {
+			//			logger.info("获取IP：{}", PathUtil.ip());
+			//			logger.info("获取PT：{}", PathUtil.port());
+			//			zk = new ZkClient(new ZkConnection("127.0.0.1:2181", 100000));
+			//			testDataListener();
 		}
 	}
 }

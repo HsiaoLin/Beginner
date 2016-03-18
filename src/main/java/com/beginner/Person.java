@@ -1,7 +1,5 @@
 package com.beginner;
 
-
-
 class Person {
 
 	private int id;

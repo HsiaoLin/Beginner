@@ -13,17 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.beginner.base.utils;
 
-/**
-* <b>类名称：</b>EncodeUtil<br/>
-* <b>类描述：</b>Encode工具类<br/>
-* <b>创建人：</b>Hsiao Lin Studio<br/>
-* <b>修改人：</b><br/>
-* <b>修改时间：</b>2015年05月21日 下午6:18:18<br/>
-* <b>修改备注：</b><br/>
-* @version 1.0.0<br/>
-*/
-public class EncodeUtil {
+package com.beginner.base.utils.annotation;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.springframework.stereotype.Component;
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Cache {
+
+	String value() default "";
 }
