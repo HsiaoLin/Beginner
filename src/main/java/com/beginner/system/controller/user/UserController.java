@@ -32,7 +32,6 @@ import com.beginner.base.plugin.page.Page;
 import com.beginner.base.plugin.page.PageData;
 import com.beginner.base.utils.AppUtil;
 import com.beginner.base.utils.ObjectExcelView;
-import com.beginner.base.utils.PathUtil;
 import com.beginner.system.service.user.IUserService;
 
 /**
@@ -126,8 +125,6 @@ public class UserController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		try {
-			logger.info("获取IP：{}", PathUtil.ip());
-			logger.info("获取PT：{}", PathUtil.port());
 			logger.info("null == jedisPool结果：{}", null == jedisPool);
 
 			// try-with-resource方式自动关闭Jedis连接（JDK1.7及以上）

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.beginner.base.controller.BaseController;
 import com.beginner.base.plugin.page.PageData;
-import com.beginner.base.utils.PathUtil;
+import com.beginner.base.utils.PublicUtil;
 import com.beginner.base.utils.generatecode.DelAllFile;
 import com.beginner.base.utils.generatecode.FileDownload;
 import com.beginner.base.utils.generatecode.FileZip;
@@ -69,7 +69,7 @@ public class CreateCodeController extends BaseController {
 		root.put("tabletop", tabletop); //表前缀	
 		root.put("nowDate", new Date()); //当前日期
 
-		DelAllFile.delFolder(PathUtil.getClasspath() + "admin/ftl"); //生成代码前,先清空之前生成的代码
+		DelAllFile.delFolder(PublicUtil.getClasspath() + "admin/ftl"); //生成代码前,先清空之前生成的代码
 
 		String filePath = "admin/ftl/code/"; //存放路径
 		String ftlPath = "createCode"; //ftl路径
@@ -117,9 +117,9 @@ public class CreateCodeController extends BaseController {
 		//Freemarker.printFile("docTemplate.ftl", root, "说明.doc", filePath, ftlPath);
 
 		/*生成的全部代码压缩成zip文件*/
-		FileZip.zip(PathUtil.getClasspath() + "admin/ftl/code");
+		FileZip.zip(PublicUtil.getClasspath() + "admin/ftl/code");
 
 		/*下载代码*/
-		FileDownload.fileDownload(response, PathUtil.getClasspath() + "admin/ftl/code.zip", "code.zip");
+		FileDownload.fileDownload(response, PublicUtil.getClasspath() + "admin/ftl/code.zip", "code.zip");
 	}
 }

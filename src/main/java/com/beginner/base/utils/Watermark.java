@@ -79,7 +79,7 @@ public class Watermark {
 			String strIW[] = strIWATERM.split(",fh,");
 			if (strIW.length == 4) {
 				if ("yes".equals(strIW[0])) {
-					pressImage(PathUtil.getClasspath() + ""/*2015/08/20 Const.FILEPATHIMG*/+ strIW[1], imagePath, Integer.parseInt(strIW[2]),
+					pressImage(PublicUtil.getClasspath() + ""/*2015/08/20 Const.FILEPATHIMG*/+ strIW[1], imagePath, Integer.parseInt(strIW[2]),
 							Integer.parseInt(strIW[3]));
 				}
 			}
