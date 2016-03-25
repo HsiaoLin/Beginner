@@ -25,6 +25,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
 * <b>类名称：</b>HttpUtil<br/>
@@ -36,6 +38,8 @@ import org.apache.http.util.EntityUtils;
 * @version 1.0.0<br/>
 */
 public class HttpUtil {
+
+	private static Logger logger = LoggerFactory.getLogger(HttpUtil.class);
 
 	/**
 	 * <p>To request the POST way.</p>
@@ -57,12 +61,12 @@ public class HttpUtil {
 		if (null == timeout)
 			timeout = 30000;
 
-		CloseableHttpClient httpClient = HttpClients.createDefault();
-
-		CloseableHttpResponse httpResponse = null;
 		String result = null;
+		CloseableHttpClient httpClient = null;
+		CloseableHttpResponse httpResponse = null;
 
 		try {
+			httpClient = HttpClients.createDefault();
 			RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(timeout).setConnectTimeout(timeout).build();
 
 			HttpPost httpPost = new HttpPost(url);
@@ -78,7 +82,8 @@ public class HttpUtil {
 
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
-			throw new Exception();
+			logger.error("POST请求发生异常", e);
+			return null;
 		} finally {
 			if (null != httpResponse)
 				httpResponse.close();
@@ -87,7 +92,6 @@ public class HttpUtil {
 		}
 		return result;
 	}
-
 	/**
 	 * <p>To request the GET way.</p>
 	 * 
@@ -125,7 +129,8 @@ public class HttpUtil {
 
 			EntityUtils.consume(entity);
 		} catch (Exception e) {
-			throw new Exception();
+			logger.error("GET请求发生异常", e);
+			return null;
 		} finally {
 			if (null != httpResponse)
 				httpResponse.close();

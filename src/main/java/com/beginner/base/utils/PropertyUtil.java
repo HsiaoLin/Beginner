@@ -54,8 +54,13 @@ public class PropertyUtil {
 		Locale locale = Locale.getDefault();
 
 		ResourceBundle resource = ResourceBundle.getBundle(fileName, locale);
-
-		return resource.getString(key);
+		String value = StringUtils.EMPTY;
+		try {
+			value = resource.getString(key);
+		} catch (Exception e) {
+			return value;
+		}
+		return value;
 	}
 
 	/**

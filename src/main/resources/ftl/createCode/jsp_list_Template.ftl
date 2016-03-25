@@ -107,7 +107,7 @@
 <a href="#" id="btn-scroll-up" class="btn btn-small btn-inverse">
 	<i class="icon-double-angle-up icon-only"></i>
 </a>
-<script type="text/javascript">window.jQuery || document.write("<script src='static/js/jquery-1.9.1.min.js'>\x3C/script>");</script>
+<script type="text/javascript">window.jQuery || document.write("<script src='static/js/jquery-1.11.3.min.js'>\x3C/script>");</script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/ace-elements.min.js"></script>
 <script src="static/js/ace.min.js"></script>

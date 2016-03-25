@@ -67,7 +67,7 @@
 	</div>
 	<script src="1.9.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		window.jQuery || document.write("<script src='js/jquery-1.9.1.min.js'>\x3C/script>");
+		window.jQuery || document.write("<script src='js/jquery-1.11.3.min.js'>\x3C/script>");
 	</script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/ace-elements.min.js"></script>
