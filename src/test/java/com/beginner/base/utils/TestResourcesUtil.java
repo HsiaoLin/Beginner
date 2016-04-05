@@ -3,6 +3,8 @@ package com.beginner.base.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.beginner.core.utils.PropertyUtil;
+
 
 public class TestResourcesUtil {
 

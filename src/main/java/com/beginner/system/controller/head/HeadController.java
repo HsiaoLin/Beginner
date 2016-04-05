@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.beginner.base.common.Const;
-import com.beginner.base.controller.BaseController;
-import com.beginner.base.plugin.page.PageData;
-import com.beginner.base.utils.AppUtil;
-import com.beginner.base.utils.SmsUtil;
-import com.beginner.base.utils.Tools;
-import com.beginner.base.utils.Watermark;
-import com.beginner.base.utils.mail.SimpleMailSender;
+import com.beginner.core.common.Const;
+import com.beginner.core.controller.BaseController;
+import com.beginner.core.plugin.PageData;
+import com.beginner.core.utils.AppUtil;
+import com.beginner.core.utils.SmsUtil;
+import com.beginner.core.utils.Tools;
+import com.beginner.core.utils.Watermark;
+import com.beginner.core.utils.mail.SimpleMailSender;
 import com.beginner.system.bean.user.User;
 
 /** 
@@ -93,10 +93,12 @@ public class HeadController extends BaseController {
 		Subject currentUser = SecurityUtils.getSubject();
 		Session session = currentUser.getSession();
 
-		String USERNAME = session.getAttribute(Const.USERNAME).toString();//获取当前登录者loginname
-		pd.put("USERNAME", USERNAME);
-		//userService.setSKIN(pd);
-		session.removeAttribute(Const.USER_OBJ);
+		//获取当前登录者loginname
+		PageData user = (PageData) session.getAttribute(Const.USER_PAGEDATA);
+		user.putAll(pd);
+		//保存到数据库
+		//移除session中的用户信息
+		session.removeAttribute(Const.USER);
 		session.removeAttribute(Const.USER_PAGEDATA);
 		out.write("success");
 		out.close();
@@ -247,7 +249,7 @@ public class HeadController extends BaseController {
 		//String fmsg = pd.getString("fmsg"); //判断是系统用户还是会员 "appuser"为会员用户
 
 		if (null != strEMAIL && !"".equals(strEMAIL)) {
-			String strEM[] = strEMAIL.split(",fh,");
+			String strEM[] = strEMAIL.split(",beginner,");
 			if (strEM.length == 4) {
 				if ("yes".endsWith(isAll)) {
 					try {
@@ -325,7 +327,7 @@ public class HeadController extends BaseController {
 		pd.put("Token", Tools.readTxtFile(Const.WEIXIN)); //读取微信配置
 
 		if (null != strEMAIL && !"".equals(strEMAIL)) {
-			String strEM[] = strEMAIL.split(",fh,");
+			String strEM[] = strEMAIL.split(",beginner,");
 			if (strEM.length == 4) {
 				pd.put("SMTP", strEM[0]);
 				pd.put("PORT", strEM[1]);
@@ -335,7 +337,7 @@ public class HeadController extends BaseController {
 		}
 
 		if (null != strSMS1 && !"".equals(strSMS1)) {
-			String strS1[] = strSMS1.split(",fh,");
+			String strS1[] = strSMS1.split(",beginner,");
 			if (strS1.length == 2) {
 				pd.put("SMSU1", strS1[0]);
 				pd.put("SMSPAW1", strS1[1]);
@@ -343,7 +345,7 @@ public class HeadController extends BaseController {
 		}
 
 		if (null != strSMS2 && !"".equals(strSMS2)) {
-			String strS2[] = strSMS2.split(",fh,");
+			String strS2[] = strSMS2.split(",beginner,");
 			if (strS2.length == 2) {
 				pd.put("SMSU2", strS2[0]);
 				pd.put("SMSPAW2", strS2[1]);
@@ -351,7 +353,7 @@ public class HeadController extends BaseController {
 		}
 
 		if (null != strFWATERM && !"".equals(strFWATERM)) {
-			String strFW[] = strFWATERM.split(",fh,");
+			String strFW[] = strFWATERM.split(",beginner,");
 			if (strFW.length == 5) {
 				pd.put("isCheck1", strFW[0]);
 				pd.put("fcontent", strFW[1]);
@@ -362,7 +364,7 @@ public class HeadController extends BaseController {
 		}
 
 		if (null != strIWATERM && !"".equals(strIWATERM)) {
-			String strIW[] = strIWATERM.split(",fh,");
+			String strIW[] = strIWATERM.split(",beginner,");
 			if (strIW.length == 4) {
 				pd.put("isCheck2", strIW[0]);
 				pd.put("imgUrl", strIW[1]);
@@ -387,10 +389,10 @@ public class HeadController extends BaseController {
 		pd = this.getPageData();
 		Tools.writeFile(Const.SYSNAME, pd.getString("YSYNAME")); //写入系统名称
 		Tools.writeFile(Const.PAGE, pd.getString("COUNTPAGE")); //写入每页条数
-		Tools.writeFile(Const.EMAIL,
-				pd.getString("SMTP") + ",fh," + pd.getString("PORT") + ",fh," + pd.getString("EMAIL") + ",fh," + pd.getString("PAW")); //写入邮件服务器配置
-		Tools.writeFile(Const.SMS1, pd.getString("SMSU1") + ",fh," + pd.getString("SMSPAW1")); //写入短信1配置
-		Tools.writeFile(Const.SMS2, pd.getString("SMSU2") + ",fh," + pd.getString("SMSPAW2")); //写入短信2配置
+		Tools.writeFile(Const.EMAIL, pd.getString("SMTP") + ",beginner," + pd.getString("PORT") + ",beginner," + pd.getString("EMAIL") + ",beginner,"
+				+ pd.getString("PAW")); //写入邮件服务器配置
+		Tools.writeFile(Const.SMS1, pd.getString("SMSU1") + ",beginner," + pd.getString("SMSPAW1")); //写入短信1配置
+		Tools.writeFile(Const.SMS2, pd.getString("SMSU2") + ",beginner," + pd.getString("SMSPAW2")); //写入短信2配置
 		mv.addObject("msg", "OK");
 		mv.setViewName("save_result");
 		return mv;
@@ -404,11 +406,10 @@ public class HeadController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		Tools.writeFile(Const.FWATERM,
-				pd.getString("isCheck1") + ",fh," + pd.getString("fcontent") + ",fh," + pd.getString("fontSize") + ",fh," + pd.getString("fontX")
-						+ ",fh," + pd.getString("fontY")); //文字水印配置
-		Tools.writeFile(Const.IWATERM,
-				pd.getString("isCheck2") + ",fh," + pd.getString("imgUrl") + ",fh," + pd.getString("imgX") + ",fh," + pd.getString("imgY")); //图片水印配置
+		Tools.writeFile(Const.FWATERM, pd.getString("isCheck1") + ",beginner," + pd.getString("fcontent") + ",beginner," + pd.getString("fontSize")
+				+ ",beginner," + pd.getString("fontX") + ",beginner," + pd.getString("fontY")); //文字水印配置
+		Tools.writeFile(Const.IWATERM, pd.getString("isCheck2") + ",beginner," + pd.getString("imgUrl") + ",beginner," + pd.getString("imgX")
+				+ ",beginner," + pd.getString("imgY")); //图片水印配置
 		Watermark.fushValue();
 		mv.addObject("msg", "OK");
 		mv.setViewName("save_result");

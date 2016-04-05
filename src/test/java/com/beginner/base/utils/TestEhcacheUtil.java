@@ -19,7 +19,9 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.beginner.base.common.Const;
+import com.beginner.core.common.Const;
+import com.beginner.core.utils.EhcacheUtil;
+import com.beginner.core.utils.PropertyUtil;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestEhcacheUtil {

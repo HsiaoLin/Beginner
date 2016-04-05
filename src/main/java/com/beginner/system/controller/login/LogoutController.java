@@ -17,10 +17,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.beginner.base.common.Const;
-import com.beginner.base.controller.BaseController;
-import com.beginner.base.plugin.page.PageData;
-import com.beginner.base.utils.Tools;
+import com.beginner.core.common.Const;
+import com.beginner.core.controller.BaseController;
+import com.beginner.core.plugin.PageData;
+import com.beginner.core.utils.Tools;
 import com.beginner.system.bean.user.User;
 
 /**

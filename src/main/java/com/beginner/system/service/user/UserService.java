@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.beginner.base.dao.DAO;
-import com.beginner.base.plugin.page.Page;
-import com.beginner.base.plugin.page.PageData;
+import com.beginner.core.dao.DAO;
+import com.beginner.core.page.Page;
+import com.beginner.core.plugin.PageData;
 
 /**
  * <b>类名称：</b>UserService<br/>

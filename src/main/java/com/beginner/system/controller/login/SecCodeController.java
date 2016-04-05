@@ -20,7 +20,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.beginner.base.common.Const;
+import com.beginner.core.common.Const;
 
 /**
 * <b>类名称：</b>SecCodeController<br/>

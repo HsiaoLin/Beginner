@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.beginner.base.controller.BaseController;
-import com.beginner.base.plugin.page.PageData;
-import com.beginner.base.utils.job.JobEntity;
-import com.beginner.base.utils.job.QuartzManager;
+import com.beginner.core.controller.BaseController;
+import com.beginner.core.plugin.PageData;
+import com.beginner.core.quartz.JobEntity;
+import com.beginner.core.quartz.QuartzManager;
 
 /**
 * <b>类名称：</b>JobController<br/>

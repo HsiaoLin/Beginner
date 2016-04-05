@@ -1,6 +1,6 @@
 package com.beginner.system.service.user;
 
-import com.beginner.base.service.Service;
+import com.beginner.core.service.Service;
 
 /**
 * <b>类名称：</b>IUserService<br/>

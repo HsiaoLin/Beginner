@@ -19,13 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.beginner.base.controller.BaseController;
-import com.beginner.base.plugin.page.PageData;
-import com.beginner.base.utils.PublicUtil;
-import com.beginner.base.utils.generatecode.DelAllFile;
-import com.beginner.base.utils.generatecode.FileDownload;
-import com.beginner.base.utils.generatecode.FileZip;
-import com.beginner.base.utils.generatecode.Freemarker;
+import com.beginner.core.controller.BaseController;
+import com.beginner.core.plugin.PageData;
+import com.beginner.core.utils.FileDownload;
+import com.beginner.core.utils.FileUtil;
+import com.beginner.core.utils.FileZip;
+import com.beginner.core.utils.Freemarker;
+import com.beginner.core.utils.PublicUtil;
 
 /**
 * <b>类名称：</b>CreateCodeController<br/>
@@ -57,7 +57,7 @@ public class CreateCodeController extends BaseController {
 		}
 		List<String[]> fieldList = new ArrayList<String[]>(); //属性集合
 		for (int i = 0; i < zindex; i++) {
-			fieldList.add(pd.getString("field" + i).split(",fh,")); //属性放到集合里面
+			fieldList.add(pd.getString("field" + i).split(",beginner,")); //属性放到集合里面
 		}
 
 		Map<String, Object> root = new HashMap<String, Object>(); //创建数据模型
@@ -69,7 +69,7 @@ public class CreateCodeController extends BaseController {
 		root.put("tabletop", tabletop); //表前缀	
 		root.put("nowDate", new Date()); //当前日期
 
-		DelAllFile.delFolder(PublicUtil.getClasspath() + "admin/ftl"); //生成代码前,先清空之前生成的代码
+		FileUtil.delFolder(PublicUtil.getClasspath() + "admin/ftl"); //生成代码前,先清空之前生成的代码
 
 		String filePath = "admin/ftl/code/"; //存放路径
 		String ftlPath = "createCode"; //ftl路径
@@ -112,9 +112,6 @@ public class CreateCodeController extends BaseController {
 				"jsp/" + businessOrsystem + "/" + objectName.toLowerCase() + "/" + objectName.toLowerCase() + "_list.jsp", filePath, ftlPath);
 		Freemarker.printFile("jsp_edit_Template.ftl", root,
 				"jsp/" + businessOrsystem + "/" + objectName.toLowerCase() + "/" + objectName.toLowerCase() + "_edit.jsp", filePath, ftlPath);
-
-		/*生成说明文档*/
-		//Freemarker.printFile("docTemplate.ftl", root, "说明.doc", filePath, ftlPath);
 
 		/*生成的全部代码压缩成zip文件*/
 		FileZip.zip(PublicUtil.getClasspath() + "admin/ftl/code");

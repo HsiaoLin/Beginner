@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.beginner.base.plugin.page.PageData;
-import com.beginner.base.utils.job.BaseJob;
+import com.beginner.core.plugin.PageData;
+import com.beginner.core.quartz.BaseJob;
 import com.beginner.system.service.user.UserService;
 
 /**

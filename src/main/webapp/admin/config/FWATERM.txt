@@ -1,1 +1,1 @@
-yes,beginner,FH Admin,beginner,20,beginner,1,beginner,1
+yes,beginner,Beginner,beginner,20,beginner,1,beginner,1
