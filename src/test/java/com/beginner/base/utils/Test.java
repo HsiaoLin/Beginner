@@ -1,4 +1,4 @@
-package com.beginner;
+package com.beginner.base.utils;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -18,31 +18,7 @@ public class Test {
 	public static void main(String[] args) {
 		User u = new User();
 		u.setUserMail("1");
-		//		System.out.println(validateModel(u));
-		//		int[] arrays = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		//		mark: {
-		//			for (int i = 0; i < arrays.length; i++) {
-		//				for (int j = 0; j < arrays.length; j++) {
-		//					if (arrays[j] == 5) {
-		//						System.out.println(arrays[i]);
-		//						System.out.println(arrays[j]);
-		//						break mark;
-		//					}
-		//				}
-		//			}
-		//		}
-		try {
-			int i = 10;
-			int j = 10 / i;
-			log.info("测试成功{}", j);
-		} catch (Exception e) {
-			log.error("测试失败", e);
-		}
-		//		String s = "1,2,3,4,5";
-		//		char[] c = s.toCharArray();
-		//		for (char d : c) {
-		//			System.out.println(d);
-		//		}
+		System.out.println(validateModel(u));
 	}
 
 	public static String validateModel(Object obj) {//验证某一个对象  
