@@ -64,10 +64,10 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/**" />
-			<bean class="com.beginner.base.plugin.interceptor.LoginHandlerInterceptor" />
+			<bean class="com.beginner.core.interceptor.LoginHandlerInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<!-- 自定义异常处理器 -->
-	<bean id="exceptionResolver" class="com.beginner.base.plugin.handler.BeginnerExceptionHandler"></bean>
+	<bean id="exceptionResolver" class="com.beginner.core.handler.BeginnerExceptionHandler"></bean>
 </beans>
