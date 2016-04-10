@@ -11,40 +11,32 @@
 	<base href="<%=basePath%>">
 	<!-- jsp文件头和头部 -->
 	<%@ include file="top.jsp"%>
-	<style type="text/css">
-		.commitopacity {
-			position: absolute;
-			width: 100%;
-			height: 100px;
-			background: #7f7f7f;
-			filter: alpha(opacity = 50);
-			-moz-opacity: 0.8;
-			-khtml-opacity: 0.5;
-			opacity: 0.5;
-			top: 0px;
-			z-index: 99999;
-		}
-
-		.my-center {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 50%;
-			height: 30%;
-			padding: 20px;
-			text-align: center;
-			transform: translate(-50%, -50%);
-		}
-	</style>
+	<script type="text/javascript">
+		function iFrameHeight() {   
+var ifm= document.getElementById("mainFrame");   
+var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;   
+if(ifm != null && subWeb != null) {
+   ifm.height = subWeb.body.scrollHeight;
+}   
+}   
+	</script>
 </head>
 <body>
 	<!-- 页面顶部¨ -->
 	<%@ include file="head.jsp"%>
-	<div class="container-fluid" id="main-container">
-		<a href="#" id="menu-toggler"><span></span></a>
-		<!-- 左侧菜单 -->
+	<div class="container-fluid" id="content-container">
+	<div class="content-wrapper">
+	<div class="row">
+	<div class="side-nav-content">
 		<%@ include file="left.jsp"%>
-		<div id="main-content" class="clearfix">
+		<!-- <iframe name="mainFrame" id="mainFrame" frameborder="0" src="login/tab.do" style="margin:0 auto;width:100%;height:100%;"></iframe> -->
+		<iframe name="mainFrame" id="mainFrame" scrolling="no" frameborder="0" src="<%=basePath%>login/login_default.do" style="margin:0 auto;width:100%;" onLoad="iFrameHeight()"></iframe>
+	</div>
+	</div>
+	</div>
+	</div>
+	<%@ include file="footer.jsp"%>
+		<%-- <div id="main-content" class="clearfix">
 			<div id="jzts" style="display:none; width:100%; position:fixed; z-index:99999999;">
 				<div class="commitopacity" id="bkbgjz"></div>
 				<div class="my-center">
@@ -86,15 +78,13 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-
-	<script type="text/javascript">window.jQuery || document.write("<script src='static/js/jquery-1.11.3.min.js'>\x3C/script>");</script>
+		</div> --%>
+	<!-- <script type="text/javascript">window.jQuery || document.write("<script src='static/js/jquery-1.11.3.min.js'>\x3C/script>");</script>
 	<script src="static/js/ace.min.js"></script>
 	<script src="static/js/bootstrap.min.js"></script>
 	<script src="static/js/ace-elements.min.js"></script>
 	<script type="text/javascript" src="static/js/myjs/index.js"></script>
 	<script type="text/javascript" src="static/js/myjs/menusf.js"></script>
-	<script type="text/javascript" src="static/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="static/js/jquery.cookie.js"></script> -->
 </body>
 </html>

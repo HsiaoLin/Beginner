@@ -2,8 +2,57 @@
 	String pathl = request.getContextPath();
 	String basePathl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pathl+"/";
 %>
-<!-- 本页面涉及的js函数，都在head.jsp页面中     -->
-<div id="sidebar">
+<!--涉及的js函数，都在head.jsp引入-->
+<div class="left-side-wrapper">
+	<div class="left-side sticky-left-side">
+		<div class="left-side-inner">
+			<ul class="nav nav-pills nav-stacked custom-nav">
+				<li class="menu-list nav-active current"><a href="#"><i class="ion ion-speedometer"></i> <span>Beginner　首页</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
+					<ul class="sub-menu-list">
+						<li class="active">
+							<a href="index_1.html">团队监控</a>
+						</li>
+						<li >
+							<a href="index_2.html">统计分析</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-header">系统管理</li>
+				<li class="menu-list "><a href=""><i class="ion ion-wrench"></i> <span>UI Elements</span> <i class="ion ion-ios7-arrow-down pull-right"></i></a>
+				<ul class="sub-menu-list">
+				<li >
+				<a href="ui_typography.html">Typography</a>
+				</li>
+				<li >
+				<a href="ui_buttons.html">Buttons</a>
+				</li>
+				<li >
+				<a href="ui_tabs.html">Tabs & Accordians</a>
+				</li>
+				<li >
+				<a href="ui_panels.html">Panels</a>
+				</li>
+				<li >
+				<a href="ui_alerts.html">Alerts & Modals</a>
+				</li>
+				<li >
+				<a href="ui_icons.html">Icons</a>
+				</li>
+				<li >
+				<a href="ui_components.html">Components</a>
+				</li>
+				<li >
+				<a href="ui_calendar.html">Calendar</a>
+				</li>
+				<li >
+				<a href="ui_list.html">List & Tree</a>
+				</li>
+				</ul>
+			</ul>
+		</div>
+	</div>
+</div>
+<%-- <div id="sidebar">
 	<div id="sidebar-shortcuts">
 		<ul class="nav nav-list">
 			<li class="active" id="loginindex">
@@ -83,4 +132,4 @@
 		</ul>
 		<div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
 	</div>
-</div>
+</div> --%>

@@ -56,8 +56,6 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
-	<!-- <filter> <filter-name>loginFilter</filter-name> <filter-class>com.tour.filter.LoginFilter</filter-class> 
-		</filter> -->
 
 	<!-- Spring监听器 -->
 	<listener>
@@ -67,9 +65,9 @@
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
-	<listener>
+	<!-- <listener>
 		<listener-class>com.beginner.core.listener.ZookeeperListener</listener-class>
-	</listener>
+	</listener> -->
 	<!-- Spring MVC -->
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>

@@ -24,13 +24,12 @@ function siMenu(id,fid,MENU_NAME,MENU_URL){
 
 $(function(){
 	//换肤
-	$("#skin-colorpicker").ace_colorpicker().on("change",function(){
+	/*$("#skin-colorpicker").ace_colorpicker().on("change",function(){
 		var b=$(this).find("option:selected").data("class");
 		hf(b);
 		var url = locat+'/head/setSKIN.do?SKIN='+b+'&tm='+new Date().getTime();
 		$.get(url,function(data){});
-	
-	});
+	});*/
 });
 
 var USER_ID;
