@@ -15,6 +15,8 @@
  */
 package com.beginner.core.common;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.beginner.core.utils.PropertyUtil;
 
 /**
@@ -27,7 +29,7 @@ import com.beginner.core.utils.PropertyUtil;
  * <b>修改备注：</b><br/>
  * @version 1.0.0<br/>
  */
-public class Const {
+public class Const extends StringUtils {
 
 	//======================Beginner Start =======================
 	/**
@@ -41,6 +43,18 @@ public class Const {
 	 * @since 1.0.0
 	 */
 	public static final String BEGINNER_PROPERTIES = "beginner.properties";
+
+	/**
+	 * SLASH：（变量描述：斜杠）
+	 * @since 1.0.0
+	 */
+	public static final String SLASH = "/";
+
+	/**
+	 * BACK_SLASH：（变量描述：反斜杠）
+	 * @since 1.0.0
+	 */
+	public static final String BACK_SLASH = "\\";
 
 	//======================Beginner End =======================
 
@@ -180,7 +194,7 @@ public class Const {
 	* KEYPREFIX:（变量描述：Redis key前缀）
 	* @since 1.0.0
 	*/
-	public static final String KEYPREFIX = PropertyUtil.getProperty("redis.keyPrefix", Const.BEGINNER);
+	public static final String KEYPREFIX = PropertyUtil.getStr("redis.keyPrefix");
 
 	//====================== Other End =======================
 

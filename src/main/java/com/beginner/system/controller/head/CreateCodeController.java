@@ -25,7 +25,7 @@ import com.beginner.core.utils.FileDownload;
 import com.beginner.core.utils.FileUtil;
 import com.beginner.core.utils.FileZip;
 import com.beginner.core.utils.Freemarker;
-import com.beginner.core.utils.PublicUtil;
+import com.beginner.core.utils.ProjectUtil;
 
 /**
 * <b>类名称：</b>CreateCodeController<br/>
@@ -69,7 +69,7 @@ public class CreateCodeController extends BaseController {
 		root.put("tabletop", tabletop); //表前缀	
 		root.put("nowDate", new Date()); //当前日期
 
-		FileUtil.delFolder(PublicUtil.getClasspath() + "admin/ftl"); //生成代码前,先清空之前生成的代码
+		FileUtil.delFolder(ProjectUtil.getClasspath() + "admin/ftl"); //生成代码前,先清空之前生成的代码
 
 		String filePath = "admin/ftl/code/"; //存放路径
 		String ftlPath = "createCode"; //ftl路径
@@ -114,9 +114,9 @@ public class CreateCodeController extends BaseController {
 				"jsp/" + businessOrsystem + "/" + objectName.toLowerCase() + "/" + objectName.toLowerCase() + "_edit.jsp", filePath, ftlPath);
 
 		/*生成的全部代码压缩成zip文件*/
-		FileZip.zip(PublicUtil.getClasspath() + "admin/ftl/code");
+		FileZip.zip(ProjectUtil.getClasspath() + "admin/ftl/code");
 
 		/*下载代码*/
-		FileDownload.fileDownload(response, PublicUtil.getClasspath() + "admin/ftl/code.zip", "code.zip");
+		FileDownload.fileDownload(response, ProjectUtil.getClasspath() + "admin/ftl/code.zip", "code.zip");
 	}
 }

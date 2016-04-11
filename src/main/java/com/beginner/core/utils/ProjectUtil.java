@@ -41,16 +41,16 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-public class PublicUtil {
+public class ProjectUtil {
 
-	private static Logger logger = LoggerFactory.getLogger(PublicUtil.class);
+	private static Logger logger = LoggerFactory.getLogger(ProjectUtil.class);
 
 	/**
 	 * 获取项目路径
 	 * @return String 	项目路径（D:\workspace\Beginner\）
 	 * @since 			1.0.0
 	 */
-	public static String getPorjectPath() {
+	public static String getProjectPath() {
 		return System.getProperty("user.dir") + "\\";
 	}
 
@@ -147,7 +147,7 @@ public class PublicUtil {
 		StringBuffer strBuf = new StringBuffer();
 		if ("visit".equals(pathType)) {
 		} else if ("save".equals(pathType)) {
-			String projectPath = PublicUtil.getPorjectPath().replaceAll("\\\\", "/");
+			String projectPath = getProjectPath().replaceAll("\\\\", "/");
 			projectPath = splitString(projectPath, "bin/");
 			strBuf.append(projectPath);
 			strBuf.append("webapps/ROOT/");

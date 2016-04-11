@@ -16,6 +16,7 @@
 package com.beginner.core.utils;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang3.time.DateUtils;
@@ -33,7 +34,7 @@ import org.junit.Test;
  * <b>修改备注：</b><br/>
  * @version 1.0.0<br/>
  */
-public class DateUtil {
+public class DateUtil extends DateUtils {
 
 	public static String[] PARSE_PATTERNS = { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM", "yyyy/MM/dd",
 			"yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM", "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM" };
@@ -48,6 +49,89 @@ public class DateUtil {
 			return null;
 		}
 	}
+
+	/**
+	 * 把时间根据时、分、秒转换为时间段
+	 * @param strDate 	字符串类型的日期参数
+	 * @return String 	转换后的时间段
+	 * @since 			1.0.0
+	 */
+	public static String getTimes(String strDate) {
+		String resultTimes = "";
+
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.util.Date now;
+
+		try {
+			now = new Date();
+			java.util.Date date = df.parse(strDate);
+			long times = now.getTime() - date.getTime();
+			long day = times / (24 * 60 * 60 * 1000);
+			long hour = (times / (60 * 60 * 1000) - day * 24);
+			long min = ((times / (60 * 1000)) - day * 24 * 60 - hour * 60);
+			long sec = (times / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - min * 60);
+
+			StringBuffer sb = new StringBuffer();
+			if (hour > 0) {
+				sb.append(hour + "小时前");
+			} else if (min > 0) {
+				sb.append(min + "分钟前");
+			} else {
+				sb.append(sec + "秒前");
+			}
+			resultTimes = sb.toString();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return resultTimes;
+	}
+
+	/**
+	 * 按照yyyy-MM-dd HH:mm:ss的格式，日期转字符串
+	 * @param date 	Date类型的日期
+	 * @return 		String类型的日期 yyyy-MM-dd HH:mm:ss
+	 * @since 		1.0.0
+	 */
+	public static String date2Str(Date date) {
+		return date2Str(date, "yyyy-MM-dd HH:mm:ss");
+	}
+
+	/**
+	 * 按照参数format的格式把日期转字符串
+	 * @param date 		Date类型日期
+	 * @param format 	日期格式
+	 * @return String 	格式化后的日期
+	 * @since 			1.0.0
+	 */
+	public static String date2Str(Date date, String format) {
+		if (date != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat(format);
+			return sdf.format(date);
+		} else {
+			return "";
+		}
+	}
+
+	/**
+	 * 按照yyyy-MM-dd HH:mm:ss的格式，字符串转日期
+	 * @param date 	字符串类型的日期
+	 * @return 		Date类型的日期
+	 * @since 		1.0.0
+	 */
+	public static Date str2Date(String date) {
+		if (Tools.isNotEmpty(date)) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			try {
+				return sdf.parse(date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			return new Date();
+		} else {
+			return null;
+		}
+	}
+
 	/**
 	 * DateTime变化（增减）
 	*/

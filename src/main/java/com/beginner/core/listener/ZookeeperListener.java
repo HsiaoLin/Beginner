@@ -31,17 +31,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.beginner.core.common.Const;
 import com.beginner.core.utils.HttpUtil;
+import com.beginner.core.utils.ProjectUtil;
 import com.beginner.core.utils.PropertyUtil;
-import com.beginner.core.utils.PublicUtil;
 
 public class ZookeeperListener implements ServletContextListener {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private static final String PATH = "Config";
-
-	private static final String SLASH = "/";
 
 	private static ZkClient zk;
 
@@ -58,14 +57,14 @@ public class ZookeeperListener implements ServletContextListener {
 		logger.info("Servlet容器初始化...");
 		try {
 			// 连接Zookeeper
-			connectZk();
+			zk = new ZkClient(new ZkConnection(PropertyUtil.getStr("zookeeper.zkServers"), PropertyUtil.getInt("zookeeper.sessionTimeOut")));
 
 			// 服务器IP地址
-			String ip = PublicUtil.getIp();
+			String ip = ProjectUtil.getIp();
 			// Web服务器端口号
-			String port = PublicUtil.getPort();
+			String port = ProjectUtil.getPort();
 			// 项目名称
-			String name = PublicUtil.appName();
+			String name = ProjectUtil.appName();
 
 			// 获取zNode节点在目录树的路径
 			String path = getPath(name, ip, port);
@@ -87,7 +86,6 @@ public class ZookeeperListener implements ServletContextListener {
 				// 监听目录树对应zNode节点数据变更事件
 				addListener(path);
 			}
-
 		} catch (Exception e) {
 			if (null != zk)
 				zk.close();
@@ -109,12 +107,10 @@ public class ZookeeperListener implements ServletContextListener {
 					logger.info("模拟调用URL地址");
 					logger.info("返回数据初始化对象");
 				}
-
 				@Override
 				public void handleDataDeleted(String dataPath) throws Exception {
 					logger.info("/zk的data被删除.");
 				}
-
 			});
 		}
 	}
@@ -154,11 +150,11 @@ public class ZookeeperListener implements ServletContextListener {
 		// 端口号
 		map.put("port", port);
 		// 组ID
-		map.put("groupId", PropertyUtil.getProperty("app.groupId", "beginner"));
+		map.put("groupId", PropertyUtil.getStr("app.groupId"));
 		// 项目ID
-		map.put("artifactId", PropertyUtil.getProperty("app.artifactId", "beginner"));
+		map.put("artifactId", PropertyUtil.getStr("app.artifactId"));
 		// 版本号
-		String version = PropertyUtil.getProperty("app.version", "beginner");
+		String version = PropertyUtil.getStr("app.version");
 		// 获取指定的配置信息（请求中不包含version的话将获取最新配置信息）
 		if (StringUtils.isNotBlank(version))
 			map.put("version", version);
@@ -167,7 +163,7 @@ public class ZookeeperListener implements ServletContextListener {
 
 		// zNode节点信息中的URL为空则读取配置文件中的默认URL地址
 		if (StringUtils.isBlank(url))
-			url = PropertyUtil.getProperty("default.url", "beginner");
+			url = PropertyUtil.getStr("default.url");
 
 		return url;
 	}
@@ -176,15 +172,6 @@ public class ZookeeperListener implements ServletContextListener {
 	 * 获取zNode节点在目录树的路径
 	 */
 	private String getPath(String name, String ip, String port) {
-		return SLASH + PATH + SLASH + name + ip + port;
-	}
-
-	/**
-	 * 连接Zookeeper
-	 */
-	private void connectZk() {
-		String zkServers = PropertyUtil.getProperty("zookeeper.zkServers", "beginner");
-		String sessionTimeOut = PropertyUtil.getProperty("zookeeper.sessionTimeOut", "beginner");
-		zk = new ZkClient(new ZkConnection(zkServers, Integer.parseInt(sessionTimeOut)));
+		return Const.SLASH + PATH + Const.SLASH + name + ip + port;
 	}
 }

@@ -1,10 +1,11 @@
 package com.beginner.core.utils.mail;
 
+import java.util.Properties;
+
 /**   
  *发送邮件需要使用的基本信息 
  *  
  */
-import java.util.Properties;
 
 public class MailSenderInfo {
 
@@ -36,7 +37,13 @@ public class MailSenderInfo {
 	// 邮件附件的文件名
 	private String[] attachFileNames;
 
-	/**   
+	//邮件接受者
+	private String[] receivers;
+
+	//邮件抄送者
+	private String[] ccs;
+
+	/**
 	 * 获得邮件会话属性   
 	 */
 	public Properties getProperties() {
@@ -45,6 +52,22 @@ public class MailSenderInfo {
 		p.put("mail.smtp.port", this.mailServerPort);
 		p.put("mail.smtp.auth", validate ? "true" : "false");
 		return p;
+	}
+
+	public String[] getReceivers() {
+		return receivers;
+	}
+
+	public void setReceivers(String[] receivers) {
+		this.receivers = receivers;
+	}
+
+	public String[] getCcs() {
+		return ccs;
+	}
+
+	public void setCcs(String[] ccs) {
+		this.ccs = ccs;
 	}
 	public String getMailServerHost() {
 		return mailServerHost;

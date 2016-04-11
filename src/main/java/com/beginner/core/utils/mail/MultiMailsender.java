@@ -24,7 +24,7 @@ public class MultiMailsender {
 	 * @return
 	 * @throws UnsupportedEncodingException 
 	 */
-	public static boolean sendMailtoMultiReceiver(MultiMailSenderInfo mailInfo) {
+	public static boolean sendMailtoMultiReceiver(MailSenderInfo mailInfo) {
 		MyAuthenticator authenticator = null;
 		if (mailInfo.isValidate()) {
 			authenticator = new MyAuthenticator(mailInfo.getUserName(), mailInfo.getPassword());
@@ -75,7 +75,7 @@ public class MultiMailsender {
 	 * @param mailInfo 待发送邮件的消息
 	 * @return
 	 */
-	public static boolean sendMailtoMultiCC(MultiMailSenderInfo mailInfo){ 
+	public static boolean sendMailtoMultiCC(MailSenderInfo mailInfo) {
 		MyAuthenticator authenticator = null;
 		if (mailInfo.isValidate()) {
 			authenticator = new MyAuthenticator(mailInfo.getUserName(), mailInfo.getPassword());

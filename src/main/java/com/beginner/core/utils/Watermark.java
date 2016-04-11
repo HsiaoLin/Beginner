@@ -79,8 +79,7 @@ public class Watermark {
 			String strIW[] = strIWATERM.split(",beginner,");
 			if (strIW.length == 4) {
 				if ("yes".equals(strIW[0])) {
-					pressImage(PublicUtil.getClasspath() + ""/*2015/08/20 Const.FILEPATHIMG*/+ strIW[1], imagePath, Integer.parseInt(strIW[2]),
-							Integer.parseInt(strIW[3]));
+					pressImage(ProjectUtil.getClasspath() + strIW[1], imagePath, Integer.parseInt(strIW[2]), Integer.parseInt(strIW[3]));
 				}
 			}
 		}
@@ -110,7 +109,6 @@ public class Watermark {
 			Image src_biao = ImageIO.read(_filebiao);
 			int wideth_biao = src_biao.getWidth(null);
 			int height_biao = src_biao.getHeight(null);
-			//g.drawImage(src_biao, (wideth - wideth_biao) / 2,(height - height_biao) / 2, wideth_biao, height_biao, null);
 			g.drawImage(src_biao, x, y, wideth_biao, height_biao, null);
 			//水印文件结束
 			g.dispose();
