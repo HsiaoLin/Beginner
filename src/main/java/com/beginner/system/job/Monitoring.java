@@ -35,7 +35,7 @@ public class Monitoring extends BaseJob {
 			List<PageData> list = userService.listAll(new PageData());
 			if (CollectionUtils.isNotEmpty(list)) {
 				for (PageData pd : list) {
-					logger.info(pd.getString("USER_NAME"));
+					logger.info(pd.getString("USER_NAME"), pd.getString("CHINESE_NAME"));
 				}
 			}
 		} catch (Exception e) {

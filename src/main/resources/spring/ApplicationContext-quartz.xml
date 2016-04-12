@@ -36,7 +36,7 @@
 	</bean>
 
 	<bean name="complexJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass" value="com.beginner.core.quartz.BaseJob" />
+		<property name="jobClass" value="com.beginner.system.job.Monitoring" />
 		<property name="durability" value="true" />
 		<property name="group" value="jobGroupName_Monitoring" />
 		<property name="name" value="jobName_Monitoring" />
