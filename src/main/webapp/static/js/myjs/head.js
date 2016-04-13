@@ -50,22 +50,14 @@ $(function(){
 			//debugger;
 			 $.each(data.list, function(i, list){
 				 //登陆者资料
-				 $("#user_info").html('<small>欢迎您</small> '+list.userName+'');
+				 $("#user_info").html('欢迎您， '+list.userName+'');
 				 user = list.userName;
 				 USER_ID = list.userId;//用户ID
 				 hf(list.userSkin);//皮肤
-//				 if(list.userName != 'admin'){
-//					 $("#adminmenu").hide();	//隐藏菜单设置
-//					 $("#adminzidian").hide();	//隐藏数据字典
-//					 $("#systemset").hide();	//隐藏系统设置
-//					 $("#productCode").hide();	//隐藏代码生成
-//				 }
-//				 online();//连接在线管理
 			 });
 		}
 	});
 });
-
 
 //换肤
 function hf(b){
@@ -187,4 +179,20 @@ function hangge(){
 //显示加载进度
 function jzts(){
 	$("#jzts").show();
+}
+
+//iFrame页面高度
+function iFrameHeight() {
+	var ifm= document.getElementById("mainFrame");
+	var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;
+	if(ifm != null && subWeb != null)
+		ifm.height = subWeb.body.scrollHeight;
+}
+
+//iFrame页面宽度
+function iFrameWidth(){
+	var ifm= document.getElementById("mainFrame");
+	var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;
+	if(ifm != null && subWeb != null)
+		subWeb.toggleClazzs();
 }

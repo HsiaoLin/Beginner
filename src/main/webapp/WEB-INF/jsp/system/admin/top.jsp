@@ -23,14 +23,14 @@
 	<script src="static/theme/proctor/js/lib/momentjs/moment.min.js" type="text/javascript"></script>
 	<script src="static/theme/proctor/js/lib/daterangepicker/daterangepicker.js" type="text/javascript"></script>
 	<script src="static/theme/proctor/js/lib/tabdrop/bootstrap-tabdrop.js" type="text/javascript"></script>
-	<script src="static/theme/proctor/js/scripts.min.js" type="text/javascript"></script>
+	<script src="static/theme/proctor/js/scripts.js" type="text/javascript"></script>
 
 	<!-- 下拉框-->
-	<link rel="stylesheet" href="static/css/chosen.css" />
+	<!-- <link rel="stylesheet" href="static/css/chosen.css" /> -->
 	<!-- 日期框 -->
-	<link rel="stylesheet" href="static/css/datepicker.css" />
+	<!-- <link rel="stylesheet" href="static/css/datepicker.css" /> -->
 	<!-- 提示框组件 -->
-	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
+	<!-- <script type="text/javascript" src="static/js/jquery.tips.js"></script> -->
 	<!-- 弹窗组件 -->
-	<script type="text/javascript" src="plugins/attention/zDialog/zDrag.js"></script>
-	<script type="text/javascript" src="plugins/attention/zDialog/zDialog.js"></script>
+	<!-- <script type="text/javascript" src="plugins/attention/zDialog/zDrag.js"></script>
+	<script type="text/javascript" src="plugins/attention/zDialog/zDialog.js"></script> -->

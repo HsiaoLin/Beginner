@@ -9,33 +9,37 @@
 <html lang="en">
 <head>
 	<base href="<%=basePath%>">
-	<!-- jsp文件头和头部 -->
+	<!-- JS/CSS -->
 	<%@ include file="top.jsp"%>
-	<script type="text/javascript">
-		function iFrameHeight() {   
-var ifm= document.getElementById("mainFrame");   
-var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;   
-if(ifm != null && subWeb != null) {
-   ifm.height = subWeb.body.scrollHeight;
-}   
-}   
-	</script>
+	<style type="text/css">
+		.dropdown:hover .dropdown-menu {
+			display: block;
+			margin-top: 0; // remove the gap so it doesn't close
+		}
+	</style>
 </head>
 <body>
-	<!-- 页面顶部¨ -->
+	<!-- 顶部导航 -->
 	<%@ include file="head.jsp"%>
+
 	<div class="container-fluid" id="content-container">
 	<div class="content-wrapper">
 	<div class="row">
 	<div class="side-nav-content">
+		<!-- 左侧菜单 -->
 		<%@ include file="left.jsp"%>
-		<!-- <iframe name="mainFrame" id="mainFrame" frameborder="0" src="login/tab.do" style="margin:0 auto;width:100%;height:100%;"></iframe> -->
-		<iframe name="mainFrame" id="mainFrame" scrolling="no" frameborder="0" src="<%=basePath%>login/login_default.do" style="margin:0 auto;width:100%;" onLoad="iFrameHeight()"></iframe>
+
+		<iframe name="mainFrame" id="mainFrame" scrolling="no" frameborder="0"
+			src="<%=basePath%>login/login_default.do" onLoad="iFrameHeight()"
+			style="margin:0 auto;float: right;width: 100%">
+		</iframe>
 	</div>
 	</div>
 	</div>
 	</div>
+
 	<%@ include file="footer.jsp"%>
+
 		<%-- <div id="main-content" class="clearfix">
 			<div id="jzts" style="display:none; width:100%; position:fixed; z-index:99999999;">
 				<div class="commitopacity" id="bkbgjz"></div>

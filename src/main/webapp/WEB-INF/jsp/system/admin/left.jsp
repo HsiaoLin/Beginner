@@ -1,13 +1,9 @@
-﻿<%
-	String pathl = request.getContextPath();
-	String basePathl = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+pathl+"/";
-%>
-<!--涉及的js函数，都在head.jsp引入-->
+﻿<!--涉及的js函数，都在head.jsp引入-->
 <div class="left-side-wrapper">
 	<div class="left-side sticky-left-side">
 		<div class="left-side-inner">
 			<ul class="nav nav-pills nav-stacked custom-nav">
-				<li class="menu-list nav-active current"><a href="#"><i class="ion ion-speedometer"></i> <span>Beginner　首页</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
+				<li class="menu-list nav-active current"><a href="#"><i class="ion ion-speedometer"></i> <span>首页</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
 					<ul class="sub-menu-list">
 						<li class="active">
 							<a href="index_1.html">团队监控</a>
@@ -18,7 +14,12 @@
 					</ul>
 				</li>
 				<li class="nav-header">系统管理</li>
-				<li class="menu-list "><a href=""><i class="ion ion-wrench"></i> <span>UI Elements</span> <i class="ion ion-ios7-arrow-down pull-right"></i></a>
+				<li class="menu-list ">
+					<a href="">
+						<i class="ion ion-wrench"></i>
+						<span>UI Elements</span>
+						<i class="ion ion-ios7-arrow-down pull-right"></i>
+					</a>
 				<ul class="sub-menu-list">
 				<li >
 				<a href="ui_typography.html">Typography</a>

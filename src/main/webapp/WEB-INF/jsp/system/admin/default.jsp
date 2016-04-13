@@ -11,8 +11,13 @@
 <base href="<%=basePath%>">
 <!-- jsp文件头和头部 -->
 <%@ include file="top.jsp"%>
+<script type="text/javascript">
+function toggleClazzs() {
+	$("body").toggleClass("left-side-collapsed");
+}
+</script>
 </head>
-<body>
+<body class="left-side-collapsed">
 	<!-- <div class="container-fluid" id="main-container">
 		<div id="page-content" class="clearfix">
 			<div class="page-header position-relative">
@@ -102,7 +107,7 @@
 </div>
 </div>
 </div>
-<!-- <script type="text/javascript">window.jQuery|| document.write("<script src='static/js/jquery-1.9.1.min.js'>\x3C/script>");</script>
-<script type="text/javascript">$(top.hangge());</script> -->
+<!-- <script type="text/javascript">window.jQuery|| document.write("<script src='static/js/jquery-1.9.1.min.js'>\x3C/script>");</script> -->
+<!-- <script type="text/javascript">$(top.hangge());</script> -->
 </body>
 </html>

@@ -1,4 +1,5 @@
-﻿<header>
+﻿<script type="text/javascript" src="static/js/myjs/head.js"></script>
+<header>
 	<nav class="navbar navbar-default navbar-transparent">
 		<div class="container-fluid" id="nav-container">
 			<div class="navbar-header">
@@ -6,10 +7,10 @@
 					<span class="sr-only">导航</span>
 					<i class="ion ion-ios7-gear-outline"></i>
 				</button>
-				<a class="navbar-brand logo" href="#">
-					<img src="static/img/logo_white.fw.png" alt="系统图标" width="175">
+				<a class="navbar-brand logo" href="javascript:void(0);">
+					<img src="static/img/logo.png" alt="系统图标" width="175">
 				</a>
-				<div class="navbar-side-menu-toggle">
+				<div class="navbar-side-menu-toggle" id="toggleClazz" onclick="iFrameWidth();">
 					<button class="toggle-btn" type="button">
 						<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button>
@@ -17,7 +18,7 @@
 			</div>
 			<div class="collapse navbar-collapse" id="top-navbar">
 				<ul class="nav navbar-nav navbar-right">
-				<li><a href="<%=basePath%>/login/index"><i class="glyphicon glyphicon-home"></i>首页</a></li>
+					<li><a href="<%=basePath%>/login/index"><i class="glyphicon glyphicon-home"></i></a></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 							<i class="fa fa-bell"></i>
@@ -42,8 +43,8 @@
 					</li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							<img src="static/theme/proctor/images/image3.jpg" alt="头像" class="user-settings-pic">
-							 用户姓名 
+							<img src="static/images/china.png" alt="头像" class="user-settings-pic">
+							<span id="user_info"></span>
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
@@ -52,7 +53,7 @@
 							<li><a href="javascript:editSys();">系统设置</a></li>
 							<li><a href="javascript:productCode();">代码生成</a></li>
 							<li class="divider"></li>
-							<li><a href="app_login.html">退出</a></li>
+							<li><a href="logout">退出</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -60,4 +61,3 @@
 		</div>
 	</nav>
 </header>
-<script type="text/javascript" src="static/js/myjs/head.js"></script>
