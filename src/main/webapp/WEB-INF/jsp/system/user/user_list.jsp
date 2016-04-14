@@ -12,10 +12,39 @@
 <%@ include file="../../system/admin/top.jsp"%> 
 </head>
 <body>
-<div class="container-fluid" id="main-container">
-<div id="page-content" class="clearfix">
-<div class="row-fluid">
-	<div class="row-fluid">
+<div class="container-fluid" id="content-container">
+<div class="content-wrapper">
+<div class="row">
+<div class="side-nav-content">
+<div class="main-content-wrapper">
+<div class="container-fluid container-padded dash-controls">
+<div class="row">
+<div class="col-md-12">
+<ol class="breadcrumb">
+<li><a href="javascript:void(0);">系统管理</a></li>
+<li><a href="javascript:void(0);">组织机构</a></li>
+<li class="active">帐号管理</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="main-content">
+<section>
+<div class="container-fluid container-padded">
+<div class="row">
+<div class="col-md-12 page-title">
+<h2>帐号管理</h2>
+<hr>
+</div>
+</div>
+</div>
+<div class="container-fluid container-padded">
+<div class="row">
+<div class="col-md-12">
+<div class="panel panel-plain">
+<div class="panel-body">
+<div class="table-responsive">
+<table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
 			<!-- 检索  -->
 			<form action="system/user/list" method="post" name="Form" id="Form">
 			<table>
@@ -119,7 +148,15 @@
 		</table>
 		</div>
 		</form>
-	</div>
+		</section>
+		</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

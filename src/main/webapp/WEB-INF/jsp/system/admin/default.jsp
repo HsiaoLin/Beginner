@@ -11,13 +11,8 @@
 <base href="<%=basePath%>">
 <!-- jsp文件头和头部 -->
 <%@ include file="top.jsp"%>
-<script type="text/javascript">
-function toggleClazzs() {
-	$("body").toggleClass("left-side-collapsed");
-}
-</script>
 </head>
-<body class="left-side-collapsed">
+<body>
 	<!-- <div class="container-fluid" id="main-container">
 		<div id="page-content" class="clearfix">
 			<div class="page-header position-relative">
@@ -44,9 +39,14 @@ function toggleClazzs() {
 <div class="row">
 
 <div class="col-md-12">
+<ol class="breadcrumb">
+<li><a href="#">首页</a></li>
+<li><a href="#">团队监控</a></li>
+<li class="active">定时任务监控</li>
+</ol>
 <div class="panel panel-plain">
 <div class="panel-heading">
-<h3 class="panel-title">Responsive tabs</h3>
+<h2 class="panel-title">定时任务监控</h2>
 </div>
 <div class="panel-body">
 <ul class="nav nav-tabs tab-drop">

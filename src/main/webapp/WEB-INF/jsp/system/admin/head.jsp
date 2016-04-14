@@ -10,8 +10,8 @@
 				<a class="navbar-brand logo" href="javascript:void(0);">
 					<img src="static/img/logo.png" alt="系统图标" width="175">
 				</a>
-				<div class="navbar-side-menu-toggle" id="toggleClazz" onclick="iFrameWidth();">
-					<button class="toggle-btn" type="button">
+				<div class="navbar-side-menu-toggle">
+					<button class="toggle-btn" type="button" id="toggleClazz">
 						<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
 					</button>
 				</div>
@@ -20,7 +20,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="<%=basePath%>/login/index"><i class="glyphicon glyphicon-home"></i></a></li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<a class="dropdown-toggle" href="javascript:void(0);">
 							<i class="fa fa-bell"></i>
 							<span class="notification-title">Notifications</span>
 							<span class="badge badge-danger notification-badge">6</span>
@@ -42,7 +42,7 @@
 						</div>
 					</li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<a class="dropdown-toggle" href="javascript:void(0);">
 							<img src="static/images/china.png" alt="头像" class="user-settings-pic">
 							<span id="user_info"></span>
 							<i class="fa fa-angle-down"></i>

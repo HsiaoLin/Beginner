@@ -23,7 +23,7 @@
 	<script src="static/theme/proctor/js/lib/momentjs/moment.min.js" type="text/javascript"></script>
 	<script src="static/theme/proctor/js/lib/daterangepicker/daterangepicker.js" type="text/javascript"></script>
 	<script src="static/theme/proctor/js/lib/tabdrop/bootstrap-tabdrop.js" type="text/javascript"></script>
-	<script src="static/theme/proctor/js/scripts.js" type="text/javascript"></script>
+	<script src="static/theme/proctor/js/scripts.min.js" type="text/javascript"></script>
 
 	<!-- 下拉框-->
 	<!-- <link rel="stylesheet" href="static/css/chosen.css" /> -->

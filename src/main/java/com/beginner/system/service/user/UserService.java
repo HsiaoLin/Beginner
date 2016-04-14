@@ -20,7 +20,7 @@ import com.beginner.core.plugin.PageData;
  * <b>修改备注：</b><br/>
  * @version 1.0.0<br/>
  */
-@Service("userService0")
+@Service("userService")
 @Transactional(readOnly = true)
 public class UserService implements IUserService {
 

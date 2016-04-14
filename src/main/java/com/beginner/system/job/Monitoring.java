@@ -2,12 +2,12 @@ package com.beginner.system.job;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.quartz.JobDataMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.beginner.core.plugin.PageData;
 import com.beginner.core.quartz.BaseJob;
@@ -26,8 +26,7 @@ public class Monitoring extends BaseJob {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	@Qualifier("userService0")
+	@Resource(name = "userService")
 	private UserService userService;
 
 	private void monitoring() {

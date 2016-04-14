@@ -17,37 +17,16 @@
 				<li class="menu-list ">
 					<a href="">
 						<i class="ion ion-wrench"></i>
-						<span>UI Elements</span>
+						<span>组织机构</span>
 						<i class="ion ion-ios7-arrow-down pull-right"></i>
 					</a>
 				<ul class="sub-menu-list">
-				<li >
-				<a href="ui_typography.html">Typography</a>
-				</li>
-				<li >
-				<a href="ui_buttons.html">Buttons</a>
-				</li>
-				<li >
-				<a href="ui_tabs.html">Tabs & Accordians</a>
-				</li>
-				<li >
-				<a href="ui_panels.html">Panels</a>
-				</li>
-				<li >
-				<a href="ui_alerts.html">Alerts & Modals</a>
-				</li>
-				<li >
-				<a href="ui_icons.html">Icons</a>
-				</li>
-				<li >
-				<a href="ui_components.html">Components</a>
-				</li>
-				<li >
-				<a href="ui_calendar.html">Calendar</a>
-				</li>
-				<li >
-				<a href="ui_list.html">List & Tree</a>
-				</li>
+					<li >
+						<a href="<%=basePath %>static/map/map.html" target="mainFrame">地图展示</a>
+					</li>
+					<li >
+						<a href="<%=basePath %>system/user/list" target="mainFrame">用户信息</a>
+					</li>
 				</ul>
 			</ul>
 		</div>

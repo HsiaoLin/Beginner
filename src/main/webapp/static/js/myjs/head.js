@@ -22,6 +22,10 @@ function siMenu(id,fid,MENU_NAME,MENU_URL){
 	}
 }
 
+function gotoMenu(id,MENU_NAME,MENU_URL){
+	top.mainFrame.src=MENU_URL;
+}
+
 $(function(){
 	//换肤
 	/*$("#skin-colorpicker").ace_colorpicker().on("change",function(){
@@ -188,11 +192,16 @@ function iFrameHeight() {
 	if(ifm != null && subWeb != null)
 		ifm.height = subWeb.body.scrollHeight;
 }
-
-//iFrame页面宽度
-function iFrameWidth(){
-	var ifm= document.getElementById("mainFrame");
-	var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;
-	if(ifm != null && subWeb != null)
-		subWeb.toggleClazzs();
-}
+$(function(){
+	$("#toggleClazz").click(function(){
+		var ifm= document.getElementById("mainFrame");
+		var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;
+		if(ifm != null && subWeb != null)
+			ifm.contentWindow.toggleClazzs();
+	});
+	
+	$(".sub-menu-list>li").click(function(){
+		$(".sub-menu-list>li").removeClass("active");
+		$(this).addClass("active");
+	});
+});

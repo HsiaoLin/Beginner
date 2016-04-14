@@ -1,10 +1,17 @@
-/**
- * <b>项目名：</b>勿忘初心方得始终<br/>
- * <b>包名：</b>com.beginner.system.controller<br/>
- * <b>文件名：</b>UserController.java<br/>
- * <b>版本信息：</b><br/>
- * <b>日期：</b>2015年10月27日-下午7:57:07<br/>
- * <b>Copyright (c)</b> 2015-2016 Hsiao Lin Studio-版权所有<br/>
+/*
+ * Copyright 2015-9999 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.beginner.system.controller.user;
 
@@ -43,15 +50,13 @@ import com.beginner.system.service.user.IUserService;
  * <b>修改备注：</b><br/>
  * @version 1.0.0<br/>
  */
-@Controller(value = "userController0")
+@Controller
 @RequestMapping(value = "/system/user")
 public class UserController extends BaseController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	String menuUrl = "system/user/list"; //菜单地址(权限用)
-
-	@Resource(name = "userService0")
+	@Resource(name = "userService")
 	private IUserService userService;
 
 	@Resource(name = "jedisPool")
@@ -125,30 +130,7 @@ public class UserController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		try {
-			logger.info("null == jedisPool结果：{}", null == jedisPool);
-
-			// try-with-resource方式自动关闭Jedis连接（JDK1.7及以上）
-			try (Jedis jedis = jedisPool.getResource()) {
-				// 一key一值
-				jedis.set("测试key", "测试值");
-				System.out.println("‘测试key’的值是：" + jedis.get("测试key"));
-
-				// 存储数据到列表中
-				jedis.lpush("test-list", "Redis");
-				jedis.lpush("test-list", "Mongodb");
-				jedis.lpush("test-list", "Mysql");
-				// 获取存储的数据并输出
-				List<String> list = jedis.lrange("test-list", 0, 3);
-				// 取得的List按照数据放入顺序的倒序排列
-				for (int i = 0; i < list.size(); i++) {
-					System.out.println("test-list" + i + "：" + list.get(i));
-				}
-
-				// 清空当前DB
-				jedis.flushDB();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			testPool();
 
 			pd = this.getPageData();
 			page.setPd(pd);
@@ -161,6 +143,35 @@ public class UserController extends BaseController {
 		mv.addObject("pd", pd);
 		mv.addObject(Const.ROLE_RIGHTS, this.getRights()); //按钮权限
 		return mv;
+	}
+
+	/**
+	 * 测试Redis连接池
+	 */
+	private void testPool() {
+		logger.info("判断jedisPool是否为null：{}", null == jedisPool);
+		// try-with-resource方式自动关闭Jedis连接（JDK1.7及以上）
+		try (Jedis jedis = jedisPool.getResource()) {
+			// 一key一值
+			jedis.set("测试key", "测试值");
+			System.out.println("‘测试key’的值是：" + jedis.get("测试key"));
+
+			// 存储数据到列表中
+			jedis.lpush("test-list", "Redis");
+			jedis.lpush("test-list", "Mongodb");
+			jedis.lpush("test-list", "Mysql");
+			// 获取存储的数据并输出
+			List<String> list = jedis.lrange("test-list", 0, 3);
+			// 取得的List按照数据放入顺序的倒序排列
+			for (int i = 0; i < list.size(); i++) {
+				System.out.println("test-list" + i + "：" + list.get(i));
+			}
+
+			// 清空当前DB
+			jedis.flushDB();
+		} catch (Exception e) {
+			logger.error("测试Redis连接池异常", e);
+		}
 	}
 
 	/**
