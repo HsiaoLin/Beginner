@@ -33,7 +33,7 @@
 <div class="container-fluid container-padded">
 <div class="row">
 <div class="col-md-12 page-title">
-<h2>帐号管理</h2>
+<h3>帐号管理</h3>
 <hr>
 </div>
 </div>
@@ -45,111 +45,117 @@
 <div class="panel-body">
 <div class="table-responsive">
 <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
-			<!-- 检索  -->
-			<form action="system/user/list" method="post" name="Form" id="Form">
-			<table>
-				<tr>
-					<td>
-						<span class="input-icon">
-							<input autocomplete="off" id="nav-search-input" type="text" name="field1" value="" placeholder="这里输入关键词" />
-							<i id="nav-search-icon" class="icon-search"></i>
-						</span>
-					</td>
-					<td><input class="span10 date-picker" name="lastLoginStart" id="lastLoginStart" value="${pd.lastLoginStart}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="开始日期"/></td>
-					<td><input class="span10 date-picker" name="lastLoginEnd" id="lastLoginEnd" value="${pd.lastLoginEnd}" type="text" data-date-format="yyyy-mm-dd" readonly="readonly" style="width:88px;" placeholder="结束日期"/></td>
-					<td style="vertical-align:top;"> 
-					 	<select class="chzn-select" name="field2" id="field2" data-placeholder="请选择" style="vertical-align:top;width: 120px;">
-							<option value=""></option>
-							<option value="">全部</option>
-							<option value="">1</option>
-							<option value="">2</option>
-						</select>
-					</td>
-					<td style="vertical-align:top;"><button class="btn btn-mini btn-light" onclick="search();"  title="检索"><i id="nav-search-icon" class="icon-search"></i></button></td>
-					<td style="vertical-align:top;"><a class="btn btn-mini btn-light" onclick="toExcel();" title="导出到EXCEL"><i id="nav-search-icon" class="icon-download-alt"></i></a></td>
-				</tr>
-			</table>
-			<!-- 检索  -->
-			<table id="table_report" class="table table-striped table-bordered table-hover">
-				<thead>
-					<tr>
-						<th class="center">
-						<label><input type="checkbox" id="zcheckbox" /><span class="lbl"></span></label>
-						</th>
-						<th class="center">序号</th>
-						<th class="center">用户类型</th>
-						<th class="center">中文名</th>
-						<th class="center">登陆账号</th>
-						<th class="center">登陆密码</th>
-						<th class="center">手机</th>
-						<th class="center">固定电话</th>
-						<th class="center">用户邮箱</th>
-						<th class="center">用户状态</th>
-						<th class="center">最后登陆时间</th>
-						<th class="center">父用户ID</th>
-						<th class="center">采购代理商ID</th>
-						<th class="center">供应商ID</th>
-						<th class="center">操作</th>
-					</tr>
-				</thead>
-				<tbody>
-				<!-- 开始循环 -->
-				<c:choose>
-					<c:when test="${not empty varList}">
-						<c:forEach items="${varList}" var="var" varStatus="vs">
-							<tr>
-								<td class='center' style="width: 30px;">
-									<label><input type='checkbox' name='ids' value="${var.USER_ID}" /><span class="lbl"></span></label>
-								</td>
-								<td class='center' style="width: 30px;">${vs.index+1}</td>
-										<td>${var.USER_TYPE}</td>
-										<td>${var.CHINESE_NAME}</td>
-										<td>${var.USER_NAME}</td>
-										<td>${var.USER_PASSWORD}</td>
-										<td>${var.MOBILE_PHONE}</td>
-										<td>${var.USER_PHONE}</td>
-										<td>${var.USER_MAIL}</td>
-										<td>${var.USER_STATUS}</td>
-										<td>${var.LAST_LOGIN}</td>
-										<td>${var.PARENT_ID}</td>
-										<td>${var.BUYING_AGENT_ID}</td>
-										<td>${var.SUPPLIER_ID}</td>
-								<td style="width: 30px;" class="center">
-									<div class='hidden-phone visible-desktop btn-group'>
-										<div class="inline position-relative">
-										<button class="btn btn-mini btn-info" data-toggle="dropdown"><i class="icon-cog icon-only"></i></button>
-										<ul class="dropdown-menu dropdown-icon-only dropdown-light pull-right dropdown-caret dropdown-close">
-											<li><a style="cursor:pointer;" title="编辑" onclick="edit('${var.USER_ID}');" class="tooltip-success" data-rel="tooltip" title="" data-placement="left"><span class="green"><i class="icon-edit"></i></span></a></li>
-											<li><a style="cursor:pointer;" title="删除" onclick="del('${var.USER_ID}');" class="tooltip-error" data-rel="tooltip" title="" data-placement="left"><span class="red"><i class="icon-trash"></i></span> </a></li>
-										</ul>
-										</div>
-									</div>
-								</td>
-							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr class="main_info">
-							<td colspan="100" class="center" >没有相关数据</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-				</tbody>
-			</table>
-		<div class="page-header position-relative">
-		<table style="width:100%;">
+	<form action="system/user/list" method="post" name="Form" id="Form">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		<h3 class="panel-title">检索条件</h3>
+		</div>
+		<div class="panel-body">
+			<div class="col-md-6">
+			<div class="form-group">
+				<label for="exampleInputEmail1">姓名</label>
+				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入姓名">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">帐号</label>
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入帐号">
+			</div>
+			</div>
+			<div class="col-md-6">
+			<div class="form-group">
+				<label for="exampleInputEmail1">邮箱</label>
+				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱地址">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">手机</label>
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入手机号码">
+			</div>
+			</div>
+			<div class="col-md-12"  style="text-align: center;">
+				<button onclick="search();" type="submit" class="btn btn-primary btn-lg">搜索<i class="fa fa-fw fa-search"></i></button>
+				<button onclick="toExcel();" type="submit" class="btn btn-danger btn-lg">清空<i class="fa fa-fw fa-trash-o"></i></button>
+			</div>
+		</div>
+	</div>
+	<table id="table_report" class="datatable table table-striped table-bordered">
+		<thead>
 			<tr>
-				<td style="vertical-align:top;">
-					<a class="btn btn-small btn-success" onclick="add();">新增</a>
-					<a class="btn btn-small btn-danger" onclick="makeAll('确定要删除选中的数据吗?');" title="批量删除" ><i class='icon-trash'></i></a>
-				</td>
-				<td style="vertical-align:top;"><div class="pagination" style="float: right;padding-top: 0px;margin-top: 0px;">${page.pageStr}</div></td>
+				<th class="center">
+				<label><input type="checkbox" id="zcheckbox" /><span class="lbl"></span></label>
+				</th>
+				<th class="center">序号</th>
+				<th class="center">用户类型</th>
+				<th class="center">中文名</th>
+				<th class="center">登陆账号</th>
+				<th class="center">登陆密码</th>
+				<th class="center">手机</th>
+				<th class="center">固定电话</th>
+				<th class="center">用户邮箱</th>
+				<th class="center">用户状态</th>
+				<th class="center">最后登陆时间</th>
+				<th class="center">父用户ID</th>
+				<th class="center">采购代理商ID</th>
+				<th class="center">供应商ID</th>
+				<th class="center">操作</th>
 			</tr>
-		</table>
-		</div>
-		</form>
-		</section>
-		</div>
+		</thead>
+		<tbody>
+		<!-- 开始循环 -->
+		<c:choose>
+			<c:when test="${not empty varList}">
+				<c:forEach items="${varList}" var="var" varStatus="vs">
+					<tr>
+						<td class='center' style="width: 30px;">
+							<label><input type='checkbox' name='ids' value="${var.USER_ID}" /><span class="lbl"></span></label>
+						</td>
+						<td class='center' style="width: 30px;">${vs.index+1}</td>
+								<td>${var.USER_TYPE}</td>
+								<td>${var.CHINESE_NAME}</td>
+								<td>${var.USER_NAME}</td>
+								<td>${var.USER_PASSWORD}</td>
+								<td>${var.MOBILE_PHONE}</td>
+								<td>${var.USER_PHONE}</td>
+								<td>${var.USER_MAIL}</td>
+								<td>${var.USER_STATUS}</td>
+								<td>${var.LAST_LOGIN}</td>
+								<td>${var.PARENT_ID}</td>
+								<td>${var.BUYING_AGENT_ID}</td>
+								<td>${var.SUPPLIER_ID}</td>
+						<td style="width: 30px;" class="center">
+							<div class='hidden-phone visible-desktop btn-group'>
+								<div class="inline position-relative">
+								<button class="btn btn-mini btn-info" data-toggle="dropdown"><i class="icon-cog icon-only"></i></button>
+								<ul class="dropdown-menu dropdown-icon-only dropdown-light pull-right dropdown-caret dropdown-close">
+									<li><button title="编辑" onclick="edit('${var.USER_ID}');" class="btn btn-round btn-social-icon" data-rel="tooltip" data-placement="left"><i class="icon-edit"></i></button></li>
+									<li><button title="删除" onclick="del('${var.USER_ID}');" class="btn btn-round btn-social-icon" data-rel="tooltip" data-placement="left"><i class="icon-trash"></i></button></li>
+								</ul>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<tr class="main_info">
+					<td colspan="100" class="center" >没有相关数据</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+		</tbody>
+	</table>
+	<div class="page-header position-relative">
+	<table style="width:100%;">
+		<tr>
+			<td style="vertical-align:top;">
+				<a class="btn btn-primary btn-lg" onclick="add();">新增</a>
+				<a class="btn btn-danger btn-lg" onclick="makeAll('确定要删除选中的数据吗?');" title="批量删除" ><i class="fa fa-fw fa-trash-o"></i></a>
+			</td>
+			<td style="vertical-align:top;"><div class="pagination" style="float: right;padding-top: 0px;margin-top: 0px;">${page.pageStr}</div></td>
+		</tr>
+	</table>
+	</div>
+	</form>
+</section>
 </div>
 </div>
 </div>
@@ -160,21 +166,8 @@
 </div>
 </div>
 </div>
-<!-- 返回顶部按钮  -->
-<a href="#" id="btn-scroll-up" class="btn btn-small btn-inverse">
-	<i class="icon-double-angle-up icon-only"></i>
-</a>
-<!-- 引入 -->
-<script type="text/javascript">window.jQuery || document.write("<script src='static/js/jquery-1.11.3.min.js'>\x3C/script>");</script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/ace-elements.min.js"></script>
-<script src="static/js/ace.min.js"></script>
-<script type="text/javascript" src="static/js/chosen.jquery.min.js"></script><!-- 下拉框 -->
-<script type="text/javascript" src="static/js/bootstrap-datepicker.min.js"></script><!-- 日期框 -->
-<script type="text/javascript" src="static/js/bootbox.min.js"></script><!-- 确认窗口 -->
-<script type="text/javascript" src="static/js/jquery.tips.js"></script><!--提示框-->
+</div>
 <script type="text/javascript">
-$(top.hangge());
 //检索
 function search(){
 	top.jzts();
@@ -285,24 +278,6 @@ function makeAll(msg){
 function toExcel(){
 	window.location.href='<%=basePath%>system/user/excel';
 }
-</script>
-<script type="text/javascript">
-$(function() {
-	//下拉框
-	$(".chzn-select").chosen(); 
-	$(".chzn-select-deselect").chosen({allow_single_deselect:true}); 
-	//日期框
-	$('.date-picker').datepicker();
-	//复选框
-	$('table th input:checkbox').on('click' , function(){
-		var that = this;
-		$(this).closest('table').find('tr > td:first-child input:checkbox')
-		.each(function(){
-			this.checked = that.checked;
-			$(this).closest('tr').toggleClass('selected');
-		});
-	});
-});
 </script>
 </body>
 </html>
