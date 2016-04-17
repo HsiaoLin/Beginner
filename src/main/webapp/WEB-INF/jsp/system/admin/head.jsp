@@ -1,4 +1,4 @@
-﻿<script type="text/javascript" src="static/js/myjs/head.js"></script>
+﻿<script type="text/javascript" src="static/js/system/head.js"></script>
 <header>
 	<nav class="navbar navbar-default navbar-transparent">
 		<div class="container-fluid" id="nav-container">

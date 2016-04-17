@@ -22,7 +22,7 @@
 	</script>
 	
 	<!--引入属于此页面的js -->
-	<script type="text/javascript" src="static/js/myjs/readTwoD.js"></script>
+	<script type="text/javascript" src="static/js/system/readTwoD.js"></script>
 	</head> 
 <body>
 	

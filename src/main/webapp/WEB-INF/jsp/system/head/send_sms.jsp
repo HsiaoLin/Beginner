@@ -40,7 +40,7 @@
 		</style>
 		
 		<!--引入属于此页面的js -->
-		<script type="text/javascript" src="static/js/myjs/sms.js"></script>
+		<script type="text/javascript" src="static/js/system/sms.js"></script>
 	</head>
 <body>
 		<!-- 编辑手机号  -->

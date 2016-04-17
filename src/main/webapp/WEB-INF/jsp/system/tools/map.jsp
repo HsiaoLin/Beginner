@@ -111,7 +111,7 @@
 		<script src="static/js/ace.min.js"></script>
 		<!-- 引入 -->
 		<!--引入属于此页面的js -->
-		<script type="text/javascript" src="static/js/myjs/map.js"></script>
+		<script type="text/javascript" src="static/js/system/map.js"></script>
 		<!--提示框-->
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 	</body>

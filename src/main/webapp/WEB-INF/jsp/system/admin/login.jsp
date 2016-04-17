@@ -5,98 +5,92 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<title>${pd.SYSNAME}</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="static/login/bootstrap.min.css" />
-<link rel="stylesheet" href="static/login/css/camera.css" />
-<link rel="stylesheet" href="static/login/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="static/login/matrix-login.css" />
-<link href="static/login/font-awesome.css" rel="stylesheet" />
-<link rel="icon" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
-<link rel="bookmark" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="<%= basePath %>static/login/favicon.ico" type="image/x-icon" />
-<script type="text/javascript" src="static/js/jquery-1.5.1.min.js"></script>
-</head>
-<body>
-	<div style="width:100%;text-align: center;margin: 0 auto;position: absolute;">
-		<div id="loginbox">
-			<form action="" method="post" name="loginForm" id="loginForm">
-				<div class="control-group normal_text">
-					<h3>
-						${pd.SYSNAME}
-					</h3>
-				</div>
-				<div class="control-group">
-					<div class="controls">
-						<div class="main_input_box">
-							<span class="add-on bg_lg">
-							<i><img height="37" src="static/login/user.png" /></i>
-							</span><input type="text" name="loginname" id="loginname" value="" placeholder="请输入用户名" />
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="controls">
-						<div class="main_input_box">
-							<span class="add-on bg_ly">
-							<i><img height="37" src="static/login/suo.png" /></i>
-							</span><input type="password" name="password" id="password" placeholder="请输入密码" value="" />
-						</div>
-					</div>
-				</div>
-				<div style="float:right;padding-right:10%;">
-					<div style="float: left;margin-top:3px;margin-right:2px;">
-						<font color="white">记住密码</font>
-					</div>
-					<div style="float: left;">
-						<input name="form-field-checkbox" id="saveid" type="checkbox"
-							onclick="savePaw();" style="padding-top:0px;" />
-					</div>
-				</div>
-				<div class="form-actions">
-					<div style="width:86%;padding-left:8%;">
+<html lang="en" class="body-full-height">
+    <head>
+        <title>${pd.SYSNAME}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="<%= basePath %>static/avatars/favicon.ico" type="image/x-icon" />
+        <link rel="bookmark" href="<%= basePath %>static/avatars/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="<%= basePath %>static/avatars/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" id="theme" href="<%= basePath %>static/login/css/theme-default.css"/>
+        <script type="text/javascript" src="<%= basePath %>static/js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="<%= basePath %>static/js/jquery.tips.js"></script>
+        <script type="text/javascript" src="<%= basePath %>static/js/jquery.cookie.js"></script>
+    </head>
+    <body>
 
-						<div style="float: left;">
-							<i><img src="static/login/yan.png" /></i>
-						</div>
-						<div style="float: left;" class="codediv">
-							<input type="text" name="code" id="code" class="login_code"
-								style="height:16px; padding-top:0px;" />
-						</div>
-						<div style="float: left;">
-							<i><img style="height:22px;" id="codeImg" alt="点击更换"
-								title="点击更换" src="" /></i>
-						</div>
+        <div class="login-container lightmode">
 
-						<span class="pull-right" style="padding-right:3%;"><a
-							href="register" class="btn btn-success">注册</a></span> <span
-							class="pull-right"><a onclick="severCheck();"
-							class="flip-link btn btn-info" id="to-recover">登录</a></span>
-
-					</div>
-				</div>
-
-			</form>
-
-
-			<div class="controls">
-				<div class="main_input_box">
-					<font color="white"><span id="nameerr">Copyright © Hsiao Lin Studio </span></font>
-				</div>
-			</div>
-		</div>
-	</div>
-
+            <div class="login-box animated fadeInDown">
+                <div class="login-logo" align="center"><h1>${pd.SYSNAME}</h1></div>
+                <div class="login-body">
+                    <form action="" class="form-horizontal" method="post" id="loginForm" name="loginForm">
+                    <div class="form-group">
+                    <div class="login-title col-md-12">用户名或邮箱地址</div>
+                        <div class="col-md-12">
+                            <input name="loginname" id="loginname" type="text" class="form-control" placeholder="请输入用户名或邮箱地址..."/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="login-title col-md-12">密码
+                             <a style="float: right;" href="#" class="btn">忘记密码？</a>
+                        </div>
+                        <div class="col-md-12">
+                            <input name="password" id="password" type="password" class="form-control" placeholder="请输入密码..."/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a id="to-recover" class="btn btn-info btn-block" onclick="severCheck();">登陆</a>
+                        </div>
+                    </div>
+                    <div class="login-or"><h2><i class="fa fa-hand-o-down"></i></h2></div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <button class="btn btn-info btn-block btn-twitter" disabled="disabled"><span class="fa">邮箱登陆</span></button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-info btn-block btn-facebook" disabled="disabled"><span class="fa">快捷登陆</span></button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-info btn-block btn-google" disabled="disabled"><span class="fa">其他方式</span></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="login-body" style="margin-top: 10px;">
+                    <div align="center"><span>还没有账号？<a href="#">立即申请</a></span></div>
+                </div>
+                <div class="login-footer">
+                    <div class="pull-left">
+                        &copy; 2016 Hsiao Lin Studio
+                    </div>
+                    <div class="pull-right">
+                        <a href="#">关于我们</a> |
+                        <a href="#">隐私声明</a> |
+                        <a href="#">联系我们</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<script type="text/javascript">
+		$(document).ready(function(){
+			changeCode();
+			$("#codeImg").bind("click", changeCode);
+		});
+		$(document).keyup(function(event) {
+			if (event.keyCode == 13) {
+				$("#to-recover").trigger("click");
+			}
+		});
 		//服务器校验
 		function severCheck(){
 			if(check()){
 				var loginname = $("#loginname").val();
 				var password = $("#password").val();
-				var code = loginname+",99,"+password+",99,"+$("#code").val();
+				var code = loginname+",beginner,"+password+",beginner,"+$("#code").val();
 				$.ajax({
 					type: "POST",
 					url: '<%=basePath%>login/login_validation',
@@ -144,17 +138,6 @@
 				});
 			}
 		}
-	
-		$(document).ready(function() {
-			changeCode();
-			$("#codeImg").bind("click", changeCode);
-		});
-
-		$(document).keyup(function(event) {
-			if (event.keyCode == 13) {
-				$("#to-recover").trigger("click");
-			}
-		});
 
 		function genTimestamp() {
 			var time = new Date();
@@ -195,7 +178,7 @@
 				$("#password").focus();
 				return false;
 			}
-			if ($("#code").val() == "") {
+/* 			if ($("#code").val() == "") {
 
 				$("#code").tips({
 					side : 1,
@@ -207,14 +190,13 @@
 				$("#code").focus();
 				return false;
 			}
-
+ */
 			$("#loginbox").tips({
 				side : 1,
 				msg : '正在登录 , 请稍后 ...',
 				bg : '#68B500',
 				time : 10
 			});
-
 			return true;
 		}
 
@@ -264,14 +246,5 @@
 			top.location.href = location.href;
 		}
 	</script>
-
-	<script src="static/js/bootstrap.min.js"></script>
-	<script src="static/js/jquery-1.7.2.js"></script>
-	<script src="static/login/js/jquery.easing.1.3.js"></script>
-	<script src="static/login/js/jquery.mobile.customized.min.js"></script>
-	<script src="static/login/js/camera.min.js"></script>
-	<script src="static/login/js/templatemo_script.js"></script>
-	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
-	<script type="text/javascript" src="static/js/jquery.cookie.js"></script>
 </body>
 </html>

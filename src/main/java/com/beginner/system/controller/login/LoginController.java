@@ -47,29 +47,15 @@ public class LoginController extends BaseController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * 访问登陆页面第一版
+	 * 访问登陆页面
 	 */
-	@RequestMapping(value = "/to_login")
+	@RequestMapping(value = "/toLogin")
 	public ModelAndView toLogin() {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put(Const.SYSTEM_NAME, Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
 		mv.setViewName("system/admin/login");
-		mv.addObject("pd", pd);
-		return mv;
-	}
-
-	/**
-	 * 访问登陆页面第二版
-	 */
-	@RequestMapping(value = "/to_signin")
-	public ModelAndView toSignin() {
-		ModelAndView mv = this.getModelAndView();
-		PageData pd = new PageData();
-		pd = this.getPageData();
-		pd.put(Const.SYSTEM_NAME, Tools.readTxtFile(Const.SYSNAME)); //读取系统名称
-		mv.setViewName("system/admin/signin");
 		mv.addObject("pd", pd);
 		return mv;
 	}
@@ -163,7 +149,7 @@ public class LoginController extends BaseController {
 	}
 
 	/**
-	 * 进入tab标签
+	 * 进入项目主页
 	 */
 	@RequestMapping(value = "/index")
 	public String index() {
@@ -185,7 +171,7 @@ public class LoginController extends BaseController {
 	/**
 	 * 进入首页后右侧显示默认页面
 	 */
-	@RequestMapping(value = "/login_default")
+	@RequestMapping(value = "/default")
 	public String defaultPage() {
 		return "system/admin/default";
 	}

@@ -144,7 +144,7 @@
 		<!--提示框-->
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 		<!--引入属于此页面的js -->
-		<script type="text/javascript" src="static/js/myjs/toolEmail.js"></script>		
+		<script type="text/javascript" src="static/js/system/toolEmail.js"></script>		
 	</body>
 </html>
 

@@ -107,7 +107,7 @@
 		<script type="text/javascript" charset="utf-8" src="plugins/ueditor/ueditor.all.js"></script>
 		<!-- 编辑框-->
 		<!--引入属于此页面的js -->
-		<script type="text/javascript" src="static/js/myjs/headEmail.js"></script>
+		<script type="text/javascript" src="static/js/system/headEmail.js"></script>
 	
 </body>
 </html>

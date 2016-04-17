@@ -21,9 +21,9 @@
 <link rel="stylesheet" href="static/css/ace-skins.min.css" />
 <link rel="stylesheet" href="static/css/datepicker.css" />
 <script src="static/js/jquery-1.9.1.min.js"></script>
-<script src="static/js/highcharts/highcharts.js"></script>
-<script src="static/js/highcharts/modules/data.js"></script>
-<script src="static/js/highcharts/modules/exporting.js"></script>
+<script src="static/js/lib/highcharts/highcharts.js"></script>
+<script src="static/js/lib/highcharts/modules/data.js"></script>
+<script src="static/js/lib/highcharts/modules/exporting.js"></script>
 <title></title>
 </head>
 <body>

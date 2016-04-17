@@ -166,7 +166,7 @@
 		<script src="static/js/bootstrap.min.js"></script>
 		<script src="static/js/ace-elements.min.js"></script>
 		<script src="static/js/ace.min.js"></script>
-		<script src="static/js/myjs/productCode.js"></script>
+		<script src="static/js/system/productCode.js"></script>
 		<script type="text/javascript">
 		$(top.hangge());
 		</script>

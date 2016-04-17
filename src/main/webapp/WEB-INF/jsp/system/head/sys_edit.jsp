@@ -30,7 +30,7 @@
 		var jsessionid = "<%=session.getId()%>";  //勿删，uploadify兼容火狐用到
 		</script>
 		<!--引入属于此页面的js -->
-		<script type="text/javascript" src="static/js/myjs/sys.js"></script>	
+		<script type="text/javascript" src="static/js/system/sys.js"></script>	
 		
 		<!--提示框-->
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script>

@@ -52,9 +52,9 @@ public class Page {
 	//系统DTO
 	private PageData pd = new PageData();
 
-	//默认构造函数，默认每页显示15条数据
+	//默认构造函数，默认每页显示10条数据
 	public Page() {
-		this.showCount = 15;
+		this.showCount = 10;
 	}
 
 	//有参构造函数，设置每页显示count条数据
@@ -100,17 +100,17 @@ public class Page {
 	public String getPageStr() {
 		StringBuffer sb = new StringBuffer();
 		if (totalResult > 0) {
-			sb.append("	<ul>\n");
+			sb.append("	<ul class='pagination'>\n");
 			if (currentPage == 1) {
 				sb.append("	<li><a>共<font color=red>" + totalResult + "</font>条</a></li>\n");
-				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n");
+				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;height:34px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n");
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">跳转</a></li>\n");
 				sb.append("	<li><a>首页</a></li>\n");
 				sb.append("	<li><a>上页</a></li>\n");
 			} else {
 				sb.append("	<li><a>共<font color=red>" + totalResult + "</font>条</a></li>\n");
 				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n");
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">跳转</a></li>\n");
+				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-success\">跳转</a></li>\n");
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(1)\">首页</a></li>\n");
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(" + (currentPage - 1) + ")\">上页</a></li>\n");
 			}

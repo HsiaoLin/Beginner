@@ -130,7 +130,7 @@ public class UserController extends BaseController {
 		ModelAndView mv = this.getModelAndView();
 		PageData pd = new PageData();
 		try {
-			testPool();
+			//testPool();
 
 			pd = this.getPageData();
 			page.setPd(pd);
