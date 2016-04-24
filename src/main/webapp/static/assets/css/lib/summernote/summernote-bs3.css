@@ -4373,7 +4373,7 @@ textarea.note-editor .input-group-sm > .input-group-btn > .btn {
 }
 .note-editor .jumbotron {
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;

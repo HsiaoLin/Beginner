@@ -8,15 +8,31 @@
  */
 package com.beginner.system.controller.login;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import javax.annotation.Resource;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
+import org.quartz.CronTrigger;
+import org.quartz.JobDataMap;
+import org.quartz.JobDetail;
+import org.quartz.JobKey;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.Trigger;
+import org.quartz.TriggerKey;
+import org.quartz.impl.matchers.GroupMatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -27,6 +43,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.beginner.core.common.Const;
 import com.beginner.core.controller.BaseController;
 import com.beginner.core.plugin.PageData;
+import com.beginner.core.quartz.JobEntity;
 import com.beginner.core.utils.AppUtil;
 import com.beginner.core.utils.Tools;
 import com.beginner.system.bean.user.User;
@@ -45,6 +62,9 @@ import com.beginner.system.bean.user.User;
 public class LoginController extends BaseController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	@Resource(name = "quartzScheduler")
+	private Scheduler quartzScheduler;
 
 	/**
 	 * 访问登陆页面
@@ -105,8 +125,7 @@ public class LoginController extends BaseController {
 				try {
 					pds = BeanUtils.describe(user);
 				} catch (Exception e1) {
-					logger.error("登陆失败：用户转Map发生异常！");
-					logger.debug("");
+					logger.error("{}登陆失败：User转Map发生异常！", user.getName());
 					throw new Exception();
 				}
 
@@ -123,7 +142,7 @@ public class LoginController extends BaseController {
 				try {
 					subject.login(token);
 				} catch (AuthenticationException e) {
-					logger.info("登陆失败：身份验证失败！");
+					logger.info("{}登陆失败：身份验证失败！", user.getName());
 					errInfo = "身份验证失败！";
 				}
 				//						} else {
@@ -169,10 +188,74 @@ public class LoginController extends BaseController {
 	}
 
 	/**
-	 * 进入首页后右侧显示默认页面
+	 * 进入首页后右侧显示默认页面-定时任务监控
 	 */
 	@RequestMapping(value = "/default")
-	public String defaultPage() {
-		return "system/admin/default";
+	public ModelAndView defaultPage() throws SchedulerException {
+		ModelAndView mv = this.getModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		mv.setViewName("system/admin/default");
+		mv.addObject("pd", pd);
+		mv.addObject("jobInfos", getSchedulerJobInfo(pd));
+		logger.info(StringUtils.EMPTY);
+		return mv;
+	}
+
+	private List<JobEntity> getSchedulerJobInfo(PageData pd) throws SchedulerException {
+		//查询条件
+		//任务状态
+		String jobStatus = (String) pd.get("jobStatus");
+		//任务名称
+		String jobName = (String) pd.get("jobName");
+		//起止时间
+		//String startDate = (String) pd.get("startDate");
+		//String endDate = (String) pd.get("endDate");
+
+		List<JobEntity> jobInfos = new ArrayList<JobEntity>();
+		List<String> triggerGroupNames = quartzScheduler.getTriggerGroupNames();
+		for (String triggerGroupName : triggerGroupNames) {
+			Set<TriggerKey> triggerKeySet = quartzScheduler.getTriggerKeys(GroupMatcher.triggerGroupEquals(triggerGroupName));
+			for (TriggerKey triggerKey : triggerKeySet) {
+				getJobDetail(jobStatus, jobName, jobInfos, triggerKey);
+			}
+		}
+		return jobInfos;
+	}
+
+	private void getJobDetail(String jobStatus, String jobName, List<JobEntity> jobInfos, TriggerKey triggerKey) throws SchedulerException {
+		Trigger t = quartzScheduler.getTrigger(triggerKey);
+		if (t instanceof CronTrigger) {
+			CronTrigger trigger = (CronTrigger) t;
+			JobKey jobKey = trigger.getJobKey();
+			JobDetail jd = quartzScheduler.getJobDetail(jobKey);
+			JobEntity jobInfo = new JobEntity();
+			jobInfo.setJobName(jobKey.getName());
+			jobInfo.setJobGroup(jobKey.getGroup());
+			jobInfo.setTriggerName(triggerKey.getName());
+			jobInfo.setTriggerGroupName(triggerKey.getGroup());
+			jobInfo.setCronExpr(trigger.getCronExpression());
+			jobInfo.setNextFireTime(trigger.getNextFireTime());
+			jobInfo.setPreviousFireTime(trigger.getPreviousFireTime());
+			jobInfo.setStartTime(trigger.getStartTime());
+			jobInfo.setEndTime(trigger.getEndTime());
+			jobInfo.setJobClass(jd.getJobClass().getCanonicalName());
+			Trigger.TriggerState triggerState = quartzScheduler.getTriggerState(trigger.getKey());
+			// NONE, NORMAL正常运行, PAUSED暂停状态, COMPLETE完成状态, ERROR错误状态, BLOCKED锁定状态
+			jobInfo.setJobStatus(triggerState.toString());
+			JobDataMap map = quartzScheduler.getJobDetail(jobKey).getJobDataMap();
+			if (null != map && CollectionUtils.isNotEmpty(map.keySet())) {
+				jobInfo.setCount(Integer.parseInt((String) map.get("count")));
+				jobInfo.setJobDataMap(map);
+			} else {
+				jobInfo.setJobDataMap(new JobDataMap());
+			}
+			if ((StringUtils.isEmpty(jobStatus) && StringUtils.isEmpty(jobName))
+					|| (StringUtils.isNotEmpty(jobStatus) && triggerState.toString().contains(jobStatus) && StringUtils.isNotEmpty(jobName) && jobKey
+							.getName().contains(jobName)) || (StringUtils.isNotEmpty(jobStatus) && triggerState.toString().contains(jobStatus))
+					|| (StringUtils.isNotEmpty(jobName) && jobKey.getName().contains(jobName))) {
+				jobInfos.add(jobInfo);
+			}
+		}
 	}
 }

@@ -5,11 +5,11 @@
 			<ul class="nav nav-pills nav-stacked custom-nav">
 				<li class="menu-list nav-active current"><a href="#"><i class="ion ion-speedometer"></i> <span>首页</span> <i class="ion ion-ios7-arrow-up pull-right"></i></a>
 					<ul class="sub-menu-list">
-						<li class="active">
-							<a href="index_1.html">团队监控</a>
+						<li>
+							<a href="<%=basePath %>system/user/list" target="mainFrame">统计分析</a>
 						</li>
-						<li >
-							<a href="index_2.html">统计分析</a>
+						<li class="active">
+							<a href="<%=basePath %>login/default" target="mainFrame">任务监控</a>
 						</li>
 					</ul>
 				</li>
@@ -22,10 +22,10 @@
 					</a>
 				<ul class="sub-menu-list">
 					<li >
-						<a href="<%=basePath %>static/map/map.html" target="mainFrame">地图展示</a>
+						<a href="<%=basePath %>system/user/list" target="mainFrame">帐号管理</a>
 					</li>
 					<li >
-						<a href="<%=basePath %>system/user/list" target="mainFrame">用户信息</a>
+						<a href="<%=basePath %>static/map/map.html" target="mainFrame">百度地图</a>
 					</li>
 				</ul>
 			</ul>

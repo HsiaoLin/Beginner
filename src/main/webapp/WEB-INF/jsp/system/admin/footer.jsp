@@ -16,16 +16,16 @@
 <div class="row">
 <div class="col-md-12">
 <ul class="list-inline">
-<li><a href="#">关于我们</a>　丨</li>
-<li><a href="#">意见反馈</a>　丨</li>
-<li><a href="#">帮助中心</a>　丨</li>
-<li><a href="#">友情链接</a></li>
+<li><a href="javascript:void(0);">关于我们</a>　丨</li>
+<li><a href="javascript:void(0);">意见反馈</a>　丨</li>
+<li><a href="javascript:void(0);">帮助中心</a>　丨</li>
+<li><a href="javascript:void(0);">友情链接</a></li>
 </ul>
 <ul class="list-inline">
 <li><small>&copy; 2015-9999 Beginner 版权所有</small></li>
-<li><small><a href="#"></a></small></li>
-<li><small><a href="#"></a></small></li>
-<li><small><a href="#"></a></small></li>
+<li><small><a href="javascript:void(0);"></a></small></li>
+<li><small><a href="javascript:void(0);"></a></small></li>
+<li><small><a href="javascript:void(0);"></a></small></li>
 </ul>
 </div>
 </div>

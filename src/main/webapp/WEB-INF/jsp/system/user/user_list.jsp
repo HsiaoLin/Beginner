@@ -29,7 +29,6 @@
 </div>
 </div>
 <div class="main-content">
-<section>
 <div class="container-fluid container-padded">
 <div class="row">
 <div class="col-md-12 page-title">
@@ -44,11 +43,10 @@
 <div class="panel panel-plain">
 <div class="panel-body">
 <div class="table-responsive">
-<table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered">
 	<form action="system/user/list" method="post" name="Form" id="Form">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-		<h3 class="panel-title">检索条件</h3>
+		<h3 class="panel-title">搜索条件</h3>
 		</div>
 		<div class="panel-body">
 			<div class="col-md-6">
@@ -77,26 +75,27 @@
 			</div>
 		</div>
 	</div>
-	<table id="table_report" class="datatable table table-striped table-bordered" style="text-align: center;">
+	<div class="dataTables_wrapper form-inline"></div>
+	<table cellpadding="0" cellspacing="0" id="table_report" class="datatable table table-striped table-bordered dataTable">
 		<thead>
 			<tr>
 				<th>
-				<label><input type="checkbox" id="zcheckbox" /><span class="lbl"></span></label>
+				<input type="checkbox" id="zcheckbox" />
 				</th>
-				<th style="text-align: center;">序号</th>
-				<th style="text-align: center;">用户类型</th>
-				<th style="text-align: center;">姓名</th>
-				<th style="text-align: center;">帐号</th>
-				<th style="text-align: center;">密码</th>
-				<th style="text-align: center;">手机</th>
-				<th style="text-align: center;">固定电话</th>
-				<th style="text-align: center;">用户邮箱</th>
-				<th style="text-align: center;">用户状态</th>
-				<th style="text-align: center;">最后登陆时间</th>
-				<th style="text-align: center;">父用户ID</th>
-				<th style="text-align: center;">采购代理商ID</th>
-				<th style="text-align: center;">供应商ID</th>
-				<th style="text-align: center;">操作</th>
+				<th>序号</th>
+				<th>用户类型</th>
+				<th>姓名</th>
+				<th>帐号</th>
+				<th>密码</th>
+				<th>手机</th>
+				<th>固定电话</th>
+				<th>用户邮箱</th>
+				<th>用户状态</th>
+				<th>最后登陆时间</th>
+				<th>父用户ID</th>
+				<th>采购代理商ID</th>
+				<th>供应商ID</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -106,13 +105,13 @@
 				<c:forEach items="${varList}" var="var" varStatus="vs">
 					<tr>
 						<td style="width: 30px;">
-							<label><input type='checkbox' name='ids' value="${var.USER_ID}" /><span class="lbl"></span></label>
+							<input type='checkbox' name='ids' value="${var.USER_ID}" />
 						</td>
-						<td style="width: 30px;">${vs.index+1}</td>
+						<td style="width: 50px;">${vs.index+1}</td>
 						<td>
-						<c:if test="${var.USER_TYPE == 0}"><span class="label label-primary">平台</span></c:if>
-						<c:if test="${var.USER_TYPE == 1}"><span class="label label-success">代理商</span></c:if>
-						<c:if test="${var.USER_TYPE == 2}"><span class="label label-info">供应商</span></c:if>
+						<c:if test="${var.USER_TYPE == 0}">平台</c:if>
+						<c:if test="${var.USER_TYPE == 1}">代理商</c:if>
+						<c:if test="${var.USER_TYPE == 2}">供应商</c:if>
 						</td>
 						<td>${var.CHINESE_NAME}</td>
 						<td>${var.USER_NAME}</td>
@@ -157,28 +156,18 @@
 		</tbody>
 	</table>
 	<div class="row">
-	<div class="col-sm-12">
-	<div class="page-header position-relative">
-	<table style="width:100%;">
-		<tr>
-			<td style="vertical-align:top;">
-				<a class="btn btn-primary" onclick="add();" data-placement="top" data-toggle="tooltip" data-original-title="新增">新增<i class="fa fa-fw fa-plus"></i></a>
+		<div class="col-sm-12">
+			<div style="float: left;">
+				<a class="btn btn-success" onclick="add();" data-placement="top" data-toggle="tooltip" data-original-title="新增">新增<i class="fa fa-fw fa-plus"></i></a>
 				<a class="btn btn-danger" onclick="makeAll('确定要删除选中的数据吗?');" data-placement="top" data-toggle="tooltip" data-original-title="批量删除">删除<i class="fa fa-fw fa-trash-o"></i></a>
-			</td>
-			<td style="vertical-align:top;">
-				<div class="dataTables_paginate paging_bs_four_button" id="DataTables_Table_0_paginate">
-				<div class="pagination" style="float: right;padding-top: 0px;margin-top: 0px;">
-					${page.pageStr}
-				</div>
-				</div>
-			</td>
-		</tr>
-	</table>
-	</div>
+			</div>
+			<div style="float: right;">
+				${page.pageStr}
+			</div>
+		</div>
 	</div>
 	</div>
 	</form>
-</section>
 </div>
 </div>
 </div>

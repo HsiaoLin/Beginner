@@ -18,10 +18,10 @@
 	<link rel="stylesheet" href="static/assets/css/lib/tabdrop/tabdrop.css" />
 	<link rel="stylesheet" href="static/assets/css/styles.css" id="theme-css" />
 
-	<script src="static/assets/js/lib/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
-	<script src="static/assets/js/lib/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-	<script src="static/assets/js/lib/slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="static/assets/js/lib/momentjs/moment.min.js" type="text/javascript"></script>
-	<script src="static/assets/js/lib/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-	<script src="static/assets/js/lib/tabdrop/bootstrap-tabdrop.js" type="text/javascript"></script>
-	<script src="static/assets/js/scripts.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="static/assets/js/lib/jquery/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="static/assets/js/lib/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="static/assets/js/lib/slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="static/assets/js/lib/momentjs/moment.min.js"></script>
+	<script type="text/javascript" src="static/assets/js/lib/daterangepicker/daterangepicker.js"></script>
+	<script type="text/javascript" src="static/assets/js/lib/tabdrop/bootstrap-tabdrop.js"></script>
+	<script type="text/javascript" src="static/assets/js/scripts.min.js"></script>

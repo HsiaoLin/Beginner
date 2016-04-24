@@ -186,12 +186,18 @@ function jzts(){
 }
 
 //iFrame页面高度
+window.onresize=function(){
+	iFrameHeight();
+}
+
+//iFrame页面高度
 function iFrameHeight() {
 	var ifm= document.getElementById("mainFrame");
 	var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;
-	if(ifm != null && subWeb != null)
+	if(ifm && subWeb)
 		ifm.height = subWeb.body.scrollHeight;
 }
+
 $(function(){
 	$("#toggleClazz").click(function(){
 		var ifm= document.getElementById("mainFrame");
@@ -199,7 +205,7 @@ $(function(){
 		if(ifm != null && subWeb != null)
 			ifm.contentWindow.toggleClazzs();
 	});
-	
+
 	$(".sub-menu-list>li").click(function(){
 		$(".sub-menu-list>li").removeClass("active");
 		$(this).addClass("active");

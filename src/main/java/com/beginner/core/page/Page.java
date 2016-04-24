@@ -100,17 +100,19 @@ public class Page {
 	public String getPageStr() {
 		StringBuffer sb = new StringBuffer();
 		if (totalResult > 0) {
-			sb.append("	<ul class='pagination'>\n");
+			sb.append("	<ul class=\"pagination\" style=\"margin-top:0px;\">\n");
 			if (currentPage == 1) {
 				sb.append("	<li><a>共<font color=red>" + totalResult + "</font>条</a></li>\n");
-				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;height:34px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n");
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-mini btn-success\">跳转</a></li>\n");
-				sb.append("	<li><a>首页</a></li>\n");
-				sb.append("	<li><a>上页</a></li>\n");
+				sb.append("	<li><input type=\"number\" class=\"form-control\" value=\"" + currentPage
+						+ "\" id=\"toGoPage\" style=\"width:68px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n");
+				sb.append("	<li><a onclick=\"toTZ();\" class=\"btn\" style=\"color: #ffffff;background-color: #54bc75;border-color: #54bc75;\">跳转</a></li>\n");
+				sb.append("	<li class=\"disabled\"><a>首页</a></li>\n");
+				sb.append("	<li class=\"disabled\"><a>上页</a></li>\n");
 			} else {
 				sb.append("	<li><a>共<font color=red>" + totalResult + "</font>条</a></li>\n");
-				sb.append("	<li><input type=\"number\" value=\"\" id=\"toGoPage\" style=\"width:50px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n");
-				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn btn-success\">跳转</a></li>\n");
+				sb.append("	<li><input type=\"number\" class=\"form-control\" value=\"" + currentPage
+						+ "\" id=\"toGoPage\" style=\"width:68px;text-align:center;float:left\" placeholder=\"页码\"/></li>\n");
+				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"toTZ();\"  class=\"btn\" style=\"color: #ffffff;background-color: #54bc75;border-color: #54bc75;\">跳转</a></li>\n");
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(1)\">首页</a></li>\n");
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(" + (currentPage - 1) + ")\">上页</a></li>\n");
 			}
@@ -127,8 +129,8 @@ public class Page {
 					sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(" + i + ")\">" + i + "</a></li>\n");
 			}
 			if (currentPage == totalPage) {
-				sb.append("	<li><a>下页</a></li>\n");
-				sb.append("	<li><a>尾页</a></li>\n");
+				sb.append("	<li class=\"disabled\"><a>下页</a></li>\n");
+				sb.append("	<li class=\"disabled\"><a>尾页</a></li>\n");
 			} else {
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(" + (currentPage + 1) + ")\">下页</a></li>\n");
 				sb.append("	<li style=\"cursor:pointer;\"><a onclick=\"nextPage(" + totalPage + ")\">尾页</a></li>\n");
@@ -136,8 +138,8 @@ public class Page {
 			sb.append("	<li><a>第" + currentPage + "页</a></li>\n");
 			sb.append("	<li><a>共" + totalPage + "页</a></li>\n");
 
-			sb.append("	<li><select title='显示条数' style=\"width:55px;float:left;\" onchange=\"changeCount(this.value)\">\n");
-			sb.append("	<option value='" + showCount + "'>" + showCount + "</option>\n");
+			sb.append("	<li><select title='显示条数' style=\"width:60px;float:left;padding:6px 6px;\" class=\"form-control\" onchange=\"changeCount(this.value)\">\n");
+			sb.append("	<option selected value='" + showCount + "'>" + showCount + "</option>\n");
 			sb.append("	<option value='10'>10</option>\n");
 			sb.append("	<option value='20'>20</option>\n");
 			sb.append("	<option value='30'>30</option>\n");
@@ -147,7 +149,7 @@ public class Page {
 			sb.append("	<option value='70'>70</option>\n");
 			sb.append("	<option value='80'>80</option>\n");
 			sb.append("	<option value='90'>90</option>\n");
-			sb.append("	<option value='99'>99</option>\n");
+			sb.append("	<option value='100'>100</option>\n");
 			sb.append("	</select>\n");
 			sb.append("	</li>\n");
 

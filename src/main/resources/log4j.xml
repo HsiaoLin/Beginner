@@ -4,7 +4,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="DEBUG" />
+		<priority value="INFO" />
 		<appender-ref ref="BEGINNER" />
 		<appender-ref ref="CONSOLE" />
 	</root>

@@ -41,9 +41,9 @@ public abstract class BaseJob implements Job {
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		JobDetailImpl jobDetail = (JobDetailImpl) context.getJobDetail();
-		logger.info("定时任务执行开始,JobKey:[" + jobDetail.getKey() + "],执行时间:" + DateTime.now().toString(DateTimeFormat.fullDate()));
+		logger.info("定时任务执行开始,JobKey:[" + jobDetail.getKey() + "],执行时间:" + DateTime.now().toString(DateTimeFormat.fullDateTime()));
 		jobHandler(context.getMergedJobDataMap());
-		logger.info("定时任务执行完成,JobKey:[" + jobDetail.getKey() + "]");
+		logger.info("定时任务执行完成,JobKey:[" + jobDetail.getKey() + "],完成时间:" + DateTime.now().toString(DateTimeFormat.fullDateTime()));
 	}
 
 	public abstract void jobHandler(JobDataMap jobDataMap);
