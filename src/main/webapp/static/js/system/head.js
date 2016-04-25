@@ -175,14 +175,23 @@ function changeMenu(){
 	window.location.href=locat+'/main/yes';
 }
 
-//清除加载进度
-function hangge(){
-	$("#jzts").hide();
+//关闭加载层
+function shutdown(){
+	top.layer.closeAll('loading');
 }
 
-//显示加载进度
-function jzts(){
-	$("#jzts").show();
+//显示加载层
+function loading(){
+	loading(0);
+}
+
+//显示加载层(0,1,2共三种类型可选择)
+function loading(type){
+	if(type && (type == 0 || type == 1 || type == 2)){
+		top.layer.load(type);
+	}else{
+		top.layer.load(0);
+	}
 }
 
 //iFrame页面高度
@@ -199,6 +208,7 @@ function iFrameHeight() {
 }
 
 $(function(){
+	loading();
 	$("#toggleClazz").click(function(){
 		var ifm= document.getElementById("mainFrame");
 		var subWeb = document.frames ? document.frames["mainFrame"].document : ifm.contentDocument;

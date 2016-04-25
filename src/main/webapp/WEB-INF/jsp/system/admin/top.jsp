@@ -25,3 +25,10 @@
 	<script type="text/javascript" src="static/assets/js/lib/daterangepicker/daterangepicker.js"></script>
 	<script type="text/javascript" src="static/assets/js/lib/tabdrop/bootstrap-tabdrop.js"></script>
 	<script type="text/javascript" src="static/assets/js/scripts.min.js"></script>
+
+	<!-- 弹出层 -->
+	<script type="text/javascript" src="static/js/lib/layer/layer.js"></script>
+	<!-- zTree -->
+	<link rel="stylesheet" href="static/js/lib/zTree/css/zTreeStyle/zTreeStyle.css" id="theme-css" />
+	<script type="text/javascript" src="static/js/lib/zTree/js/jquery.ztree.core.min.js"></script>
+	

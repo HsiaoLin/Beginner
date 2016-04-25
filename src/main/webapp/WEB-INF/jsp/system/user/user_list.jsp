@@ -180,18 +180,34 @@
 </div>
 </div>
 <script type="text/javascript">
+$(top.shutdown());
 //检索
 function search(){
-	top.jzts();
+	top.shutdown();
 	$("#Form").submit();
 }
 //新增
 function add(){
-	top.jzts();
+	top.layer.open({
+		type: 2,
+		title: '新增',
+		shadeClose: true,
+		closeBtn:1,
+		shade: 0.8,
+		area: ['30%', '50%'],
+		content: '<%=basePath%>system/user/goAdd'
+		btn: ['保存', '取消']
+			,yes: function(index, layero){
+			//按钮【保存】的回调
+			},cancel: function(index){
+			//按钮【取消】的回调
+		}
+	});
+	/* top.jzts();
 	var diag = new top.Dialog();
 	diag.Drag=true;
 	diag.Title ="新增";
-	diag.URL = '<%=basePath%>system/user/goAdd';
+	diag.URL = ;
 	diag.Width = $(document).width()/3;
 	diag.Height = $(document).height()/2;
 	diag.CancelEvent = function(){ //关闭事件
@@ -205,7 +221,7 @@ function add(){
 		}
 		diag.close();
 	};
-	diag.show();
+	diag.show(); */
 }
 //删除
 function del(Id){

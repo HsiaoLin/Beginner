@@ -11,6 +11,9 @@
 <base href="<%=basePath%>">
 <!-- jsp文件头和头部 -->
 <%@ include file="top.jsp"%>
+<script type="text/javascript">
+$(top.shutdown());
+</script>
 </head>
 <body>
 <div class="container-fluid" id="content-container">
