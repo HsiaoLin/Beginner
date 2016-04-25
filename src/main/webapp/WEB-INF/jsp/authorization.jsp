@@ -11,12 +11,8 @@
 <base href="<%=basePath%>">
 <meta charset="utf-8" />
 <title></title>
-<link href="static/css/bootstrap.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="static/css/font-awesome.min.css" />
-<link type="text/css" rel="stylesheet" href="plugins/zTree/2.6/zTreeStyle.css"/>
-<link rel="stylesheet" href="static/css/ace.min.css" />
-<link rel="stylesheet" href="static/css/ace-responsive.min.css" />
-<link rel="stylesheet" href="static/css/ace-skins.min.css" />
+<%@ include file="system/admin/top.jsp"%> 
+<link rel="stylesheet" href="static/js/lib//zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
 <style type="text/css">
 	footer {
 		height: 50px;
@@ -33,8 +29,8 @@
 		<ul id="tree" class="tree" style="overflow:auto;"></ul>
 	</div>
 	<div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><img src="static/images/jiazai.gif" /><br/><h4 class="lighter block green"></h4></div>
-	<script type="text/javascript" src="static/js/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="plugins/zTree/2.6/jquery.ztree-2.6.min.js"></script>
+	<script type="text/javascript" src="static/js/lib/zTree/js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="static/js/lib/zTree/js/jquery.ztree.core.min.js"></script>
 	<script type="text/javascript">
 		$(top.hangge());
 		var zTree;

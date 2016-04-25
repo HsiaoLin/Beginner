@@ -12,9 +12,9 @@
 	<!-- jsp文件头和头部 -->
 	<%@ include file="../admin/top.jsp"%> 
 	
-	<link rel="stylesheet" href="plugins/zTree/3.5/zTreeStyle.css" type="text/css">
-	<script type="text/javascript" src="static/js/jquery-1.5.1.min.js"></script>
-	<script type="text/javascript" src="plugins/zTree/3.5/jquery.ztree.core-3.5.js"></script>
+	<link rel="stylesheet" href="static/js/lib//zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="static/js/lib/zTree/js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="static/js/lib/zTree/js/jquery.ztree.core.min.js"></script>
 	
 <body>
 	
