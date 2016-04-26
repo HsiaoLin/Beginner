@@ -219,6 +219,7 @@ function reset(){
 }
 //新增
 function add(){
+	top.loading();
 	top.layer.open({
 		type: 2,
 		title: '新增',
@@ -226,12 +227,15 @@ function add(){
 		closeBtn:1,
 		shade: 0.8,
 		area: ['30%', '50%'],
-		content: '<%=basePath%>system/user/goAdd'
-		btn: ['保存', '取消']
-			,yes: function(index, layero){
+		content: '<%=basePath%>system/user/goAdd',
+		btn: ['保存', '取消'],
+		yes: function(index, layero){
 			//按钮【保存】的回调
+			layero.tj();
 			top.layer.close(index);
-			},cancel: function(index){
+		},
+		cancel: function(index){
+			//按钮【取消】的回调
 			top.layer.close(index);
 		}
 	});
