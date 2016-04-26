@@ -214,7 +214,7 @@ $(function() {
 	}
 	//检索
 	function search(){
-		top.jzts();
+		top.loading();
 		$("#Form").submit();
 	}
 	//重置
@@ -224,7 +224,7 @@ $(function() {
 });
 //新增定时任务
 function add(){
-	top.jzts();
+	top.loading();
 	var diag = new top.Dialog();
 	diag.Drag=true;
 	diag.Title ="新增定时任务";
@@ -238,7 +238,7 @@ function add(){
 }
 //编辑
 function edit(jobName,jobGroupName){
-	top.jzts();
+	top.loading();
 	var diag = new top.Dialog();
 	diag.Drag=true;
 	diag.Title ="编辑定时任务";
@@ -253,7 +253,7 @@ function edit(jobName,jobGroupName){
 }
 //删除
 function deleteJob(jobName,jobGroupName){
-	top.jzts();
+	top.loading();
 	$.ajax({
 		cache: false,
 		type: "POST",
@@ -275,7 +275,7 @@ function deleteJob(jobName,jobGroupName){
 }
 //运行
 function triggerJob(jobName,jobGroupName){
-	top.jzts();
+	top.loading();
 	$.ajax({
 		cache: false,
 		type: "POST",
@@ -297,7 +297,7 @@ function triggerJob(jobName,jobGroupName){
 }
 //恢复
 function resumeJob(jobName,jobGroupName){
-	top.jzts();
+	top.loading();
 	$.ajax({
 		cache: false,
 		type: "POST",
@@ -319,7 +319,7 @@ function resumeJob(jobName,jobGroupName){
 }
 //暂停
 function pauseJob(jobName,jobGroupName){
-	top.jzts();
+	top.loading();
 	$.ajax({
 		cache: false,
 		type: "POST",

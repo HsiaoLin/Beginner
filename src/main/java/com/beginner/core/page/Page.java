@@ -158,7 +158,7 @@ public class Page {
 
 			//下一页
 			sb.append("function nextPage(page){");
-			sb.append(" top.jzts();");
+			sb.append(" top.loading();");
 			sb.append("	if(true && document.forms[0]){\n");
 			sb.append("		var url = document.forms[0].getAttribute(\"action\");\n");
 			sb.append("		if(url.indexOf('?')>-1){url += \"&" + (entityOrField ? "currentPage" : "page.currentPage") + "=\";}\n");
@@ -183,7 +183,7 @@ public class Page {
 
 			//调整每页显示条数
 			sb.append("function changeCount(value){");
-			sb.append(" top.jzts();");
+			sb.append(" top.loading();");
 			sb.append("	if(true && document.forms[0]){\n");
 			sb.append("		var url = document.forms[0].getAttribute(\"action\");\n");
 			sb.append("		if(url.indexOf('?')>-1){url += \"&" + (entityOrField ? "currentPage" : "page.currentPage") + "=\";}\n");

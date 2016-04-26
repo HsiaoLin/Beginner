@@ -147,7 +147,7 @@
 							success: function(data){
 								 $.each(data.list, function(i, list){
 									 document.location.reload();
-									 top.jzts();
+									 top.loading();
 								 });
 							}
 						});

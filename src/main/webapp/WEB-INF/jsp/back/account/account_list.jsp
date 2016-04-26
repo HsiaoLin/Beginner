@@ -168,13 +168,13 @@
 		}
 		//检索
 		function search(){
-			top.jzts();
+			top.loading();
 			$("#Form").submit();
 		}
 		
 		//新增
 		function add(){
-			 //top.jzts();
+			 //top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增";
@@ -184,7 +184,7 @@
 			 diag.CancelEvent = function(){ //关闭事件
 				 if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
 					 if('${page.currentPage}' == '0'){
-						 top.jzts();
+						 top.loading();
 						 setTimeout("self.location=self.location",100);
 					 }else{
 						 nextPage(${page.currentPage});
@@ -199,7 +199,7 @@
 		function del(Id){
 		    bootbox.confirm("确定要删除吗?", function(result) {
 				if(result) {
-					top.jzts();
+					top.loading();
 					$.ajax({
 						url:'<%=basePath%>back/account/delete.do?userId='+Id+'&tm='+new Date().getTime(),
 						async:false,
@@ -220,7 +220,7 @@
 		
 		//修改
 		function edit(Id){
-			 //top.jzts();
+			 //top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="编辑";
@@ -238,7 +238,7 @@
 		}
 		//查看
 		function view(Id){
-			 //top.jzts();
+			 //top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="查看";

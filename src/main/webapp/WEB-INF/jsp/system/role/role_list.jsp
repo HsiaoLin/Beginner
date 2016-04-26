@@ -219,7 +219,7 @@
 		
 		//新增组
 		function addRole(){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增组";
@@ -228,7 +228,7 @@
 			 diag.Height = 90;
 			 diag.CancelEvent = function(){ //关闭事件
 				 if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
-					top.jzts();
+					top.loading();
 					setTimeout("self.location.reload()",100);
 				}
 				diag.close();
@@ -238,7 +238,7 @@
 		
 		//新增角色
 		function addRole2(pid){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增角色";
@@ -247,7 +247,7 @@
 			 diag.Height = 90;
 			 diag.CancelEvent = function(){ //关闭事件
 				if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
-					top.jzts();
+					top.loading();
 					setTimeout("self.location.reload()",100);
 				}
 				diag.close();
@@ -257,7 +257,7 @@
 		
 		//修改
 		function editRole(ROLE_ID){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="编辑";
@@ -266,7 +266,7 @@
 			 diag.Height = 90;
 			 diag.CancelEvent = function(){ //关闭事件
 				 if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
-					top.jzts();
+					top.loading();
 					setTimeout("self.location.reload()",100);
 				}
 				diag.close();
@@ -279,14 +279,14 @@
 			bootbox.confirm("确定要删除["+ROLE_NAME+"]吗?", function(result) {
 				if(result) {
 					var url = "<%=basePath%>role/delete.do?ROLE_ID="+ROLE_ID+"&guid="+new Date().getTime();
-					top.jzts();
+					top.loading();
 					$.get(url,function(data){
 						if("success" == data.result){
 							if(msg == 'c'){
-								top.jzts();
+								top.loading();
 								document.location.reload();
 							}else{
-								top.jzts();
+								top.loading();
 								window.location.href="role.do";
 							}
 							
@@ -468,7 +468,7 @@
 		
 		//菜单权限
 		function editRights(ROLE_ID){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag = true;
 			 diag.Title = "菜单权限";
@@ -483,7 +483,7 @@
 		
 		//按钮权限
 		function roleButton(ROLE_ID,msg){
-			top.jzts();
+			top.loading();
 			if(msg == 'add_qx'){
 				var Title = "授权新增权限";
 			}else if(msg == 'del_qx'){

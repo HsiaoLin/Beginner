@@ -220,7 +220,7 @@ function reset(){
 //新增
 function add(){
 	top.loading();
-	top.layer.open({
+	layer.open({
 		type: 2,
 		title: '新增',
 		shadeClose: true,
@@ -231,15 +231,15 @@ function add(){
 		btn: ['保存', '取消'],
 		yes: function(index, layero){
 			//按钮【保存】的回调
-			layero.tj();
-			top.layer.close(index);
+			layero.context.forms[0].submit();
+			layer.close(index);
 		},
 		cancel: function(index){
 			//按钮【取消】的回调
-			top.layer.close(index);
+			layer.close(index);
 		}
 	});
-	/* top.jzts();
+	/* top.loading();
 	var diag = new top.Dialog();
 	diag.Drag=true;
 	diag.Title ="新增";
@@ -249,7 +249,7 @@ function add(){
 	diag.CancelEvent = function(){ //关闭事件
 		if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
 			if('${page.currentPage}' == '0'){
-				top.jzts();
+				top.loading();
 				setTimeout("self.location=self.location",100);
 			}else{
 				nextPage('${page.currentPage}');
@@ -263,7 +263,7 @@ function add(){
 function del(Id){
 	bootbox.confirm("确定要删除吗?", function(result) {
 		if(result) {
-			top.jzts();
+			top.loading();
 			var url = "<%=basePath%>system/user/delete?USER_ID="+Id+"&tm="+new Date().getTime();
 			$.get(url,function(data){
 				nextPage('${page.currentPage}');
@@ -273,7 +273,7 @@ function del(Id){
 }
 //修改
 function edit(Id){
-	top.jzts();
+	top.loading();
 	var diag = new top.Dialog();
 	diag.Drag=true;
 	diag.Title ="编辑";
@@ -319,7 +319,7 @@ function makeAll(msg){
 				return;
 			}else{
 				if(msg == '确定要删除选中的数据吗?'){
-					top.jzts();
+					top.loading();
 					$.ajax({
 						type: "POST",
 						url: '<%=basePath%>system/user/deleteAll?tm='+new Date().getTime(),

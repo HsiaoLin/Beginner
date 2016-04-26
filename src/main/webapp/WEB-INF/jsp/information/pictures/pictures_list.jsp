@@ -166,13 +166,13 @@
 		
 		//检索
 		function search(){
-			top.jzts();
+			top.loading();
 			$("#Form").submit();
 		}
 		
 		//新增
 		function add(){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增";
@@ -181,7 +181,7 @@
 			 diag.Height = 490;
 			 diag.CancelEvent = function(){ //关闭事件
 				 if('${page.currentPage}' == '0'){
-					 top.jzts();
+					 top.loading();
 					 setTimeout("self.location=self.location",100);
 				 }else{
 					 nextPage(${page.currentPage});
@@ -195,7 +195,7 @@
 		function del(Id,PATH){
 			
 			if(confirm("确定要删除?")){ 
-				top.jzts();
+				top.loading();
 				var url = "<%=basePath%>pictures/delete.do?PICTURES_ID="+Id+"&PATH="+PATH+"&tm="+new Date().getTime();
 				$.get(url,function(data){
 					nextPage(${page.currentPage});
@@ -205,7 +205,7 @@
 		
 		//修改
 		function edit(Id){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="编辑";
@@ -258,7 +258,7 @@
 						return;
 					}else{
 						if(msg == '确定要删除选中的数据吗?'){
-							top.jzts();
+							top.loading();
 							$.ajax({
 								type: "POST",
 								url: '<%=basePath%>pictures/deleteAll.do?tm='+new Date().getTime(),

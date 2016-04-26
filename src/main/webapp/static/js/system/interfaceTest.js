@@ -6,7 +6,7 @@ $(top.hangge());
 
 //重置
 function gReload(){
-	top.jzts();
+	top.loading();
 	$("#serverUrl").val('');
 	$("#json-field").val('');
 	$("#S_TYPE_S").val('');
@@ -37,7 +37,7 @@ function sendSever(){
 	//alert($.md5(paraname+nowtime+',beginner,'));
 	
 	var startTime = new Date().getTime(); //请求开始时间  毫秒
-	top.jzts();
+	top.loading();
 	$.ajax({
 		type: "POST",
 		url: locat+'/tool/severTest.do',

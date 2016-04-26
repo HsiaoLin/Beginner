@@ -216,13 +216,13 @@
 		
 		//检索
 		function search(){
-			top.jzts();
+			top.loading();
 			$("#userForm").submit();
 		}
 		
 		//去发送电子邮件页面
 		function sendEmail(EMAIL){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="发送电子邮件";
@@ -237,7 +237,7 @@
 		
 		//去发送短信页面
 		function sendSms(phone){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="发送短信";
@@ -252,7 +252,7 @@
 		
 		//新增
 		function add(){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="新增会员";
@@ -262,7 +262,7 @@
 			 diag.CancelEvent = function(){ //关闭事件
 				 if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
 					 if('${page.currentPage}' == '0'){
-						 top.jzts();
+						 top.loading();
 						 setTimeout("self.location=self.location",100);
 					 }else{
 						 nextPage(${page.currentPage});
@@ -275,7 +275,7 @@
 		
 		//修改
 		function editUser(user_id){
-			 top.jzts();
+			 top.loading();
 			 var diag = new top.Dialog();
 			 diag.Drag=true;
 			 diag.Title ="会员资料";
@@ -295,7 +295,7 @@
 		function delUser(userId,msg){
 			bootbox.confirm("确定要删除["+msg+"]吗?", function(result) {
 				if(result) {
-					top.jzts();
+					top.loading();
 					var url = "<%=basePath%>happuser/deleteU.do?USER_ID="+userId+"&tm="+new Date().getTime();
 					$.get(url,function(data){
 						nextPage(${page.currentPage});
@@ -374,7 +374,7 @@
 						return;
 					}else{
 						if(msg == '确定要删除选中的数据吗?'){
-							top.jzts();
+							top.loading();
 							$.ajax({
 								type: "POST",
 								url: '<%=basePath%>happuser/deleteAllU.do?tm='+new Date().getTime(),
