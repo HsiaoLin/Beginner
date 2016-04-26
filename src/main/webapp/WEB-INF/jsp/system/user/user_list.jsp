@@ -43,35 +43,62 @@
 <div class="panel panel-plain">
 <div class="panel-body">
 <div class="table-responsive">
-	<form action="system/user/list" method="post" name="Form" id="Form">
+	<form action="system/user/list" method="post" name="Form" id="Form" class="form-horizontal">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 		<h3 class="panel-title">搜索条件</h3>
 		</div>
 		<div class="panel-body">
-			<div class="col-md-6">
-			<div class="form-group">
-				<!-- <label>姓名</label> -->
-				<input type="email" class="form-control" id="namee" placeholder="请输入姓名"> 
+			<div class="col-md-3">
+			<div class="form-group" style="margin-left: 0px;">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">姓名：</button>
+					</span>
+					<input type="text" class="form-control" id="name" placeholder="请输入姓名"> 
+				</div>
 			</div>
-			<div class="form-group">
-				<!-- <label>帐号</label> -->
-				<input type="password" class="form-control" id="password1" placeholder="请输入帐号">
+			</div>
+			<div class="col-md-3">
+			<div class="form-group" style="margin-left: 0px;">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">帐号：</button>
+					</span>
+					<input type="text" class="form-control" id="password" placeholder="请输入帐号">
+				</div>
 			</div>
 			</div>
-			<div class="col-md-6">
-			<div class="form-group">
-				<!-- <label>邮箱</label> -->
-				<input type="email" class="form-control" id="email" placeholder="请输入邮箱地址">
+			<div class="col-md-3">
+			<div class="form-group" style="margin-left: 0px;">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">邮箱：</button>
+					</span>
+					<input type="email" class="form-control" id="email" placeholder="请输入邮箱地址">
+				</div>
 			</div>
-			<div class="form-group">
-				<!-- <label>状态</label> -->
-				<input type="password" class="form-control" id="phone" placeholder="请选择状态">
+			</div>
+			<div class="col-md-3">
+			<div class="form-group" style="margin-left: 0px;">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">状态：</button>
+					</span>
+					<select name="status" id="status" class="form-control">
+						<option value="">请选择用户状态</option>
+						<option value="0">待激活</option>
+						<option value="1">正常</option>
+						<option value="2">已注册</option>
+						<option value="3">挂起</option>
+						<option value="4">弃用</option>
+					</select>
+				</div>
 			</div>
 			</div>
 			<div class="col-md-12"  style="text-align: center;">
 				<button onclick="search();" type="submit" class="btn btn-success" data-placement="top" data-toggle="tooltip" data-original-title="根据条件搜索">搜索<i class="fa fa-fw fa-search"></i></button>
-				<button onclick="toExcel();" type="submit" class="btn btn-default" data-placement="top" data-toggle="tooltip" data-original-title="清空搜索条件">清空<i class="fa fa-fw fa-trash-o"></i></button>
+				<button onclick="reset();" type="submit" class="btn btn-default" data-placement="top" data-toggle="tooltip" data-original-title="清空搜索条件">清空<i class="fa fa-fw fa-trash-o"></i></button>
 			</div>
 		</div>
 	</div>
@@ -183,8 +210,12 @@
 $(top.shutdown());
 //检索
 function search(){
-	top.shutdown();
+	top.loading();
 	$("#Form").submit();
+}
+//重置
+function reset(){
+	$("#Form :input").val("");
 }
 //新增
 function add(){
@@ -199,8 +230,9 @@ function add(){
 		btn: ['保存', '取消']
 			,yes: function(index, layero){
 			//按钮【保存】的回调
+			top.layer.close(index);
 			},cancel: function(index){
-			//按钮【取消】的回调
+			top.layer.close(index);
 		}
 	});
 	/* top.jzts();
