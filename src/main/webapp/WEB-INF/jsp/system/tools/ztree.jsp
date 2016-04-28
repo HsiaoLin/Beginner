@@ -72,7 +72,7 @@
 		<script src="static/js/ace-elements.min.js"></script>
 		<!-- 引入 -->
 		<script type="text/javascript">
-			$(top.hangge());
+			$(top.shutdown());
 		</script>
 		<SCRIPT type="text/javascript">
 		<!--

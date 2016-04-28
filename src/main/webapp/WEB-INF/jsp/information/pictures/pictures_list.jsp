@@ -162,7 +162,7 @@
 		
 		<script type="text/javascript">
 		
-		$(top.hangge());
+		$(top.shutdown());
 		
 		//检索
 		function search(){

@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="static/css/ace-skins.min.css" />
 <script type="text/javascript" src="static/js/jquery-1.7.2.js"></script>
 <script type="text/javascript">
-	$(top.hangge());
+	$(top.shutdown());
 	function save(){
 		$.ajax({
 			cache: false,

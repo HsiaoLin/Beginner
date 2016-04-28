@@ -26,7 +26,7 @@
 </head>
 
 <script type="text/javascript">
-	$(top.hangge());
+	$(top.shutdown());
 	$(document).ready(function(){		
 		if($("#menuId").val()!=""){
 			var parentId = "${menu.parentId}";

@@ -25,7 +25,7 @@
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 		
 		<script type="text/javascript">
-			$(top.hangge());	
+			$(top.shutdown());	
 			$(document).ready(function(){
 					if($("#menuId").val()!=""){
 						var parentId = $("#pId").val();

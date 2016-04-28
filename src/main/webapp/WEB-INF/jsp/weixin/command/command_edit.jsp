@@ -153,7 +153,7 @@
 		<script type="text/javascript" src="static/js/chosen.jquery.min.js"></script><!-- 下拉框 -->
 		<script type="text/javascript" src="static/js/bootstrap-datepicker.min.js"></script><!-- 日期框 -->
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		$(function() {
 			
 			//单选框

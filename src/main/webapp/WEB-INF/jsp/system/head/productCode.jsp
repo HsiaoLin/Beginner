@@ -168,7 +168,7 @@
 		<script src="static/js/ace.min.js"></script>
 		<script src="static/js/system/productCode.js"></script>
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		</script>
 	
 </body>

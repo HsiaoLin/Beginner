@@ -108,7 +108,7 @@
 		<script src="static/js/ace.min.js"></script>
 		<!-- 引入 -->
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		</script>
 	</body>
 </html>

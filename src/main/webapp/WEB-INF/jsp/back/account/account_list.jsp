@@ -125,7 +125,7 @@
 		<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="static/js/jquery.bootstrap.teninedialog.v3.js"></script>
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		//审核通过用户
 		$("#checkAll").toggle(
 			function () {
@@ -206,7 +206,7 @@
 						dataType:'text',
 						type:'post',
 						success:function(ret){
-							top.hangge();
+							top.shutdown();
 							if ("succ"==ret){
 								bootbox.alert("删除成功！", function(){search();});
 							}else{

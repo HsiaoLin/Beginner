@@ -148,7 +148,7 @@
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script><!--提示框-->
 		
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		$(function() {
 			var oTable1 = $('#table_report').dataTable( {
 			"aoColumns": [

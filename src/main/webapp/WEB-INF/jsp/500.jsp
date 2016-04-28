@@ -39,7 +39,7 @@
 <link rel="apple-touch-icon" sizes="144x144" href="static/theme/coco/assets/img/apple-touch-icon-144x144.png" />
 <link rel="apple-touch-icon" sizes="152x152" href="static/theme/coco/assets/img/apple-touch-icon-152x152.png" />
 <script type="text/javascript">
-	$(top.hangge());
+	$(top.shutdown());
 	function showErr(){
 		document.getElementById("err").style.display = "";
 	}

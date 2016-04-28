@@ -95,7 +95,7 @@
 		<!--提示框-->
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		$(function() {
 			//上传
 			$('#excel').ace_file_input({

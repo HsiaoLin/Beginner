@@ -172,7 +172,7 @@
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script><!--提示框-->
 		<script type="text/javascript">
 		
-		$(top.hangge());
+		$(top.shutdown());
 		
 		//检索
 		function search(){

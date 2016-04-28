@@ -31,7 +31,7 @@
 		
 <script type="text/javascript">
 
-	$(top.hangge());
+	$(top.shutdown());
 	
 	$(document).ready(function(){
 		if($("#user_id").val()!=""){

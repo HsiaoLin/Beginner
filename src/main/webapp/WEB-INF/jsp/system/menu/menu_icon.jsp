@@ -25,7 +25,7 @@
 
 		<script type="text/javascript">
 				
-				$(top.hangge());
+				$(top.shutdown());
 				//保存
 				function save(){
 					if($("#MENU_ICON").val()==""){

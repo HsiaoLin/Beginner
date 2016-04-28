@@ -198,7 +198,7 @@
 <script type="text/javascript">
 var locat = (window.location+'').split('/'); 
 $(function() {
-	$(top.hangge());
+	$(top.shutdown());
 	//日期框
 	$('.date-picker').datepicker();
 	//下拉框

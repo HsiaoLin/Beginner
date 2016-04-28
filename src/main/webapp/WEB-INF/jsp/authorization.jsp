@@ -32,7 +32,7 @@
 	<script type="text/javascript" src="static/js/lib/zTree/js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="static/js/lib/zTree/js/jquery.ztree.core.min.js"></script>
 	<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		var zTree;
 		$(document).ready(function(){
 			var setting = {

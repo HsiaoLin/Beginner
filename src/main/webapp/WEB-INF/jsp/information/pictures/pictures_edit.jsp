@@ -167,7 +167,7 @@
 		<script src="static/assets/js/ace/elements.fileinput.js"></script>
 		<script src="static/assets/js/ace/ace.js"></script>
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		$(function() {
 			//上传
 			$('#tp').ace_file_input({

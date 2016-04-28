@@ -215,7 +215,7 @@
 		
 		<script type="text/javascript">
 		
-		top.hangge();
+		top.shutdown();
 		
 		//新增组
 		function addRole(){
@@ -291,7 +291,7 @@
 							}
 							
 						}else if("false" == data.result){
-							top.hangge();
+							top.shutdown();
 							bootbox.dialog("删除失败，请先删除此部门下的职位!", 
 									[
 									  {
@@ -303,7 +303,7 @@
 										}]
 								);
 						}else if("false2" == data.result){
-							top.hangge();
+							top.shutdown();
 							bootbox.dialog("删除失败，请先删除此职位下的用户!", 
 									[
 									  {

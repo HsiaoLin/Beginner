@@ -87,7 +87,7 @@
 		<script type="text/javascript" src="static/js/jquery.tips.js"></script><!--提示框-->
 		
 		<script type="text/javascript">
-		$(top.hangge());
+		$(top.shutdown());
 		$(function() {
 			//复选框
 			$('table th input:checkbox').on('click' , function(){

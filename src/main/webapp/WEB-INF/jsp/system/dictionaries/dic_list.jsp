@@ -24,7 +24,7 @@
 		<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="static/js/jquery.bootstrap.teninedialog.v3.js"></script>
 <script type="text/javascript">
-	$(top.hangge());	
+	$(top.shutdown());	
 	
 	//新增或修改字典类型
 	function addmenu(opera,code_id){

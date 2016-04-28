@@ -72,6 +72,6 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/ace-elements.min.js"></script>
 	<script src="js/ace.min.js"></script>
-	<script type="text/javascript">$(top.hangge());</script>
+	<script type="text/javascript">$(top.shutdown());</script>
 </body>
 </html>
