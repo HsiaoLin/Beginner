@@ -2,7 +2,7 @@ var locat = (window.location+'').split('/');
 $(function(){if('tool'== locat[3]){locat =  locat[0]+'//'+locat[2];}else{locat = locat[0]+'//'+locat[2]+'/'+locat[3];};});
 
 
-$(top.hangge());
+$(top.shutdown());
 
 //重置
 function gReload(){
@@ -45,7 +45,7 @@ function sendSever(){
 		dataType:'json',
 		cache: false,
 		success: function(data){
-			 $(top.hangge());
+			 $(top.shutdown());
 			 if("success" == data.errInfo){
 				 $("#serverUrl").tips({
 						side:1,

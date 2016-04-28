@@ -131,7 +131,7 @@
 <script type="text/javascript" src="static/js/bootbox.min.js"></script><!-- 确认窗口 -->
 <script type="text/javascript" src="static/js/jquery.tips.js"></script><!--提示框-->
 <script type="text/javascript">
-$(top.hangge());
+$(top.shutdown());
 //检索
 function search(){
 	top.loading();

@@ -13,84 +13,98 @@
 <title></title>
 <meta name="description" content="overview & stats" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="static/assets/css/lib/bootstrap/bootstrap.css" />
+<link rel="stylesheet" href="static/assets/css/lib/font-awesome/font-awesome.min.css">
+<link rel="stylesheet" href="static/assets/css/lib/ionicons/ionicons.min.css">
+<link rel="stylesheet" href="static/assets/css/lib/daterangepicker/daterangepicker-bs3.css" />
+<link rel="stylesheet" href="static/assets/css/lib/jqvmap/jqvmap.css">
+<link rel="stylesheet" href="static/assets/css/lib/tabdrop/tabdrop.css" />
+<link rel="stylesheet" href="static/assets/css/styles.css" id="theme-css" />
+
+<script type="text/javascript" src="static/assets/js/lib/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="static/assets/js/lib/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/assets/js/lib/slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="static/assets/js/lib/momentjs/moment.min.js"></script>
+<script type="text/javascript" src="static/assets/js/lib/daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="static/assets/js/lib/tabdrop/bootstrap-tabdrop.js"></script>
+<script type="text/javascript" src="static/assets/js/scripts.min.js"></script>
 <script type="text/javascript">
 	//保存
 	function save(){
-			if($("#USER_TYPE").val()==""){
-			$("#USER_TYPE").tips({
-				side:3,
-				msg:'请输入用户类型',
-				bg:'#AE81FF',
-				time:2
-			});
-			$("#USER_TYPE").focus();
-			return false;
-		}
-		if($("#CHINESE_NAME").val()==""){
-			$("#CHINESE_NAME").tips({
-				side:3,
-				msg:'请输入中文名',
-				bg:'#AE81FF',
-				time:2
-			});
-			$("#CHINESE_NAME").focus();
-			return false;
-		}
-		if($("#USER_NAME").val()==""){
-			$("#USER_NAME").tips({
-				side:3,
-				msg:'请输入登陆账号',
-				bg:'#AE81FF',
-				time:2
-			});
-			$("#USER_NAME").focus();
-			return false;
-		}
-		if($("#USER_PASSWORD").val()==""){
-			$("#USER_PASSWORD").tips({
-				side:3,
-				msg:'请输入登陆密码',
-				bg:'#AE81FF',
-				time:2
-			});
-			$("#USER_PASSWORD").focus();
-			return false;
-		}
-		if($("#MOBILE_PHONE").val()==""){
-			$("#MOBILE_PHONE").tips({
-				side:3,
-				msg:'请输入手机',
-				bg:'#AE81FF',
-				time:2
-			});
-			$("#MOBILE_PHONE").focus();
-			return false;
-		}
-		if($("#USER_PHONE").val()==""){
-			$("#USER_PHONE").tips({
-				side:3,
-				msg:'请输入固定电话',
-				bg:'#AE81FF',
-				time:2
-			});
-			$("#USER_PHONE").focus();
-			return false;
-		}
-		if($("#USER_MAIL").val()==""){
-			$("#USER_MAIL").tips({
-				side:3,
-				msg:'请输入用户邮箱',
-				bg:'#AE81FF',
-				time:2
-			});
-			$("#USER_MAIL").focus();
-			return false;
-		}
-		$("#Form").submit();
-		$("#zhongxin").hide();
-		$("#zhongxin2").show();
+		if($("#USER_TYPE").val()==""){
+		$("#USER_TYPE").tips({
+			side:3,
+			msg:'请输入用户类型',
+			bg:'#AE81FF',
+			time:2
+		});
+		$("#USER_TYPE").focus();
+		return false;
 	}
-	
+	if($("#CHINESE_NAME").val()==""){
+		$("#CHINESE_NAME").tips({
+			side:3,
+			msg:'请输入中文名',
+			bg:'#AE81FF',
+			time:2
+		});
+		$("#CHINESE_NAME").focus();
+		return false;
+	}
+	if($("#USER_NAME").val()==""){
+		$("#USER_NAME").tips({
+			side:3,
+			msg:'请输入登陆账号',
+			bg:'#AE81FF',
+			time:2
+		});
+		$("#USER_NAME").focus();
+		return false;
+	}
+	if($("#USER_PASSWORD").val()==""){
+		$("#USER_PASSWORD").tips({
+			side:3,
+			msg:'请输入登陆密码',
+			bg:'#AE81FF',
+			time:2
+		});
+		$("#USER_PASSWORD").focus();
+		return false;
+	}
+	if($("#MOBILE_PHONE").val()==""){
+		$("#MOBILE_PHONE").tips({
+			side:3,
+			msg:'请输入手机',
+			bg:'#AE81FF',
+			time:2
+		});
+		$("#MOBILE_PHONE").focus();
+		return false;
+	}
+	if($("#USER_PHONE").val()==""){
+		$("#USER_PHONE").tips({
+			side:3,
+			msg:'请输入固定电话',
+			bg:'#AE81FF',
+			time:2
+		});
+		$("#USER_PHONE").focus();
+		return false;
+	}
+	if($("#USER_MAIL").val()==""){
+		$("#USER_MAIL").tips({
+			side:3,
+			msg:'请输入用户邮箱',
+			bg:'#AE81FF',
+			time:2
+		});
+		$("#USER_MAIL").focus();
+		return false;
+	}
+	$("#Form").submit();
+	$("#zhongxin").hide();
+	$("#zhongxin2").show();
+}
 </script>
 	</head>
 <body>

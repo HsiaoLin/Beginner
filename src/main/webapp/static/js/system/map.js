@@ -1,9 +1,7 @@
 var locat = (window.location+'').split('/'); 
 $(function(){if('tool'== locat[3]){locat =  locat[0]+'//'+locat[2];}else{locat =  locat[0]+'//'+locat[2]+'/'+locat[3];};});
 
-$(top.hangge());
-
-$(top.hangge());
+$(top.shutdown());
 
 function openMap(){
    var result = showModalDialog(locat+"/tool/mapXY.do","","dialogWidth=650px;dialogHeight=500px;");

@@ -116,7 +116,7 @@
 <script type="text/javascript" src="static/js/bootbox.min.js"></script>
 <script type="text/javascript" src="static/js/jquery.tips.js"></script>
 <script type="text/javascript">
-	$(top.hangge());
+	$(top.shutdown());
 	//检索
 	function search(){
 		top.loading();

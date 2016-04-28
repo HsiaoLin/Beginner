@@ -88,7 +88,7 @@
 <script type="text/javascript" src="static/js/chosen.jquery.min.js"></script>
 <script type="text/javascript" src="static/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
-	$(top.hangge());
+	$(top.shutdown());
 	$(function() {
 		//单选框
 		$(".chzn-select").chosen(); 
