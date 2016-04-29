@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +20,8 @@ public class TestJava7 {
 	/**
 	 * 测试JavaSE-1.7新特性
 	 */
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		logger.info("JavaSE-1.7新特性一：try-with-resources：");
 		testTryWithResources();
 		logger.info("");
@@ -172,8 +174,8 @@ public class TestJava7 {
 	public static void testTryWithResources() {
 		final String URL = "jdbc:mysql://localhost:3306/beginner?useUnicode=true&characterEncoding=utf-8";
 		final String DRIVER = "com.mysql.jdbc.Driver";
-		final String USERNAME = "root";
-		final String PASSWORD = "shijie99";
+		final String USERNAME = "beginner";
+		final String PASSWORD = "beginner";
 
 		ResultSet rs = null;
 		try (Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD); Statement st = conn.createStatement()) {

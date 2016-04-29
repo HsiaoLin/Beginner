@@ -11,9 +11,6 @@ public class TestResourcesUtil {
 	@Test
 	public void testGetProperties() throws Exception {
 		Assert.assertEquals("mysql", PropertyUtil.getProperties("type", "beginner.properties"));
-		Assert.assertEquals(PropertyUtil.getProperties("type", "beginner.properties"),
-				PropertyUtil.getProperties("type", "/data/app/beginner.properties"),
-				PropertyUtil.getProperties("type", "D:/data/app/beginner.properties"));
 	}
 
 	@Test

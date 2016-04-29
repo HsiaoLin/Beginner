@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +22,8 @@ public class TestThreadPool {
 
 	private static Logger logger = LoggerFactory.getLogger(TestThreadPool.class);
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		/*参考博客文章：http://cuisuqiang.iteye.com/blog/2019372
 		注意以下测试方法都未关闭线程池*/
 

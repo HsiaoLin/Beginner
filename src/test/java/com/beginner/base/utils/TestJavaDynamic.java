@@ -6,6 +6,7 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.script.SimpleBindings;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,8 @@ public class TestJavaDynamic {
 	 * java动态性
 	 * @param args 参数列表
 	 */
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		//脚本语言支持API
 		testScriptAPI1();
 		testScriptAPI2();

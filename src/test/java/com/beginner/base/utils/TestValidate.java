@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.junit.Test;
 import org.slf4j.LoggerFactory;
 
 import com.beginner.system.bean.user.User;
@@ -15,7 +16,8 @@ public class TestValidate {
 
 	private static org.slf4j.Logger log = LoggerFactory.getLogger(TestValidate.class);
 
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		User u = new User();
 		u.setUserMail("1");
 		log.info(validateModel(u));

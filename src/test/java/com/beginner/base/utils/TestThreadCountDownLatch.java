@@ -7,6 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +25,8 @@ public class TestThreadCountDownLatch {
 
 	private static Logger logger = LoggerFactory.getLogger(TestThreadCountDownLatch.class);
 
-	public static void main(String[] args) throws InterruptedException {
+	@Test
+	public void test() throws InterruptedException {
 
 		ExecutorService executor = Executors.newFixedThreadPool(10);
 

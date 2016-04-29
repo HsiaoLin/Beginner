@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +22,8 @@ public class TestThreadSegment {
 
 	private static Logger logger = LoggerFactory.getLogger(TestThreadSegment.class);
 
-	public static void main(String[] args) throws InterruptedException {
+	@Test
+	public void test() throws InterruptedException {
 		// 这里简单演示数据正好作为线程的倍数
 		// 数据量特别大的情况下：
 		// 参照TestThreadCountDownLatch等待所有线程执行完毕实例
