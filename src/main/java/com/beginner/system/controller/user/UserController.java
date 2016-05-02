@@ -66,8 +66,7 @@ public class UserController extends BaseController {
 	 * 新增
 	 */
 	@RequestMapping(value = "/save")
-	public ModelAndView save() {
-		ModelAndView mv = this.getModelAndView();
+	public void save(PrintWriter out) {
 		PageData pd = new PageData();
 		try {
 			pd = this.getPageData();
@@ -78,12 +77,13 @@ public class UserController extends BaseController {
 			pd.put("BUYING_AGENT_ID", "0"); //采购代理商ID
 			pd.put("SUPPLIER_ID", "0"); //供应商ID
 			userService.save(pd);
+			out.write("success");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("新增用户信息失败", e);
+			out.write("error");
+		} finally {
+			out.close();
 		}
-		mv.addObject("msg", "success");
-		mv.setViewName("save_result");
-		return mv;
 	}
 
 	/**
@@ -107,19 +107,19 @@ public class UserController extends BaseController {
 	 * 修改
 	 */
 	@RequestMapping(value = "/edit")
-	public ModelAndView edit() {
-		ModelAndView mv = this.getModelAndView();
+	public void edit(PrintWriter out) {
 		PageData pd = new PageData();
 		try {
 			pd = this.getPageData();
 			userService.edit(pd);
+			out.write("success");
 			logger.info("修改用户信息成功");
 		} catch (Exception e) {
 			logger.error("修改用户信息失败", e);
+			out.write("error");
+		} finally {
+			out.close();
 		}
-		mv.addObject("msg", "success");
-		mv.setViewName("save_result");
-		return mv;
 	}
 
 	/**

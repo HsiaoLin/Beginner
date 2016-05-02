@@ -26,8 +26,6 @@ import java.io.FileOutputStream;
 import javax.imageio.ImageIO;
 
 import com.beginner.core.common.Const;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 /**
 * <b>类名称：</b>Watermark<br/>
@@ -38,7 +36,6 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 * <b>修改备注：</b><br/>
 * @version 1.0.0<br/>
 */
-@SuppressWarnings("restriction")
 public class Watermark {
 
 	private static String strFWATERM, strIWATERM;
@@ -113,8 +110,9 @@ public class Watermark {
 			//水印文件结束
 			g.dispose();
 			FileOutputStream out = new FileOutputStream(targetImg);
-			JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-			encoder.encode(image);
+			ImageIO.write(image, _file.getName(), out);
+			//JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+			//encoder.encode(image);
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -146,8 +144,9 @@ public class Watermark {
 			g.drawString(pressText, x, y);
 			g.dispose();
 			FileOutputStream out = new FileOutputStream(targetImg);
-			JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-			encoder.encode(image);
+			ImageIO.write(image, _file.getName(), out);
+			//JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+			//encoder.encode(image);
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();

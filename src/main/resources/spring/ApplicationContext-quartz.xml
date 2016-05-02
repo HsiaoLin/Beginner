@@ -43,6 +43,7 @@
 	</bean>
 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="complexJobDetail" />
+		<!-- Cron表达式生成器http://cron.qqe2.com/ -->
 		<property name="cronExpression" value="0 0/5 * * * ?" />
 		<property name="name" value="triggerName_Monitoring" />
 		<property name="group" value="triggerGroupName_Monitoring" />

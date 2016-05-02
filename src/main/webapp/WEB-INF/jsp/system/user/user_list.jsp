@@ -220,23 +220,27 @@ function reset(){
 //新增
 function add(){
 	top.loading();
-	layer.open({
+	top.layer.open({
 		type: 2,
 		title: '新增',
 		shadeClose: true,
-		closeBtn:1,
-		shade: 0.8,
+		shade: 0.3,
 		area: ['30%', '50%'],
 		content: '<%=basePath%>system/user/goAdd',
 		btn: ['保存', '取消'],
-		yes: function(index, layero){
-			//按钮【保存】的回调
-			layero.context.forms[0].submit();
-			layer.close(index);
-		},
-		cancel: function(index){
-			//按钮【取消】的回调
-			layer.close(index);
+		yes: function(index, layero){//按钮【保存】的回调
+			var iframe = layero.find('iframe');
+			var iframeWin = window.parent[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+			iframeWin.save();
+		},cancel: function(index){//按钮【取消】的回调
+			top.layer.close(index);
+		},end:function(){
+			if('${page.currentPage}' == '0'){
+				top.loading();
+				setTimeout("self.location=self.location",100);
+			}else{
+				nextPage('${page.currentPage}');
+			}
 		}
 	});
 	/* top.loading();

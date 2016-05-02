@@ -198,7 +198,6 @@ public class LoginController extends BaseController {
 		mv.setViewName("system/admin/default");
 		mv.addObject("pd", pd);
 		mv.addObject("jobInfos", getSchedulerJobInfo(pd));
-		logger.info(StringUtils.EMPTY);
 		return mv;
 	}
 
