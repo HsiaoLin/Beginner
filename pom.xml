@@ -540,6 +540,15 @@
 			<systemPath>${project.basedir}/src/main/webapp/WEB-INFO/lib/dubbo-2.8.4.jar</systemPath>
 		</dependency> -->
 
+		<!-- sun.misc.BASE64Decoder -->
+		<dependency>
+			<groupId>sun-misc</groupId>
+			<artifactId>sun-misc</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/sun.misc.BASE64Decoder.jar</systemPath>
+		</dependency>
+
 		<!-- zkclient -->
 		<dependency>
 			<groupId>com.github.sgroschupf</groupId>
