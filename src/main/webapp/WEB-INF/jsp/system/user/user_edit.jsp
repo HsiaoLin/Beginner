@@ -21,7 +21,6 @@
 <link rel="stylesheet" href="static/assets/css/lib/tabdrop/tabdrop.css" />
 <link rel="stylesheet" href="static/assets/css/styles.css" id="theme-css" />
 
-
 <script type="text/javascript" src="static/assets/js/lib/jquery/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="static/assets/js/lib/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="static/assets/js/lib/slimscroll/jquery.slimscroll.min.js"></script>
@@ -87,77 +86,59 @@ function save(){
 </script>
 	</head>
 <body>
-<div class="container" id="content-container">
-<div class="content-wrapper">
-<div class="row">
-<div class="side-nav-content">
-<div class="main-content-wrapper">
-<div class="main-content">
-<div class="container-fluid container-padded">
-<div class="row">
-<div class="col-md-12">
 <div class="panel panel-default">
 <div class="panel-body">
-	<form action="system/user/${msg }" name="Form" id="Form" method="post" class="form-horizontal">
+	<form action="system/user/${ msg }" name="Form" id="Form" method="post" class="form-horizontal">
 		<input type="hidden" name="USER_ID" id="USER_ID" value="${pd.USER_ID}"/>
 		<div class="form-group">
-		<label class="col-md-3 control-label">Default</label>
-		<div class="col-md-9">
-		<input type="text" class="form-control">
-		</div>
-		</div>
-		<div class="form-group">
-		<label class="col-md-3 control-label">Help text</label>
-		<div class="col-md-9">
-		<input type="text" class="form-control">
-		<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-		</div>
+			<label class="col-md-3 control-label">类型：</label>
+			<div class="col-md-9">
+				<select class="form-control" name="USER_TYPE" id="USER_TYPE" value="${pd.USER_TYPE}" title="用户类型" class="form-control tooltips" data-trigger="hover" data-toggle="tooltip">
+					<option value="">请选择用户类型</option>
+					<option value="0" <c:if test="${pd.USER_TYPE == 0}">selected</c:if>>平台</option>
+					<option value="1" <c:if test="${pd.USER_TYPE == 1}">selected</c:if>>代理商</option>
+					<option value="2" <c:if test="${pd.USER_TYPE == 2}">selected</c:if>>供应商</option>
+				</select>
+			</div>
 		</div>
 		<div class="form-group">
-		<label class="col-md-3 control-label">姓名：</label>
-		<div class="col-md-9">
-		<input type="text" name="CHINESE_NAME" id="CHINESE_NAME" value="${pd.CHINESE_NAME}" maxlength="32" placeholder="这里输入中文名" data-original-title="Tooltip goes here" title="中文名"  class="form-control tooltips" data-trigger="hover" data-toggle="tooltip"/>
-		</div>
+			<label class="col-md-3 control-label">账号：</label>
+			<div class="col-md-9">
+				<input type="text" name="USER_NAME" id="USER_NAME" value="${pd.USER_NAME}" maxlength="32" placeholder="请输入账号" title="账号" class="form-control tooltips" data-trigger="hover" data-toggle="tooltip"/>
+			</div>
 		</div>
 		<div class="form-group">
-		<label class="col-md-3 control-label">登陆密码：</label>
-		<div class="col-md-9">
-			<input type="password" name="USER_PASSWORD" id="USER_PASSWORD" value="${pd.USER_PASSWORD}" maxlength="32" placeholder="这里输入登陆密码" title="登陆密码" class="form-control" />
+			<label class="col-md-3 control-label">密码：</label>
+			<div class="col-md-9">
+				<input type="password" name="USER_PASSWORD" id="USER_PASSWORD" value="${pd.USER_PASSWORD}" maxlength="32" placeholder="请输入密码" title="密码" class="form-control tooltips" data-trigger="hover" data-toggle="tooltip" />
+			</div>
 		</div>
+		<div class="form-group">
+			<label class="col-md-3 control-label">姓名：</label>
+			<div class="col-md-9">
+				<input type="text" name="CHINESE_NAME" id="CHINESE_NAME" value="${pd.CHINESE_NAME}" maxlength="32" placeholder="请输入姓名" title="姓名" class="form-control tooltips" data-trigger="hover" data-toggle="tooltip"/>
+			</div>
 		</div>
-		<button type="submit" class="btn btn-success">Submit</button>
-		<table>
-			<tr>
-				<td>用户类型:</td>
-				<td><input type="text" name="USER_TYPE" id="USER_TYPE" value="${pd.USER_TYPE}" maxlength="32" placeholder="这里输入用户类型" title="用户类型"/></td>
-			</tr>
-			<tr>
-				<td>登陆账号:</td>
-				<td><input type="text" name="USER_NAME" id="USER_NAME" value="${pd.USER_NAME}" maxlength="32" placeholder="这里输入登陆账号" title="登陆账号"/></td>
-			</tr>
-			<tr>
-				<td>手机:</td>
-				<td><input type="text" name="MOBILE_PHONE" id="MOBILE_PHONE" value="${pd.MOBILE_PHONE}" maxlength="32" placeholder="这里输入手机" title="手机"/></td>
-			</tr>
-			<tr>
-				<td>固定电话:</td>
-				<td><input type="text" name="USER_PHONE" id="USER_PHONE" value="${pd.USER_PHONE}" maxlength="32" placeholder="这里输入固定电话" title="固定电话"/></td>
-			</tr>
-			<tr>
-				<td>用户邮箱:</td>
-				<td><input type="text" name="USER_MAIL" id="USER_MAIL" value="${pd.USER_MAIL}" maxlength="32" placeholder="这里输入用户邮箱" title="用户邮箱"/></td>
-			</tr>
-		</table>
+		<div class="form-group">
+			<label class="col-md-3 control-label">手机：</label>
+			<div class="col-md-9">
+				<input type="text" name="MOBILE_PHONE" id="MOBILE_PHONE" value="${pd.MOBILE_PHONE}" maxlength="32" placeholder="请输入手机号码" title="手机" class="form-control tooltips" data-trigger="hover" data-toggle="tooltip"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 control-label">固话：</label>
+			<div class="col-md-9">
+				<input type="text" name="USER_PHONE" id="USER_PHONE" value="${pd.USER_PHONE}" maxlength="32" placeholder="请输入固定电话" title="固定电话" class="form-control tooltips" data-trigger="hover" data-toggle="tooltip"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 control-label">邮箱：</label>
+			<div class="col-md-9">
+				<input type="text" name="USER_MAIL" id="USER_MAIL" value="${pd.USER_MAIL}" maxlength="32" placeholder="请输入邮箱" title="邮箱" class="form-control tooltips" data-trigger="hover" data-toggle="tooltip"/>
+			</div>
+		</div>
+		<!-- <button type="submit" class="btn btn-success">保存</button> -->
 	</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 	<script type="text/javascript">

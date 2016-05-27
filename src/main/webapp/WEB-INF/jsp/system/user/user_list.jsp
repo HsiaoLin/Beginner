@@ -168,8 +168,8 @@
 						<td>${var.BUYING_AGENT_ID}</td>
 						<td>${var.SUPPLIER_ID}</td>
 						<td>
-							<button onclick="edit('${var.USER_ID}');" class="btn btn-info btn-xs" data-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-fw fa-edit"></i></button>
-							<button onclick="del('${var.USER_ID}');" class="btn btn-danger btn-xs" data-placement="top" data-toggle="tooltip" data-original-title="删除"><i class="fa fa-fw fa-trash-o"></i></button>
+							<a onclick="edit('${var.USER_ID}');" class="btn btn-info btn-xs" data-placement="top" data-toggle="tooltip" data-original-title="编辑"><i class="fa fa-fw fa-edit"></i></button>
+							<a onclick="del('${var.USER_ID}');" class="btn btn-danger btn-xs" data-placement="top" data-toggle="tooltip" data-original-title="删除"><i class="fa fa-fw fa-trash-o"></i></button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -225,7 +225,7 @@ function add(){
 		title: '新增',
 		shadeClose: true,
 		shade: 0.3,
-		area: ['30%', '50%'],
+		area: ['40%', '70%'],
 		content: '<%=basePath%>system/user/goAdd',
 		btn: ['保存', '取消'],
 		yes: function(index, layero){//按钮【保存】的回调
@@ -243,15 +243,37 @@ function add(){
 			}
 		}
 	});
-	/* top.loading();
-	var diag = new top.Dialog();
-	diag.Drag=true;
-	diag.Title ="新增";
-	diag.URL = ;
-	diag.Width = $(document).width()/3;
-	diag.Height = $(document).height()/2;
-	diag.CancelEvent = function(){ //关闭事件
-		if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
+}
+//删除
+function del(Id){
+	layer.confirm('您确定要删除吗？', {icon: 3, title:'提示'}, function(index){
+		top.loading();
+		var url = "<%=basePath%>system/user/delete?USER_ID="+Id+"&tm="+new Date().getTime();
+		$.get(url,function(data){
+			if(data==="success")
+				nextPage('${page.currentPage}');
+		});
+		layer.close(index);
+	});
+}
+//修改
+function edit(Id){
+	top.loading();
+	top.layer.open({
+		type: 2,
+		title: '修改',
+		shadeClose: true,
+		shade: 0.3,
+		area: ['40%', '70%'],
+		content: '<%=basePath%>system/user/goEdit?USER_ID='+Id,
+		btn: ['保存', '取消'],
+		yes: function(index, layero){//按钮【保存】的回调
+			var iframe = layero.find('iframe');
+			var iframeWin = window.parent[layero.find('iframe')[0]['name']]; //得到iframe页的窗口对象，执行iframe页的方法：iframeWin.method();
+			iframeWin.save();
+		},cancel: function(index){//按钮【取消】的回调
+			top.layer.close(index);
+		},end:function(){
 			if('${page.currentPage}' == '0'){
 				top.loading();
 				setTimeout("self.location=self.location",100);
@@ -259,38 +281,7 @@ function add(){
 				nextPage('${page.currentPage}');
 			}
 		}
-		diag.close();
-	};
-	diag.show(); */
-}
-//删除
-function del(Id){
-	bootbox.confirm("确定要删除吗?", function(result) {
-		if(result) {
-			top.loading();
-			var url = "<%=basePath%>system/user/delete?USER_ID="+Id+"&tm="+new Date().getTime();
-			$.get(url,function(data){
-				nextPage('${page.currentPage}');
-			});
-		}
 	});
-}
-//修改
-function edit(Id){
-	top.loading();
-	var diag = new top.Dialog();
-	diag.Drag=true;
-	diag.Title ="编辑";
-	diag.URL = '<%=basePath%>system/user/goEdit?USER_ID='+Id;
-	diag.Width = 450;
-	diag.Height = 355;
-	diag.CancelEvent = function(){ //关闭事件
-		if(diag.innerFrame.contentWindow.document.getElementById('zhongxin').style.display == 'none'){
-			nextPage('${page.currentPage}');
-		}
-		diag.close();
-	};
-	diag.show();
 }
 //批量删除
 function makeAll(msg){
